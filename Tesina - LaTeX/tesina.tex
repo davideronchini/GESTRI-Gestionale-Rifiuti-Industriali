@@ -1,0 +1,93 @@
+\documentclass[a4paper]{report}
+
+\input{config}
+
+% Document title and author
+\title{\huge \textbf{\textcolor{black}{Elettromagnetismo\\per la Trasmissione dell'Informazione}}\\}
+\author{Davide Ronchini - 2025}
+\date{}
+
+\begin{document}
+
+\thispagestyle{empty} % rimuove intestazione/piede pagina
+
+% decorative thin left band (1.2cm) drawn in overlay so it doesn't change layout
+\begin{tikzpicture}[remember picture,overlay]
+    % extend a couple millimetres below the page bottom to avoid any tiny gap
+    \fill[myGreen] (current page.north west) rectangle ($(current page.south west)+(1.4cm,0)$);
+\end{tikzpicture}
+
+\begin{center}
+    % Titolo Università
+    \vphantom{space} \\[0.5cm]
+    {\Large \textbf{\textcolor{myGreen}{GESTRI – Gestionale Rifiuti Industriali}}}\\[0.3cm]
+    
+    % Corso di Laurea
+    {\normalsize Corso di Laurea Triennale in Ingegneria Informatica e dell’Automazione}\\[2cm]
+    
+    % Logo
+    \includegraphics[width=0.35\textwidth]{univpm_logo.png}\\[2cm]
+    
+    % Titolo progetto
+    {\large \textbf{\textcolor{myGreen}{UNIVERSITÀ POLITECNICA DELLE MARCHE}}}\\ [0.3cm]
+    % Corso di Laurea
+    {\normalsize Corso di Laurea Triennale in Ingegneria Informatica e dell’Automazione}\\[2cm]
+    
+    % Relatori e Tesina
+    \begin{minipage}{0.45\textwidth}
+        \begin{flushleft}
+        \textbf{\textcolor{myGreen}{RELATORI:}}\\[0.2cm]
+        Prof. Ursino Domenico\\
+        Prof. Davide Traini
+        \end{flushleft}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \begin{flushright}
+        \textbf{\textcolor{myGreen}{TESINA DI:}}\\[0.2cm]
+        Tarek Naja \\
+        Davide Ronchini\\
+        Marco Sambughi \\
+        Sara Vaccaro
+        \end{flushright}
+    \end{minipage}\\[5.5cm]
+    
+    % Anno accademico
+    {\normalsize A.A 2024/2025}
+\end{center}
+
+% Include the table of contents
+\tableofcontents
+% Remove page number from table of contents page
+\thispagestyle{empty}
+
+\setcounter{page}{0}
+\newchapter{Descrizione del Progetto}
+
+\newchapter{Glossario dei Termini}
+
+\newchapter{Requisiti}
+
+\newsection{Requisiti Funzionali}
+
+\newsection{Requisiti Non Funzionali}
+
+\newsection{Tabella MoSCoW dei Requisiti}
+
+\newsection{Diagrammi dei Casi d'Uso}
+
+\clearpage
+\newsubsection{Diagramma degli Attori}
+
+\begin{figure*}[ht]
+  \centering
+  \includegraphics[width=1\textwidth]{Attori}
+\end{figure*}
+
+\newsection{Matrice di Mapping}
+
+\newchapter{Analisi}
+
+\newchapter{Progettazione}
+
+\end{document}

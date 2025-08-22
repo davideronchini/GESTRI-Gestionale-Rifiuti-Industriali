@@ -1,0 +1,376 @@
+%================================
+% PACKAGE IMPORTS
+%================================
+
+% Basic packages
+\usepackage{graphicx} % For including images
+\usepackage[utf8]{inputenc} % Document encoding
+\usepackage[T1]{fontenc} % Font encoding
+\usepackage{titling} % Customizing the title
+\usepackage[italian]{babel} % Main language of the document
+
+% Mathematical packages
+\usepackage{amsmath, amssymb, amsthm, mathtools} % Standard math packages
+
+% Hyperlink packages
+\usepackage{hyperref} % Handling hyperlinks in the document
+
+% Layout and formatting packages
+\usepackage{geometry} % Page dimensions and margin setup
+\usepackage{fancyhdr} % Customizing headers and footers
+\usepackage{xcolor} % Color management in the document
+\usepackage[table]{xcolor}
+\usepackage{wrapfig} % Wrapping figures in text
+\usepackage{array} % Enhancements for tables
+\usepackage{varwidth} % Variable-width columns
+
+% Advanced packages
+\usepackage{tikz} % Drawing graphs and diagrams
+\usepackage{amsmath, siunitx}
+\usepackage{circuitikz}
+\usetikzlibrary{arrows.meta, decorations.pathreplacing, positioning, calc, backgrounds}
+\usepackage{pgfplots} % Plotting data and functions
+\usepackage{titlesec} % Customizing section titles
+\usepackage{titletoc} % Customizing table of contents
+\usepackage{fix-cm} % Fixing font size issues
+
+% Advanced math packages
+\usepackage[varbb]{newpxmath} % Advanced math font style
+\usepackage{xfrac} % Inclined fractions
+\usepackage[makeroom]{cancel} % Canceling terms in equations
+\usepackage{stmaryrd} % To use the \lightning symbol
+
+% Document management packages
+\usepackage{bookmark} % Handling bookmarks in PDF files
+\usepackage{enumitem} % Customizing lists
+\usepackage{theoremref} % Cross-references for theorems and propositions
+
+% Additional packages
+\usepackage[most, many, breakable]{tcolorbox} % Customizable colored boxes
+\usepackage{etoolbox} % Tools for command modifications
+\usepackage{nameref} % Cross-references for names
+\usepackage{multicol} % Multi-column layout
+\usepackage{tikz} % To circle items
+\usepackage{tikz-cd} % Commutative diagrams
+\usepackage[ruled, vlined, linesnumbered]{algorithm2e} % Algorithms and pseudocode
+\usepackage{comment} % Multi-line comments
+\usepackage{import} % Importing documents from other folders
+\usepackage{xifthen} % Conditional commands
+\usepackage{pdfpages} % Including external PDF pages
+\usepackage{transparent} % Transparency in graphic elements
+
+% PDF
+\usepackage{pdfpages}
+
+%================================
+% TABLE SETTINGS
+%================================
+\setlength{\arrayrulewidth}{0.5mm}
+\setlength{\tabcolsep}{18pt}
+\renewcommand{\arraystretch}{2.5}
+
+%================================
+% TABLE OF CONTENTS SETTINGS
+%================================
+\renewcommand\thesection{\arabic{section}}
+\titlecontents{chapter}[1.05em]{\bigskip}%
+{\contentslabel[\MakeUppercase{\romannumeral\thecontentslabel}]{1em}\enspace\textsc}%
+{\hspace*{-1em}\textsc}%
+{\hfill\contentspage}%
+\titlecontents{section}[1.6em]{\smallskip}%
+{\thecontentslabel.\enspace}{}%
+{\titlerule*[1pc]{.}\contentspage}%
+\setcounter{tocdepth}{3}
+
+% Import the images contained in the img folder
+\graphicspath{{./img/}}
+
+%================================
+% HEADER AND FOOTER SETTINGS
+%================================
+\setlength{\headheight}{15pt}
+\addtolength{\topmargin}{-2.5pt}
+\setlength{\footskip}{15pt} % Set the footskip to a larger value
+\pagestyle{fancy}
+\fancyhf{}
+\pretitle{\begin{center}\LARGE\bfseries}
+		\posttitle{\end{center}}
+\renewcommand{\headrulewidth}{0.5pt}
+\fancyhead[R]{}
+\fancyfoot[R]{\thepage}
+
+%================================
+% PAGE GEOMETRY SETTINGS
+%================================
+\geometry{margin=1in}
+
+%================================
+% HYPERLINK SETTINGS
+%================================
+\hypersetup{
+	colorlinks=true,
+	linkcolor=black,
+	urlcolor=cyan,
+	citecolor=black,
+	filecolor=magenta,
+	pdftitle={PDF Title},
+}
+
+%================================
+% TCOLORBOX SETUPS
+%================================
+
+% THEOREM BOXES
+\tcbuselibrary{theorems,skins,hooks}
+
+\newtcolorbox[number within=section]{Theorem_blue}[2][]
+{%
+	enhanced,
+	breakable,
+	colback = thm_box_blue!5,
+	frame hidden,
+	boxrule = 0sp,
+	borderline west = {2pt}{0pt}{thm_box_blue},
+	sharp corners,
+	detach title,
+	before upper = \tcbtitle\par\smallskip,
+	coltitle = thm_box_blue,
+	fonttitle = \bfseries\sffamily,
+	description font = \mdseries,
+	separator sign none,
+	segmentation style={solid, thm_box_blue},
+	title = {#2},#1
+}
+
+\newtcolorbox[number within=section]{Theorem_yellow}[2][]
+{%
+	enhanced,
+	breakable,
+	colback = thm_box_yellow!5,
+	frame hidden,
+	boxrule = 0sp,
+	borderline west = {2pt}{0pt}{thm_box_yellow},
+	sharp corners,
+	detach title,
+	before upper = \tcbtitle\par\smallskip,
+	coltitle = thm_box_yellow,
+	fonttitle = \bfseries\sffamily,
+	description font = \mdseries,
+	separator sign none,
+	segmentation style={solid, thm_box_yellow},
+	title = {#2},#1
+}
+
+\newtcolorbox[number within=section]{Theorem_purple}[2][]
+{%
+	enhanced,
+	breakable,
+	colback = thm_box_purple!5,
+	frame hidden,
+	boxrule = 0sp,
+	borderline west = {2pt}{0pt}{thm_box_purple},
+	sharp corners,
+	detach title,
+	before upper = \tcbtitle\par\smallskip,
+	coltitle = thm_box_purple,
+	fonttitle = \bfseries\sffamily,
+	description font = \mdseries,
+	separator sign none,
+	segmentation style={solid, thm_box_purple},
+	title = {#2},#1
+}
+
+\newtcolorbox[number within=section]{Theorem_green}[2][]
+{%
+	enhanced,
+	breakable,
+	colback = thm_box_green!5,
+	frame hidden,
+	boxrule = 0sp,
+	borderline west = {2pt}{0pt}{thm_box_green},
+	sharp corners,
+	detach title,
+	before upper = \tcbtitle\par\smallskip,
+	coltitle = thm_box_green,
+	fonttitle = \bfseries\sffamily,
+	description font = \mdseries,
+	separator sign none,
+	segmentation style={solid, thm_box_green},
+	title = {#2},#1
+}
+
+% EXAMPLE BOX
+\newtcolorbox[number within=section]{Example}[2][]
+{%
+	colback = example_box_clr!5,
+	breakable,
+	colframe = example_box_clr,
+	coltitle = example_box_clr,
+	boxrule = 1pt,
+	sharp corners,
+	detach title,
+	before upper=\tcbtitle\par\smallskip,
+	fonttitle = \bfseries,
+	description font = \mdseries,
+	separator sign none,
+	description delimiters parenthesis,
+	title = {#2},#1
+}
+
+% DEFINITION BOX
+\newtcolorbox[number within=section]{Definition}[2][]{enhanced,
+	before skip=2mm,after skip=2mm,
+	colback=description_box_clr!5,
+	colframe=description_box_clr,
+	boxrule=0.5mm,
+	attach boxed title to top left={xshift=1cm,yshift*=1mm-\tcboxedtitleheight},
+	varwidth boxed title*=-3cm,
+	boxed title style={frame code={
+					\path[fill=description_box_clr]
+					([yshift=-1mm,xshift=-1mm]frame.north west)
+					arc[start angle=0,end angle=180,radius=1mm]
+					([yshift=-1mm,xshift=1mm]frame.north east)
+					arc[start angle=180,end angle=0,radius=1mm];
+					\path[left color=description_box_clr!60!black,right color=description_box_clr!60!black,
+						middle color=description_box_clr!80!black]
+					([xshift=-2mm]frame.north west) -- ([xshift=2mm]frame.north east)
+					[rounded corners=1mm]-- ([xshift=1mm,yshift=-1mm]frame.north east)
+					-- (frame.south east) -- (frame.south west)
+					-- ([xshift=-1mm,yshift=-1mm]frame.north west)
+					[sharp corners]-- cycle;
+				},interior engine=empty,
+		},
+	fonttitle=\bfseries,
+	title={#2},#1}
+
+% NOTE BOX
+\usetikzlibrary{arrows,calc,shadows.blur}
+\tcbuselibrary{skins}
+
+\newtcolorbox{note}[1][]{%
+	enhanced jigsaw,
+	colback=gray!20!white,%
+	colframe=gray!80!black,
+	size=small,
+	boxrule=1pt,
+	title=\textbf{Nota:},
+	halign title=flush center,
+	coltitle=black,
+	breakable,
+	drop shadow=black!50!white,
+	attach boxed title to top left={xshift=1cm,yshift=-\tcboxedtitleheight/2,yshifttext=-\tcboxedtitleheight/2},
+	minipage boxed title=1.5cm,
+	boxed title style={%
+			colback=white,
+			size=fbox,
+			boxrule=1pt,
+			boxsep=2pt,
+			underlay={%
+					\coordinate (dotA) at ($(interior.west) + (-0.5pt,0)$);
+					\coordinate (dotB) at ($(interior.east) + (0.5pt,0)$);
+					\begin{scope}
+						\clip (interior.north west) rectangle ([xshift=3ex]interior.east);
+						\filldraw [white, blur shadow={shadow opacity=60, shadow yshift=-.75ex}, rounded corners=2pt] (interior.north west) rectangle (interior.south east);
+					\end{scope}
+					\begin{scope}[gray!80!black]
+						\fill (dotA) circle (2pt);
+						\fill (dotB) circle (2pt);
+					\end{scope}
+				},
+		},
+	#1,
+}
+
+% MY BOX
+\makeatletter
+\newtcolorbox{mybox}[2][]{
+	enhanced,
+	breakable,
+	colback=white,
+	colframe=my_box_clr,
+	attach boxed title to top left={yshift*=-\tcboxedtitleheight},
+	fonttitle=\bfseries,
+	title={#2},
+	boxed title style={%
+			sharp corners,
+			rounded corners=northwest,
+			colback=tcbcolframe,
+			boxrule=0pt,
+		},
+	underlay boxed title={%
+			\path[fill=tcbcolframe] (title.south west)--(title.south east)
+			to[out=0, in=180] ([xshift=5mm]title.east)--
+			(title.center-|frame.east)
+			[rounded corners=\kvtcb@arc] |-
+			(frame.north) -| cycle;
+		},
+	#1
+}
+\makeatother
+
+%================================
+% SELF MADE COMMANDS
+%================================
+
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+		\node[shape=circle,draw,inner sep=1pt] (char) {#1};}}
+
+% TColorBox commands
+\newcommand{\thmbl}[2]{\begin{Theorem_blue}{#1}{}#2\end{Theorem_blue}}
+\newcommand{\thmyllw}[2]{\begin{Theorem_yellow}{#1}{}#2\end{Theorem_yellow}}
+\newcommand{\thmprpl}[2]{\begin{Theorem_purple}{#1}{}#2\end{Theorem_purple}}
+\newcommand{\thmgrn}[2]{\begin{Theorem_green}{#1}{}#2\end{Theorem_green}}
+\newcommand{\ex}[2]{\begin{Example}{#1}{}#2\end{Example}}
+\newcommand{\dfn}[2]{\begin{Definition}[colbacktitle=red!75!black]{#1}{}#2\end{Definition}}
+\newcommand{\nt}[1]{\begin{note}#1\end{note}}
+\newcommand{\genericbox}[2]{\begin{mybox}{#1}{}#2\end{mybox}}
+
+% Custom commands for chapters, sections, and subsections
+\newcommand{\newchapter}[1]{%
+	\newpage
+	\phantomsection
+	\fancyhead[L]{#1}%
+	\chapter*{#1}%
+	\addcontentsline{toc}{chapter}{#1}%
+	\thispagestyle{fancy}
+}
+
+\newcommand{\newsection}[1]{%
+	\phantomsection
+	\section*{#1}%
+	\fancyhead[R]{#1}%
+	\addcontentsline{toc}{section}{#1}%
+	\thispagestyle{fancy}
+}
+
+\newcommand{\newsubsection}[1]{%
+	\phantomsection
+	\subsection*{#1}%
+	\addcontentsline{toc}{subsection}{#1}%
+	\thispagestyle{fancy}
+}
+
+\newcommand{\newsubsubsection}[1]{%
+	\phantomsection
+	\subsubsection*{#1}%
+	\addcontentsline{toc}{subsubsection}{#1}%
+	\thispagestyle{fancy}
+}
+
+%================================
+% CUSTOM COLORS
+%================================
+\definecolor{highlighter}{RGB}{255,255,153}
+
+\definecolor{description_box_clr}{RGB}{97,97,97}
+
+\definecolor{thm_box_yellow}{RGB}{169,121,69}
+\definecolor{thm_box_blue}{HTML}{00007B}
+\definecolor{thm_box_purple}{RGB}{197, 92, 212}
+\definecolor{thm_box_green}{RGB}{56, 140, 70}
+
+\definecolor{example_box_clr}{HTML}{88D6D1}
+
+\definecolor{my_box_clr}{HTML}{24598e}
+
+\definecolor{myGreen}{HTML}{195905}
