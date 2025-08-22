@@ -9,6 +9,10 @@
 \usepackage{titling} % Customizing the title
 \usepackage[italian]{babel} % Main language of the document
 
+\usepackage{longtable} 
+\usepackage{tabularx}
+\usepackage{booktabs}
+
 % Mathematical packages
 \usepackage{amsmath, amssymb, amsthm, mathtools} % Standard math packages
 
@@ -48,6 +52,8 @@
 % Additional packages
 \usepackage[most, many, breakable]{tcolorbox} % Customizable colored boxes
 \usepackage{etoolbox} % Tools for command modifications
+\usepackage{caption} % control caption alignment for tables
+\usepackage{enumitem} % control list layout and labels
 \usepackage{nameref} % Cross-references for names
 \usepackage{multicol} % Multi-column layout
 \usepackage{tikz} % To circle items
@@ -66,8 +72,19 @@
 % TABLE SETTINGS
 %================================
 \setlength{\arrayrulewidth}{0.5mm}
-\setlength{\tabcolsep}{18pt}
+\setlength{\tabcolsep}{14pt}
 \renewcommand{\arraystretch}{2.5}
+
+% Make longtable flush-left by default when its natural width is smaller than \textwidth
+% longtable centers tables using \LTleft and \LTright; set them to 0 to align left
+\setlength{\LTleft}{0pt}
+\setlength{\LTright}{0pt}
+
+% Make standard table floats left-aligned (even if they contain \centering)
+% - captions: disable singleline centering and use raggedright justification
+% - AtBeginEnvironment: apply raggedright and locally neutralize \centering
+\captionsetup[table]{singlelinecheck=false, justification=raggedright}
+\AtBeginEnvironment{table}{\raggedright\let\centering\relax}
 
 %================================
 % TABLE OF CONTENTS SETTINGS
@@ -97,7 +114,20 @@
 		\posttitle{\end{center}}
 \renewcommand{\headrulewidth}{0.5pt}
 \fancyhead[R]{}
-\fancyfoot[R]{\thepage}
+% Ensure header/footer span the same width as the main text and align to its right margin
+% Sometimes fancyhdr's headwidth can be inconsistent; force it to the text width
+\setlength{\headwidth}{\textwidth}
+% Place the page number flush-right with respect to the text block
+\fancyfoot[R]{\makebox[\textwidth][r]{\thepage}}
+
+% Ensure the headrule (the horizontal line under the header) spans the text block
+% and is left-aligned with the text margins.
+\makeatletter
+\renewcommand{\headrule}{%
+	% draw a rule exactly \textwidth wide at the header thickness
+	\hrule height \headrulewidth width \textwidth\vskip-\headrulewidth
+}
+\makeatother
 
 %================================
 % PAGE GEOMETRY SETTINGS
@@ -329,7 +359,8 @@
 \newcommand{\newchapter}[1]{%
 	\newpage
 	\phantomsection
-	\fancyhead[L]{#1}%
+	% Place chapter header flush-left with the text block
+	\fancyhead[L]{\makebox[\textwidth][l]{#1}}%
 	\chapter*{#1}%
 	\addcontentsline{toc}{chapter}{#1}%
 	\thispagestyle{fancy}
@@ -338,7 +369,8 @@
 \newcommand{\newsection}[1]{%
 	\phantomsection
 	\section*{#1}%
-	\fancyhead[R]{#1}%
+	% Place section header flush-right with the text block
+	\fancyhead[R]{\makebox[\textwidth][r]{#1}}%
 	\addcontentsline{toc}{section}{#1}%
 	\thispagestyle{fancy}
 }
@@ -346,8 +378,10 @@
 \newcommand{\newsubsection}[1]{%
 	\phantomsection
 	\subsection*{#1}%
+	% Place subsection header flush-right with the text block
+	\fancyhead[R]{\makebox[\textwidth][r]{#1}}%
 	\addcontentsline{toc}{subsection}{#1}%
-	\thispagestyle{fancy}
+		hispagestyle{fancy}
 }
 
 \newcommand{\newsubsubsection}[1]{%

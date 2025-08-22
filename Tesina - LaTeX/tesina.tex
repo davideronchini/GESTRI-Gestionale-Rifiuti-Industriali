@@ -64,7 +64,64 @@
 \setcounter{page}{0}
 \newchapter{Descrizione del Progetto}
 
+\newsection{Panoramica Generale}
+Il progetto si inserisce all’interno del contesto della gestione di un sistema avanzato destinato al monitoraggio e al controllo di un insieme complesso di dati e processi. 
+L’obiettivo principale è fornire un’infrastruttura affidabile e centralizzata, capace di gestire in maniera integrata le informazioni provenienti da più fonti e di garantire 
+un accesso sicuro e differenziato in base ai ruoli degli utenti.  
+Il sistema non si limita alla sola raccolta dei dati, ma prevede una loro elaborazione, archiviazione e presentazione attraverso interfacce chiare e coerenti, 
+con particolare attenzione alla scalabilità e alla manutenibilità futura.
+
+\newsection{Utenti}
+Gli utenti del sistema sono suddivisi in due categorie principali.  
+La prima è quella degli \textbf{Operatori}, figure incaricate dell’inserimento e dell’aggiornamento delle informazioni di base, che costituiscono il nucleo operativo della piattaforma.  
+La seconda è rappresentata dallo \textbf{Staff}, che eredita tutte le funzionalità proprie degli Operatori ma dispone inoltre di strumenti aggiuntivi per il monitoraggio, 
+la supervisione e la gestione delle configurazioni globali del sistema.  
+Per riassumere in modo uniforme le logiche comuni, è stato introdotto un attore generico denominato \textbf{User}, che rappresenta un’astrazione dei comportamenti condivisi 
+tra tutte le tipologie di utenti.
+
+\newsection{Gestione dei Dati}
+Uno dei cardini del progetto è la gestione strutturata dei dati.  
+Il sistema deve infatti raccogliere informazioni eterogenee, archiviarle in modo sicuro e consentirne il recupero secondo criteri di rapidità ed efficienza.  
+Sono previsti meccanismi di aggiornamento costante e di sincronizzazione, così da garantire la coerenza delle informazioni nel tempo.  
+Particolare attenzione è stata posta anche agli aspetti di integrità e consistenza, evitando ridondanze superflue e introducendo controlli atti a prevenire errori nella fase di registrazione.
+
+\newsection{Architettura del Sistema}
+L’architettura del sistema è stata progettata seguendo un approccio modulare, che consente di distinguere chiaramente i diversi livelli funzionali.  
+Il livello di acquisizione si occupa di raccogliere i dati dalle fonti esterne, normalizzandoli e predisponendoli all’elaborazione.  
+Segue un livello logico-gestionale, in cui le informazioni vengono trattate secondo le regole definite dal dominio applicativo.  
+Infine, il livello di presentazione ha il compito di fornire agli utenti una visione chiara e comprensibile dello stato del sistema, adattandosi ai privilegi associati a ciascun ruolo.  
+La modularità facilita inoltre l’eventuale estensione futura, consentendo di aggiungere nuove funzionalità senza compromettere la stabilità delle componenti esistenti.
+
+\newsection{Interfacce e Accesso}
+L’accesso al sistema avviene attraverso interfacce pensate per essere intuitive e coerenti, in grado di fornire a ciascun utente esattamente le funzioni necessarie al proprio ruolo.  
+Gli Operatori interagiscono principalmente con strumenti di inserimento e aggiornamento, mentre lo Staff dispone di viste aggiuntive che consentono una supervisione complessiva.  
+La gestione delle credenziali garantisce la distinzione tra i diversi profili, rafforzando il livello di sicurezza e impedendo utilizzi impropri delle funzionalità disponibili.
+
+
 \newchapter{Glossario dei Termini}
+
+\begin{longtable}{ >{\raggedright\arraybackslash}p{1.5cm} >{\raggedright\arraybackslash}p{5.5cm} >{\raggedright\arraybackslash}p{2cm} >{\raggedright\arraybackslash}p{2.97cm}}
+\toprule
+\textbf{TERMINE} & \textbf{DESCRIZIONE} & \textbf{TIPO} & \textbf{SINONIMI} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\endlastfoot
+Utente & Ruolo generico da cui derivano Client e Operator. Ha la capacità di accedere al sistema. & TECNICO & - \\
+Client & Soggetto che commissiona il servizio e consulta documenti e stato delle attività. & BUSINESS & - \\
+Operator & Figura incaricata di eseguire operazioni pratiche di carico/scarico, compilazione documenti e gestione mezzi. Estende le funzionalità dello Staff. & BUSINESS & - \\
+Staff & Personale amministrativo che gestisce l'organizzazione dei turni, le assenze e le attività complessive. & BUSINESS & - \\
+Attività & Operazione di carico o scarico di rifiuti, con assegnazione di operatori e mezzi. & BUSINESS & - \\
+Mezzo & Veicolo utilizzato per il trasporto dei rifiuti. & BUSINESS & - \\
+FIR & Documento obbligatorio che accompagna il trasporto dei rifiuti industriali. & BUSINESS & Formulario di Identificazione Rifiuti \\
+Turno & Periodo temporale in cui un operatore è assegnato a un'attività. & BUSINESS & - \\
+Gestione Utenti & Area del sistema che si occupa di registrazione, login, e amministrazione dei profili utente. & TECNICO & - \\
+Gestione Attività & Area del sistema che gestisce la creazione, l'aggiornamento e il monitoraggio delle operazioni di carico/scarico rifiuti. & TECNICO & - \\
+Gestione Documento & Area del sistema che gestisce la creazione, archiviazione e notifica di documenti come il FIR. & TECNICO & - \\
+Gestione Mezzo & Area del sistema che tiene traccia dei dati tecnici, assicurativi e di manutenzione dei veicoli. & TECNICO & - \\
+MoSCoW & Criterio di prioritizzazione dei requisiti: Must, Should, Could, Won't. & TECNICO & - \\
+\end{longtable}
 
 \newchapter{Requisiti}
 
@@ -74,7 +131,42 @@
 
 \newsection{Tabella MoSCoW dei Requisiti}
 
+\clearpage
 \newsection{Diagrammi dei Casi d'Uso}
+
+\begin{table}[h!]
+\centering
+\renewcommand{\arraystretch}{1.9}
+\begin{tabular}{|p{3.9cm}|p{9.9cm}|}
+\hline
+\multicolumn{2}{|c|}{\textbf{Caso d’uso: RegistrazioneUtente}} \\ \hline
+\textbf{ID} & 1 \\ \hline
+\textbf{Breve descrizione} &  L'Utente si registra nel sistema, con un ruolo che dipende dal punto di accesso. \\ \hline
+\textbf{Attori primari} & Utente, Staff \\ \hline
+\textbf{Attori secondari} & Nessuno \\ \hline
+\textbf{Precondizioni} & Nessuna \\ \hline
+\textbf{Sequenza degli eventi principale} &
+\begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item \textbf{If} l'Utente è un Cliente che accede alla pagina di registrazione pubblica, allora
+    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+        \item Il sistema mostra il modulo di registrazione
+        \item Il Cliente inserisce le proprie informazioni (nome, cognome, email, password)
+        \item Il sistema valida i dati inseriti
+        \item Il sistema crea un nuovo account con il ruolo di Cliente
+    \end{enumerate}
+\end{enumerate}\\ \hline
+\textbf{Postcondizioni} & È stato creato un nuovo account utente con un ruolo specifico (Cliente, Operatore o Staff) \\ \hline
+\textbf{Sequenza degli eventi alternativa} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item \textbf{If} l'Utente è un membro dello Staff che accede alla pagina di gestione utenti interna, allora
+    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+        \item Il sistema mostra un modulo di creazione utente
+        \item Il membro dello Staff inserisce le informazioni del nuovo utente (nome, cognome, email, password) e seleziona il ruolo desiderato (Operatore o Staff)
+        \item Il sistema valida i dati inseriti
+        \item Il sistema crea un nuovo account con il ruolo specificato (Operatore o Staff)
+    \end{enumerate}
+\end{enumerate}\\ \hline
+\end{tabular}
+\end{table}
 
 \clearpage
 \newsubsection{Diagramma degli Attori}
