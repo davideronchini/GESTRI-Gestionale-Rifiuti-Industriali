@@ -64,14 +64,14 @@
 \setcounter{page}{0}
 \newchapter{Descrizione del Progetto}
 
-\newsection{Panoramica Generale}
+\newsection*{Panoramica Generale}
 Il progetto si inserisce all’interno del contesto della gestione di un sistema avanzato destinato al monitoraggio e al controllo di un insieme complesso di dati e processi. 
 L’obiettivo principale è fornire un’infrastruttura affidabile e centralizzata, capace di gestire in maniera integrata le informazioni provenienti da più fonti e di garantire 
 un accesso sicuro e differenziato in base ai ruoli degli utenti.  
 Il sistema non si limita alla sola raccolta dei dati, ma prevede una loro elaborazione, archiviazione e presentazione attraverso interfacce chiare e coerenti, 
 con particolare attenzione alla scalabilità e alla manutenibilità futura.
 
-\newsection{Utenti}
+\newsection*{Utenti}
 Gli utenti del sistema sono suddivisi in due categorie principali.  
 La prima è quella degli \textbf{Operatori}, figure incaricate dell’inserimento e dell’aggiornamento delle informazioni di base, che costituiscono il nucleo operativo della piattaforma.  
 La seconda è rappresentata dallo \textbf{Staff}, che eredita tutte le funzionalità proprie degli Operatori ma dispone inoltre di strumenti aggiuntivi per il monitoraggio, 
@@ -79,20 +79,20 @@ la supervisione e la gestione delle configurazioni globali del sistema.
 Per riassumere in modo uniforme le logiche comuni, è stato introdotto un attore generico denominato \textbf{User}, che rappresenta un’astrazione dei comportamenti condivisi 
 tra tutte le tipologie di utenti.
 
-\newsection{Gestione dei Dati}
+\newsection*{Gestione dei Dati}
 Uno dei cardini del progetto è la gestione strutturata dei dati.  
 Il sistema deve infatti raccogliere informazioni eterogenee, archiviarle in modo sicuro e consentirne il recupero secondo criteri di rapidità ed efficienza.  
 Sono previsti meccanismi di aggiornamento costante e di sincronizzazione, così da garantire la coerenza delle informazioni nel tempo.  
 Particolare attenzione è stata posta anche agli aspetti di integrità e consistenza, evitando ridondanze superflue e introducendo controlli atti a prevenire errori nella fase di registrazione.
 
-\newsection{Architettura del Sistema}
+\newsection*{Architettura del Sistema}
 L’architettura del sistema è stata progettata seguendo un approccio modulare, che consente di distinguere chiaramente i diversi livelli funzionali.  
 Il livello di acquisizione si occupa di raccogliere i dati dalle fonti esterne, normalizzandoli e predisponendoli all’elaborazione.  
 Segue un livello logico-gestionale, in cui le informazioni vengono trattate secondo le regole definite dal dominio applicativo.  
 Infine, il livello di presentazione ha il compito di fornire agli utenti una visione chiara e comprensibile dello stato del sistema, adattandosi ai privilegi associati a ciascun ruolo.  
 La modularità facilita inoltre l’eventuale estensione futura, consentendo di aggiungere nuove funzionalità senza compromettere la stabilità delle componenti esistenti.
 
-\newsection{Interfacce e Accesso}
+\newsection*{Interfacce e Accesso}
 L’accesso al sistema avviene attraverso interfacce pensate per essere intuitive e coerenti, in grado di fornire a ciascun utente esattamente le funzioni necessarie al proprio ruolo.  
 Gli Operatori interagiscono principalmente con strumenti di inserimento e aggiornamento, mentre lo Staff dispone di viste aggiuntive che consentono una supervisione complessiva.  
 La gestione delle credenziali garantisce la distinzione tra i diversi profili, rafforzando il livello di sicurezza e impedendo utilizzi impropri delle funzionalità disponibili.
@@ -125,23 +125,180 @@ MoSCoW & Criterio di prioritizzazione dei requisiti: Must, Should, Could, Won't.
 
 \newchapter{Requisiti}
 
+Nella presente sezione si analizzano in modo approfondito i requisiti del sistema, procedendo alla loro suddivisione secondo le seguenti categorie:
+\begin{itemize}
+    \item Requisiti funzionali, che definiscono le specifiche funzionalità che il sistema è tenuto a fornire.
+    \item Requisiti non funzionali, che individuano i vincoli e le qualità che il sistema deve soddisfare, quali ad esempio l'usabilità, la sicurezza e le prestazioni.
+\end{itemize}
+
 \newsection{Requisiti Funzionali}
 
+% Requisiti funzionali (testo inserito automaticamente)
+\newsubsection*{Area: Gestione Utenti}
+
+\newsubsubsection*{RF1: Registrazione Utente}
+
+Il sistema dovrà permettere la registrazione di nuovi utenti (amministratori, operatori, staff) inserendo i dati necessari.
+
+\newsubsubsection*{RF2: Login Utente}
+
+Il sistema dovrà permettere all’utente di autenticarsi tramite email e password.
+
+\newsubsubsection*{RF3: Assegnazione Ruolo}
+
+Il sistema dovrà permettere l’assegnazione e la modifica del ruolo dell’utente (USER, OPERATOR, STAFF).
+
+\newsubsubsection*{RF4: Modifica Utente}
+
+Il sistema dovrà permettere la modifica delle informazioni anagrafiche e dei dati di contatto di un utente.
+
+\newsubsubsection*{RF5: Elimina Utente}
+
+Il sistema dovrà permettere la cancellazione di un account utente e la gestione coerente dei dati associati.
+
+\newsubsubsection*{RF6: Recupero Credenziali}
+
+Il sistema dovrà permettere il recupero delle credenziali tramite procedura (es. email) per operatori e staff.
+
+\newsubsubsection*{RF7: Assegnazione Turno}
+
+Il sistema dovrà permettere la creazione e l’assegnazione di turni agli operatori e la loro visualizzazione.
+
+\newsubsubsection*{RF8: Amministrazione Assenze}
+
+Il sistema dovrà permettere allo staff di registrare, approvare e monitorare le assenze del personale.
+
+\newsubsection*{Area: Gestione Attività}
+
+\newsubsubsection*{RF9: CRUD Attività}
+
+Il sistema dovrà permettere la creazione, lettura, aggiornamento e cancellazione delle attività di carico/scarico rifiuti.
+
+\newsubsubsection*{RF10: Assegnazione Operatore}
+
+Il sistema dovrà permettere l'assegnazione di uno o più operatori a ciascuna attività, con controllo delle disponibilità.
+
+\newsubsubsection*{RF11: Assegnazione Mezzo}
+
+Il sistema dovrà permettere l'assegnazione del mezzo più idoneo all'attività in base al tipo di rifiuto e al carico previsto.
+
+\newsubsection*{Area: Gestione Documento}
+
+\newsubsubsection*{RF12: CRUD Documento FIR}
+
+Il sistema dovrà permettere la creazione, lettura, aggiornamento e cancellazione del Formulario di Identificazione Rifiuto (FIR) associato a un'attività assegnata.
+
+\newsubsubsection*{RF13: CRUD Scadenza}
+
+Il sistema dovrà permettere la gestione delle scadenze dei documenti (impostazione, modifica, rimozione) e la loro associazione ai documenti rilevanti.
+
+\newsubsubsection*{RF14: Notifica Scadenza Documento}
+
+Il sistema dovrà inviare notifiche relative alle scadenze dei documenti (es. FIR, consegne, ritiri) agli utenti interessati.
+
+\newsubsubsection*{RF15: Filtra Documento}
+
+Il sistema dovrà permettere il filtraggio e la ricerca dei documenti tramite criteri multipli (tipologia, data, stato, operatore, attività).
+
+\newsubsubsection*{RF16: Notifica Rinnovo Corso Sicurezza}
+
+Il sistema dovrà inviare notifiche per il rinnovo dei corsi di sicurezza agli utenti interessati prima della scadenza.
+
+\newsubsection*{Area: Gestione Mezzo}
+
+\newsubsubsection*{RF17: CRUD Mezzo}
+
+Il sistema dovrà permettere la creazione, lettura, aggiornamento e cancellazione dei mezzi, inclusi dati tecnici, capacità, assicurazione, revisione, manutenzione e stato del mezzo.
+
+\newsubsubsection*{RF18: Filtra Mezzo}
+
+Il sistema dovrà permettere il filtraggio e la ricerca dei mezzi per stato, capacità, disponibilità, scadenze assicurative e altri attributi rilevanti.
+
+\begin{figure*}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{RequisitiFunzionali}
+\end{figure*}
+
+
+\vphantom{space}\\ \\ \\ \\ \\ \\
 \newsection{Requisiti Non Funzionali}
 
+% Requisiti non funzionali (testo inserito automaticamente)
+\newsubsection*{Area: Gestione Tecnologie}
+
+\newsubsubsection*{RNF1: Implementazione in Python 3}
+
+Il sistema dovrà essere implementato utilizzando Python 3.
+
+\newsubsubsection*{RNF2: Utilizzo Database Relazionale}
+
+Il sistema dovrà utilizzare un database relazionale per la gestione persistente dei dati.
+
+\newsubsubsection*{RNF3: Verifica Email}
+
+Il sistema dovrà prevedere la verifica dell'indirizzo email degli utenti durante la registrazione.
+
+\newsubsubsection*{RNF4: Recupero Credenziali Tramite Email}
+
+Il sistema dovrà permettere il recupero delle credenziali tramite email.
+
+\newsubsection*{Area: Gestione UI/UX}
+
+\newsubsubsection*{RNF5: Visualizzazione Turni con Calendario}
+
+Il sistema dovrà offrire una visualizzazione dei turni tramite un calendario integrato.
+
+\newsubsubsection*{RNF6: Interfaccia Responsive}
+
+Il sistema dovrà presentare un'interfaccia responsive, fruibile da dispositivi con diverse risoluzioni.
+
+\newsubsubsection*{RNF7: Notifica Scadenza Compilazione Documento}
+
+Il sistema dovrà inviare notifiche relative alla scadenza della compilazione dei documenti entro 24 ore quando mancano 10 giorni alla scadenza.
+
+\newsubsubsection*{RNF8: Notifica Eliminazione Documento}
+
+Il sistema dovrà inviare notifiche 30 giorni prima dell'eliminazione di un documento al termine del periodo minimo di archiviazione di 3 anni.
+
+\begin{figure*}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{RequisitiNonFunzionali}
+\end{figure*}
+
+
+\clearpage
 \newsection{Tabella MoSCoW dei Requisiti}
 
 \clearpage
 \newsection{Diagrammi dei Casi d'Uso}
 
-\begin{table}[h!]
-\centering
+\newsubsection{Diagramma degli Attori}
+Il diagramma individua gli attori coinvolti nel sistema e visualizza le connessioni di ereditarietà tra di essi.
+
+\begin{figure*}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{Attori}
+\end{figure*}
+
+\clearpage
+\newsubsection*{Gestione Utenti}
+
+Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione degli utenti, incluse registrazione, autenticazione, assegnazione di ruoli e modifica dei profili.
+
+\begin{figure*}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{GestioneUtente}
+\end{figure*}
+
+\clearpage
+\begin{table}[t!]
+\vspace*{-8cm}
 \renewcommand{\arraystretch}{1.9}
 \begin{tabular}{|p{3.9cm}|p{9.9cm}|}
 \hline
 \multicolumn{2}{|c|}{\textbf{Caso d’uso: RegistrazioneUtente}} \\ \hline
 \textbf{ID} & 1 \\ \hline
-\textbf{Breve descrizione} &  L'Utente si registra nel sistema, con un ruolo che dipende dal punto di accesso. \\ \hline
+\textbf{Breve descrizione} & L'Utente si registra nel sistema, con un ruolo che dipende dal punto di accesso \\ \hline
 \textbf{Attori primari} & Utente, Staff \\ \hline
 \textbf{Attori secondari} & Nessuno \\ \hline
 \textbf{Precondizioni} & Nessuna \\ \hline
@@ -169,13 +326,100 @@ MoSCoW & Criterio di prioritizzazione dei requisiti: Must, Should, Could, Won't.
 \end{table}
 
 \clearpage
-\newsubsection{Diagramma degli Attori}
+\begin{table}[t!]
+\vspace*{-9cm}
+\renewcommand{\arraystretch}{1.9}
+\begin{tabular}{|p{3.9cm}|p{9.9cm}|}
+\hline
+\multicolumn{2}{|c|}{\textbf{Caso d’uso: LoginUtente}} \\ \hline
+\textbf{ID} & 2 \\ \hline
+\textbf{Breve descrizione} &  Permette all’Utente di accedere al proprio account\\ \hline
+\textbf{Attori primari} & Utente \\ \hline
+\textbf{Attori secondari} & Nessuno \\ \hline
+\textbf{Precondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item L’Utente deve essere già registrato nel sistema 
+\end{enumerate}\\ \hline
+\textbf{Sequenza degli eventi principale} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item Il caso d’uso inizia quando l’Utente seleziona "Accedi"
+    (punto di estensione: RecuperaCredenziali)
+    \item \textbf{While} le credenziali inserite dall’Utente non sono valide
+    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+        \item Il sistema richiede all’Utente di inserire email e password
+        \item Il sistema valida le credenziali fornite
+        \item \textbf{If} le credenziali sono valide
+        \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=30pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+            \item Il sistema autentica l’Utente e lo reindirizza alla pagina principale/area riservata
+        \end{enumerate}
+        \item \textbf{Else}
+        \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=30pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+            \item Il sistema notifica all’Utente che le credenziali sono errate
+        \end{enumerate}
+    \end{enumerate}
+\end{enumerate}\\ \hline
+\textbf{Postcondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item L’Utente ha effettuato il login al proprio account e può accedere alle funzionalità autorizzate
+    \end{enumerate} \\ \hline
+\textbf{Sequenza degli eventi alternativa} & Nessuna \\ \hline
+\end{tabular}
+\end{table}
 
-\begin{figure*}[ht]
-  \centering
-  \includegraphics[width=1\textwidth]{Attori}
-\end{figure*}
+\clearpage
+\begin{table}[t!]
+\vspace*{-6.5cm}
+\renewcommand{\arraystretch}{1.9}
+\begin{tabular}{|p{3.9cm}|p{9.9cm}|}
+\hline
+\multicolumn{2}{|c|}{\textbf{Caso d’uso: RecuperaCredenziali}} \\ \hline
+\textbf{ID} & 3 \\ \hline
+\textbf{Breve descrizione} & L’Utente recupera le credenziali del proprio account in caso di smarrimento o dimenticanza della password \\ \hline
+\textbf{Attori primari} & Utente \\ \hline
+\textbf{Attori secondari} & Nessuno \\ \hline
+\textbf{Precondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item L'Utente ha un account registrato nel sistema
+    \item L'Utente visualizza la schermata di login
+    \item L'Utente seleziona l’opzione "Recupera credenziali"
+\end{enumerate} \\ \hline
+\textbf{Sequenza degli eventi principale} &
+\begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item \textbf{While} l'email inserita dall’Utente non è registrata
+    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+        \item Il sistema richiede all’Utente di inserire la propria email
+        \item Il sistema valida la correttezza e l’esistenza dell’email nel sistema
+    \end{enumerate}
+    \item \textbf{If} l’email è registrata
+    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+        \item Il sistema genera una procedura di recupero (es. invio di un link sicuro o generazione temporanea di una nuova password) e invia le istruzioni all’indirizzo email fornito
+    \end{enumerate}
+    \item \textbf{Else}
+    \begin{enumerate}[label=\arabic{enumi}.\arabic*,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+        \item Il sistema notifica all’Utente che l’email non è registrata
+    \end{enumerate}
+    \item L'Utente riceve la mail, segue la procedura indicata e utilizza la nuova password o il link per ripristinare l’accesso al proprio account
+\end{enumerate}\\ \hline
+\textbf{Postcondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item L’Utente ha ricevuto le istruzioni per recuperare l’accesso al proprio account
+    \item L’Utente può accedere nuovamente al sistema utilizzando la nuova password o il link fornito
+    \end{enumerate} \\ \hline
+\textbf{Sequenza degli eventi alternativa} & Nessuna \\ \hline
+\end{tabular}
+\end{table}
 
+\clearpage
+\newsubsection*{Gestione Attività}
+
+Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione delle attività (carico/scarico rifiuti), compresa l'assegnazione di operatori e mezzi.
+
+\clearpage
+\newsubsection*{Gestione Documento}
+
+Il diagramma evidenzia le relazioni tra attori e casi d’uso relativi alla creazione, gestione e notifica dei documenti (es. FIR, scadenze, rinnovi).
+
+\clearpage
+\newsubsection*{Gestione Mezzo}
+
+Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione dei mezzi, come anagrafica, manutenzione, disponibilità e scadenze assicurative.
+
+\clearpage
 \newsection{Matrice di Mapping}
 
 \newchapter{Analisi}

@@ -68,6 +68,9 @@
 % PDF
 \usepackage{pdfpages}
 
+% Starred commands
+\usepackage{suffix}
+
 %================================
 % TABLE SETTINGS
 %================================
@@ -113,7 +116,9 @@
 \pretitle{\begin{center}\LARGE\bfseries}
 		\posttitle{\end{center}}
 \renewcommand{\headrulewidth}{0.5pt}
-\fancyhead[R]{}
+% Impostazione statica per l'intestazione a destra: mostra sempre il testo richiesto
+% (in precedenza veniva impostato dinamicamente il titolo della sezione nei comandi custom)
+\fancyhead[R]{\makebox[\textwidth][r]{Ingegneria del Software - Univpm}}
 % Ensure header/footer span the same width as the main text and align to its right margin
 % Sometimes fancyhdr's headwidth can be inconsistent; force it to the text width
 \setlength{\headwidth}{\textwidth}
@@ -361,16 +366,30 @@
 	\phantomsection
 	% Place chapter header flush-left with the text block
 	\fancyhead[L]{\makebox[\textwidth][l]{#1}}%
-	\chapter*{#1}%
+	\chapter*{#1}
 	\addcontentsline{toc}{chapter}{#1}%
 	\thispagestyle{fancy}
 }
+
+%================================
+% Adjust chapter spacing for both numbered and starred forms
+%================================
+% The document uses \chapter* via the custom \newchapter macro. Some
+% spacing commands only affect the unstarred \chapter. To ensure both
+% starred and unstarred chapters are moved closer to the top margin,
+% prepend a small negative vertical space to the internal chapter macros.
+% Tweak the -10pt value to taste.
+\makeatletter
+% Prepend negative vertical space before numbered and starred chapter heads
+\pretocmd{\@chapter}{\vspace*{-60pt}}{}{}
+\pretocmd{\@schapter}{\vspace*{-60pt}}{}{}
+\makeatother
 
 \newcommand{\newsection}[1]{%
 	\phantomsection
 	\section*{#1}%
 	% Place section header flush-right with the text block
-	\fancyhead[R]{\makebox[\textwidth][r]{#1}}%
+	% \fancyhead[R]{\makebox[\textwidth][r]{#1}}% <- originale commentato: non vogliamo più mostrare il titolo della sezione qui
 	\addcontentsline{toc}{section}{#1}%
 	\thispagestyle{fancy}
 }
@@ -378,16 +397,33 @@
 \newcommand{\newsubsection}[1]{%
 	\phantomsection
 	\subsection*{#1}%
-	% Place subsection header flush-right with the text block
-	\fancyhead[R]{\makebox[\textwidth][r]{#1}}%
 	\addcontentsline{toc}{subsection}{#1}%
-		hispagestyle{fancy}
+	\thispagestyle{fancy}
 }
 
 \newcommand{\newsubsubsection}[1]{%
 	\phantomsection
 	\subsubsection*{#1}%
 	\addcontentsline{toc}{subsubsection}{#1}%
+	\thispagestyle{fancy}
+}
+
+\WithSuffix\newcommand\newsection*[1]{%
+	\phantomsection
+	\section*{#1}%
+	% Place section header flush-right with the text block
+	% \fancyhead[R]{\makebox[\textwidth][r]{#1}}% <- originale commentato
+	\thispagestyle{fancy}
+}
+\WithSuffix\newcommand\newsubsection*[1]{%
+	\phantomsection
+	\subsection*{#1}%
+	\thispagestyle{fancy}
+}
+
+\WithSuffix\newcommand\newsubsubsection*[1]{%
+	\phantomsection
+	\subsubsection*{#1}%
 	\thispagestyle{fancy}
 }
 
