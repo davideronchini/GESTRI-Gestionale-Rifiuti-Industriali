@@ -134,7 +134,7 @@ Nella presente sezione si analizzano in modo approfondito i requisiti del sistem
 \newsection{Requisiti Funzionali}
 
 % Requisiti funzionali (testo inserito automaticamente)
-\newsubsection*{Area: Gestione Utenti}
+\newsubsection*{Area: Gestione Utente}
 
 \newsubsubsection*{RF1: Registrazione Utente}
 
@@ -160,57 +160,55 @@ Il sistema dovrà permettere la cancellazione di un account utente e la gestione
 
 Il sistema dovrà permettere il recupero delle credenziali tramite procedura (es. email) per operatori e staff.
 
-\newsubsubsection*{RF7: Assegnazione Turno}
+\newsubsection*{Area: Gestione Assenza}
 
-Il sistema dovrà permettere la creazione e l’assegnazione di turni agli operatori e la loro visualizzazione.
-
-\newsubsubsection*{RF8: Amministrazione Assenze}
+\newsubsubsection*{RF7: CRUD Assenza}
 
 Il sistema dovrà permettere allo staff di registrare, approvare e monitorare le assenze del personale.
 
 \newsubsection*{Area: Gestione Attività}
 
-\newsubsubsection*{RF9: CRUD Attività}
+\newsubsubsection*{RF8: CRUD Attività}
 
 Il sistema dovrà permettere la creazione, lettura, aggiornamento e cancellazione delle attività di carico/scarico rifiuti.
 
-\newsubsubsection*{RF10: Assegnazione Operatore}
+\newsubsubsection*{RF9: Assegnazione Operatore}
 
-Il sistema dovrà permettere l'assegnazione di uno o più operatori a ciascuna attività, con controllo delle disponibilità.
+Il sistema dovrà permettere l'assegnazione di un operatore a ciascuna attività, con controllo delle disponibilità.
 
-\newsubsubsection*{RF11: Assegnazione Mezzo}
+\newsubsubsection*{RF10: Assegnazione Mezzo}
 
 Il sistema dovrà permettere l'assegnazione del mezzo più idoneo all'attività in base al tipo di rifiuto e al carico previsto.
 
 \newsubsection*{Area: Gestione Documento}
 
-\newsubsubsection*{RF12: CRUD Documento FIR}
+\newsubsubsection*{RF11: CRUD Documento FIR}
 
 Il sistema dovrà permettere la creazione, lettura, aggiornamento e cancellazione del Formulario di Identificazione Rifiuto (FIR) associato a un'attività assegnata.
 
-\newsubsubsection*{RF13: CRUD Scadenza}
+\newsubsubsection*{RF11: CRUD Scadenza}
 
 Il sistema dovrà permettere la gestione delle scadenze dei documenti (impostazione, modifica, rimozione) e la loro associazione ai documenti rilevanti.
 
-\newsubsubsection*{RF14: Notifica Scadenza Documento}
+\newsubsubsection*{RF13: Notifica Scadenza Documento}
 
 Il sistema dovrà inviare notifiche relative alle scadenze dei documenti (es. FIR, consegne, ritiri) agli utenti interessati.
 
-\newsubsubsection*{RF15: Filtra Documento}
+\newsubsubsection*{RF14: Filtra Documento}
 
 Il sistema dovrà permettere il filtraggio e la ricerca dei documenti tramite criteri multipli (tipologia, data, stato, operatore, attività).
 
-\newsubsubsection*{RF16: Notifica Rinnovo Corso Sicurezza}
+\newsubsubsection*{RF15: Notifica Rinnovo Corso Sicurezza}
 
 Il sistema dovrà inviare notifiche per il rinnovo dei corsi di sicurezza agli utenti interessati prima della scadenza.
 
 \newsubsection*{Area: Gestione Mezzo}
 
-\newsubsubsection*{RF17: CRUD Mezzo}
+\newsubsubsection*{RF16: CRUD Mezzo}
 
 Il sistema dovrà permettere la creazione, lettura, aggiornamento e cancellazione dei mezzi, inclusi dati tecnici, capacità, assicurazione, revisione, manutenzione e stato del mezzo.
 
-\newsubsubsection*{RF18: Filtra Mezzo}
+\newsubsubsection*{RF17: Filtra Mezzo}
 
 Il sistema dovrà permettere il filtraggio e la ricerca dei mezzi per stato, capacità, disponibilità, scadenze assicurative e altri attributi rilevanti.
 
@@ -220,7 +218,7 @@ Il sistema dovrà permettere il filtraggio e la ricerca dei mezzi per stato, cap
 \end{figure*}
 
 
-\vphantom{space}\\ \\ \\ \\ \\ \\
+\vphantom{space}\\ \\ \\ \\ \\ \\ \\ \\ \\ \\
 \newsection{Requisiti Non Funzionali}
 
 % Requisiti non funzionali (testo inserito automaticamente)
@@ -304,7 +302,7 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
 \textbf{Precondizioni} & Nessuna \\ \hline
 \textbf{Sequenza degli eventi principale} &
 \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item \textbf{If} l'Utente è un Cliente che accede alla pagina di registrazione pubblica, allora
+    \item \texttt{If} l'Utente è un Cliente che accede alla pagina di registrazione pubblica, allora
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
         \item Il sistema mostra il modulo di registrazione
         \item Il Cliente inserisce le proprie informazioni (nome, cognome, email, password)
@@ -312,9 +310,12 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
         \item Il sistema crea un nuovo account con il ruolo di Cliente
     \end{enumerate}
 \end{enumerate}\\ \hline
-\textbf{Postcondizioni} & È stato creato un nuovo account utente con un ruolo specifico (Cliente, Operatore o Staff) \\ \hline
+\textbf{Postcondizioni} & 
+\begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+\item È stato creato un nuovo account utente con un ruolo specifico (Cliente, Operatore o Staff) 
+\end{enumerate} \\ \hline
 \textbf{Sequenza degli eventi alternativa} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item \textbf{If} l'Utente è un membro dello Staff che accede alla pagina di gestione utenti interna, allora
+    \item \texttt{If} l'Utente è un membro dello Staff che accede alla pagina di gestione utenti interna, allora
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
         \item Il sistema mostra un modulo di creazione utente
         \item Il membro dello Staff inserisce le informazioni del nuovo utente (nome, cognome, email, password) e seleziona il ruolo desiderato (Operatore o Staff)
@@ -340,21 +341,14 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
     \item L’Utente deve essere già registrato nel sistema 
 \end{enumerate}\\ \hline
 \textbf{Sequenza degli eventi principale} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item Il caso d’uso inizia quando l’Utente seleziona "Accedi"
-    (punto di estensione: RecuperaCredenziali)
-    \item \textbf{While} le credenziali inserite dall’Utente non sono valide
+    \item Il caso d’uso inizia quando l’Utente inserirsce le credenziali e seleziona "Accedi" \newline \texttt{Extend} \textit{RecuperaCredenziali}
+    \item \texttt{Include} \textit{(TrovaUtente)}
+    \item \texttt{While} le credenziali inserite dall’Utente non sono valide
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
         \item Il sistema richiede all’Utente di inserire email e password
         \item Il sistema valida le credenziali fornite
-        \item \textbf{If} le credenziali sono valide
-        \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=30pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-            \item Il sistema autentica l’Utente e lo reindirizza alla pagina principale/area riservata
-        \end{enumerate}
-        \item \textbf{Else}
-        \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=30pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-            \item Il sistema notifica all’Utente che le credenziali sono errate
-        \end{enumerate}
     \end{enumerate}
+    \item Il sistema autentica l’Utente e lo reindirizza alla pagina principale/area riservata
 \end{enumerate}\\ \hline
 \textbf{Postcondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
     \item L’Utente ha effettuato il login al proprio account e può accedere alle funzionalità autorizzate
@@ -377,23 +371,17 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
 \textbf{Precondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
     \item L'Utente ha un account registrato nel sistema
     \item L'Utente visualizza la schermata di login
-    \item L'Utente seleziona l’opzione "Recupera credenziali"
 \end{enumerate} \\ \hline
 \textbf{Sequenza degli eventi principale} &
 \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item \textbf{While} l'email inserita dall’Utente non è registrata
+    \item Il caso d'uso inizia quando l'Utente seleziona l’opzione "Recupera credenziali"
+    \item \texttt{While} l'Utente non ha inserito l'email
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
         \item Il sistema richiede all’Utente di inserire la propria email
+        \item \texttt{Include} \textit{(TrovaUtente)}
         \item Il sistema valida la correttezza e l’esistenza dell’email nel sistema
     \end{enumerate}
-    \item \textbf{If} l’email è registrata
-    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Il sistema genera una procedura di recupero (es. invio di un link sicuro o generazione temporanea di una nuova password) e invia le istruzioni all’indirizzo email fornito
-    \end{enumerate}
-    \item \textbf{Else}
-    \begin{enumerate}[label=\arabic{enumi}.\arabic*,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Il sistema notifica all’Utente che l’email non è registrata
-    \end{enumerate}
+    \item Il sistema genera una procedura di recupero (es. invio di un link sicuro o generazione temporanea di una nuova password) e invia le istruzioni all’indirizzo email fornito
     \item L'Utente riceve la mail, segue la procedura indicata e utilizza la nuova password o il link per ripristinare l’accesso al proprio account
 \end{enumerate}\\ \hline
 \textbf{Postcondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
