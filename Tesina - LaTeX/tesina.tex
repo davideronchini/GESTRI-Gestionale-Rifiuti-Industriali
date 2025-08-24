@@ -184,31 +184,27 @@ Il sistema dovrà permettere l'assegnazione del mezzo più idoneo all'attività 
 
 \newsubsubsection*{RF11: CRUD Documento FIR}
 
-Il sistema dovrà permettere la creazione, lettura, aggiornamento e cancellazione del Formulario di Identificazione Rifiuto (FIR) associato a un'attività assegnata.
+Il sistema dovrà permettere la creazione, lettura, aggiornamento e cancellazione del documento (es. Formulario di Identificazione Rifiuto - FIR) associato a un'attività assegnata.
 
-\newsubsubsection*{RF11: CRUD Scadenza}
-
-Il sistema dovrà permettere la gestione delle scadenze dei documenti (impostazione, modifica, rimozione) e la loro associazione ai documenti rilevanti.
-
-\newsubsubsection*{RF13: Notifica Scadenza Documento}
+\newsubsubsection*{RF12: Notifica Scadenza Documento}
 
 Il sistema dovrà inviare notifiche relative alle scadenze dei documenti (es. FIR, consegne, ritiri) agli utenti interessati.
 
-\newsubsubsection*{RF14: Filtra Documento}
+\newsubsubsection*{RF13: Filtra Documento}
 
 Il sistema dovrà permettere il filtraggio e la ricerca dei documenti tramite criteri multipli (tipologia, data, stato, operatore, attività).
 
-\newsubsubsection*{RF15: Notifica Rinnovo Corso Sicurezza}
+\newsubsubsection*{RF14: Notifica Rinnovo Corso Sicurezza}
 
 Il sistema dovrà inviare notifiche per il rinnovo dei corsi di sicurezza agli utenti interessati prima della scadenza.
 
 \newsubsection*{Area: Gestione Mezzo}
 
-\newsubsubsection*{RF16: CRUD Mezzo}
+\newsubsubsection*{RF15: CRUD Mezzo}
 
 Il sistema dovrà permettere la creazione, lettura, aggiornamento e cancellazione dei mezzi, inclusi dati tecnici, capacità, assicurazione, revisione, manutenzione e stato del mezzo.
 
-\newsubsubsection*{RF17: Filtra Mezzo}
+\newsubsubsection*{RF16: Filtra Mezzo}
 
 Il sistema dovrà permettere il filtraggio e la ricerca dei mezzi per stato, capacità, disponibilità, scadenze assicurative e altri attributi rilevanti.
 
@@ -218,7 +214,7 @@ Il sistema dovrà permettere il filtraggio e la ricerca dei mezzi per stato, cap
 \end{figure*}
 
 
-\vphantom{space}\\ \\ \\ \\ \\ \\ \\ \\ \\ \\
+\vphantom{space}\\[6cm]
 \newsection{Requisiti Non Funzionali}
 
 % Requisiti non funzionali (testo inserito automaticamente)
@@ -290,7 +286,7 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
 
 \clearpage
 \begin{table}[t!]
-\vspace*{-8cm}
+\vspace*{-6.5cm}
 \renewcommand{\arraystretch}{1.9}
 \begin{tabular}{|p{3.9cm}|p{9.9cm}|}
 \hline
@@ -328,7 +324,7 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
 
 \clearpage
 \begin{table}[t!]
-\vspace*{-9cm}
+\vspace*{-9.5cm}
 \renewcommand{\arraystretch}{1.9}
 \begin{tabular}{|p{3.9cm}|p{9.9cm}|}
 \hline
@@ -342,7 +338,6 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
 \end{enumerate}\\ \hline
 \textbf{Sequenza degli eventi principale} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
     \item Il caso d’uso inizia quando l’Utente inserirsce le credenziali e seleziona "Accedi" \newline \texttt{Extend} \textit{RecuperaCredenziali}
-    \item \texttt{Include} \textit{(TrovaUtente)}
     \item \texttt{While} le credenziali inserite dall’Utente non sono valide
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
         \item Il sistema richiede all’Utente di inserire email e password
@@ -359,7 +354,7 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
 
 \clearpage
 \begin{table}[t!]
-\vspace*{-6.5cm}
+\vspace*{-6cm}
 \renewcommand{\arraystretch}{1.9}
 \begin{tabular}{|p{3.9cm}|p{9.9cm}|}
 \hline
@@ -378,7 +373,6 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
     \item \texttt{While} l'Utente non ha inserito l'email
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
         \item Il sistema richiede all’Utente di inserire la propria email
-        \item \texttt{Include} \textit{(TrovaUtente)}
         \item Il sistema valida la correttezza e l’esistenza dell’email nel sistema
     \end{enumerate}
     \item Il sistema genera una procedura di recupero (es. invio di un link sicuro o generazione temporanea di una nuova password) e invia le istruzioni all’indirizzo email fornito
@@ -389,6 +383,203 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
     \item L’Utente può accedere nuovamente al sistema utilizzando la nuova password o il link fornito
     \end{enumerate} \\ \hline
 \textbf{Sequenza degli eventi alternativa} & Nessuna \\ \hline
+\end{tabular}
+\end{table}
+
+
+\clearpage
+\begin{table}[t!]
+\vspace*{-9.5cm}
+\renewcommand{\arraystretch}{1.9}
+\begin{tabular}{|p{3.9cm}|p{9.9cm}|}
+\hline
+\multicolumn{2}{|c|}{\textbf{Caso d’uso: TrovaUtente}} \\ \hline
+\textbf{ID} & 4 \\ \hline
+\textbf{Breve descrizione} & Il sistema individua l’ Utente in base ai criteri di ricerca specificati dallo Staff e lo mostra allo Staff \\ \hline
+\textbf{Attori primari} & Staff \\ \hline
+\textbf{Attori secondari} & Nessuno \\ \hline
+\textbf{Precondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item Lo Staff è stato autenticato dal sistema
+\end{enumerate} \\ \hline
+\textbf{Sequenza degli eventi principale} &
+\begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item Il caso d’uso inizia quando lo Staff seleziona “Trova Utente”
+    \item Lo Staff inserisce i criteri di ricerca
+    \item Il sistema ricerca l’Utente che soddisfa i criteri desiderati dallo Staff
+    \item \texttt{If} Il sistema trova uno o più utenti
+    \begin{enumerate}[label=\arabic{enumi}.\arabic{enumii}.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item \texttt{For Each} Utente trovato
+    \begin{enumerate}[label=\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+        \item Il sistema mostra le informazioni base dell’Utente
+    \end{enumerate}
+    \end{enumerate}
+    \item \texttt{Else} Il sistema comunica allo staff che non sono stati trovati Utenti che soddisfano i criteri specificati
+\end{enumerate}\\ \hline
+\textbf{Postcondizioni} & Nessuna \\ \hline
+\textbf{Sequenza degli eventi alternativa} & Nessuna \\ \hline
+\end{tabular}
+\end{table}
+
+\clearpage
+\begin{table}[t!]
+\vspace*{-8.5cm}
+\renewcommand{\arraystretch}{1.9}
+\begin{tabular}{|p{3.9cm}|p{9.9cm}|}
+\hline
+\multicolumn{2}{|c|}{\textbf{Caso d’uso: VisualizzaUtente}} \\ \hline
+\textbf{ID} & 5 \\ \hline
+\textbf{Breve descrizione} & L’Utente visualizza i propri dati anagrafici e le informazioni \\ \hline
+\textbf{Attori primari} & Utente \\ \hline
+\textbf{Attori secondari} & Nessuno \\ \hline
+\textbf{Precondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item L’Utente è stato autenticato dal sistema
+\end{enumerate} \\ \hline
+\textbf{Sequenza degli eventi principale} &
+\begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item \texttt{Include} \textit{(TrovaUtente)} 
+    \item Il sistema mostra i dati anagrafici  e le informazioni relative all’Utente
+\end{enumerate}\\ \hline
+\textbf{Postcondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item All’Utente sono mostrati i propri dati
+    \end{enumerate} \\ \hline
+\textbf{Sequenza degli eventi alternativa} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt] 
+    \item \texttt{If} Lo Staff richiede la visualizzazione
+    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+        \item \texttt{Include} \textit{(TrovaUtente)} 
+        \item Il sistema mostra l’elenco di tutti gli Operatori registrati
+        \item Lo Staff seleziona un Operatore dall’elenco
+        \item Il sistema mostra i dati anagrafici completi e le informazioni aggiuntive (ruolo, turni, assenze, attività corrente collegata)
+    \end{enumerate}
+\end{enumerate}\\ \hline
+\end{tabular}
+\end{table}
+
+\clearpage
+\begin{table}[t!]
+\vspace*{-10cm}
+\renewcommand{\arraystretch}{1.9}
+\begin{tabular}{|p{3.9cm}|p{9.9cm}|}
+\hline
+\multicolumn{2}{|c|}{\textbf{Caso d’uso: ModificaRuolo}} \\ \hline
+\textbf{ID} & 6 \\ \hline
+\textbf{Breve descrizione} & Lo Staff modifica il ruolo all’Operatore e/o allo Staff \\ \hline
+\textbf{Attori primari} & Staff \\ \hline
+\textbf{Attori secondari} & Nessuno \\ \hline
+\textbf{Precondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item Lo Staff è autenticato
+    \item Lo Staff visualizza la sezione interna per la gestione degli utenti
+\end{enumerate} \\ \hline
+\textbf{Sequenza degli eventi principale} &
+\begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item Il caso d’uso inizia quando lo Staff seleziona l’Operatore da modificare
+    \item \texttt{Include} \textit{(VisualizzaUtente)}
+    \item Lo Staff può modificare il ruolo dell’Operatore
+\end{enumerate}\\ \hline
+\textbf{Postcondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item Il ruolo dell’Operatore è stato modificato
+    \end{enumerate} \\ \hline
+\textbf{Sequenza degli eventi alternativa} & Nessuna\\ \hline
+\end{tabular}
+\end{table}
+
+\clearpage
+\begin{table}[t!]
+\vspace*{-5.5cm}
+\renewcommand{\arraystretch}{1.9}
+\begin{tabular}{|p{3.9cm}|p{9.9cm}|}
+\hline
+\multicolumn{2}{|c|}{\textbf{Caso d’uso: ModificaUtente}} \\ \hline
+\textbf{ID} & 7 \\ \hline
+\textbf{Breve descrizione} &  L’Utente modifica i propri dati anagrafici \\ \hline
+\textbf{Attori primari} & Utente \\ \hline
+\textbf{Attori secondari} & Nessuno \\ \hline
+\textbf{Precondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item L’Utente è stato autenticato dal sistema
+\end{enumerate} \\ \hline
+\textbf{Sequenza degli eventi principale} &
+\begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item \texttt{Include} \textit{(VisualizzaUtente)} 
+    \item l’Utente modifica i dati desiderati
+    \item \texttt{If} I dati inseriti sono validi
+    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+        \item Il sistema aggiorna i dati anagrafici con le modifiche
+    \end{enumerate}
+    \item \texttt{Else}
+    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+        \item Il sistema mostra un messaggio di errore e richiede una nuova modifica
+    \end{enumerate}
+\end{enumerate}\\ \hline
+\textbf{Postcondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item I dati anagrafici dell’Utente vengono aggiornati nel sistema
+    \end{enumerate} \\ \hline
+\textbf{Sequenza degli eventi alternativa} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt] 
+    \item \texttt{If} Lo Staff richiede la modifica
+    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+        \item \texttt{Include} \textit{(VisualizzaUtente)} 
+        \item Il sistema mostra l’elenco di tutti gli Operatori registrati
+        \item Lo Staff seleziona l’Operatore da modificare dall’elenco
+        \item Lo Staff modifica i dati desiderati
+        \item \texttt{If} I dati inseriti sono validi
+        \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+            \item Il sistema aggiorna i dati anagrafici con le modifiche
+        \end{enumerate}
+        \item \texttt{Else}
+        \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+            \item Il sistema mostra un messaggio di errore e richiede una nuova modifica
+        \end{enumerate}
+    \end{enumerate}
+\end{enumerate}\\ \hline
+\end{tabular}
+\end{table}
+
+\clearpage
+\begin{table}[t!]
+\vspace*{-5.5cm}
+\renewcommand{\arraystretch}{1.9}
+\begin{tabular}{|p{3.9cm}|p{9.9cm}|}
+\hline
+\multicolumn{2}{|c|}{\textbf{Caso d’uso: EliminaUtente}} \\ \hline
+\textbf{ID} & 8 \\ \hline
+\textbf{Breve descrizione} &  L’Utente elimina il proprio account \\ \hline
+\textbf{Attori primari} & Utente \\ \hline
+\textbf{Attori secondari} & Nessuno \\ \hline
+\textbf{Precondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item L’Utente è stato autenticato dal sistema
+\end{enumerate} \\ \hline
+\textbf{Sequenza degli eventi principale} &
+\begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item \texttt{Include} \textit{(VisualizzaUtente)} 
+    \item \texttt{If} L’Utente conferma l’operazione
+    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+        \item Il sistema elimina l’Utente e mostra un messaggio di conferma
+    \end{enumerate}
+    \item \texttt{Else}
+    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+        \item Il sistema annulla l’operazione e non apporta modifiche
+    \end{enumerate}
+\end{enumerate}\\ \hline
+\textbf{Postcondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item \texttt{If} confermato
+    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+        \item L’Utente selezionato viene rimosso dal sistema
+    \end{enumerate}
+\end{enumerate} \\ \hline
+\textbf{Sequenza degli eventi alternativa} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt] 
+    \item \texttt{If} Lo Staff richiede l'eliminazione
+    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+        \item \texttt{Include} \textit{(VisualizzaUtente)} 
+        \item Il sistema mostra l’elenco di tutti gli Operatori registrati
+        \item Lo Staff seleziona l’Operatore da eliminare dall’elenco
+        \item \texttt{If} Lo Staff conferma l’operazione
+        \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+            \item Il sistema elimina l’Utente e mostra un messaggio di conferma
+        \end{enumerate}
+        \item \texttt{Else}
+        \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+            \item Il sistema annulla l’operazione e non apporta modifiche
+        \end{enumerate}
+    \end{enumerate}
+\end{enumerate}\\ \hline
 \end{tabular}
 \end{table}
 

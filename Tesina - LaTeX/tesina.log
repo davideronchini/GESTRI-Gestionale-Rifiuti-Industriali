@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.6)  23 AUG 2025 17:34
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.6)  24 AUG 2025 15:42
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1493,53 +1493,8 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 <./img/RequisitiFunzionali.png, id=130, 363.55672pt x 274.73634pt>
 File: ./img/RequisitiFunzionali.png Graphic file (type png)
 <use ./img/RequisitiFunzionali.png>
-Package pdftex.def Info: ./img/RequisitiFunzionali.png  used on input line 217.
+Package pdftex.def Info: ./img/RequisitiFunzionali.png  used on input line 213.
 (pdftex.def)             Requested size: 452.9679pt x 342.32541pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 221--222
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 221--222
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 221--222
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 221--222
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 221--222
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 221--222
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 221--222
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 221--222
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 221--222
-
- []
-
 
 Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [][]|  
@@ -1581,10 +1536,10 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
  []
 
 [6 <./img/RequisitiFunzionali.png (PNG copy)>]
-<./img/RequisitiNonFunzionali.png, id=159, 404.381pt x 212.39656pt>
+<./img/RequisitiNonFunzionali.png, id=158, 404.381pt x 212.39656pt>
 File: ./img/RequisitiNonFunzionali.png Graphic file (type png)
 <use ./img/RequisitiNonFunzionali.png>
-Package pdftex.def Info: ./img/RequisitiNonFunzionali.png  used on input line 263.
+Package pdftex.def Info: ./img/RequisitiNonFunzionali.png  used on input line 259.
 (pdftex.def)             Requested size: 452.9679pt x 237.91815pt.
 
 Overfull \hbox (34.71422pt too wide) has occurred while \output is active
@@ -1629,10 +1584,10 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [8
 
 ]
-<./img/Attori.png, id=171, 537.00626pt x 589.20125pt>
+<./img/Attori.png, id=170, 537.00626pt x 589.20125pt>
 File: ./img/Attori.png Graphic file (type png)
 <use ./img/Attori.png>
-Package pdftex.def Info: ./img/Attori.png  used on input line 278.
+Package pdftex.def Info: ./img/Attori.png  used on input line 274.
 (pdftex.def)             Requested size: 452.9679pt x 496.99347pt.
 
 Overfull \hbox (34.71422pt too wide) has occurred while \output is active
@@ -1657,10 +1612,10 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [9
 
  <./img/Attori.png>]
-<./img/GestioneUtente.png, id=178, 641.60313pt x 481.06442pt>
+<./img/GestioneUtente.png, id=177, 641.60313pt x 481.06442pt>
 File: ./img/GestioneUtente.png Graphic file (type png)
 <use ./img/GestioneUtente.png>
-Package pdftex.def Info: ./img/GestioneUtente.png  used on input line 288.
+Package pdftex.def Info: ./img/GestioneUtente.png  used on input line 284.
 (pdftex.def)             Requested size: 452.9679pt x 339.6276pt.
 
 Overfull \hbox (34.71422pt too wide) has occurred while \output is active
@@ -1764,12 +1719,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
  [][]|
  []
 
-[14
-
-
-
-
-]
+[14]
 Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [][]|  
  []
@@ -1789,9 +1739,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
  [][]|
  []
 
-[15
-
-]
+[15]
 Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [][]|  
  []
@@ -1811,9 +1759,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
  [][]|
  []
 
-[16
-
-]
+[16]
 Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [][]|  
  []
@@ -1833,9 +1779,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
  [][]|
  []
 
-[17
-
-]
+[17]
 Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [][]|  
  []
@@ -1855,9 +1799,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
  [][]|
  []
 
-[18
-
-]
+[18]
 Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [][]|  
  []
@@ -1879,6 +1821,124 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 
 [19
 
+
+
+
+
+
+
+
+
+]
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[][]|  
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+[20
+
+]
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[][]|  
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+[21
+
+]
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[][]|  
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+[22
+
+]
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[][]|  
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+[23
+
+]
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[][]|  
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+[24
+
 ] (./tesina.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
@@ -1891,18 +1951,18 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 68974 strings out of 474116
- 1717202 string characters out of 5743683
+ 69037 strings out of 474116
+ 1717684 string characters out of 5743683
  2441807 words of memory out of 5000000
  90308 multiletter control sequences out of 15000+600000
  577648 words of font info for 80 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  91i,12n,120p,853b,1047s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfcc1000.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on tesina.pdf (21 pages, 822266 bytes).
+Output written on tesina.pdf (26 pages, 832699 bytes).
 PDF statistics:
- 355 PDF objects out of 1000 (max. 8388607)
- 275 compressed objects within 3 object streams
- 117 named destinations out of 1000 (max. 500000)
+ 446 PDF objects out of 1000 (max. 8388607)
+ 360 compressed objects within 4 object streams
+ 180 named destinations out of 1000 (max. 500000)
  270 words of extra memory for PDF output out of 10000 (max. 10000000)
 
