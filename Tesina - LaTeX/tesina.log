@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.6)  24 AUG 2025 15:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.6)  26 AUG 2025 00:08
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1612,11 +1612,11 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [9
 
  <./img/Attori.png>]
-<./img/GestioneUtente.png, id=177, 641.60313pt x 481.06442pt>
+<./img/GestioneUtente.png, id=177, 664.22198pt x 481.06442pt>
 File: ./img/GestioneUtente.png Graphic file (type png)
 <use ./img/GestioneUtente.png>
 Package pdftex.def Info: ./img/GestioneUtente.png  used on input line 284.
-(pdftex.def)             Requested size: 452.9679pt x 339.6276pt.
+(pdftex.def)             Requested size: 452.9679pt x 328.05905pt.
 
 Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [][]|  
@@ -1852,6 +1852,12 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [20
 
 ]
+<./img/GestioneMezzo.png, id=323, 542.85252pt x 388.93398pt>
+File: ./img/GestioneMezzo.png Graphic file (type png)
+<use ./img/GestioneMezzo.png>
+Package pdftex.def Info: ./img/GestioneMezzo.png  used on input line 602.
+(pdftex.def)             Requested size: 452.9679pt x 324.53616pt.
+
 Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [][]|  
  []
@@ -1873,6 +1879,154 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 
 [21
 
+ <./img/GestioneMezzo.png (PNG copy)>]
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[][]|  
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+[22]
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[][]|  
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+[23]
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[][]|  
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+[24]
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[][]|  
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+[25]
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[][]|  
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+[26]
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[][]|  
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+[27]
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[][]|  
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+[28
+
+
+
+
+
+
+
 ]
 Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [][]|  
@@ -1893,7 +2047,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
  [][]|
  []
 
-[22
+[29
 
 ]
 Overfull \hbox (34.71422pt too wide) has occurred while \output is active
@@ -1915,29 +2069,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
  [][]|
  []
 
-[23
-
-]
-Overfull \hbox (34.71422pt too wide) has occurred while \output is active
-[][]|  
- []
-
-
-Overfull \hbox (34.71422pt too wide) has occurred while \output is active
- [][]|
- []
-
-
-Overfull \hbox (34.71422pt too wide) has occurred while \output is active
-[]
- []
-
-
-Overfull \hbox (34.71422pt too wide) has occurred while \output is active
- [][]|
- []
-
-[24
+[30
 
 ] (./tesina.aux)
  ***********
@@ -1951,18 +2083,18 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 69037 strings out of 474116
- 1717684 string characters out of 5743683
- 2441807 words of memory out of 5000000
- 90308 multiletter control sequences out of 15000+600000
+ 69122 strings out of 474116
+ 1718626 string characters out of 5743683
+ 2441805 words of memory out of 5000000
+ 90320 multiletter control sequences out of 15000+600000
  577648 words of font info for 80 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  91i,12n,120p,853b,1047s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfcc1000.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on tesina.pdf (26 pages, 832699 bytes).
+Output written on tesina.pdf (32 pages, 884915 bytes).
 PDF statistics:
- 446 PDF objects out of 1000 (max. 8388607)
- 360 compressed objects within 4 object streams
- 180 named destinations out of 1000 (max. 500000)
- 270 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 558 PDF objects out of 1000 (max. 8388607)
+ 464 compressed objects within 5 object streams
+ 253 named destinations out of 1000 (max. 500000)
+ 275 words of extra memory for PDF output out of 10000 (max. 10000000)
 

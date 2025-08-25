@@ -595,8 +595,243 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso relativi alla crea
 
 \clearpage
 \newsubsection*{Gestione Mezzo}
-
 Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione dei mezzi, come anagrafica, manutenzione, disponibilità e scadenze assicurative.
+
+\begin{figure*}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{GestioneMezzo}
+\end{figure*}
+
+\clearpage
+\begin{table}[t!]
+\vspace*{-5.5cm}
+\renewcommand{\arraystretch}{1.9}
+\begin{tabular}{|p{3.9cm}|p{9.9cm}|}
+\hline
+\multicolumn{2}{|c|}{\textbf{Caso d’uso: CreaMezzo}} \\ \hline
+\textbf{ID} &  \\ \hline
+\textbf{Breve descrizione} &  Lo Staff crea un nuovo mezzo nel sistema \\ \hline
+\textbf{Attori primari} & Staff \\ \hline
+\textbf{Attori secondari} & Nessuno \\ \hline
+\textbf{Precondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item Lo Staff è stato autenticato dal sistema
+\end{enumerate} \\ \hline
+\textbf{Sequenza degli eventi principale} &
+\begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item Il caso d’uso inizia quando lo Staff seleziona “Nuovo Mezzo”
+    \item Il sistema richiede l’inserimento dei dati (targa, modello, anno, categoria, stato)
+    \item Lo Staff inserisce i dati
+    \item \texttt{If} I dati inseriti sono validi e non duplicati
+    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+        \item Il sistema registra il nuovo mezzo
+        \item Il sistema mostra un messaggio di conferma
+    \end{enumerate}
+    \item \texttt{Else}
+    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+        \item Il sistema mostra un messaggio di errore e richiede la correzione dei dati
+    \end{enumerate}
+\end{enumerate}\\ \hline
+\textbf{Postcondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item Il nuovo mezzo è registrato nel sistema
+    \end{enumerate} \\ \hline
+\textbf{Sequenza degli eventi alternativa} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt] 
+    \item \texttt{If} Lo Staff annulla la creazione
+    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+        \item Il sistema non registra alcun mezzo
+    \end{enumerate}
+\end{enumerate}\\ \hline
+\end{tabular}
+\end{table}
+
+
+\clearpage
+\begin{table}[t!]
+\vspace*{-5.5cm}
+\renewcommand{\arraystretch}{1.9}
+\begin{tabular}{|p{3.9cm}|p{9.9cm}|}
+\hline
+\multicolumn{2}{|c|}{\textbf{Caso d’uso: TrovaMezzo}} \\ \hline
+\textbf{ID} &  \\ \hline
+\textbf{Breve descrizione} &  Lo Staff ricerca un mezzo tramite criteri (targa, modello, stato, ecc.) \\ \hline
+\textbf{Attori primari} & Staff \\ \hline
+\textbf{Attori secondari} & Nessuno \\ \hline
+\textbf{Precondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item Lo Staff è stato autenticato dal sistema
+\end{enumerate} \\ \hline
+\textbf{Sequenza degli eventi principale} &
+\begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item Il caso d’uso inizia quando lo Staff inserisce un criterio di ricerca nella barra dedicata \newline
+    \texttt{Extend} \textit{FiltraMezzo}
+    \item \texttt{While} il criterio di ricerca non è vuoto
+    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+        \item Lo Staff avvia la ricerca (clic su "Cerca")
+    \item Il sistema esegue la query e restituisce la lista dei risultati ordinati/paginati.
+        \item \texttt{If} viene trovato almeno un mezzo
+        \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+            \item \texttt{For Each} Mezzo trovato
+            \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+                \item Il sistema mostra riepilogo (nome, targa, stato, info rilevanti)
+            \end{enumerate}
+        \end{enumerate}
+    \end{enumerate}
+    \item \texttt{Else}
+    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+        \item Il sistema mostra il messaggio “Nessun mezzo trovato”
+    \end{enumerate}
+\end{enumerate}\\ \hline
+\textbf{Postcondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item Lo Staff visualizza l’elenco dei mezzi corrispondenti ai criteri
+    \end{enumerate} \\ \hline
+\textbf{Sequenza degli eventi alternativa} & Nessuna \\ \hline
+\end{tabular}
+\end{table}
+
+\clearpage
+\begin{table}[t!]
+\vspace*{-5.5cm}
+\renewcommand{\arraystretch}{1.9}
+\begin{tabular}{|p{3.9cm}|p{9.9cm}|}
+\hline
+\multicolumn{2}{|c|}{\textbf{Caso d’uso: FiltraMezzo}} \\ \hline
+\textbf{ID} &  \\ \hline
+\textbf{Breve descrizione} & Lo Staff filtra i mezzi in base a criteri avanzati (targa, modello, stato, ecc.) \\ \hline
+\textbf{Attori primari} & Staff \\ \hline
+\textbf{Attori secondari} & Nessuno \\ \hline
+\textbf{Precondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item Lo Staff è stato autenticato dal sistema
+\end{enumerate} \\ \hline
+\textbf{Sequenza degli eventi principale} &
+\begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item \texttt{Include} \textit{TrovaMezzo}
+    \item Lo Staff applica uno o più filtri
+    \item \texttt{If} Esistono mezzi che rispettano i filtri
+    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+        \item Il sistema mostra l’elenco dei mezzi che soddisfano i criteri del filtro
+    \end{enumerate}
+    \item \texttt{Else}
+    \begin{enumerate}[label=\arabic{enumi}.\arabic*,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+        \item Il sistema mostra “Nessun mezzo corrisponde ai criteri di filtro”
+    \end{enumerate}
+\end{enumerate}\\ \hline
+\textbf{Postcondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item Lo Staff visualizza l’elenco dei mezzi filtrati
+    \end{enumerate} \\ \hline
+\textbf{Sequenza degli eventi alternativa} & Nessuna \\ \hline
+\end{tabular}
+\end{table}
+
+\clearpage
+\begin{table}[t!]
+\vspace*{-5.5cm}
+\renewcommand{\arraystretch}{1.9}
+\begin{tabular}{|p{3.9cm}|p{9.9cm}|}
+\hline
+\multicolumn{2}{|c|}{\textbf{Caso d’uso: VisualizzaMezzo}} \\ \hline
+\textbf{ID} &  \\ \hline
+\textbf{Breve descrizione} & Lo Staff visualizza i dati di un mezzo \\ \hline
+\textbf{Attori primari} & Operatore \\ \hline
+\textbf{Attori secondari} & Nessuno \\ \hline
+\textbf{Precondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item L’Operatore è stato autenticato dal sistema
+    \item Il mezzo da visualizzare esiste nel sistema
+\end{enumerate} \\ \hline
+\textbf{Sequenza degli eventi principale} &
+\begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item \texttt{Include} \textit{TrovaMezzo}
+    \item L’Operatore seleziona un mezzo dall’elenco
+    \item Il sistema mostra i dati del mezzo (targa, modello, stato, ecc.)
+\end{enumerate}\\ \hline
+\textbf{Postcondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item I dati del mezzo selezionato vengono visualizzati
+    \end{enumerate} \\ \hline
+\textbf{Sequenza degli eventi alternativa} & Nessuna \\ \hline
+\end{tabular}
+\end{table}
+
+\clearpage
+\begin{table}[t!]
+\vspace*{-5.5cm}
+\renewcommand{\arraystretch}{1.9}
+\begin{tabular}{|p{3.9cm}|p{9.9cm}|}
+\hline
+\multicolumn{2}{|c|}{\textbf{Caso d’uso: ModificaMezzo}} \\ \hline
+\textbf{ID} &  \\ \hline
+\textbf{Breve descrizione} & Lo Staff modifica i dati di un mezzo esistente \\ \hline
+\textbf{Attori primari} & Staff \\ \hline
+\textbf{Attori secondari} & Nessuno \\ \hline
+\textbf{Precondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item Lo Staff è stato autenticato dal sistema
+    \item Il mezzo da modificare esiste nel sistema
+\end{enumerate} \\ \hline
+\textbf{Sequenza degli eventi principale} &
+\begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item \texttt{Include} \textit{VisualizzaMezzo}
+    \item Lo Staff modifica i dati del mezzo
+    \item \texttt{If} I dati inseriti sono validi
+    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+        \item Il sistema aggiorna i dati del mezzo
+    \end{enumerate}
+    \item \texttt{Else}
+    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+        \item Il sistema mostra un messaggio di errore e richiede una nuova modifica
+    \end{enumerate}
+\end{enumerate}\\ \hline
+\textbf{Postcondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item I dati del mezzo risultano aggiornati nel sistema
+    \end{enumerate} \\ \hline
+\textbf{Sequenza degli eventi alternativa} & 
+\begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt] 
+    \item \texttt{If} Lo Staff annulla la modifica
+    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+        \item Il sistema non apporta modifiche ai dati del mezzo
+    \end{enumerate}
+\end{enumerate} \\ \hline
+\end{tabular}
+\end{table}
+
+\clearpage
+\begin{table}[t!]
+\vspace*{-5.5cm}
+\renewcommand{\arraystretch}{1.9}
+\begin{tabular}{|p{3.9cm}|p{9.9cm}|}
+\hline
+\multicolumn{2}{|c|}{\textbf{Caso d’uso: EliminaMezzo}} \\ \hline
+\textbf{ID} &  \\ \hline
+\textbf{Breve descrizione} &Lo Staff elimina un mezzo dal sistema \\ \hline
+\textbf{Attori primari} & Staff \\ \hline
+\textbf{Attori secondari} & Nessuno \\ \hline
+\textbf{Precondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item Lo Staff è stato autenticato dal sistema
+    \item Il mezzo da eliminare esiste nel sistema
+\end{enumerate} \\ \hline
+\textbf{Sequenza degli eventi principale} &
+\begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item \texttt{Include} \textit{VisualizzaMezzo}
+    \item Lo Staff seleziona l’opzione di eliminazione
+    \item \texttt{If} Lo Staff conferma l’eliminazione
+    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+        \item Il sistema elimina il mezzo e mostra un messaggio di conferma
+    \end{enumerate}
+    \item \texttt{Else}
+    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+        \item Il sistema annulla l’operazione senza modifiche
+    \end{enumerate}
+\end{enumerate}\\ \hline
+\textbf{Postcondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item \texttt{If} confermato
+    \begin{enumerate}[label=\arabic{enumi}.\arabic*,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+        \item Il mezzo selezionato viene rimosso dal sistema
+    \end{enumerate}
+\end{enumerate} \\ \hline
+\textbf{Sequenza degli eventi alternativa} & 
+\begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt] 
+    \item \texttt{If} Lo Staff annulla l'eliminazione
+    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+        \item Il sistema non apporta modifiche ai dati del mezzo
+    \end{enumerate}
+\end{enumerate} \\ \hline
+\end{tabular}
+\end{table}
 
 \clearpage
 \newsection{Matrice di Mapping}
