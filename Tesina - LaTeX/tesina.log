@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.6)  29 AUG 2025 00:23
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.6)  29 AUG 2025 00:30
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -2526,10 +2526,10 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [48
 
 ]
-<./img/MatriceMapping.png, id=686, 604.50844pt x 844.65562pt>
+<./img/MatriceMapping.png, id=697, 604.50844pt x 844.65562pt>
 File: ./img/MatriceMapping.png Graphic file (type png)
 <use ./img/MatriceMapping.png>
-Package pdftex.def Info: ./img/MatriceMapping.png  used on input line 1559.
+Package pdftex.def Info: ./img/MatriceMapping.png  used on input line 1578.
 (pdftex.def)             Requested size: 452.9679pt x 632.91019pt.
 
 Overfull \hbox (34.71422pt too wide) has occurred while \output is active
@@ -2609,18 +2609,18 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 69417 strings out of 474116
- 1722642 string characters out of 5743683
+ 69428 strings out of 474116
+ 1722730 string characters out of 5743683
  2453098 words of memory out of 5000000
  90417 multiletter control sequences out of 15000+600000
  577648 words of font info for 80 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  91i,12n,120p,853b,1047s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfcc1000.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on tesina.pdf (53 pages, 1161952 bytes).
+Output written on tesina.pdf (53 pages, 1162354 bytes).
 PDF statistics:
- 861 PDF objects out of 1000 (max. 8388607)
- 739 compressed objects within 8 object streams
- 447 named destinations out of 1000 (max. 500000)
+ 874 PDF objects out of 1000 (max. 8388607)
+ 752 compressed objects within 8 object streams
+ 458 named destinations out of 1000 (max. 500000)
  287 words of extra memory for PDF output out of 10000 (max. 10000000)
 
