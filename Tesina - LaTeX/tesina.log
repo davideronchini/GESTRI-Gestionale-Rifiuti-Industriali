@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.6)  29 AUG 2025 00:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.6)  30 AUG 2025 11:36
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -2611,13 +2611,13 @@ LaTeX Font Warning: Size substitutions with differences
 Here is how much of TeX's memory you used:
  69428 strings out of 474116
  1722730 string characters out of 5743683
- 2453098 words of memory out of 5000000
+ 2453100 words of memory out of 5000000
  90417 multiletter control sequences out of 15000+600000
  577648 words of font info for 80 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  91i,12n,120p,853b,1047s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfcc1000.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on tesina.pdf (53 pages, 1162354 bytes).
+Output written on tesina.pdf (53 pages, 1162758 bytes).
 PDF statistics:
  874 PDF objects out of 1000 (max. 8388607)
  752 compressed objects within 8 object streams
