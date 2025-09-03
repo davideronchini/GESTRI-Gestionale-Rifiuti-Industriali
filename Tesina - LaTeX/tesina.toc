@@ -9,5 +9,7 @@
 \contentsline {section}{Diagrammi dei Casi d'Uso}{10}{section*.50}%
 \contentsline {section}{Matrice di Mapping}{49}{section*.96}%
 \contentsline {chapter}{Analisi}{50}{chapter*.99}%
-\contentsline {chapter}{Progettazione}{51}{chapter*.101}%
+\contentsline {section}{Diagrammi delle Classi}{50}{section*.100}%
+\contentsline {subsection}{Package di Analisi}{50}{section*.101}%
+\contentsline {chapter}{Progettazione}{51}{chapter*.104}%
 \contentsfinish 
