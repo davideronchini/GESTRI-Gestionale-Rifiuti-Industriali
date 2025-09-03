@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.6)  30 AUG 2025 16:34
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.6)  4 SEP 2025 00:00
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1660,11 +1660,11 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [10
 
  <./img/Attori.png>]
-<./img/GestioneUtente.png, id=182, 664.22198pt x 481.06442pt>
+<./img/GestioneUtente.png, id=182, 634.4313pt x 478.30603pt>
 File: ./img/GestioneUtente.png Graphic file (type png)
 <use ./img/GestioneUtente.png>
 Package pdftex.def Info: ./img/GestioneUtente.png  used on input line 348.
-(pdftex.def)             Requested size: 452.9679pt x 328.05905pt.
+(pdftex.def)             Requested size: 452.9679pt x 341.50453pt.
 
 Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [][]|  
@@ -1864,11 +1864,11 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [19
 
 ]
-<./img/GestioneAssenza.png, id=318, 530.71558pt x 252.11748pt>
+<./img/GestioneAssenza.png, id=318, 551.67938pt x 253.22084pt>
 File: ./img/GestioneAssenza.png Graphic file (type png)
 <use ./img/GestioneAssenza.png>
 Package pdftex.def Info: ./img/GestioneAssenza.png  used on input line 659.
-(pdftex.def)             Requested size: 452.9679pt x 215.19336pt.
+(pdftex.def)             Requested size: 452.9679pt x 207.91675pt.
 
 Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [][]|  
@@ -1980,11 +1980,11 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [24
 
 ]
-<./img/GestioneMezzo.png, id=384, 542.85252pt x 388.93398pt>
+<./img/GestioneMezzo.png, id=384, 617.32924pt x 392.79573pt>
 File: ./img/GestioneMezzo.png Graphic file (type png)
 <use ./img/GestioneMezzo.png>
 Package pdftex.def Info: ./img/GestioneMezzo.png  used on input line 808.
-(pdftex.def)             Requested size: 452.9679pt x 324.53616pt.
+(pdftex.def)             Requested size: 452.9679pt x 288.2189pt.
 
 Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [][]|  
@@ -2140,11 +2140,11 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [31
 
 ]
-<./img/GestioneAttivita.png, id=474, 595.26205pt x 411.00114pt>
+<./img/GestioneAttivita.png, id=474, 714.97649pt x 466.16908pt>
 File: ./img/GestioneAttivita.png Graphic file (type png)
 <use ./img/GestioneAttivita.png>
 Package pdftex.def Info: ./img/GestioneAttivita.png  used on input line 1031.
-(pdftex.def)             Requested size: 452.9679pt x 312.75293pt.
+(pdftex.def)             Requested size: 452.9679pt x 295.33832pt.
 
 Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [][]|  
@@ -2322,11 +2322,11 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [39
 
 ]
-<./img/GestioneDocumento.png, id=586, 598.57214pt x 350.86809pt>
+<./img/GestioneDocumento.png, id=586, 674.70389pt x 425.89648pt>
 File: ./img/GestioneDocumento.png Graphic file (type png)
 <use ./img/GestioneDocumento.png>
 Package pdftex.def Info: ./img/GestioneDocumento.png  used on input line 1293.
-(pdftex.def)             Requested size: 452.9679pt x 265.51678pt.
+(pdftex.def)             Requested size: 452.9679pt x 285.93404pt.
 
 Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [][]|  
@@ -2611,13 +2611,13 @@ LaTeX Font Warning: Size substitutions with differences
 Here is how much of TeX's memory you used:
  69428 strings out of 474116
  1722730 string characters out of 5743683
- 2453100 words of memory out of 5000000
+ 2453094 words of memory out of 5000000
  90417 multiletter control sequences out of 15000+600000
  577648 words of font info for 80 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  91i,12n,120p,853b,1047s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfcc1000.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on tesina.pdf (53 pages, 1162807 bytes).
+Output written on tesina.pdf (53 pages, 1129906 bytes).
 PDF statistics:
  874 PDF objects out of 1000 (max. 8388607)
  752 compressed objects within 8 object streams
