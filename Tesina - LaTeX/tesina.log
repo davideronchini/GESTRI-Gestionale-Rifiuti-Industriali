@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.6)  24 AUG 2025 15:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.6)  4 SEP 2025 00:00
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -401,18 +401,25 @@ Package: colortbl 2024/02/20 v1.0g Color table columns (DPC)
 \WF@box=\box61
 \WF@everypar=\toks36
 Package: wrapfig 2003/01/31  v 3.6
+) (/usr/local/texlive/2024/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count311
+\float@exts=\toks37
+\float@box=\box62
+\@float@everytoks=\toks38
+\@floatcapt=\box63
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/varwidth/varwidth.sty
 Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
-\@vwid@box=\box62
-\sift@deathcycles=\count311
+\@vwid@box=\box64
+\sift@deathcycles=\count312
 \@vwid@loff=\dimen198
 \@vwid@roff=\dimen199
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty (/usr/local/texlive/2024/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty (/usr/local/texlive/2024/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
-\pgfutil@everybye=\toks37
+\pgfutil@everybye=\toks39
 \pgfutil@tempdima=\dimen256
 \pgfutil@tempdimb=\dimen257
 ) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
-\pgfutil@abb=\box63
+\pgfutil@abb=\box65
 ) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/pgf.revision.tex)
 Package: pgfrcs 2023-01-15 v3.1.10 (3.1.10)
 ))
@@ -420,10 +427,10 @@ Package: pgf 2023-01-15 v3.1.10 (3.1.10)
  (/usr/local/texlive/2024/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty (/usr/local/texlive/2024/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
  (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
-\pgfkeys@pathtoks=\toks38
-\pgfkeys@temptoks=\toks39
+\pgfkeys@pathtoks=\toks40
+\pgfkeys@temptoks=\toks41
  (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfiltered.code.tex
-\pgfkeys@tmptoks=\toks40
+\pgfkeys@tmptoks=\toks42
 ))
 \pgf@x=\dimen258
 \pgf@y=\dimen259
@@ -437,14 +444,14 @@ Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
 \pgf@yd=\dimen267
 \w@pgf@writea=\write3
 \r@pgf@reada=\read3
-\c@pgf@counta=\count312
-\c@pgf@countb=\count313
-\c@pgf@countc=\count314
-\c@pgf@countd=\count315
-\t@pgf@toka=\toks41
-\t@pgf@tokb=\toks42
-\t@pgf@tokc=\toks43
-\pgf@sys@id@count=\count316
+\c@pgf@counta=\count313
+\c@pgf@countb=\count314
+\c@pgf@countc=\count315
+\c@pgf@countd=\count316
+\t@pgf@toka=\toks43
+\t@pgf@tokb=\toks44
+\t@pgf@tokc=\toks45
+\pgf@sys@id@count=\count317
  (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
 File: pgf.cfg 2023-01-15 v3.1.10 (3.1.10)
 )
@@ -455,21 +462,21 @@ File: pgfsys-pdftex.def 2023-01-15 v3.1.10 (3.1.10)
 File: pgfsys-common-pdf.def 2023-01-15 v3.1.10 (3.1.10)
 ))) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
 File: pgfsyssoftpath.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfsyssoftpath@smallbuffer@items=\count317
-\pgfsyssoftpath@bigbuffer@items=\count318
+\pgfsyssoftpath@smallbuffer@items=\count318
+\pgfsyssoftpath@bigbuffer@items=\count319
 ) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
 File: pgfsysprotocol.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
 Package: pgfcore 2023-01-15 v3.1.10 (3.1.10)
  (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
 \pgfmath@dimen=\dimen268
-\pgfmath@count=\count319
-\pgfmath@box=\box64
-\pgfmath@toks=\toks44
-\pgfmath@stack@operand=\toks45
-\pgfmath@stack@operation=\toks46
+\pgfmath@count=\count320
+\pgfmath@box=\box66
+\pgfmath@toks=\toks46
+\pgfmath@stack@operand=\toks47
+\pgfmath@stack@operation=\toks48
 ) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count320
+\c@pgfmathroundto@lastzeros=\count321
 )) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfint.code.tex) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
 File: pgfcorepoints.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgf@picminx=\dimen269
@@ -496,10 +503,10 @@ File: pgfcorepathusage.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgf@shorten@start@additional=\dimen286
 ) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
 File: pgfcorescopes.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfpic=\box65
-\pgf@hbox=\box66
-\pgf@layerbox@main=\box67
-\pgf@picture@serial@count=\count321
+\pgfpic=\box67
+\pgf@hbox=\box68
+\pgf@layerbox@main=\box69
+\pgf@picture@serial@count=\count322
 ) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
 File: pgfcoregraphicstate.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgflinewidth=\dimen287
@@ -520,13 +527,13 @@ File: pgfcorearrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
 File: pgfcoreshade.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgf@max=\dimen292
-\pgf@sys@shading@range@num=\count322
-\pgf@shadingcount=\count323
+\pgf@sys@shading@range@num=\count323
+\pgf@shadingcount=\count324
 ) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
 File: pgfcoreimage.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
 File: pgfcoreexternal.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfexternal@startupbox=\box68
+\pgfexternal@startupbox=\box70
 ) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
 File: pgfcorelayers.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex
@@ -537,7 +544,7 @@ File: pgfcorepatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
 File: pgfcorerdf.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ))) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
 File: pgfmoduleshapes.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfnodeparttextbox=\box69
+\pgfnodeparttextbox=\box71
 ) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
 File: pgfmoduleplot.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
@@ -550,13 +557,13 @@ Package: pgfcomp-version-1-18 2023-01-15 v3.1.10 (3.1.10)
 Package: pgffor 2023-01-15 v3.1.10 (3.1.10)
 \pgffor@iter=\dimen295
 \pgffor@skip=\dimen296
-\pgffor@stack=\toks47
-\pgffor@toks=\toks48
+\pgffor@stack=\toks49
+\pgffor@toks=\toks50
 )) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
 Package: tikz 2023-01-15 v3.1.10 (3.1.10)
  (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
 File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@plot@mark@count=\count324
+\pgf@plot@mark@count=\count325
 \pgfplotmarksize=\dimen297
 )
 \tikz@lastx=\dimen298
@@ -567,55 +574,55 @@ File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \tikz@lastmovetoy=\dimen303
 \tikzleveldistance=\dimen304
 \tikzsiblingdistance=\dimen305
-\tikz@figbox=\box70
-\tikz@figbox@bg=\box71
-\tikz@tempbox=\box72
-\tikz@tempbox@bg=\box73
-\tikztreelevel=\count325
-\tikznumberofchildren=\count326
-\tikznumberofcurrentchild=\count327
-\tikz@fig@count=\count328
+\tikz@figbox=\box72
+\tikz@figbox@bg=\box73
+\tikz@tempbox=\box74
+\tikz@tempbox@bg=\box75
+\tikztreelevel=\count326
+\tikznumberofchildren=\count327
+\tikznumberofcurrentchild=\count328
+\tikz@fig@count=\count329
  (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
 File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfmatrixcurrentrow=\count329
-\pgfmatrixcurrentcolumn=\count330
-\pgf@matrix@numberofcolumns=\count331
+\pgfmatrixcurrentrow=\count330
+\pgfmatrixcurrentcolumn=\count331
+\pgf@matrix@numberofcolumns=\count332
 )
-\tikz@expandcount=\count332
+\tikz@expandcount=\count333
  (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ))) (/usr/local/texlive/2024/texmf-dist/tex/latex/siunitx/siunitx.sty
 Package: siunitx 2024-02-15 v3.3.12 A comprehensive (SI) units package
-\l__siunitx_number_uncert_offset_int=\count333
-\l__siunitx_number_exponent_fixed_int=\count334
-\l__siunitx_number_min_decimal_int=\count335
-\l__siunitx_number_min_integer_int=\count336
-\l__siunitx_number_round_precision_int=\count337
-\l__siunitx_number_lower_threshold_int=\count338
-\l__siunitx_number_upper_threshold_int=\count339
-\l__siunitx_number_group_first_int=\count340
-\l__siunitx_number_group_size_int=\count341
-\l__siunitx_number_group_minimum_int=\count342
+\l__siunitx_number_uncert_offset_int=\count334
+\l__siunitx_number_exponent_fixed_int=\count335
+\l__siunitx_number_min_decimal_int=\count336
+\l__siunitx_number_min_integer_int=\count337
+\l__siunitx_number_round_precision_int=\count338
+\l__siunitx_number_lower_threshold_int=\count339
+\l__siunitx_number_upper_threshold_int=\count340
+\l__siunitx_number_group_first_int=\count341
+\l__siunitx_number_group_size_int=\count342
+\l__siunitx_number_group_minimum_int=\count343
 \l__siunitx_angle_tmp_dim=\dimen306
-\l__siunitx_angle_marker_box=\box74
-\l__siunitx_angle_unit_box=\box75
-\l__siunitx_compound_count_int=\count343
+\l__siunitx_angle_marker_box=\box76
+\l__siunitx_angle_unit_box=\box77
+\l__siunitx_compound_count_int=\count344
  (/usr/local/texlive/2024/texmf-dist/tex/latex/translations/translations.sty
 Package: translations 2022/02/05 v1.12 internationalization of LaTeX2e packages (CN)
 )
-\l__siunitx_table_tmp_box=\box76
+\l__siunitx_table_tmp_box=\box78
 \l__siunitx_table_tmp_dim=\dimen307
 \l__siunitx_table_column_width_dim=\dimen308
-\l__siunitx_table_integer_box=\box77
-\l__siunitx_table_decimal_box=\box78
-\l__siunitx_table_uncert_box=\box79
-\l__siunitx_table_before_box=\box80
-\l__siunitx_table_after_box=\box81
+\l__siunitx_table_integer_box=\box79
+\l__siunitx_table_decimal_box=\box80
+\l__siunitx_table_uncert_box=\box81
+\l__siunitx_table_before_box=\box82
+\l__siunitx_table_after_box=\box83
 \l__siunitx_table_before_dim=\dimen309
 \l__siunitx_table_carry_dim=\dimen310
-\l__siunitx_unit_tmp_int=\count344
-\l__siunitx_unit_position_int=\count345
-\l__siunitx_unit_total_int=\count346
+\l__siunitx_unit_tmp_int=\count345
+\l__siunitx_unit_position_int=\count346
+\l__siunitx_unit_total_int=\count347
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/circuitikz/circuitikz.sty
 Package: circuitikz 2024/02/09{} The CircuiTikz circuit drawing package version 1.6.7
  (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarycalc.code.tex
@@ -643,9 +650,9 @@ File: pgflibrarycurvilinear.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )
 \pgf@arrows@the@rigidity=\dimen321
 )) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryfpu.code.tex (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/libraries/pgflibraryfpu.code.tex)) (/usr/local/texlive/2024/texmf-dist/tex/generic/circuitikz/pgfcirc.defines.tex
-\pgf@circ@count@a=\count347
-\pgf@circ@count@b=\count348
-\pgf@circ@count@c=\count349
+\pgf@circ@count@a=\count348
+\pgf@circ@count@b=\count349
+\pgf@circ@count@c=\count350
 \pgf@circ@res@up=\dimen322
 \pgf@circ@res@down=\dimen323
 \pgf@circ@res@zero=\dimen324
@@ -658,10 +665,10 @@ File: pgflibrarycurvilinear.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgf@circ@scaled@Rlen=\dimen331
 \pgfstartlinewidth=\dimen332
 ) (/usr/local/texlive/2024/texmf-dist/tex/generic/circuitikz/pgfcircutils.tex
-\ctikz@scratchbox=\box82
-) (/usr/local/texlive/2024/texmf-dist/tex/generic/circuitikz/pgfcircpath.tex) (/usr/local/texlive/2024/texmf-dist/tex/generic/circuitikz/pgfcircshapes.tex) (/usr/local/texlive/2024/texmf-dist/tex/generic/circuitikz/pgfcircmonopoles.tex) (/usr/local/texlive/2024/texmf-dist/tex/generic/circuitikz/pgfcircbipoles.tex)
-(/usr/local/texlive/2024/texmf-dist/tex/generic/circuitikz/pgfcirctripoles.tex
-\pgf@circ@res@count=\count350
+\ctikz@scratchbox=\box84
+) (/usr/local/texlive/2024/texmf-dist/tex/generic/circuitikz/pgfcircpath.tex) (/usr/local/texlive/2024/texmf-dist/tex/generic/circuitikz/pgfcircshapes.tex) (/usr/local/texlive/2024/texmf-dist/tex/generic/circuitikz/pgfcircmonopoles.tex)
+(/usr/local/texlive/2024/texmf-dist/tex/generic/circuitikz/pgfcircbipoles.tex) (/usr/local/texlive/2024/texmf-dist/tex/generic/circuitikz/pgfcirctripoles.tex
+\pgf@circ@res@count=\count351
 ) (/usr/local/texlive/2024/texmf-dist/tex/generic/circuitikz/pgfcircquadpoles.tex) (/usr/local/texlive/2024/texmf-dist/tex/generic/circuitikz/pgfcircmultipoles.tex) (/usr/local/texlive/2024/texmf-dist/tex/generic/circuitikz/pgfcirclabel.tex) (/usr/local/texlive/2024/texmf-dist/tex/generic/circuitikz/pgfcircvoltage.tex
 \pgfcirc@labelshift=\dimen333
 ) (/usr/local/texlive/2024/texmf-dist/tex/generic/circuitikz/pgfcirccurrent.tex) (/usr/local/texlive/2024/texmf-dist/tex/generic/circuitikz/pgfcircflow.tex)) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.pathreplacing.code.tex (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.code.tex (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/modules/pgfmoduledecorations.code.tex
@@ -670,40 +677,40 @@ File: pgflibrarycurvilinear.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgfdecoratedinputsegmentcompleteddistance=\dimen336
 \pgfdecoratedinputsegmentremainingdistance=\dimen337
 \pgf@decorate@distancetomove=\dimen338
-\pgf@decorate@repeatstate=\count351
+\pgf@decorate@repeatstate=\count352
 \pgfdecorationsegmentamplitude=\dimen339
 \pgfdecorationsegmentlength=\dimen340
 )
-\tikz@lib@dec@box=\box83
+\tikz@lib@dec@box=\box85
 ) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.pathreplacing.code.tex)) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypositioning.code.tex
 File: tikzlibrarypositioning.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarybackgrounds.code.tex
 File: tikzlibrarybackgrounds.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@layerbox@background=\box84
-\pgf@layerboxsaved@background=\box85
+\pgf@layerbox@background=\box86
+\pgf@layerboxsaved@background=\box87
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/pgfplots/pgfplots.sty (/usr/local/texlive/2024/texmf-dist/tex/generic/pgfplots/pgfplots.revision.tex)
 Package: pgfplots 2021/05/15 v1.18.1 Data Visualization (1.18.1)
  (/usr/local/texlive/2024/texmf-dist/tex/generic/pgfplots/pgfplots.code.tex (/usr/local/texlive/2024/texmf-dist/tex/generic/pgfplots/pgfplotscore.code.tex
-\t@pgfplots@toka=\toks49
-\t@pgfplots@tokb=\toks50
-\t@pgfplots@tokc=\toks51
+\t@pgfplots@toka=\toks51
+\t@pgfplots@tokb=\toks52
+\t@pgfplots@tokc=\toks53
 \pgfplots@tmpa=\dimen341
-\c@pgfplots@coordindex=\count352
-\c@pgfplots@scanlineindex=\count353
+\c@pgfplots@coordindex=\count353
+\c@pgfplots@scanlineindex=\count354
  (/usr/local/texlive/2024/texmf-dist/tex/generic/pgfplots/sys/pgfplotssysgeneric.code.tex)) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgfplots/libs/pgfplotslibrary.code.tex) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_loader.code.tex
 Package pgfplots: loading complementary utilities for your pgf version...
-\t@pgf@toka=\toks52
-\t@pgf@tokb=\toks53
-\t@pgf@tokc=\toks54
+\t@pgf@toka=\toks54
+\t@pgf@tokb=\toks55
+\t@pgf@tokc=\toks56
 (/usr/local/texlive/2024/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_pgfutil-common-lists.tex)) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgfplots/util/pgfplotsutil.code.tex (/usr/local/texlive/2024/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsliststructure.code.tex) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsliststructureext.code.tex) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsarray.code.tex
-\c@pgfplotsarray@tmp=\count354
+\c@pgfplotsarray@tmp=\count355
 ) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsmatrix.code.tex) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgfplots/numtable/pgfplotstableshared.code.tex
-\c@pgfplotstable@counta=\count355
-\t@pgfplotstable@a=\toks55
+\c@pgfplotstable@counta=\count356
+\t@pgfplotstable@a=\toks57
 ) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsdeque.code.tex) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgfplots/util/pgfplotsbinary.code.tex (/usr/local/texlive/2024/texmf-dist/tex/generic/pgfplots/util/pgfplotsbinary.data.code.tex)) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgfplots/util/pgfplotsutil.verb.code.tex) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgfplots/libs/pgflibrarypgfplots.surfshading.code.tex
-\c@pgfplotslibrarysurf@no=\count356
+\c@pgfplotslibrarysurf@no=\count357
  (/usr/local/texlive/2024/texmf-dist/tex/generic/pgfplots/sys/pgflibrarypgfplots.surfshading.pgfsys-pdftex.def))) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgfplots/util/pgfplotscolormap.code.tex (/usr/local/texlive/2024/texmf-dist/tex/generic/pgfplots/util/pgfplotscolor.code.tex)) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgfplots/pgfplotsstackedplots.code.tex) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgfplots/pgfplotsplothandlers.code.tex (/usr/local/texlive/2024/texmf-dist/tex/generic/pgfplots/pgfplotsmeshplothandler.code.tex (/usr/local/texlive/2024/texmf-dist/tex/generic/pgfplots/pgfplotsmeshplotimage.code.tex))) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgfplots/pgfplots.scaling.code.tex) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgfplots/pgfplotscoordprocessing.code.tex) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgfplots/pgfplots.errorbars.code.tex) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgfplots/pgfplots.markers.code.tex) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgfplots/pgfplotsticks.code.tex) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgfplots/pgfplots.paths.code.tex) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.pathmorphing.code.tex (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.pathmorphing.code.tex)) (/usr/local/texlive/2024/texmf-dist/tex/generic/pgfplots/libs/tikzlibrarypgfplots.contourlua.code.tex)
-\pgfplots@numplots=\count357
+\pgfplots@numplots=\count358
 \pgfplots@xmin@reg=\dimen342
 \pgfplots@xmax@reg=\dimen343
 \pgfplots@ymin@reg=\dimen344
@@ -716,12 +723,12 @@ File: tikzlibraryplotmarks.code.tex 2023-01-15 v3.1.10 (3.1.10)
 File: pgflibraryplotmarks.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ))) (/usr/local/texlive/2024/texmf-dist/tex/latex/titlesec/titlesec.sty
 Package: titlesec 2023/10/27 v2.16 Sectioning titles
-\ttl@box=\box86
+\ttl@box=\box88
 \beforetitleunit=\skip80
 \aftertitleunit=\skip81
 \ttl@plus=\dimen348
 \ttl@minus=\dimen349
-\ttl@toksa=\toks56
+\ttl@toksa=\toks58
 \titlewidth=\dimen350
 \titlewidthlast=\dimen351
 \titlewidthfirst=\dimen352
@@ -738,18 +745,18 @@ Package: newpxmath 2023/11/08 v1.533
  `newpxmath' v1.533, 2023/11/08 Math macros based on pxfonts (msharpe) (/usr/local/texlive/2024/texmf-dist/tex/generic/kastrup/binhex.tex) (/usr/local/texlive/2024/texmf-dist/tex/latex/xkeyval/xkeyval.sty
 Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
  (/usr/local/texlive/2024/texmf-dist/tex/generic/xkeyval/xkeyval.tex (/usr/local/texlive/2024/texmf-dist/tex/generic/xkeyval/xkvutils.tex
-\XKV@toks=\toks57
-\XKV@tempa@toks=\toks58
+\XKV@toks=\toks59
+\XKV@tempa@toks=\toks60
 )
-\XKV@depth=\count358
+\XKV@depth=\count359
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 )) (/usr/local/texlive/2024/texmf-dist/tex/latex/oberdiek/centernot.sty
 Package: centernot 2016/05/16 v1.4 Centers the not symbol horizontally (HO)
 )
-\px@tA=\toks59
-\px@tB=\toks60
+\px@tA=\toks61
+\px@tB=\toks62
 \px@su=\read4
-\px@Isdigit=\count359
+\px@Isdigit=\count360
 
 amsthm NOT loaded
 LaTeX Font Info:    Redeclaring symbol font `operators' on input line 222.
@@ -831,9 +838,9 @@ LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
 \symlargesymbolsPXA=\mathgroup9
 LaTeX Font Info:    Overwriting symbol font `largesymbolsPXA' in version `bold'
 (Font)                  U/npxexa/m/n --> U/npxexa/b/n on input line 345.
-\px@cntz=\count360
-\px@IsAlNum=\count361
-\px@sbptoks=\toks61
+\px@cntz=\count361
+\px@IsAlNum=\count362
+\px@sbptoks=\toks63
 LaTeX Font Info:    Redeclaring math delimiter \lfloor on input line 500.
 LaTeX Font Info:    Redeclaring math delimiter \rfloor on input line 501.
 LaTeX Font Info:    Redeclaring math delimiter \lceil on input line 502.
@@ -867,17 +874,17 @@ Package: xfrac 2024-02-13 Split-level fractions
 Package: expl3 2024-02-20 L3 programming layer (loader) 
  (/usr/local/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-02-20 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count362
-\l__pdf_internal_box=\box87
+\l__color_backend_stack_int=\count363
+\l__pdf_internal_box=\box89
 ))
 Package: xtemplate 2023-10-10 L3 Experimental prototype document functions
 \l__xtemplate_tmp_dim=\dimen354
-\l__xtemplate_tmp_int=\count363
+\l__xtemplate_tmp_int=\count364
 \l__xtemplate_tmp_muskip=\muskip18
 \l__xtemplate_tmp_skip=\skip82
 ))
-\l__xfrac_slash_box=\box88
-\l__xfrac_tmp_box=\box89
+\l__xfrac_slash_box=\box90
+\l__xfrac_tmp_box=\box91
 \l__xfrac_denominator_bot_sep_dim=\dimen355
 \l__xfrac_numerator_bot_sep_dim=\dimen356
 \l__xfrac_numerator_top_sep_dim=\dimen357
@@ -900,49 +907,49 @@ LaTeX Font Info:    Overwriting symbol font `stmry' in version `bold'
 Package: bookmark 2023-12-10 v1.31 PDF bookmarks (HO)
  (/usr/local/texlive/2024/texmf-dist/tex/latex/bookmark/bkm-pdftex.def
 File: bkm-pdftex.def 2023-12-10 v1.31 bookmark driver for pdfTeX and luaTeX (HO)
-\BKM@id=\count364
+\BKM@id=\count365
 )) (/usr/local/texlive/2024/texmf-dist/tex/latex/enumitem/enumitem.sty
 Package: enumitem 2019/06/20 v3.9 Customized lists
 \labelindent=\skip83
 \enit@outerparindent=\dimen360
-\enit@toks=\toks62
-\enit@inbox=\box90
-\enit@count@id=\count365
-\enitdp@description=\count366
+\enit@toks=\toks64
+\enit@inbox=\box92
+\enit@count@id=\count366
+\enitdp@description=\count367
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/theoremref/theoremref.sty
 Package: theoremref 2013/05/22 References with automatic theorem names
-\thmref@num=\count367
+\thmref@num=\count368
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
 Package: tcolorbox 2024/01/10 version 6.2.0 text color boxes
  (/usr/local/texlive/2024/texmf-dist/tex/latex/tools/verbatim.sty
 Package: verbatim 2023-11-06 v1.5v LaTeX2e package for verbatim enhancements
-\every@verbatim=\toks63
-\verbatim@line=\toks64
+\every@verbatim=\toks65
+\verbatim@line=\toks66
 \verbatim@in@stream=\read5
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/environ/environ.sty
 Package: environ 2014/05/04 v0.3 A new way to define environments
  (/usr/local/texlive/2024/texmf-dist/tex/latex/trimspaces/trimspaces.sty
 Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 ))
-\tcb@titlebox=\box91
-\tcb@upperbox=\box92
-\tcb@lowerbox=\box93
-\tcb@phantombox=\box94
-\c@tcbbreakpart=\count368
-\c@tcblayer=\count369
-\c@tcolorbox@number=\count370
-\l__tcobox_tmpa_box=\box95
+\tcb@titlebox=\box93
+\tcb@upperbox=\box94
+\tcb@lowerbox=\box95
+\tcb@phantombox=\box96
+\c@tcbbreakpart=\count369
+\c@tcblayer=\count370
+\c@tcolorbox@number=\count371
+\l__tcobox_tmpa_box=\box97
 \l__tcobox_tmpa_dim=\dimen361
-\tcb@temp=\box96
-\tcb@temp=\box97
 \tcb@temp=\box98
 \tcb@temp=\box99
+\tcb@temp=\box100
+\tcb@temp=\box101
  (/usr/local/texlive/2024/texmf-dist/tex/latex/tcolorbox/tcbraster.code.tex
 Library (tcolorbox): 'tcbraster.code.tex' version '6.2.0'
-\c@tcbrastercolumn=\count371
-\c@tcbrasterrow=\count372
-\c@tcbrasternum=\count373
-\c@tcbraster=\count374
+\c@tcbrastercolumn=\count372
+\c@tcbrasterrow=\count373
+\c@tcbrasternum=\count374
+\c@tcbraster=\count375
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/tcolorbox/tcbskins.code.tex
 Library (tcolorbox): 'tcbskins.code.tex' version '6.2.0'
 (/usr/local/texlive/2024/texmf-dist/tex/latex/tikzfill/tikzfill.image.sty
@@ -951,7 +958,7 @@ Package: tikzfill.image 2023/08/08 v1.0.1 Image filling library for TikZ
 Package: tikzfill-common 2023/08/08 v1.0.1 Auxiliary code for tikzfill
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/tikzfill/tikzlibraryfill.image.code.tex
 File: tikzlibraryfill.image.code.tex 2023/08/08 v1.0.1 Image filling library
-\l__tikzfill_img_box=\box100
+\l__tikzfill_img_box=\box102
 )) (/usr/local/texlive/2024/texmf-dist/tex/latex/tcolorbox/tcbskinsjigsaw.code.tex
 Library (tcolorbox): 'tcbskinsjigsaw.code.tex' version '6.2.0'
 )) (/usr/local/texlive/2024/texmf-dist/tex/latex/tcolorbox/tcbbreakable.code.tex
@@ -960,9 +967,9 @@ Library (tcolorbox): 'tcbbreakable.code.tex' version '6.2.0'
 Package: pdfcol 2022-09-21 v1.7 Handle new color stacks for pdfTeX (HO)
 )
 Package pdfcol Info: New color stack `tcb@breakable' = 1 on input line 23.
-\tcb@testbox=\box101
-\tcb@totalupperbox=\box102
-\tcb@totallowerbox=\box103
+\tcb@testbox=\box103
+\tcb@totalupperbox=\box104
+\tcb@totallowerbox=\box105
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/tcolorbox/tcbhooks.code.tex
 Library (tcolorbox): 'tcbhooks.code.tex' version '6.2.0'
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/tcolorbox/tcbtheorems.code.tex
@@ -972,31 +979,31 @@ Library (tcolorbox): 'tcbfitting.code.tex' version '6.2.0'
 \tcbfitdim=\dimen362
 \tcb@lowerfitdim=\dimen363
 \tcb@upperfitdim=\dimen364
-\tcb@cur@hbadness=\count375
+\tcb@cur@hbadness=\count376
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/tcolorbox/tcblistingsutf8.code.tex
 Library (tcolorbox): 'tcblistingsutf8.code.tex' version '6.2.0'
 (/usr/local/texlive/2024/texmf-dist/tex/latex/tcolorbox/tcblistings.code.tex
 Library (tcolorbox): 'tcblistings.code.tex' version '6.2.0'
 (/usr/local/texlive/2024/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count376
-\lst@gtempboxa=\box104
-\lst@token=\toks65
-\lst@length=\count377
+\lst@mode=\count377
+\lst@gtempboxa=\box106
+\lst@token=\toks67
+\lst@length=\count378
 \lst@currlwidth=\dimen365
-\lst@column=\count378
-\lst@pos=\count379
+\lst@column=\count379
+\lst@pos=\count380
 \lst@lostspace=\dimen366
 \lst@width=\dimen367
-\lst@newlines=\count380
-\lst@lineno=\count381
+\lst@newlines=\count381
+\lst@lineno=\count382
 \lst@maxwidth=\dimen368
  (/usr/local/texlive/2024/texmf-dist/tex/latex/listings/lstpatch.sty
 File: lstpatch.sty 2024/02/21 1.10 (Carsten Heinz)
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2024/02/21 1.10 (Carsten Heinz)
-\c@lstnumber=\count382
-\lst@skipnumbers=\count383
-\lst@framebox=\box105
+\c@lstnumber=\count383
+\lst@skipnumbers=\count384
+\lst@framebox=\box107
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2024/02/21 1.10 listings configuration
 ))
@@ -1006,7 +1013,7 @@ Library (tcolorbox): 'tcblistingscore.code.tex' version '6.2.0'
 (/usr/local/texlive/2024/texmf-dist/tex/latex/tcolorbox/tcbprocessing.code.tex
 Library (tcolorbox): 'tcbprocessing.code.tex' version '6.2.0'
 )
-\c@tcblisting=\count384
+\c@tcblisting=\count385
 )) (/usr/local/texlive/2024/texmf-dist/tex/latex/listingsutf8/listingsutf8.sty
 Package: listingsutf8 2019-12-10 v1.5 Allow UTF-8 in listings input (HO)
  (/usr/local/texlive/2024/texmf-dist/tex/generic/stringenc/stringenc.sty
@@ -1037,8 +1044,9 @@ Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
 \caption@hangindent=\dimen376
 Package caption Info: Standard document class detected.
 )
-\c@caption@flags=\count385
-\c@continuedfloat=\count386
+\c@caption@flags=\count386
+\c@continuedfloat=\count387
+Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: longtable package is loaded.
@@ -1048,30 +1056,28 @@ Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
 Package caption Info: wrapfig package is loaded.
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/tools/multicol.sty
 Package: multicol 2023/03/30 v1.9f multicolumn formatting (FMi)
-\c@tracingmulticols=\count387
-\mult@box=\box106
+\c@tracingmulticols=\count388
+\mult@box=\box108
 \multicol@leftmargin=\dimen377
-\c@unbalance=\count388
-\c@collectmore=\count389
-\doublecol@number=\count390
-\multicoltolerance=\count391
-\multicolpretolerance=\count392
+\c@unbalance=\count389
+\c@collectmore=\count390
+\doublecol@number=\count391
+\multicoltolerance=\count392
+\multicolpretolerance=\count393
 \full@width=\dimen378
 \page@free=\dimen379
 \premulticols=\dimen380
 \postmulticols=\dimen381
 \multicolsep=\skip84
 \multicolbaselineskip=\skip85
-\partial@page=\box107
-\last@line=\box108
-\mc@boxedresult=\box109
+\partial@page=\box109
+\last@line=\box110
+\mc@boxedresult=\box111
 \maxbalancingoverflow=\dimen382
-\mult@rightbox=\box110
-\mult@grightbox=\box111
-\mult@firstbox=\box112
-\mult@gfirstbox=\box113
-\@tempa=\box114
-\@tempa=\box115
+\mult@rightbox=\box112
+\mult@grightbox=\box113
+\mult@firstbox=\box114
+\mult@gfirstbox=\box115
 \@tempa=\box116
 \@tempa=\box117
 \@tempa=\box118
@@ -1106,15 +1112,17 @@ Package: multicol 2023/03/30 v1.9f multicolumn formatting (FMi)
 \@tempa=\box147
 \@tempa=\box148
 \@tempa=\box149
-\c@minrows=\count393
-\c@columnbadness=\count394
-\c@finalcolumnbadness=\count395
+\@tempa=\box150
+\@tempa=\box151
+\c@minrows=\count394
+\c@columnbadness=\count395
+\c@finalcolumnbadness=\count396
 \last@try=\dimen383
 \multicolovershoot=\dimen384
 \multicolundershoot=\dimen385
-\mult@nat@firstbox=\box150
-\colbreak@box=\box151
-\mc@col@check@num=\count396
+\mult@nat@firstbox=\box152
+\colbreak@box=\box153
+\mc@col@check@num=\count397
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/tikz-cd/tikz-cd.sty
 Package: tikz-cd 2021/05/04 v1.0 Commutative diagrams with TikZ
  (/usr/local/texlive/2024/texmf-dist/tex/generic/tikz-cd/tikzlibrarycd.code.tex (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarymatrix.code.tex
@@ -1123,14 +1131,14 @@ File: tikzlibrarymatrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
 File: tikzlibraryquotes.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ))) (/usr/local/texlive/2024/texmf-dist/tex/latex/algorithm2e/algorithm2e.sty
 Package: algorithm2e 2017/07/18 v5.2 algorithms environments
-\c@AlgoLine=\count397
+\c@AlgoLine=\count398
  (/usr/local/texlive/2024/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
 )
 \algocf@hangindent=\skip86
  (/usr/local/texlive/2024/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty
 Package: ifoddpage 2022/10/18 v1.2 Conditionals for odd/even page detection
-\c@checkoddpage=\count398
+\c@checkoddpage=\count399
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/tools/xspace.sty
 Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/relsize/relsize.sty
@@ -1151,26 +1159,26 @@ Package: relsize 2013/03/29 ver 4.1
 \interspacealgoruled=\dimen390
 \interspacetitleboxruled=\dimen391
 \algocf@ruledwidth=\skip95
-\algocf@inoutbox=\box152
-\algocf@inputbox=\box153
+\algocf@inoutbox=\box154
+\algocf@inputbox=\box155
 \AlCapSkip=\skip96
 \AlCapHSkip=\skip97
 \algoskipindent=\skip98
-\algocf@nlbox=\box154
-\algocf@hangingbox=\box155
-\algocf@untilbox=\box156
+\algocf@nlbox=\box156
+\algocf@hangingbox=\box157
+\algocf@untilbox=\box158
 \algocf@skipuntil=\skip99
-\algocf@capbox=\box157
+\algocf@capbox=\box159
 \algocf@lcaptionbox=\skip100
 \algoheightruledefault=\skip101
 \algoheightrule=\skip102
 \algotitleheightruledefault=\skip103
 \algotitleheightrule=\skip104
-\c@algocfline=\count399
-\c@algocfproc=\count400
-\c@algocf=\count401
-\algocf@algoframe=\box158
-\algocf@algobox=\box159
+\c@algocfline=\count400
+\c@algocfproc=\count401
+\c@algocf=\count402
+\algocf@algoframe=\box160
+\algocf@algobox=\box161
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/comment/comment.sty
 \CommentStream=\write4
  Excluding comment 'comment') (/usr/local/texlive/2024/texmf-dist/tex/latex/import/import.sty
@@ -1192,14 +1200,14 @@ Package: eso-pic 2023/05/03 v3.0c eso-pic (RN)
  (/usr/local/texlive/2024/texmf-dist/tex/latex/pdfpages/pppdftex.def
 File: pppdftex.def 2024/01/21 v0.5y Pdfpages driver for pdfTeX (AM)
 )
-\pdfpages@includegraphics@status=\count402
-\AM@pagebox=\box160
-\AM@global@opts=\toks66
-\AM@pagecnt=\count403
-\AM@toc@title=\toks67
-\AM@lof@heading=\toks68
-\c@AM@survey=\count404
-\AM@templatesizebox=\box161
+\pdfpages@includegraphics@status=\count403
+\AM@pagebox=\box162
+\AM@global@opts=\toks68
+\AM@pagecnt=\count404
+\AM@toc@title=\toks69
+\AM@lof@heading=\toks70
+\c@AM@survey=\count405
+\AM@templatesizebox=\box163
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/transparent/transparent.sty
 Package: transparent 2022-10-27 v1.5 Transparency with color stacks
  (/usr/local/texlive/2024/texmf-dist/tex/latex/transparent/transparent-nometadata.sty
@@ -1207,7 +1215,7 @@ Package: transparent-nometadata 2022-10-27 v1.5 Transparency via pdfTeX's color 
 )) (/usr/local/texlive/2024/texmf-dist/tex/latex/bigfoot/suffix.sty
 Package: suffix 2006/07/15 1.5a Variant command support
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 152.
+Package hyperref Info: Option `colorlinks' set `true' on input line 153.
  (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryarrows.code.tex
 File: tikzlibraryarrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
  (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.code.tex
@@ -1216,7 +1224,7 @@ File: pgflibraryarrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )) (/usr/local/texlive/2024/texmf-dist/tex/latex/pgf-blur/tikzlibraryshadows.blur.code.tex  v1.02, 2012/12/09 (/usr/local/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshadows.code.tex
 File: tikzlibraryshadows.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )
-\pgfbs@fading@count=\count405
+\pgfbs@fading@count=\count406
 )) (./tesina.aux)
 \openout1 = `tesina.aux'.
 
@@ -1260,17 +1268,17 @@ File: lmxnpxexx.fd 2016/07/04 Fontinst v1.933 font definitions for LMX/npxexx.
 LaTeX Font Info:    ... okay on input line 10.
  (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count406
+\scratchcounter=\count407
 \scratchdimen=\dimen398
-\scratchbox=\box162
-\nofMPsegments=\count407
-\nofMParguments=\count408
-\everyMPshowfont=\toks69
-\MPscratchCnt=\count409
+\scratchbox=\box164
+\nofMPsegments=\count408
+\nofMParguments=\count409
+\everyMPshowfont=\toks71
+\MPscratchCnt=\count410
 \MPscratchDim=\dimen399
-\MPnumerator=\count410
-\makeMPintoPDFobject=\count411
-\everyMPtoPDFconversion=\toks70
+\MPnumerator=\count411
+\makeMPintoPDFobject=\count412
+\everyMPtoPDFconversion=\toks72
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
@@ -1322,7 +1330,7 @@ Package translations Info: no dictionary file `translations-basic-dictionary-ita
 Package pgfplots Warning: running in backwards compatibility mode (unsuitable tick labels; missing features). Consider writing \pgfplotsset{compat=1.18} into your preamble.
  on input line 10.
 
-\c@lstlisting=\count412
+\c@lstlisting=\count413
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 (/usr/local/texlive/2024/texmf-dist/tex/latex/pdflscape/pdflscape.sty
@@ -1490,10 +1498,10 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [4
 
 {/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
-<./img/RequisitiFunzionali.png, id=130, 363.55672pt x 274.73634pt>
+<./img/RequisitiFunzionali.png, id=126, 363.55672pt x 274.73634pt>
 File: ./img/RequisitiFunzionali.png Graphic file (type png)
 <use ./img/RequisitiFunzionali.png>
-Package pdftex.def Info: ./img/RequisitiFunzionali.png  used on input line 213.
+Package pdftex.def Info: ./img/RequisitiFunzionali.png  used on input line 217.
 (pdftex.def)             Requested size: 452.9679pt x 342.32541pt.
 
 Overfull \hbox (34.71422pt too wide) has occurred while \output is active
@@ -1536,10 +1544,10 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
  []
 
 [6 <./img/RequisitiFunzionali.png (PNG copy)>]
-<./img/RequisitiNonFunzionali.png, id=158, 404.381pt x 212.39656pt>
+<./img/RequisitiNonFunzionali.png, id=156, 404.381pt x 212.39656pt>
 File: ./img/RequisitiNonFunzionali.png Graphic file (type png)
 <use ./img/RequisitiNonFunzionali.png>
-Package pdftex.def Info: ./img/RequisitiNonFunzionali.png  used on input line 259.
+Package pdftex.def Info: ./img/RequisitiNonFunzionali.png  used on input line 263.
 (pdftex.def)             Requested size: 452.9679pt x 237.91815pt.
 
 Overfull \hbox (34.71422pt too wide) has occurred while \output is active
@@ -1562,6 +1570,26 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
  []
 
 [7 <./img/RequisitiNonFunzionali.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 274--275
+[]|\T1/cmr/bx/n/10 Priorità
+ []
+
+
+Underfull \hbox (badness 10000) in alignment at lines 272--276
+[] [] []
+ []
+
+
+Underfull \hbox (badness 1237) in paragraph at lines 318--318
+[]|\T1/cmr/m/n/10 RNF4: Re-cu-pe-ro Cre-den-zia-li tra-mi-te
+ []
+
+
+Underfull \hbox (badness 10000) in alignment at lines 276--328
+[] [] []
+ []
+
+
 Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [][]|  
  []
@@ -1584,12 +1612,6 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [8
 
 ]
-<./img/Attori.png, id=170, 537.00626pt x 589.20125pt>
-File: ./img/Attori.png Graphic file (type png)
-<use ./img/Attori.png>
-Package pdftex.def Info: ./img/Attori.png  used on input line 274.
-(pdftex.def)             Requested size: 452.9679pt x 496.99347pt.
-
 Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [][]|  
  []
@@ -1609,14 +1631,12 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
  [][]|
  []
 
-[9
-
- <./img/Attori.png>]
-<./img/GestioneUtente.png, id=177, 641.60313pt x 481.06442pt>
-File: ./img/GestioneUtente.png Graphic file (type png)
-<use ./img/GestioneUtente.png>
-Package pdftex.def Info: ./img/GestioneUtente.png  used on input line 284.
-(pdftex.def)             Requested size: 452.9679pt x 339.6276pt.
+[9]
+<./img/Attori.png, id=174, 537.00626pt x 589.20125pt>
+File: ./img/Attori.png Graphic file (type png)
+<use ./img/Attori.png>
+Package pdftex.def Info: ./img/Attori.png  used on input line 338.
+(pdftex.def)             Requested size: 452.9679pt x 496.99347pt.
 
 Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [][]|  
@@ -1639,6 +1659,34 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 
 [10
 
+ <./img/Attori.png>]
+<./img/GestioneUtente.png, id=182, 634.4313pt x 478.30603pt>
+File: ./img/GestioneUtente.png Graphic file (type png)
+<use ./img/GestioneUtente.png>
+Package pdftex.def Info: ./img/GestioneUtente.png  used on input line 348.
+(pdftex.def)             Requested size: 452.9679pt x 341.50453pt.
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[][]|  
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+[11
+
  <./img/GestioneUtente.png (PNG copy)>]
 Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [][]|  
@@ -1659,7 +1707,9 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
  [][]|
  []
 
-[11]
+[12
+
+]
 Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [][]|  
  []
@@ -1679,7 +1729,9 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
  [][]|
  []
 
-[12]
+[13
+
+]
 Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [][]|  
  []
@@ -1699,7 +1751,9 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
  [][]|
  []
 
-[13]
+[14
+
+]
 Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [][]|  
  []
@@ -1719,7 +1773,9 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
  [][]|
  []
 
-[14]
+[15
+
+]
 Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [][]|  
  []
@@ -1739,7 +1795,9 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
  [][]|
  []
 
-[15]
+[16
+
+]
 Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [][]|  
  []
@@ -1759,7 +1817,9 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
  [][]|
  []
 
-[16]
+[17
+
+]
 Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [][]|  
  []
@@ -1779,27 +1839,9 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
  [][]|
  []
 
-[17]
-Overfull \hbox (34.71422pt too wide) has occurred while \output is active
-[][]|  
- []
+[18
 
-
-Overfull \hbox (34.71422pt too wide) has occurred while \output is active
- [][]|
- []
-
-
-Overfull \hbox (34.71422pt too wide) has occurred while \output is active
-[]
- []
-
-
-Overfull \hbox (34.71422pt too wide) has occurred while \output is active
- [][]|
- []
-
-[18]
+]
 Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [][]|  
  []
@@ -1821,15 +1863,13 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 
 [19
 
-
-
-
-
-
-
-
-
 ]
+<./img/GestioneAssenza.png, id=318, 551.67938pt x 253.22084pt>
+File: ./img/GestioneAssenza.png Graphic file (type png)
+<use ./img/GestioneAssenza.png>
+Package pdftex.def Info: ./img/GestioneAssenza.png  used on input line 659.
+(pdftex.def)             Requested size: 452.9679pt x 207.91675pt.
+
 Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [][]|  
  []
@@ -1851,7 +1891,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 
 [20
 
-]
+ <./img/GestioneAssenza.png (PNG copy)>]
 Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [][]|  
  []
@@ -1939,6 +1979,624 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 
 [24
 
+]
+<./img/GestioneMezzo.png, id=384, 617.32924pt x 392.79573pt>
+File: ./img/GestioneMezzo.png Graphic file (type png)
+<use ./img/GestioneMezzo.png>
+Package pdftex.def Info: ./img/GestioneMezzo.png  used on input line 808.
+(pdftex.def)             Requested size: 452.9679pt x 288.2189pt.
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[][]|  
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+[25
+
+ <./img/GestioneMezzo.png (PNG copy)>]
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[][]|  
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+[26
+
+]
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[][]|  
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+[27
+
+]
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[][]|  
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+[28
+
+]
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[][]|  
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+[29
+
+]
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[][]|  
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+[30
+
+]
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[][]|  
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+[31
+
+]
+<./img/GestioneAttivita.png, id=474, 714.97649pt x 466.16908pt>
+File: ./img/GestioneAttivita.png Graphic file (type png)
+<use ./img/GestioneAttivita.png>
+Package pdftex.def Info: ./img/GestioneAttivita.png  used on input line 1031.
+(pdftex.def)             Requested size: 452.9679pt x 295.33832pt.
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[][]|  
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+[32
+
+ <./img/GestioneAttivita.png (PNG copy)>]
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[][]|  
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+[33
+
+]
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[][]|  
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+[34
+
+]
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[][]|  
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+[35
+
+]
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[][]|  
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+[36
+
+]
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[][]|  
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+[37
+
+]
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[][]|  
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+[38
+
+]
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[][]|  
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+[39
+
+]
+<./img/GestioneDocumento.png, id=586, 674.70389pt x 425.89648pt>
+File: ./img/GestioneDocumento.png Graphic file (type png)
+<use ./img/GestioneDocumento.png>
+Package pdftex.def Info: ./img/GestioneDocumento.png  used on input line 1293.
+(pdftex.def)             Requested size: 452.9679pt x 285.93404pt.
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[][]|  
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+[40
+
+ <./img/GestioneDocumento.png (PNG copy)>]
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[][]|  
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+[41
+
+]
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[][]|  
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+[42
+
+]
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[][]|  
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+[43
+
+]
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[][]|  
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+[44
+
+]
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[][]|  
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+[45
+
+]
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[][]|  
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+[46
+
+]
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[][]|  
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+[47
+
+]
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[][]|  
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+[48
+
+]
+<./img/MatriceMapping.png, id=697, 604.50844pt x 844.65562pt>
+File: ./img/MatriceMapping.png Graphic file (type png)
+<use ./img/MatriceMapping.png>
+Package pdftex.def Info: ./img/MatriceMapping.png  used on input line 1578.
+(pdftex.def)             Requested size: 452.9679pt x 632.91019pt.
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[][]|  
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+[49
+
+ <./img/MatriceMapping.png (PNG copy)>]
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[][]|  
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+[50
+
+]
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[][]|  
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+[51
+
 ] (./tesina.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
@@ -1951,18 +2609,18 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 69037 strings out of 474116
- 1717684 string characters out of 5743683
- 2441807 words of memory out of 5000000
- 90308 multiletter control sequences out of 15000+600000
+ 69428 strings out of 474116
+ 1722730 string characters out of 5743683
+ 2453094 words of memory out of 5000000
+ 90417 multiletter control sequences out of 15000+600000
  577648 words of font info for 80 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  91i,12n,120p,853b,1047s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfcc1000.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on tesina.pdf (26 pages, 832699 bytes).
+Output written on tesina.pdf (53 pages, 1129906 bytes).
 PDF statistics:
- 446 PDF objects out of 1000 (max. 8388607)
- 360 compressed objects within 4 object streams
- 180 named destinations out of 1000 (max. 500000)
- 270 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 874 PDF objects out of 1000 (max. 8388607)
+ 752 compressed objects within 8 object streams
+ 458 named destinations out of 1000 (max. 500000)
+ 287 words of extra memory for PDF output out of 10000 (max. 10000000)
 
