@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1757079792.24355 "/Users/davide/Documents/GitHub/GESTRI-Gestionale-Rifiuti-Industriali/Tesina - LaTeX/tesina.tex" "tesina.pdf" "tesina" 1757079795.44027 0
-  "/Users/davide/Documents/GitHub/GESTRI-Gestionale-Rifiuti-Industriali/Tesina - LaTeX/tesina.tex" 1757079789.99403 81485 6a95f1829662fcf56c7ccf445a5928e2 ""
+["pdflatex"] 1757079985.14113 "/Users/davide/Documents/GitHub/GESTRI-Gestionale-Rifiuti-Industriali/Tesina - LaTeX/tesina.tex" "tesina.pdf" "tesina" 1757079988.48888 0
+  "/Users/davide/Documents/GitHub/GESTRI-Gestionale-Rifiuti-Industriali/Tesina - LaTeX/tesina.tex" 1757079986.93185 81485 7e6831636bbf71e3f535b19cd7c776ab ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -348,9 +348,9 @@
   "img/RequisitiFunzionali.png" 1756938220.47871 22899 ffb66dd19f445263412e24c72b2026cc ""
   "img/RequisitiNonFunzionali.png" 1755893625.21548 15266 998b765d55c49f5375e1b6a7d233c6d3 ""
   "img/univpm_logo.png" 1755773557.14645 572038 2c65ef26c2d0ad88311d8e9b99461627 ""
-  "tesina.aux" 1757079795.27008 5274 bcc5c2aff92f8993f0e31151c231c77f "pdflatex"
-  "tesina.tex" 1757079789.99403 81485 6a95f1829662fcf56c7ccf445a5928e2 ""
-  "tesina.toc" 1757079795.27226 832 7ac8f52184ea730085ac972a17610f8f "pdflatex"
+  "tesina.aux" 1757079988.31722 5274 bcc5c2aff92f8993f0e31151c231c77f "pdflatex"
+  "tesina.tex" 1757079986.93185 81485 7e6831636bbf71e3f535b19cd7c776ab ""
+  "tesina.toc" 1757079988.3193 832 7ac8f52184ea730085ac972a17610f8f "pdflatex"
   (generated)
   "tesina.aux"
   "tesina.log"
