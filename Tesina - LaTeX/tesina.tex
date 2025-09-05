@@ -500,7 +500,6 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
 \end{enumerate} \\ \hline
 \textbf{Sequenza degli eventi principale} &
 \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item \texttt{Include} \textit{(TrovaUtente)} 
     \item Il sistema mostra i dati anagrafici  e le informazioni relative all’Utente
 \end{enumerate}\\ \hline
 \textbf{Postcondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
@@ -509,8 +508,8 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
 \textbf{Sequenza degli eventi alternativa} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt] 
     \item \texttt{If} Lo Staff richiede la visualizzazione
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item \texttt{Include} \textit{(TrovaUtente)} 
-        \item Il sistema mostra l’elenco di tutti gli Operatori registrati
+        \item \texttt{Extend} \textit{(TrovaUtente)} 
+        \item Il sistema mostra l’elenco degli Operatori registrati
         \item Lo Staff seleziona un Operatore dall’elenco
         \item Il sistema mostra i dati anagrafici completi e le informazioni aggiuntive (ruolo, turni, assenze, attività corrente collegata)
     \end{enumerate}
@@ -536,8 +535,12 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
 \textbf{Sequenza degli eventi principale} &
 \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
     \item Il caso d’uso inizia quando lo Staff seleziona l’Operatore da modificare
-    \item \texttt{Include} \textit{(VisualizzaUtente)}
     \item Lo Staff può modificare il ruolo dell’Operatore
+    \item \texttt{If} la modifica è confermata e i dati sono validi
+    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+        \item Il sistema aggiorna il ruolo dell’Operatore
+        \item \texttt{Include} \textit{VisualizzaUtente}
+    \end{enumerate}
 \end{enumerate}\\ \hline
 \textbf{Postcondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
     \item Il ruolo dell’Operatore è stato modificato
@@ -562,11 +565,12 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
 \end{enumerate} \\ \hline
 \textbf{Sequenza degli eventi principale} &
 \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item \texttt{Include} \textit{(VisualizzaUtente)} 
-    \item l’Utente modifica i dati desiderati
+    \item Il caso d'uso inizia quando l’Utente seleziona l'opzione di modifica del profilo
+    \item L'Utente modifica i dati desiderati
     \item \texttt{If} I dati inseriti sono validi
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Il sistema aggiorna i dati anagrafici con le modifiche
+        \item Il sistema aggiorna i dati modificati
+        \item \texttt{Include} \textit{(VisualizzaUtente)} 
     \end{enumerate}
     \item \texttt{Else}
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
@@ -577,20 +581,17 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
     \item I dati anagrafici dell’Utente vengono aggiornati nel sistema
     \end{enumerate} \\ \hline
 \textbf{Sequenza degli eventi alternativa} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt] 
-    \item \texttt{If} Lo Staff richiede la modifica
+    \item Lo Staff richiede la modifica
+    \item Il sistema mostra l’elenco di tutti gli Operatori registrati
+    \item Lo Staff seleziona l’Operatore da modificare dall’elenco
+    \item Lo Staff modifica i dati desiderati
+    \item \texttt{If} I dati inseriti sono validi
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item \texttt{Include} \textit{(VisualizzaUtente)} 
-        \item Il sistema mostra l’elenco di tutti gli Operatori registrati
-        \item Lo Staff seleziona l’Operatore da modificare dall’elenco
-        \item Lo Staff modifica i dati desiderati
-        \item \texttt{If} I dati inseriti sono validi
-        \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-            \item Il sistema aggiorna i dati anagrafici con le modifiche
-        \end{enumerate}
-        \item \texttt{Else}
-        \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-            \item Il sistema mostra un messaggio di errore e richiede una nuova modifica
-        \end{enumerate}
+        \item Il sistema aggiorna i dati modificati
+    \end{enumerate}
+    \item \texttt{Else}
+    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+        \item Il sistema mostra un messaggio di errore e richiede una nuova modifica
     \end{enumerate}
 \end{enumerate}\\ \hline
 \end{tabular}
@@ -612,7 +613,7 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
 \end{enumerate} \\ \hline
 \textbf{Sequenza degli eventi principale} &
 \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item \texttt{Include} \textit{(VisualizzaUtente)} 
+    \item Il caso d'uso inizia quando l’Utente seleziona l'opzione di eliminazione del profilo
     \item \texttt{If} L’Utente conferma l’operazione
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
         \item Il sistema elimina l’Utente e mostra un messaggio di conferma
@@ -629,20 +630,15 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
     \end{enumerate}
 \end{enumerate} \\ \hline
 \textbf{Sequenza degli eventi alternativa} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt] 
-    \item \texttt{If} Lo Staff richiede l'eliminazione
+    \item Il caso d'uso inizia quando lo Staff seleziona l'opzione di eliminazione del profilo dall'elenco
+    \item \texttt{If} Lo Staff conferma l’operazione
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item \texttt{Include} \textit{(VisualizzaUtente)} 
-        \item Il sistema mostra l’elenco di tutti gli Operatori registrati
-        \item Lo Staff seleziona l’Operatore da eliminare dall’elenco
-        \item \texttt{If} Lo Staff conferma l’operazione
-        \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-            \item Il sistema elimina l’Utente e mostra un messaggio di conferma
-        \end{enumerate}
-        \item \texttt{Else}
-        \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-            \item Il sistema annulla l’operazione e non apporta modifiche
-        \end{enumerate}
+        \item Il sistema elimina l’Utente e mostra un messaggio di conferma
     \end{enumerate}
+    \item \texttt{Else}
+    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+        \item Il sistema annulla l’operazione e non apporta modifiche
+\end{enumerate}
 \end{enumerate}\\ \hline
 \end{tabular}
 \end{table}
