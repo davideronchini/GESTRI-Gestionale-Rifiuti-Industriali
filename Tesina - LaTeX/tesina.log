@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.6)  5 SEP 2025 15:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.6)  6 SEP 2025 18:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1867,7 +1867,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 <./img/GestioneAssenza.png, id=321, 551.67938pt x 253.22084pt>
 File: ./img/GestioneAssenza.png Graphic file (type png)
 <use ./img/GestioneAssenza.png>
-Package pdftex.def Info: ./img/GestioneAssenza.png  used on input line 655.
+Package pdftex.def Info: ./img/GestioneAssenza.png  used on input line 654.
 (pdftex.def)             Requested size: 452.9679pt x 207.91675pt.
 
 Overfull \hbox (34.71422pt too wide) has occurred while \output is active
@@ -1980,10 +1980,10 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [24
 
 ]
-<./img/GestioneMezzo.png, id=387, 617.32924pt x 392.79573pt>
+<./img/GestioneMezzo.png, id=386, 617.32924pt x 392.79573pt>
 File: ./img/GestioneMezzo.png Graphic file (type png)
 <use ./img/GestioneMezzo.png>
-Package pdftex.def Info: ./img/GestioneMezzo.png  used on input line 804.
+Package pdftex.def Info: ./img/GestioneMezzo.png  used on input line 802.
 (pdftex.def)             Requested size: 452.9679pt x 288.2189pt.
 
 Overfull \hbox (34.71422pt too wide) has occurred while \output is active
@@ -2140,10 +2140,10 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [31
 
 ]
-<./img/GestioneAttivita.png, id=477, 714.97649pt x 466.16908pt>
+<./img/GestioneAttivita.png, id=482, 714.97649pt x 466.16908pt>
 File: ./img/GestioneAttivita.png Graphic file (type png)
 <use ./img/GestioneAttivita.png>
-Package pdftex.def Info: ./img/GestioneAttivita.png  used on input line 1027.
+Package pdftex.def Info: ./img/GestioneAttivita.png  used on input line 1034.
 (pdftex.def)             Requested size: 452.9679pt x 295.33832pt.
 
 Overfull \hbox (34.71422pt too wide) has occurred while \output is active
@@ -2322,10 +2322,10 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [39
 
 ]
-<./img/GestioneDocumento.png, id=589, 674.70389pt x 425.89648pt>
+<./img/GestioneDocumento.png, id=597, 674.70389pt x 425.89648pt>
 File: ./img/GestioneDocumento.png Graphic file (type png)
 <use ./img/GestioneDocumento.png>
-Package pdftex.def Info: ./img/GestioneDocumento.png  used on input line 1289.
+Package pdftex.def Info: ./img/GestioneDocumento.png  used on input line 1299.
 (pdftex.def)             Requested size: 452.9679pt x 285.93404pt.
 
 Overfull \hbox (34.71422pt too wide) has occurred while \output is active
@@ -2526,10 +2526,10 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [48
 
 ]
-<./img/MatriceMapping.png, id=700, 604.50844pt x 844.65562pt>
+<./img/MatriceMapping.png, id=709, 604.50844pt x 844.65562pt>
 File: ./img/MatriceMapping.png Graphic file (type png)
 <use ./img/MatriceMapping.png>
-Package pdftex.def Info: ./img/MatriceMapping.png  used on input line 1574.
+Package pdftex.def Info: ./img/MatriceMapping.png  used on input line 1578.
 (pdftex.def)             Requested size: 452.9679pt x 632.91019pt.
 
 Overfull \hbox (34.71422pt too wide) has occurred while \output is active
@@ -2554,10 +2554,10 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [49
 
  <./img/MatriceMapping.png (PNG copy)>]
-<./img/DiagrammaPackage.png, id=706, 352.52313pt x 238.87718pt>
+<./img/DiagrammaPackage.png, id=715, 352.52313pt x 238.87718pt>
 File: ./img/DiagrammaPackage.png Graphic file (type png)
 <use ./img/DiagrammaPackage.png>
-Package pdftex.def Info: ./img/DiagrammaPackage.png  used on input line 1584.
+Package pdftex.def Info: ./img/DiagrammaPackage.png  used on input line 1588.
 (pdftex.def)             Requested size: 452.9679pt x 306.95728pt.
 
 Overfull \hbox (34.71422pt too wide) has occurred while \output is active
@@ -2615,18 +2615,18 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 69443 strings out of 474116
- 1723126 string characters out of 5743683
+ 69452 strings out of 474116
+ 1723198 string characters out of 5743683
  2453100 words of memory out of 5000000
  90431 multiletter control sequences out of 15000+600000
  577648 words of font info for 80 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  91i,12n,120p,853b,1047s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfcc1000.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on tesina.pdf (53 pages, 1148674 bytes).
+Output written on tesina.pdf (53 pages, 1150180 bytes).
 PDF statistics:
- 885 PDF objects out of 1000 (max. 8388607)
- 761 compressed objects within 8 object streams
- 459 named destinations out of 1000 (max. 500000)
+ 895 PDF objects out of 1000 (max. 8388607)
+ 771 compressed objects within 8 object streams
+ 468 named destinations out of 1000 (max. 500000)
  308 words of extra memory for PDF output out of 10000 (max. 10000000)
 

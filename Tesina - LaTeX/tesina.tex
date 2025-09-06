@@ -450,6 +450,39 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
 \end{tabular}
 \end{table}
 
+\clearpage
+\begin{table}[H]
+\vspace*{-0cm}
+\renewcommand{\arraystretch}{1.9}
+\begin{tabular}{|p{3.9cm}|p{9.9cm}|}
+\hline
+\multicolumn{2}{|c|}{\textbf{Caso d’uso: VisualizzaUtente}} \\ \hline
+\textbf{ID} & 4 \\ \hline
+\textbf{Breve descrizione} & L’Utente visualizza i propri dati anagrafici e le informazioni \\ \hline
+\textbf{Attori primari} & Utente \\ \hline
+\textbf{Attori secondari} & Nessuno \\ \hline
+\textbf{Precondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item L’Utente è stato autenticato dal sistema
+\end{enumerate} \\ \hline
+\textbf{Sequenza degli eventi principale} &
+\begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item Il caso d'uso inizia quando l'Utente seleziona l'opzione di visualizzazione del proprio profilo
+    \item Il sistema mostra i dati anagrafici  e le informazioni relative all’Utente
+\end{enumerate}\\ \hline
+\textbf{Postcondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item All’Utente sono mostrati i propri dati
+    \end{enumerate} \\ \hline
+\textbf{Sequenza degli eventi alternativa} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt] 
+    \item \texttt{If} Lo Staff richiede la visualizzazione
+    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+        \item \texttt{Extend} \textit{TrovaUtente} 
+        \item Il sistema mostra l’elenco degli Operatori registrati
+        \item Lo Staff seleziona un Operatore dall’elenco
+        \item Il sistema mostra i dati anagrafici completi e le informazioni aggiuntive (ruolo, turni, assenze, attività corrente collegata)
+    \end{enumerate}
+\end{enumerate}\\ \hline
+\end{tabular}
+\end{table}
 
 \clearpage
 \begin{table}[H]
@@ -458,8 +491,8 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
 \begin{tabular}{|p{3.9cm}|p{9.9cm}|}
 \hline
 \multicolumn{2}{|c|}{\textbf{Caso d’uso: TrovaUtente}} \\ \hline
-\textbf{ID} & 4 \\ \hline
-\textbf{Breve descrizione} & Il sistema individua l’ Utente in base ai criteri di ricerca specificati dallo Staff e lo mostra allo Staff \\ \hline
+\textbf{ID} & 5 \\ \hline
+\textbf{Breve descrizione} & Lo Staff esegue la ricerca di uno o più Utenti \\ \hline
 \textbf{Attori primari} & Staff \\ \hline
 \textbf{Attori secondari} & Nessuno \\ \hline
 \textbf{Precondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
@@ -467,8 +500,7 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
 \end{enumerate} \\ \hline
 \textbf{Sequenza degli eventi principale} &
 \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item Il caso d’uso inizia quando lo Staff seleziona “Trova Utente”
-    \item Lo Staff inserisce i criteri di ricerca
+    \item Il caso d’uso inizia quando lo Staff inserisce il criterio di ricerca nella barra dedicata (es. nome, cognome, email, ecc.)
     \item Il sistema ricerca l’Utente che soddisfa i criteri desiderati dallo Staff
     \item \texttt{If} Il sistema trova uno o più utenti
     \begin{enumerate}[label=\arabic{enumi}.\arabic{enumii}.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
@@ -481,39 +513,6 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
 \end{enumerate}\\ \hline
 \textbf{Postcondizioni} & Nessuna \\ \hline
 \textbf{Sequenza degli eventi alternativa} & Nessuna \\ \hline
-\end{tabular}
-\end{table}
-
-\clearpage
-\begin{table}[H]
-\vspace*{-0cm}
-\renewcommand{\arraystretch}{1.9}
-\begin{tabular}{|p{3.9cm}|p{9.9cm}|}
-\hline
-\multicolumn{2}{|c|}{\textbf{Caso d’uso: VisualizzaUtente}} \\ \hline
-\textbf{ID} & 5 \\ \hline
-\textbf{Breve descrizione} & L’Utente visualizza i propri dati anagrafici e le informazioni \\ \hline
-\textbf{Attori primari} & Utente \\ \hline
-\textbf{Attori secondari} & Nessuno \\ \hline
-\textbf{Precondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item L’Utente è stato autenticato dal sistema
-\end{enumerate} \\ \hline
-\textbf{Sequenza degli eventi principale} &
-\begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item Il sistema mostra i dati anagrafici  e le informazioni relative all’Utente
-\end{enumerate}\\ \hline
-\textbf{Postcondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item All’Utente sono mostrati i propri dati
-    \end{enumerate} \\ \hline
-\textbf{Sequenza degli eventi alternativa} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt] 
-    \item \texttt{If} Lo Staff richiede la visualizzazione
-    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item \texttt{Extend} \textit{(TrovaUtente)} 
-        \item Il sistema mostra l’elenco degli Operatori registrati
-        \item Lo Staff seleziona un Operatore dall’elenco
-        \item Il sistema mostra i dati anagrafici completi e le informazioni aggiuntive (ruolo, turni, assenze, attività corrente collegata)
-    \end{enumerate}
-\end{enumerate}\\ \hline
 \end{tabular}
 \end{table}
 
@@ -663,7 +662,7 @@ La sottosezione descrive i casi d'uso relativi alla gestione delle assenze del p
 \hline
 \multicolumn{2}{|c|}{\textbf{Caso d’uso: CreaAssenza}} \\ \hline
 \textbf{ID} & 9 \\ \hline
-\textbf{Breve descrizione} & Lo Staff crea una nuova assenza (ferie, malattia, permesso) per un Operatore. \\ \hline
+\textbf{Breve descrizione} & Lo Staff crea una nuova assenza (ferie, malattia, permesso) per un Operatore \\ \hline
 \textbf{Attori primari} & Staff \\ \hline
 \textbf{Attori secondari} & Nessuno \\ \hline
 \textbf{Precondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
@@ -687,7 +686,7 @@ La sottosezione descrive i casi d'uso relativi alla gestione delle assenze del p
 \textbf{Postcondizioni} & \begin{enumerate}[label=\arabic*.,leftmargin=14pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
         \item L’assenza è registrata nel sistema.
 \end{enumerate} \\ \hline
-\textbf{Sequenza alternativa} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+\textbf{Sequenza degli eventi alternativa} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
     \item \texttt{If} Lo Staff non conferma l’operazione
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
         \item Il sistema annulla l’operazione e non apporta modifiche.
@@ -704,7 +703,7 @@ La sottosezione descrive i casi d'uso relativi alla gestione delle assenze del p
 \hline
 \multicolumn{2}{|c|}{\textbf{Caso d’uso: VisualizzaAssenza}} \\ \hline
 \textbf{ID} & 10 \\ \hline
-\textbf{Breve descrizione} & L’Operatore visualizza le assenze registrate. \\ \hline
+\textbf{Breve descrizione} & L’Operatore visualizza le assenze registrate \\ \hline
 \textbf{Attori primari} & Operatore \\ \hline
 \textbf{Attori secondari} & Nessuno \\ \hline
 \textbf{Precondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
@@ -712,9 +711,7 @@ La sottosezione descrive i casi d'uso relativi alla gestione delle assenze del p
     \item Esistono assenze registrate.
 \end{enumerate} \\ \hline
 \textbf{Sequenza degli eventi principale} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item Il caso d’uso inizia quando l’Operatore accede alla sezione “Assenze”.
-    \item Il sistema mostra tutte le assenze registrate.
-    \item L’operatore seleziona un’assenza specifica.
+    \item Il caso d’uso inizia quando l’Operatore seleziona l'assenza da visualizzare
     \item Il sistema mostra i dettagli dell’assenza selezionata
 \end{enumerate} \\ \hline
 \textbf{Postcondizioni} & \begin{enumerate}[label=\arabic*.,leftmargin=14pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
@@ -732,7 +729,7 @@ La sottosezione descrive i casi d'uso relativi alla gestione delle assenze del p
 \hline
 \multicolumn{2}{|c|}{\textbf{Caso d’uso: ModificaAssenza}} \\ \hline
 \textbf{ID} & 11 \\ \hline
-\textbf{Breve descrizione} & Lo Staff modifica i dati di un’assenza esistente. \\ \hline
+\textbf{Breve descrizione} & Lo Staff modifica i dati di un’assenza esistente \\ \hline
 \textbf{Attori primari} & Staff \\ \hline
 \textbf{Attori secondari} & Nessuno \\ \hline
 \textbf{Precondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
@@ -740,11 +737,12 @@ La sottosezione descrive i casi d'uso relativi alla gestione delle assenze del p
     \item L’assenza esiste nel sistema.
 \end{enumerate} \\ \hline
 \textbf{Sequenza degli eventi principale} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item \texttt{Include} \textit{(VisualizzaAssenza)}.
+    \item Il caso d’uso inizia quando lo Staff seleziona l’assenza da modificare.
     \item Lo Staff aggiorna i dati.
     \item \texttt{If} I dati modificati sono validi
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Il sistema aggiorna l’assenza.
+    \item Il sistema aggiorna l’assenza.
+    \item \texttt{Include} \textit{(VisualizzaAssenza)}
     \end{enumerate}
     \item \texttt{Else}
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
@@ -754,7 +752,7 @@ La sottosezione descrive i casi d'uso relativi alla gestione delle assenze del p
 \textbf{Postcondizioni} & \begin{enumerate}[label=\arabic*.,leftmargin=14pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
         \item L’assenza è aggiornata nel sistema.
 \end{enumerate} \\ \hline
-\textbf{Sequenza alternativa} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+\textbf{Sequenza degli eventi alternativa} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
     \item \texttt{If} Lo Staff non conferma l’operazione
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
         \item Il sistema annulla l’operazione e non apporta modifiche.
@@ -779,13 +777,13 @@ La sottosezione descrive i casi d'uso relativi alla gestione delle assenze del p
     \item L’assenza esiste nel sistema.
 \end{enumerate} \\ \hline
 \textbf{Sequenza degli eventi principale} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item \texttt{Include} \textit{(VisualizzaAssenza)}.
-    \item Lo Staff seleziona l’assenza da eliminare.
+    \item Il caso d'uso inizia quando lo Staff seleziona l'opzione di eliminazione dell'assenza
+    \item Il sistema elimina l'assenza e mostra un messaggio di conferma
 \end{enumerate} \\ \hline
 \textbf{Postcondizioni} & \begin{enumerate}[label=\arabic*.,leftmargin=14pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
         \item L’assenza è eliminata.
 \end{enumerate} \\ \hline
-\textbf{Sequenza alternativa} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+\textbf{Sequenza degli eventi alternativa} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
     \item \texttt{If} Lo Staff non conferma l’operazione
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
         \item Il sistema annulla l’operazione e non apporta modifiche.
@@ -812,29 +810,29 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
 \hline
 \multicolumn{2}{|c|}{\textbf{Caso d’uso: CreaMezzo}} \\ \hline
 	\textbf{ID} & 13 \\ \hline
-	\textbf{Breve descrizione} & Lo Staff crea un nuovo mezzo nel sistema. \\ \hline
+	\textbf{Breve descrizione} & Lo Staff crea un nuovo mezzo nel sistema \\ \hline
 	\textbf{Attori primari} & Staff \\ \hline
 	\textbf{Attori secondari} & Nessuno \\ \hline
 	\textbf{Precondizioni} & \begin{enumerate}[label=\arabic*.,leftmargin=14pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Lo Staff è stato autenticato dal sistema.
+        \item Lo Staff è stato autenticato dal sistema
     \end{enumerate} \\ \hline
 	\textbf{Sequenza degli eventi principale} &
 \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item Il caso d’uso inizia quando lo Staff seleziona “Nuovo Mezzo”.
-    \item Il sistema richiede l’inserimento dei dati (targa, modello, anno, categoria, stato).
-    \item Lo Staff inserisce i dati.
+    \item Il caso d’uso inizia quando lo Staff seleziona l'opzione di creazione di un nuovo mezzo
+    \item Il sistema richiede l’inserimento dei dati (targa, modello, anno, categoria, stato)
+    \item Lo Staff inserisce i dati
     \item \texttt{If} i dati inseriti sono validi e non duplicati
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Il sistema registra il nuovo mezzo.
-        \item Il sistema mostra un messaggio di conferma.
+        \item Il sistema registra il nuovo mezzo
+        \item Il sistema mostra un messaggio di conferma
     \end{enumerate}
     \item \texttt{Else}
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Il sistema mostra un messaggio di errore e richiede la correzione dei dati.
+        \item Il sistema mostra un messaggio di errore e richiede la correzione dei dati
     \end{enumerate}
 \end{enumerate}\\ \hline
     	\textbf{Postcondizioni} & \begin{enumerate}[label=\arabic*.,leftmargin=14pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Il nuovo mezzo è registrato nel sistema.
+        \item Il nuovo mezzo è registrato nel sistema
         \end{enumerate} \\ \hline
     	\textbf{Sequenza degli eventi alternativa} &
 \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
@@ -846,6 +844,40 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
 \end{tabular}
 \end{table}
 
+
+\clearpage
+\begin{table}[H]
+\vspace*{-0cm}
+\renewcommand{\arraystretch}{1.9}
+\begin{tabular}{|p{3.9cm}|p{9.9cm}|}
+\hline
+\multicolumn{2}{|c|}{\textbf{Caso d’uso: VisualizzaMezzo}} \\ \hline
+	\textbf{ID} & 14 \\ \hline
+	\textbf{Breve descrizione} & L'Operatore visualizza i dati di un mezzo. \\ \hline
+	\textbf{Attori primari} & Operatore \\ \hline
+	\textbf{Attori secondari} & Nessuno \\ \hline
+	\textbf{Precondizioni} & \begin{enumerate}[label=\arabic*.,leftmargin=14pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+        \item L’Operatore è stato autenticato dal sistema
+        \item Il mezzo da visualizzare esiste nel sistema.
+    \end{enumerate} \\ \hline
+    	\textbf{Sequenza degli eventi principale} & \begin{enumerate}[label=\arabic*.,leftmargin=14pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+        \item Il caso d'uso inizia quando l'Operatore seleziona il mezzo da visualizzare
+        \item Il sistema mostra i dati del mezzo (targa, modello, stato, ecc.)
+    \end{enumerate}\\ \hline
+    	\textbf{Postcondizioni} & \begin{enumerate}[label=\arabic*.,leftmargin=14pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+        \item I dati del mezzo selezionato vengono visualizzati.
+    \end{enumerate}\\ \hline
+    	\textbf{Sequenza degli eventi alternativa} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+        \item \texttt{If} Lo Staff richiede la visualizzazione
+        \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+            \item \texttt{Extend} \textit{TrovaMezzo}
+            \item Lo Staff seleziona il mezzo da visualizzare
+            \item Il sistema mostra i dati del mezzo (targa, modello, stato, ecc.)
+        \end{enumerate}
+    \end{enumerate} \\ \hline
+\end{tabular}
+\end{table}
+
 \clearpage
 \begin{table}[H]
 \vspace*{-0cm}
@@ -853,17 +885,17 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
 \begin{tabular}{|p{3.9cm}|p{9.9cm}|}
 \hline
 \multicolumn{2}{|c|}{\textbf{Caso d’uso: TrovaMezzo}} \\ \hline
-	\textbf{ID} & 14 \\ \hline
-	\textbf{Breve descrizione} & Lo Staff ricerca un mezzo tramite criteri (targa, modello, stato, ecc.). \\ \hline
+        extbf{ID} & 15 \\ \hline
+        extbf{Breve descrizione} & Lo Staff esegue la ricerca di uno o più mezzi \\ \hline
 	\textbf{Attori primari} & Staff \\ \hline
 	\textbf{Attori secondari} & Nessuno \\ \hline
 	\textbf{Precondizioni} & \begin{enumerate}[label=\arabic*.,leftmargin=14pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Lo Staff è stato autenticato dal sistema.
+        \item Lo Staff è stato autenticato dal sistema
     \end{enumerate} \\ \hline
 	\textbf{Sequenza degli eventi principale} & 
 \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item Il caso d’uso inizia quando lo Staff inserisce un criterio di ricerca nella barra dedicata. \newline 
-    \texttt{Extend} \textit{FiltraMezzo}
+    \item Il caso d’uso inizia quando lo Staff inserisce il singolo criterio di ricerca nella barra dedicata (es. nome, targa)
+    \item \texttt{Extend} \textit{FiltraMezzo}
     \item \texttt{While} il criterio di ricerca non è vuoto
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
         \item Il sistema trova i mezzi corrispondenti.
@@ -892,8 +924,8 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
 \begin{tabular}{|p{3.9cm}|p{9.9cm}|}
 \hline
 \multicolumn{2}{|c|}{\textbf{Caso d’uso: FiltraMezzo}} \\ \hline
-	\textbf{ID} & 15 \\ \hline
-	\textbf{Breve descrizione} & Lo Staff filtra i mezzi in base a criteri avanzati (targa, modello, stato, ecc.). \\ \hline
+	\textbf{ID} & 16 \\ \hline
+	\textbf{Breve descrizione} & Lo Staff filtra i mezzi in base a criteri avanzati (modello, stato, ecc.) \\ \hline
 	\textbf{Attori primari} & Staff \\ \hline
 	\textbf{Attori secondari} & Nessuno \\ \hline
 	\textbf{Precondizioni} & \begin{enumerate}[label=\arabic*.,leftmargin=14pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
@@ -901,45 +933,20 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
     \end{enumerate} \\ \hline
 	\textbf{Sequenza degli eventi principale} & 
 \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item \texttt{Include} \textit{(TrovaMezzo)}.\item Lo Staff applica uno o più filtri.
+    \item Il caso d'uso inizia quando lo Staff applica uno o più filtri durante l'azione di ricerca del mezzo (es. modello, stato, ecc.)
     \item \texttt{If} esistono mezzi che rispettano i filtri
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Il sistema mostra l’elenco dei mezzi filtrati.
+        \item Il sistema mostra l’elenco dei mezzi filtrati
     \end{enumerate}
     \item \texttt{Else}
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Il sistema mostra “Nessun mezzo corrisponde ai criteri di filtro”.
+        \item Il sistema mostra “Nessun mezzo corrisponde ai criteri di filtro”
     \end{enumerate}
 \end{enumerate}\\ \hline
     	\textbf{Postcondizioni} & \begin{enumerate}[label=\arabic*.,leftmargin=14pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Lo Staff visualizza l’elenco dei mezzi filtrati.
+        \item Lo Staff visualizza l’elenco dei mezzi filtrati
         \end{enumerate} \\ \hline
-    	\textbf{Sequenza degli eventi alternativa} & Nessuna. \\ \hline
-\end{tabular}
-\end{table}
-
-\clearpage
-\begin{table}[H]
-\vspace*{-0cm}
-\renewcommand{\arraystretch}{1.9}
-\begin{tabular}{|p{3.9cm}|p{9.9cm}|}
-\hline
-\multicolumn{2}{|c|}{\textbf{Caso d’uso: VisualizzaMezzo}} \\ \hline
-	\textbf{ID} & 16 \\ \hline
-	\textbf{Breve descrizione} & Lo Staff visualizza i dati di un mezzo. \\ \hline
-	\textbf{Attori primari} & Operatore \\ \hline
-	\textbf{Attori secondari} & Nessuno \\ \hline
-	\textbf{Precondizioni} & \begin{enumerate}[label=\arabic*.,leftmargin=14pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item L’Operatore è stato autenticato dal sistema. Il mezzo da visualizzare esiste nel sistema.
-    \end{enumerate} \\ \hline
-	\textbf{Sequenza degli eventi principale} & \begin{enumerate}[label=\arabic*.,leftmargin=14pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item \texttt{Include} \textit{(TrovaMezzo)}. 
-        \item L’Operatore seleziona un mezzo dall’elenco. Il sistema mostra i dati del mezzo (targa, modello, stato, ecc.).
-    \end{enumerate}\\ \hline
-	\textbf{Postcondizioni} & \begin{enumerate}[label=\arabic*.,leftmargin=14pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item I dati del mezzo selezionato vengono visualizzati.
-    \end{enumerate}\\ \hline
-	\textbf{Sequenza degli eventi alternativa} & Nessuna \\ \hline
+    	\textbf{Sequenza degli eventi alternativa} & Nessuna \\ \hline
 \end{tabular}
 \end{table}
 
@@ -951,33 +958,35 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
 \hline
 \multicolumn{2}{|c|}{\textbf{Caso d’uso: ModificaMezzo}} \\ \hline
 	\textbf{ID} & 17 \\ \hline
-	\textbf{Breve descrizione} & Lo Staff modifica i dati di un mezzo esistente. \\ \hline
+	\textbf{Breve descrizione} & Lo Staff modifica i dati di un mezzo esistente \\ \hline
 	\textbf{Attori primari} & Staff \\ \hline
 	\textbf{Attori secondari} & Nessuno \\ \hline
 	\textbf{Precondizioni} & \begin{enumerate}[label=\arabic*.,leftmargin=14pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Lo Staff è stato autenticato dal sistema. Il mezzo da modificare esiste nel sistema.
+        \item Lo Staff è stato autenticato dal sistema
+        \item Il mezzo da modificare esiste nel sistema
     \end{enumerate} \\ \hline
 	\textbf{Sequenza degli eventi principale} & 
 \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item \texttt{Include} \textit{(VisualizzaMezzo)}.
-    \item Lo Staff modifica i dati del mezzo.
+    \item Il caso d'uso inizia quando lo Staff seleziona il mezzo da modificare
+    \item Lo Staff modifica i dati del mezzo
     \item \texttt{If} i dati inseriti sono validi
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Il sistema aggiorna i dati del mezzo.
+        \item Il sistema aggiorna i dati del mezzo
+        \item \texttt{Include} \textit{(VisualizzaMezzo)}
     \end{enumerate}
     \item \texttt{Else}
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Il sistema mostra un messaggio di errore e richiede una nuova modifica.
+        \item Il sistema mostra un messaggio di errore e richiede una nuova modifica
     \end{enumerate}
 \end{enumerate}\\ \hline
     	\textbf{Postcondizioni} & \begin{enumerate}[label=\arabic*.,leftmargin=14pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item I dati del mezzo risultano aggiornati nel sistema.
+        \item Il mezzo è aggiornato nel sistema
         \end{enumerate} \\ \hline
     	\textbf{Sequenza degli eventi alternativa} &
 \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
     \item \texttt{If} lo Staff non conferma l’operazione
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Il sistema annulla l’operazione e non apporta modifiche.
+        \item Il sistema annulla l’operazione e non apporta modifiche
     \end{enumerate}
 \end{enumerate} \\ \hline
 \end{tabular}
@@ -991,29 +1000,27 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
 \hline
 \multicolumn{2}{|c|}{\textbf{Caso d’uso: EliminaMezzo}} \\ \hline
 	\textbf{ID} & 18 \\ \hline
-	\textbf{Breve descrizione} & Lo Staff elimina un mezzo dal sistema. \\ \hline
+	\textbf{Breve descrizione} & Lo Staff elimina un mezzo dal sistema \\ \hline
 	\textbf{Attori primari} & Staff \\ \hline
 	\textbf{Attori secondari} & Nessuno \\ \hline
 	\textbf{Precondizioni} & \begin{enumerate}[label=\arabic*.,leftmargin=14pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Lo Staff è stato autenticato dal sistema. Il mezzo da eliminare esiste nel sistema.
+        \item Lo Staff è stato autenticato dal sistema
+        \item Il mezzo da eliminare esiste nel sistema
     \end{enumerate} \\ \hline
 	\textbf{Sequenza degli eventi principale} & 
 \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item \texttt{Include} \textit{(VisualizzaMezzo)}.
-    \item Lo Staff seleziona l’opzione di eliminazione.
-    \item \texttt{If} lo Staff conferma l’eliminazione
-    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Il sistema elimina il mezzo e mostra un messaggio di conferma.
-    \end{enumerate}
-    \item \texttt{Else}
-    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Il sistema annulla l’operazione senza modifiche.
-    \end{enumerate}
+    \item Il caso d'uso inizia quando lo Staff seleziona l’opzione di eliminazione del mezzo
+    \item Il sistema elimina il mezzo e mostra un messaggio di conferma
 \end{enumerate}\\ \hline
     	\textbf{Postcondizioni} & \begin{enumerate}[label=\arabic*.,leftmargin=14pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
         \item Il mezzo selezionato viene rimosso dal sistema.
         \end{enumerate} \\ \hline
-    	\textbf{Sequenza degli eventi alternativa} & Nessuna. \\ \hline
+    	\textbf{Sequenza degli eventi alternativa} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item \texttt{If} Lo Staff non conferma l’operazione
+    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+        \item Il sistema annulla l’operazione e non apporta modifiche.
+    \end{enumerate}
+\end{enumerate} \\ \hline
 \end{tabular}
 \end{table}
 
@@ -1036,35 +1043,35 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
 \hline
 \multicolumn{2}{|c|}{\textbf{Caso d’uso: CreaAttivita}} \\ \hline
 	\textbf{ID} & 19 \\ \hline
-	\textbf{Breve descrizione} & Lo Staff crea una nuova attività di gestione dei rifiuti. \\ \hline
-	\textbf{Attori primari} & Staff \\ \hline
+	\textbf{Breve descrizione} & Il Cliente o lo Staff crea una nuova attività di gestione dei rifiuti \\ \hline
+	\textbf{Attori primari} & Cliente, Staff \\ \hline
 	\textbf{Attori secondari} & Nessuno \\ \hline
 	\textbf{Precondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item Lo Staff è autenticato.
+    \item Il Cliente o lo Staff è autenticato
 \end{enumerate} \\ \hline
 	\textbf{Sequenza degli eventi principale} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item Il caso d’uso inizia quando Staff seleziona “Nuova Attività”.
-    \item Il sistema richiede i dati dell’attività.
-    \item Lo Staff inserisce i dati.
+    \item Il caso d’uso inizia quando il Cliente o lo Staff seleziona l'opzione di creazione di una nuova attività
+    \item Il sistema richiede i dati dell’attività
+    \item Il Cliente o lo Staff inserisce i dati
     \item \texttt{Extend} \textit{AssegnaOperatore}
     \item \texttt{Extend} \textit{AssegnaMezzo}
     \item \texttt{If} i dati sono validi
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Il sistema registra la nuova attività.
-        \item Il sistema mostra un messaggio di conferma.
+        \item Il sistema registra la nuova attività
+        \item Il sistema mostra un messaggio di conferma
     \end{enumerate}
     \item \texttt{Else}
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Il sistema mostra un errore e richiede la correzione.
+        \item Il sistema mostra un errore e richiede la correzione
     \end{enumerate}
 \end{enumerate} \\ \hline
 	\textbf{Postcondizioni} & \begin{enumerate}[label=\arabic*.,leftmargin=14pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item L’attività è creata nel sistema.
+        \item L’attività è creata nel sistema
     \end{enumerate} \\ \hline
-	\textbf{Sequenza alternativa} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item \texttt{If} lo Staff non conferma l’operazione
+	\textbf{Sequenza degli eventi alternativa} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item \texttt{If} l’operazione non è confermata
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Il sistema annulla l’operazione e non apporta modifiche.
+        \item Il sistema annulla l’operazione e non apporta modifiche
     \end{enumerate}
 \end{enumerate} \\ \hline
 \end{tabular}
@@ -1078,33 +1085,33 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
 \hline
 \multicolumn{2}{|c|}{\textbf{Caso d’uso: AssegnaOperatore}} \\ \hline
 	\textbf{ID} & 20 \\ \hline
-	\textbf{Breve descrizione} & Lo Staff assegna un Operatore ad un’attività. \\ \hline
+	\textbf{Breve descrizione} & Lo Staff assegna un Operatore ad un’attività \\ \hline
 	\textbf{Attori primari} & Staff \\ \hline
 	\textbf{Attori secondari} & Nessuno \\ \hline
 	\textbf{Precondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item L’attività esiste.
-    \item L’operatore è registrato.
+    \item L’attività esiste
+    \item L’operatore è registrato
 \end{enumerate} \\ \hline
 	\textbf{Sequenza degli eventi principale} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item \texttt{Include} \textit{(TrovaUtente)}.
-    \item Lo Staff seleziona un operatore.
-    \item Lo Staff assegna l’Operatore all’attività.
+    \item Il caso d'uso inizia quando lo Staff seleziona l'opzione di assegnazione di un operatore all'attività
+    \item \texttt{Extend} \textit{TrovaUtente}
+    \item Lo Staff seleziona un operatore da assegnare all'attività
     \item \texttt{If} L’Operatore è disponibile
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Il sistema registra l’assegnazione.
+        \item Il sistema registra l’assegnazione
     \end{enumerate}
     \item \texttt{Else}
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Il sistema mostra il messaggio d’errore “L’operatore non è disponibile”.
+        \item Il sistema mostra il messaggio d’errore “L’operatore non è disponibile”
     \end{enumerate}
 \end{enumerate} \\ \hline
 	\textbf{Postcondizioni} & \begin{enumerate}[label=\arabic*.,leftmargin=14pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
         \item L’operatore è assegnato all’attività.
     \end{enumerate} \\ \hline
-	\textbf{Seq alternativa} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+	\textbf{Sequenza degli eventi alternativa} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
     \item \texttt{If} lo Staff non conferma l’operazione
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Il sistema annulla l’operazione e non apporta modifiche.
+        \item Il sistema annulla l’operazione e non apporta modifiche
     \end{enumerate}
 \end{enumerate} \\ \hline
 \end{tabular}
@@ -1118,69 +1125,35 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
 \hline
 \multicolumn{2}{|c|}{\textbf{Caso d’uso: AssegnaMezzo}} \\ \hline
 	\textbf{ID} & 21 \\ \hline
-	\textbf{Breve descrizione} & Lo Staff assegna un mezzo ad un’attività. \\ \hline
+	\textbf{Breve descrizione} & Lo Staff assegna un mezzo ad un’attività \\ \hline
 	\textbf{Attori primari} & Staff \\ \hline
 	\textbf{Attori secondari} & Nessuno \\ \hline
 	\textbf{Precondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item L’attività esiste.
-    \item Il mezzo è registrato.
+    \item L’attività esiste
+    \item Il mezzo è registrato nel sistema
 \end{enumerate} \\ \hline
 	\textbf{Sequenza degli eventi principale} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item \texttt{Include} \textit{(VisualizzaMezzo)}.
-    \item Lo Staff seleziona un mezzo.
-    \item Lo Staff assegna il mezzo all’attività.
+    \item Il caso d'uso inizia quando lo Staff seleziona l'opzione di assegnazione di un mezzo all'attività
+    \item \texttt{Extend} \textit{TrovaMezzo}
+    \item Lo Staff seleziona un mezzo da assegnare all’attività
     \item \texttt{If} Il mezzo è disponibile
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Il sistema registra l’assegnazione.
+        \item Il sistema registra l’assegnazione
     \end{enumerate}
     \item \texttt{Else}
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Il sistema mostra il messaggio d’errore “Il mezzo non è disponibile”.
+        \item Il sistema mostra il messaggio d’errore “Il mezzo non è disponibile”
     \end{enumerate}
 \end{enumerate} \\ \hline
 	\textbf{Postcondizioni} & \begin{enumerate}[label=\arabic*.,leftmargin=14pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Il mezzo è associato all’attività.
+        \item Il mezzo è associato all’attività
     \end{enumerate} \\ \hline
-	\textbf{Seq alternativa} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+	\textbf{Sequenza degli eventi alternativa} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
     \item \texttt{If} lo Staff non conferma l’operazione
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Il sistema annulla l’operazione e non apporta modifiche.
+        \item Il sistema annulla l’operazione e non apporta modifiche
     \end{enumerate}
 \end{enumerate} \\ \hline
-\end{tabular}
-\end{table}
-
-\clearpage
-\begin{table}[H]
-\vspace*{-0cm}
-\renewcommand{\arraystretch}{1.9}
-\begin{tabular}{|p{3.9cm}|p{9.9cm}|}
-\hline
-\multicolumn{2}{|c|}{\textbf{Caso d’uso: TrovaAttivita}} \\ \hline
-	\textbf{ID} & 22 \\ \hline
-	\textbf{Breve descrizione} & Lo Staff cerca un’attività. \\ \hline
-	\textbf{Attori primari} & Staff \\ \hline
-	\textbf{Attori secondari} & Nessuno \\ \hline
-	\textbf{Precondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item Lo Staff è autenticato.
-\end{enumerate} \\ \hline
-	\textbf{Sequenza degli eventi principale} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item Il caso d’uso inizia quando lo Staff inserisce i criteri di ricerca.
-    \item Il sistema esegue la ricerca.
-    \item \texttt{If} L’attività esiste
-    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item \texttt{For Each} attività trovata
-        \begin{enumerate}[label=\arabic{enumi}.\arabic{enumii}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-            \item Il sistema mostra i risultati.
-        \end{enumerate}
-    \end{enumerate}
-    \item \texttt{Else}
-    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Il sistema mostra “Nessuna attività trovata”.
-    \end{enumerate}
-\end{enumerate} \\ \hline
-	\textbf{Postcondizioni} & Nessuna. \\ \hline
-	\textbf{Seq alternativa} & Nessuna. \\ \hline
 \end{tabular}
 \end{table}
 
@@ -1191,20 +1164,55 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
 \begin{tabular}{|p{3.9cm}|p{9.9cm}|}
 \hline
 \multicolumn{2}{|c|}{\textbf{Caso d’uso: VisualizzaAttivita}} \\ \hline
-	\textbf{ID} & 23 \\ \hline
-	\textbf{Breve descrizione} & Lo Staff visualizza l’attività selezionata. \\ \hline
-	\textbf{Attori primari} & Staff \\ \hline
+	\textbf{ID} & 22 \\ \hline
+	\textbf{Breve descrizione} & Il Cliente o lo Staff visualizza l’attività selezionata \\ \hline
+	\textbf{Attori primari} & Cliente, Staff \\ \hline
 	\textbf{Attori secondari} & Nessuno \\ \hline
 	\textbf{Precondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item Lo Staff è autenticato.
+    \item Il Cliente o lo Staff è autenticato
 \end{enumerate} \\ \hline
 	\textbf{Sequenza degli eventi principale} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item \texttt{Include} \textit{(TrovaAttivita)}.
-    \item Lo Staff seleziona un’attività.
-    \item Il sistema mostra le informazioni sull’attività selezionata.
+    \item Il caso d’uso inizia quando il Cliente o lo Staff seleziona l’opzione di visualizzazione  dell'attività
+    \item \texttt{Extend} \textit{TrovaAttivita}
+    \item Lo Staff seleziona un’attività da visualizzare
+    \item Il sistema mostra le informazioni sull’attività selezionata
 \end{enumerate} \\ \hline
 	\textbf{Postcondizioni} & Nessuna. \\ \hline
-	\textbf{Seq alternativa} & Nessuna. \\ \hline
+	\textbf{Sequenza degli eventi alternativa} & Nessuna. \\ \hline
+\end{tabular}
+\end{table}
+
+\clearpage
+\begin{table}[H]
+\vspace*{-0cm}
+\renewcommand{\arraystretch}{1.9}
+\begin{tabular}{|p{3.9cm}|p{9.9cm}|}
+\hline
+\multicolumn{2}{|c|}{\textbf{Caso d’uso: TrovaAttivita}} \\ \hline
+	\textbf{ID} & 23 \\ \hline
+	\textbf{Breve descrizione} & Il Cliente o lo Staff cerca un’attività \\ \hline
+	\textbf{Attori primari} & Cliente, Staff \\ \hline
+	\textbf{Attori secondari} & Nessuno \\ \hline
+	\textbf{Precondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item Il Cliente o lo Staff è autenticato
+\end{enumerate} \\ \hline
+	\textbf{Sequenza degli eventi principale} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item Il caso d’uso inizia quando il Cliente o lo Staff inserisce il singolo critero di ricerca nella barra dedicata (es. ID attività, nome)
+    \item Il sistema esegue la ricerca
+    \item \texttt{If} l’attività esiste
+    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+        \item \texttt{For Each} attività trovata
+        \begin{enumerate}[label=\arabic{enumi}.\arabic{enumii}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+            \item Il sistema mostra i risultati dell'attività
+        \end{enumerate}
+    \end{enumerate}
+    \item \texttt{Else}
+    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+        \item Il sistema mostra “Nessuna attività trovata”
+    \end{enumerate}
+\end{enumerate} \\ \hline
+	\textbf{Postcondizioni} & Nessuna. \\ \hline
+	\textbf{Sequenza degli eventi alternativa} & Nessuna. \\ \hline
 \end{tabular}
 \end{table}
 
@@ -1216,32 +1224,33 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
 \hline
 \multicolumn{2}{|c|}{\textbf{Caso d’uso: ModificaAttivita}} \\ \hline
 	\textbf{ID} & 24 \\ \hline
-	\textbf{Breve descrizione} & Lo Staff modifica un’attività esistente. \\ \hline
-	\textbf{Attori primari} & Staff \\ \hline
+	\textbf{Breve descrizione} & Il Cliente o lo Staff modifica un’attività esistente \\ \hline
+	\textbf{Attori primari} & Cliente, Staff \\ \hline
 	\textbf{Attori secondari} & Nessuno \\ \hline
 	\textbf{Precondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item Lo Staff è autenticato.
-    \item L’attività esiste.
+    \item Il Cliente o lo Staff è autenticato
+    \item L’attività esiste
 \end{enumerate} \\ \hline
 	\textbf{Sequenza degli eventi principale} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item \texttt{Include} \textit{(VisualizzaAttivita)}.
-    \item Lo Staff aggiorna i dati dell’attività.
+    \item Il caso d'uso inizia quando il Cliente o lo Staff seleziona l'opzione di modifica dell'attività
+    \item Lo Staff aggiorna i dati dell’attività
     \item \texttt{If} i dati sono validi
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Il sistema registra le modifiche.
+        \item Il sistema registra le modifiche
+        \item \texttt{Include} \textit{(VisualizzaAttivita)}
     \end{enumerate}
     \item \texttt{Else}
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Mostra messaggio di errore.
+        \item Il sistema mostra un messaggio di errore
     \end{enumerate}
 \end{enumerate} \\ \hline
 	\textbf{Postcondizioni} & \begin{enumerate}[label=\arabic*.,leftmargin=14pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item L’attività è aggiornata nel sistema.
+        \item L’attività è aggiornata nel sistema
     \end{enumerate} \\ \hline
-	\textbf{Sequenza alternativa} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item \texttt{If} lo Staff non conferma l’operazione
+	\textbf{Sequenza degli eventi alternativa} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item \texttt{If} l'operazione non è confermata
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Il sistema annulla l’operazione e non apporta modifiche.
+        \item Il sistema annulla l’operazione e non apporta modifiche
     \end{enumerate}
 \end{enumerate} \\ \hline
 \end{tabular}
@@ -1255,24 +1264,25 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
 \hline
 \multicolumn{2}{|c|}{\textbf{Caso d’uso: EliminaAttivita}} \\ \hline
 	\textbf{ID} & 25 \\ \hline
-	\textbf{Breve descrizione} & Lo Staff elimina un’attività esistente. \\ \hline
-	\textbf{Attori primari} & Staff \\ \hline
+	\textbf{Breve descrizione} & Il Cliente o lo Staff elimina un’attività esistente \\ \hline
+	\textbf{Attori primari} & Cliente, Staff \\ \hline
 	\textbf{Attori secondari} & Nessuno \\ \hline
 	\textbf{Precondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item Lo Staff è autenticato.
-    \item L’attività esiste.
+    \item Il Cliente o lo Staff è autenticato
+    \item L’attività esiste
 \end{enumerate} \\ \hline
 	\textbf{Sequenza degli eventi principale} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item \texttt{Include} \textit{(VisualizzaAttivita)}.
-    \item Il sistema elimina l’attività selezionata.
+    \item Il caso d'uso inizia quando il Cliente o lo Staff seleziona l'opzione di eliminazione dell'attività
+    \item Il Cliente o lo Staff seleziona l'attività da eliminare
+    \item Il sistema elimina l’attività selezionata
 \end{enumerate} \\ \hline
 	\textbf{Postcondizioni} & \begin{enumerate}[label=\arabic*.,leftmargin=14pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item L’attività è eliminata.
+        \item L’attività è eliminata
     \end{enumerate} \\ \hline
-	\textbf{Sequenza alternativa} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item \texttt{If} lo Staff non conferma l’operazione
+	\textbf{Sequenza degli eventi alternativa} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item \texttt{If} l'operazione non è confermata
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Il sistema annulla l’operazione e non apporta modifiche.
+        \item Il sistema annulla l’operazione e non apporta modifiche
     \end{enumerate}
 \end{enumerate} \\ \hline
 \end{tabular}
@@ -1297,34 +1307,34 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso relativi alla crea
 \hline
 \multicolumn{2}{|c|}{\textbf{Caso d’uso: CreaDocumento}} \\ \hline
 	\textbf{ID} & 26 \\ \hline
-	\textbf{Breve descrizione} & Lo Staff crea un nuovo documento nel sistema. \\ \hline
+	\textbf{Breve descrizione} & Lo Staff crea un nuovo documento nel sistema \\ \hline
 	\textbf{Attori primari} & Staff \\ \hline
 	\textbf{Attori secondari} & Nessuno \\ \hline
 	\textbf{Precondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Lo Staff è stato autenticato dal sistema.
+        \item Lo Staff è stato autenticato dal sistema
     \end{enumerate} \\ \hline
 	\textbf{Sequenza degli eventi principale} &
 \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item Il caso d’uso inizia quando lo Staff seleziona “Nuovo Documento”.
-    \item Il sistema richiede i dati del documento.
-    \item Lo Staff inserisce i dati.
+    \item Il caso d’uso inizia quando lo Staff seleziona l'opzione di creazione del documento
+    \item Il sistema richiede i dati del documento
+    \item Lo Staff inserisce i dati
     \item \texttt{If} i dati sono validi e non duplicati
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Il sistema registra il documento.
+        \item Il sistema registra il documento
     \end{enumerate}
     \item \texttt{Else}
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Il sistema segnala un errore e richiede la correzione.
+        \item Il sistema segnala un errore e richiede la correzione
     \end{enumerate}
 \end{enumerate}\\ \hline
 	\textbf{Postcondizioni} & \begin{enumerate}[label=\arabic*.,leftmargin=14pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Il documento è registrato nel sistema.
+        \item Il documento è registrato nel sistema
     \end{enumerate} \\ \hline
 	\textbf{Sequenza degli eventi alternativa} & 
 \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
     \item \texttt{If} lo Staff non conferma l’operazione
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Il sistema annulla l’operazione e nessun documento viene creato.
+        \item Il sistema annulla l’operazione e nessun documento viene creato
     \end{enumerate}
 \end{enumerate} \\ \hline
 \end{tabular}
@@ -1336,30 +1346,24 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso relativi alla crea
 \renewcommand{\arraystretch}{1.9}
 \begin{tabular}{|p{3.9cm}|p{9.9cm}|}
 \hline
-\multicolumn{2}{|c|}{\textbf{Caso d’uso: FiltraDocumento}} \\ \hline
+\multicolumn{2}{|c|}{\textbf{Caso d’uso: VisualizzaDocumento}} \\ \hline
 	\textbf{ID} & 27 \\ \hline
-	\textbf{Breve descrizione} & L’Operatore applica filtri sui documenti. \\ \hline
-	\textbf{Attori primari} & Operatore  \\ \hline
+	\textbf{Breve descrizione} & L’Operatore visualizza i dati di un documento \\ \hline
+	\textbf{Attori primari} & Operatore \\ \hline
 	\textbf{Attori secondari} & Nessuno \\ \hline
 	\textbf{Precondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item L’Operatore è autenticato.
+        \item Operatore è autenticato
+        \item Il documento esiste
     \end{enumerate} \\ \hline
-	\textbf{Sequenza degli eventi principale} & 
-\begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item Il caso d’uso inizia quando l’Operatore applica filtri avanzati.
-    \item \texttt{If} esistono documenti che rispettano i filtri
-    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Il sistema mostra i documenti filtrati.
-    \end{enumerate}
-    \item \texttt{Else}
-    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Il sistema mostra “Nessun documento corrisponde ai criteri”.
-    \end{enumerate}
-\end{enumerate}\\ \hline
-	\textbf{Postcondizioni} & \begin{enumerate}[label=\arabic*.,leftmargin=14pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item L’Operatore visualizza i documenti filtrati.
+	\textbf{Sequenza degli eventi principale} &
+    \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+        \item Il caso d’uso inizia quando l’Operatore seleziona l'opzione di visualizzazione del documento
+        \item \texttt{Extend} \textit{TrovaDocumento}
+        \item L'Operatore seleziona un documento
+        \item Il sistema mostra i dati del documento selezionato
     \end{enumerate} \\ \hline
-	\textbf{Sequenza alternativa} & Nessuna. \\ \hline
+	\textbf{Postcondizioni} & Nessuna \\ \hline
+	\textbf{Sequenza degli eventi alternativa} & Nessuna \\ \hline
 \end{tabular}
 \end{table}
 
@@ -1371,7 +1375,7 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso relativi alla crea
 \hline
 \multicolumn{2}{|c|}{\textbf{Caso d’uso: TrovaDocumento}} \\ \hline
 	\textbf{ID} & 28 \\ \hline
-	\textbf{Breve descrizione} & L’Operatore ricerca documenti tramite criteri. \\ \hline
+	\textbf{Breve descrizione} & L’Operatore ricerca uno o più documenti \\ \hline
 	\textbf{Attori primari} & Operatore \\ \hline
 	\textbf{Attori secondari} & Nessuno \\ \hline
 	\textbf{Precondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
@@ -1379,22 +1383,22 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso relativi alla crea
     \end{enumerate} \\ \hline
 	\textbf{Sequenza degli eventi principale} & 
 \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item Il caso d’uso inizia quando l’Operatore inserisce un criterio di ricerca. \newline
-    \texttt{Extend} \textit{FiltraDocumento}
-    \item \texttt{If} Il documento esiste
+    \item Il caso d’uso inizia quando l’Operatore inserisce il singolo criterio di ricerca nella barra dedicata (es. ID documento, nome)
+    \item \texttt{Extend} \textit{FiltraDocumento}
+    \item \texttt{If} il documento esiste
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
         \item \texttt{For Each} documento trovato
         \begin{enumerate}[label=\arabic{enumi}.\arabic{enumii}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-            \item Il sistema mostra le informazioni del documento.
+            \item Il sistema mostra le informazioni base del documento (es. ID, nome, ecc.)
         \end{enumerate}
     \end{enumerate}
     \item \texttt{Else}
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Il sistema mostra “Nessun documento trovato”.
+        \item Il sistema mostra “Nessun documento trovato”
     \end{enumerate}
 \end{enumerate}\\ \hline
 	\textbf{Postcondizioni} & Nessuna \\ \hline
-	\textbf{Sequenza alternativa} & Nessuna. \\ \hline
+	\textbf{Sequenza degli eventi alternativa} & Nessuna \\ \hline
 \end{tabular}
 \end{table}
 
@@ -1404,22 +1408,30 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso relativi alla crea
 \renewcommand{\arraystretch}{1.9}
 \begin{tabular}{|p{3.9cm}|p{9.9cm}|}
 \hline
-\multicolumn{2}{|c|}{\textbf{Caso d’uso: VisualizzaDocumento}} \\ \hline
+\multicolumn{2}{|c|}{\textbf{Caso d’uso: FiltraDocumento}} \\ \hline
 	\textbf{ID} & 29 \\ \hline
-	\textbf{Breve descrizione} & L’Operatore visualizza i dati di un documento. \\ \hline
-	\textbf{Attori primari} & Operatore \\ \hline
+	\textbf{Breve descrizione} & L'Operatore filtra i documenti in base a criteri avanzati (tipo, data di creazione, ecc.)  \\ \hline
+	\textbf{Attori primari} & Operatore  \\ \hline
 	\textbf{Attori secondari} & Nessuno \\ \hline
 	\textbf{Precondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Operatore è autenticato. 
-        \item Il documento esiste.
+        \item L’Operatore è autenticato
     \end{enumerate} \\ \hline
-	\textbf{Sequenza degli eventi principale} &
-    \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item \texttt{Include} \textit{(TrovaDocumento)}. 
-        \item L'Operatore seleziona un documento. Il sistema mostra i dati del documento.
+	\textbf{Sequenza degli eventi principale} & 
+\begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item Il caso d’uso inizia quando l’Operatore applica filtri avanzati
+    \item \texttt{If} esistono documenti che rispettano i filtri
+    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+        \item Il sistema mostra l'elenco dei documenti filtrati
+    \end{enumerate}
+    \item \texttt{Else}
+    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+        \item Il sistema mostra “Nessun documento corrisponde ai criteri di filtro”
+    \end{enumerate}
+\end{enumerate}\\ \hline
+	\textbf{Postcondizioni} & \begin{enumerate}[label=\arabic*.,leftmargin=14pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+        \item L’Operatore visualizza i documenti filtrati
     \end{enumerate} \\ \hline
-	\textbf{Postcondizioni} & Nessuna. \\ \hline
-	\textbf{Sequenza alternativa} & Nessuna. \\ \hline
+	\textbf{Sequenza degli eventi alternativa} & Nessuna \\ \hline
 \end{tabular}
 \end{table}
 
@@ -1431,36 +1443,35 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso relativi alla crea
 \hline
 \multicolumn{2}{|c|}{\textbf{Caso d’uso: ModificaDocumento}} \\ \hline
 	\textbf{ID} & 30 \\ \hline
-	\textbf{Breve descrizione} & Lo Staff modifica i dati di un documento esistente. \\ \hline
+	\textbf{Breve descrizione} & Lo Staff modifica i dati di un documento esistente \\ \hline
 	\textbf{Attori primari} & Staff \\ \hline
 	\textbf{Attori secondari} & Nessuno \\ \hline
 	\textbf{Precondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Lo Staff è autenticato. 
-        \item Il documento esiste.
+        \item Lo Staff è autenticato
+        \item Il documento esiste
     \end{enumerate} \\ \hline
 	\textbf{Sequenza degli eventi principale} & 
     \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item \texttt{Include} \textit{(VisualizzaDocumento)}. 
-        \item Lo Staff modifica i dati del documento.
-    \end{enumerate}
-\begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item \texttt{If} i dati modificati sono validi
-    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Il sistema aggiorna il documento.
-    \end{enumerate}
-    \item \texttt{Else}
-    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Il sistema mostra un messaggio di errore.
-    \end{enumerate}
-\end{enumerate}\\ \hline
+        \item Il caso d’uso inizia quando lo Staff seleziona l'opzione di modifica del documento
+        \item Lo Staff modifica i dati del documento
+        \item \texttt{If} i dati modificati sono validi
+        \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+            \item Il sistema aggiorna il documento
+            \item \texttt{Include} \textit{(VisualizzaDocumento)}
+        \end{enumerate}
+        \item \texttt{Else}
+        \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+            \item Il sistema mostra un messaggio di errore
+        \end{enumerate}
+    \end{enumerate}\\ \hline
 	\textbf{Postcondizioni} & 
     \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item I dati del documento risultano aggiornati. \end{enumerate} \\ \hline
-	\textbf{Sequenza alternativa} & 
+        \item I dati del documento risultano aggiornati \end{enumerate} \\ \hline
+	\textbf{Sequenza degli eventi alternativa} & 
 \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
     \item \texttt{If} lo Staff non conferma l’operazione
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Il sistema annulla l’operazione e nessun documento viene modificato.
+        \item Il sistema annulla l’operazione e il documento non viene modificato
     \end{enumerate}
 \end{enumerate} \\ \hline
 \end{tabular}
@@ -1474,34 +1485,27 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso relativi alla crea
 \hline
 \multicolumn{2}{|c|}{\textbf{Caso d’uso: EliminaDocumento}} \\ \hline
 	\textbf{ID} & 31 \\ \hline
-	\textbf{Breve descrizione} & Lo Staff elimina un documento dal sistema. \\ \hline
+	\textbf{Breve descrizione} & Lo Staff elimina un documento dal sistema \\ \hline
 	\textbf{Attori primari} & Staff \\ \hline
 	\textbf{Attori secondari} & Nessuno \\ \hline
 	\textbf{Precondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Lo Staff è autenticato.
-        \item Il documento esiste.
+        \item Lo Staff è autenticato
+        \item Il documento esiste
     \end{enumerate} \\ \hline
 	\textbf{Sequenza degli eventi principale} & 
 \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item \texttt{Include} \textit{(VisualizzaDocumento)}. 
-    \item Lo Staff seleziona il documento da eliminare.
-    \item \texttt{If} conferma l’operazione
-    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Il sistema elimina il documento.
-    \end{enumerate}
-    \item \texttt{Else}
-    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Il sistema annulla l’operazione.
-    \end{enumerate}
+    \item Il caso d’uso inizia quando lo Staff seleziona l'opzione di eliminazione del documento
+    \item Lo Staff seleziona il documento da eliminare
+    \item Il sistema elimina il documento selezionato
 \end{enumerate}\\ \hline
 	\textbf{Postcondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Il documento è eliminato. 
+        \item Il documento è eliminato
     \end{enumerate}\\ \hline
-	\textbf{Sequenza alternativa} & 
+	\textbf{Sequenza degli eventi alternativa} & 
 \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
     \item \texttt{If} lo Staff non conferma l’operazione
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Il sistema annulla l’operazione e nessun documento viene eliminato.
+        \item Il sistema annulla l’operazione e il documento viene eliminato
     \end{enumerate}
 \end{enumerate} \\ \hline
 \end{tabular}
@@ -1515,25 +1519,25 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso relativi alla crea
 \hline
 \multicolumn{2}{|c|}{\textbf{Caso d’uso: NotificaRinnovoCorsoSicurezza}} \\ \hline
 	\textbf{ID} & 32 \\ \hline
-	\textbf{Breve descrizione} & Il sistema invia notifiche per il rinnovo del corso di sicurezza. \\ \hline
+	\textbf{Breve descrizione} & Il sistema invia le notifiche relative al rinnovo dei corsi sulla sicurezza \\ \hline
 	\textbf{Attori primari} & Tempo \\ \hline
 	\textbf{Attori secondari} & Nessuno \\ \hline
 	\textbf{Precondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Esistono corsi sicurezza con data di scadenza registrata.
+        \item Esistono corsi sulla sicurezza con data di scadenza registrata
     \end{enumerate} \\ \hline
 	\textbf{Sequenza degli eventi principale} & 
 \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item Il caso d’uso inizia quando al raggiungimento della data predefinita l’attore Tempo innesca il controllo dei corsi in scadenza.
+    \item Il caso d’uso inizia quando al raggiungimento della data predefinita, l’attore Tempo innesca il controllo dei corsi in scadenza
     \item \texttt{For Each} corso in scadenza
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Il sistema invia la notifica all’Operatore o allo Staff interessato.
+        \item Il sistema invia la notifica all’Operatore o allo Staff interessato
     \end{enumerate}
 \end{enumerate}\\ \hline
 	\textbf{Postcondizioni} &
     \begin{enumerate}[label=\arabic*.,leftmargin=14pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Le notifiche di rinnovo corso sicurezza sono state inviate.
+        \item Le notifiche di rinnovo dei corsi sulla sicurezza sono state inviate
     \end{enumerate} \\ \hline
-	\textbf{Sequenza alternativa} & Nessuna. \\ \hline
+	\textbf{Sequenza degli eventi alternativa} & Nessuna. \\ \hline
 \end{tabular}
 \end{table}
 
@@ -1545,24 +1549,24 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso relativi alla crea
 \hline
 \multicolumn{2}{|c|}{\textbf{Caso d’uso: NotificaScadenzaDocumento}} \\ \hline
 	\textbf{ID} & 33 \\ \hline
-	\textbf{Breve descrizione} & Il sistema invia notifiche per la scadenza dei documenti. \\ \hline
+	\textbf{Breve descrizione} & Il sistema invia la notifica per la scadenza dei documenti (es. compilazione FIR, possibilità di eliminazione documento, ecc.) \\ \hline
 	\textbf{Attori primari} & Tempo \\ \hline
 	\textbf{Attori secondari} & Nessuno \\ \hline
 	\textbf{Precondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Esistono documenti con data di scadenza registrata.
+        \item Esistono documenti con data di scadenza registrata
     \end{enumerate} \\ \hline
 	\textbf{Sequenza degli eventi principale} & 
 \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item Il caso d’uso inizia quando al raggiungimento della data predefinita l’attore Tempo innesca il controllo dei documenti in scadenza.
+    \item Il caso d’uso inizia quando al raggiungimento della data predefinita, l’attore Tempo innesca il controllo dei documenti in scadenza
     \item \texttt{For Each} ogni documento in scadenza
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Il sistema invia la notifica allo Staff o all’Operatore.
+        \item Il sistema invia la notifica allo Staff o all’Operatore
     \end{enumerate}
 \end{enumerate}\\ \hline
 	\textbf{Postcondizioni} & \begin{enumerate}[label=\arabic*.,leftmargin=14pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Le notifiche di scadenza documento sono state inviate
+        \item Le notifiche di scadenza dei documenti sono state inviate
     \end{enumerate} \\ \hline
-	\textbf{Sequenza alternativa} & Nessuna. \\ \hline
+	\textbf{Sequenza degli eventi alternativa} & Nessuna \\ \hline
 \end{tabular}
 \end{table}
 
