@@ -11,5 +11,9 @@
 \contentsline {chapter}{Analisi}{50}{chapter*.99}%
 \contentsline {section}{Diagrammi delle Classi}{50}{section*.100}%
 \contentsline {subsection}{Package di Analisi}{50}{section*.101}%
-\contentsline {chapter}{Progettazione}{51}{chapter*.104}%
+\contentsline {subsection}{Package di Analisi: Utente}{51}{section*.103}%
+\contentsline {subsection}{Package di Analisi: Mezzo}{52}{section*.105}%
+\contentsline {subsection}{Package di Analisi: Attività}{53}{section*.107}%
+\contentsline {subsection}{Package di Analisi: Documento}{54}{section*.109}%
+\contentsline {chapter}{Progettazione}{55}{chapter*.112}%
 \contentsfinish 
