@@ -15,5 +15,7 @@
 \contentsline {subsection}{Package di Analisi: Mezzo}{52}{section*.105}%
 \contentsline {subsection}{Package di Analisi: Attività}{53}{section*.107}%
 \contentsline {subsection}{Package di Analisi: Documento}{54}{section*.109}%
-\contentsline {chapter}{Progettazione}{55}{chapter*.112}%
+\contentsline {section}{Diagrammi di Sequenza}{55}{section*.111}%
+\contentsline {subsection}{Login Utente}{55}{section*.112}%
+\contentsline {chapter}{Progettazione}{56}{chapter*.115}%
 \contentsfinish 

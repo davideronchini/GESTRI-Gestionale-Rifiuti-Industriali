@@ -1626,6 +1626,18 @@ Il diagramma illustra la struttura delle classi che rappresentano i documenti (e
     \includegraphics[width=1\textwidth]{DiagrammaClassiDocumento}
 \end{figure*}
 
+\clearpage
+\newsection{Diagrammi di Sequenza}
+
+\newsubsection{Login Utente}
+\noindent
+Il diagramma di sequenza seguente mette in evidenza il processo di accesso dell'utente al sistema: l'utente inserisce le proprie credenziali che vengono inoltrate a un servizio di autenticazione esterno per la validazione; in caso di esito positivo viene stabilita la sessione utente e l'applicazione reindirizza l'utente alla vista corrispondente al suo ruolo (ad esempio Staff, Operatore o Cliente). In caso di autenticazione fallita, il sistema restituisce un messaggio di errore e richiede un nuovo tentativo.
+
+\begin{figure*}[!ht]
+    \centering
+    \includegraphics[width=1\textwidth]{LoginUtente}
+\end{figure*}
+
 \newchapter{Progettazione}
 
 \end{document}
