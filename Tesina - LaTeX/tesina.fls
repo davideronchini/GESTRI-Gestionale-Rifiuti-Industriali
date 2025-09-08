@@ -658,6 +658,10 @@ INPUT ./img/LoginUtente.png
 INPUT ./img/LoginUtente.png
 INPUT ./img/LoginUtente.png
 INPUT ./img/LoginUtente.png
+INPUT ./img/RegistrazioneUtente.png
+INPUT ./img/RegistrazioneUtente.png
+INPUT ./img/RegistrazioneUtente.png
+INPUT ./img/RegistrazioneUtente.png
 INPUT tesina.aux
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb
 INPUT /usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb
