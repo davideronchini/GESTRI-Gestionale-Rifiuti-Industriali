@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.6)  8 SEP 2025 20:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.6)  9 SEP 2025 01:53
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1498,7 +1498,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [4
 
 {/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
-<./img/RequisitiFunzionali.png, id=146, 363.55672pt x 274.73634pt>
+<./img/RequisitiFunzionali.png, id=150, 363.55672pt x 274.73634pt>
 File: ./img/RequisitiFunzionali.png Graphic file (type png)
 <use ./img/RequisitiFunzionali.png>
 Package pdftex.def Info: ./img/RequisitiFunzionali.png  used on input line 217.
@@ -1544,7 +1544,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
  []
 
 [6 <./img/RequisitiFunzionali.png (PNG copy)>]
-<./img/RequisitiNonFunzionali.png, id=177, 404.381pt x 212.39656pt>
+<./img/RequisitiNonFunzionali.png, id=181, 404.381pt x 212.39656pt>
 File: ./img/RequisitiNonFunzionali.png Graphic file (type png)
 <use ./img/RequisitiNonFunzionali.png>
 Package pdftex.def Info: ./img/RequisitiNonFunzionali.png  used on input line 263.
@@ -1632,7 +1632,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
  []
 
 [9]
-<./img/Attori.png, id=194, 537.00626pt x 589.20125pt>
+<./img/Attori.png, id=198, 537.00626pt x 589.20125pt>
 File: ./img/Attori.png Graphic file (type png)
 <use ./img/Attori.png>
 Package pdftex.def Info: ./img/Attori.png  used on input line 338.
@@ -1660,7 +1660,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [10
 
  <./img/Attori.png>]
-<./img/GestioneUtente.png, id=202, 634.4313pt x 478.30603pt>
+<./img/GestioneUtente.png, id=206, 634.4313pt x 478.30603pt>
 File: ./img/GestioneUtente.png Graphic file (type png)
 <use ./img/GestioneUtente.png>
 Package pdftex.def Info: ./img/GestioneUtente.png  used on input line 348.
@@ -1864,7 +1864,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [19
 
 ]
-<./img/GestioneAssenza.png, id=336, 551.67938pt x 253.22084pt>
+<./img/GestioneAssenza.png, id=340, 551.67938pt x 253.22084pt>
 File: ./img/GestioneAssenza.png Graphic file (type png)
 <use ./img/GestioneAssenza.png>
 Package pdftex.def Info: ./img/GestioneAssenza.png  used on input line 654.
@@ -1980,7 +1980,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [24
 
 ]
-<./img/GestioneMezzo.png, id=401, 617.32924pt x 392.79573pt>
+<./img/GestioneMezzo.png, id=406, 617.32924pt x 392.79573pt>
 File: ./img/GestioneMezzo.png Graphic file (type png)
 <use ./img/GestioneMezzo.png>
 Package pdftex.def Info: ./img/GestioneMezzo.png  used on input line 802.
@@ -2140,7 +2140,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [31
 
 ]
-<./img/GestioneAttivita.png, id=497, 714.97649pt x 505.89pt>
+<./img/GestioneAttivita.png, id=501, 714.97649pt x 505.89pt>
 File: ./img/GestioneAttivita.png Graphic file (type png)
 <use ./img/GestioneAttivita.png>
 Package pdftex.def Info: ./img/GestioneAttivita.png  used on input line 1034.
@@ -2322,7 +2322,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [39
 
 ]
-<./img/GestioneDocumento.png, id=612, 686.84084pt x 461.20396pt>
+<./img/GestioneDocumento.png, id=616, 686.84084pt x 461.20396pt>
 File: ./img/GestioneDocumento.png Graphic file (type png)
 <use ./img/GestioneDocumento.png>
 Package pdftex.def Info: ./img/GestioneDocumento.png  used on input line 1299.
@@ -2526,7 +2526,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [48
 
 ]
-<./img/MatriceMapping.png, id=724, 604.50844pt x 844.65562pt>
+<./img/MatriceMapping.png, id=728, 604.50844pt x 844.65562pt>
 File: ./img/MatriceMapping.png Graphic file (type png)
 <use ./img/MatriceMapping.png>
 Package pdftex.def Info: ./img/MatriceMapping.png  used on input line 1578.
@@ -2554,7 +2554,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [49
 
  <./img/MatriceMapping.png (PNG copy)>]
-<./img/DiagrammaPackage.png, id=730, 352.52313pt x 238.87718pt>
+<./img/DiagrammaPackage.png, id=734, 352.52313pt x 238.87718pt>
 File: ./img/DiagrammaPackage.png Graphic file (type png)
 <use ./img/DiagrammaPackage.png>
 Package pdftex.def Info: ./img/DiagrammaPackage.png  used on input line 1590.
@@ -2582,7 +2582,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [50
 
  <./img/DiagrammaPackage.png (PNG copy)>]
-<./img/DiagrammaClassiUtente.png, id=738, 594.71039pt x 361.90167pt>
+<./img/DiagrammaClassiUtente.png, id=742, 594.71039pt x 361.90167pt>
 File: ./img/DiagrammaClassiUtente.png Graphic file (type png)
 <use ./img/DiagrammaClassiUtente.png>
 Package pdftex.def Info: ./img/DiagrammaClassiUtente.png  used on input line 1599.
@@ -2610,7 +2610,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [51
 
  <./img/DiagrammaClassiUtente.png (PNG copy)>]
-<./img/DiagrammaClassiMezzo.png, id=744, 478.30603pt x 275.28801pt>
+<./img/DiagrammaClassiMezzo.png, id=748, 478.30603pt x 275.28801pt>
 File: ./img/DiagrammaClassiMezzo.png Graphic file (type png)
 <use ./img/DiagrammaClassiMezzo.png>
 Package pdftex.def Info: ./img/DiagrammaClassiMezzo.png  used on input line 1608.
@@ -2638,7 +2638,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [52
 
  <./img/DiagrammaClassiMezzo.png (PNG copy)>]
-<./img/DiagrammaClassiAttivita.png, id=750, 530.71558pt x 222.3268pt>
+<./img/DiagrammaClassiAttivita.png, id=754, 530.71558pt x 222.3268pt>
 File: ./img/DiagrammaClassiAttivita.png Graphic file (type png)
 <use ./img/DiagrammaClassiAttivita.png>
 Package pdftex.def Info: ./img/DiagrammaClassiAttivita.png  used on input line 1617.
@@ -2666,7 +2666,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [53
 
  <./img/DiagrammaClassiAttivita.png (PNG copy)>]
-<./img/DiagrammaClassiDocumento.png, id=757, 567.12642pt x 222.3268pt>
+<./img/DiagrammaClassiDocumento.png, id=761, 567.12642pt x 222.3268pt>
 File: ./img/DiagrammaClassiDocumento.png Graphic file (type png)
 <use ./img/DiagrammaClassiDocumento.png>
 Package pdftex.def Info: ./img/DiagrammaClassiDocumento.png  used on input line 1626.
@@ -2694,10 +2694,10 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [54
 
  <./img/DiagrammaClassiDocumento.png (PNG copy)>]
-<./img/LoginUtente.png, id=763, 417.06963pt x 435.82672pt>
-File: ./img/LoginUtente.png Graphic file (type png)
-<use ./img/LoginUtente.png>
-Package pdftex.def Info: ./img/LoginUtente.png  used on input line 1638.
+<./img/DiagrammaSequenzaLoginUtente.png, id=767, 417.06963pt x 435.82672pt>
+File: ./img/DiagrammaSequenzaLoginUtente.png Graphic file (type png)
+<use ./img/DiagrammaSequenzaLoginUtente.png>
+Package pdftex.def Info: ./img/DiagrammaSequenzaLoginUtente.png  used on input line 1638.
 (pdftex.def)             Requested size: 452.9679pt x 473.34592pt.
 
 Overfull \hbox (34.71422pt too wide) has occurred while \output is active
@@ -2721,11 +2721,11 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 
 [55
 
- <./img/LoginUtente.png (PNG copy)>]
-<./img/RegistrazioneUtente.png, id=769, 488.78793pt x 486.58122pt>
-File: ./img/RegistrazioneUtente.png Graphic file (type png)
-<use ./img/RegistrazioneUtente.png>
-Package pdftex.def Info: ./img/RegistrazioneUtente.png  used on input line 1648.
+ <./img/DiagrammaSequenzaLoginUtente.png (PNG copy)>]
+<./img/DiagrammaSequenzaRegistrazioneUtente.png, id=773, 488.78793pt x 486.58122pt>
+File: ./img/DiagrammaSequenzaRegistrazioneUtente.png Graphic file (type png)
+<use ./img/DiagrammaSequenzaRegistrazioneUtente.png>
+Package pdftex.def Info: ./img/DiagrammaSequenzaRegistrazioneUtente.png  used on input line 1648.
 (pdftex.def)             Requested size: 452.9679pt x 450.92699pt.
 
 Overfull \hbox (34.71422pt too wide) has occurred while \output is active
@@ -2749,7 +2749,13 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 
 [56
 
- <./img/RegistrazioneUtente.png (PNG copy)>]
+ <./img/DiagrammaSequenzaRegistrazioneUtente.png (PNG copy)>]
+<./img/DiagrammaSequenzaCRUDAttivita.png, id=779, 545.61092pt x 1513.80824pt>
+File: ./img/DiagrammaSequenzaCRUDAttivita.png Graphic file (type png)
+<use ./img/DiagrammaSequenzaCRUDAttivita.png>
+Package pdftex.def Info: ./img/DiagrammaSequenzaCRUDAttivita.png  used on input line 1658.
+(pdftex.def)             Requested size: 452.9679pt x 613.36852pt.
+
 Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [][]|  
  []
@@ -2771,6 +2777,77 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 
 [57
 
+ <./img/DiagrammaSequenzaCRUDAttivita.png (PNG copy)>]
+File: ./img/DiagrammaSequenzaCRUDAttivita.png Graphic file (type png)
+<use ./img/DiagrammaSequenzaCRUDAttivita.png>
+Package pdftex.def Info: ./img/DiagrammaSequenzaCRUDAttivita.png  used on input line 1663.
+(pdftex.def)             Requested size: 452.9679pt x 646.57704pt.
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[][]|  
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+[58
+
+]
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[][]|  
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+[59
+
+]
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[][]|  
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+[60
+
 ] (./tesina.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
@@ -2783,18 +2860,18 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 69550 strings out of 474116
- 1725886 string characters out of 5743683
- 2453100 words of memory out of 5000000
- 90510 multiletter control sequences out of 15000+600000
+ 69573 strings out of 474116
+ 1726957 string characters out of 5743683
+ 2453099 words of memory out of 5000000
+ 90526 multiletter control sequences out of 15000+600000
  577648 words of font info for 80 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  91i,12n,120p,853b,1047s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfcc1000.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on tesina.pdf (59 pages, 1340299 bytes).
+Output written on tesina.pdf (62 pages, 1435693 bytes).
 PDF statistics:
- 974 PDF objects out of 1000 (max. 8388607)
- 836 compressed objects within 9 object streams
- 487 named destinations out of 1000 (max. 500000)
- 394 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1005 PDF objects out of 1200 (max. 8388607)
+ 861 compressed objects within 9 object streams
+ 494 named destinations out of 1000 (max. 500000)
+ 427 words of extra memory for PDF output out of 10000 (max. 10000000)
 
