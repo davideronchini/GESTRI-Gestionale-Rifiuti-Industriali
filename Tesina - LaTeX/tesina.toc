@@ -19,6 +19,7 @@
 \contentsline {subsection}{Login Utente}{55}{section*.112}%
 \contentsline {subsection}{Registrazione Utente}{56}{section*.114}%
 \contentsline {subsection}{CRUD Attività}{57}{section*.116}%
-\contentsline {subsection}{Filtra Documento}{59}{section*.119}%
-\contentsline {chapter}{Progettazione}{60}{chapter*.121}%
+\contentsline {subsection}{Trova Documento}{59}{section*.119}%
+\contentsline {subsection}{Filtra Documento}{60}{section*.121}%
+\contentsline {chapter}{Progettazione}{61}{chapter*.124}%
 \contentsfinish 
