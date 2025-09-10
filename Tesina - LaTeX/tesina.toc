@@ -21,5 +21,11 @@
 \contentsline {subsection}{CRUD Attività}{57}{section*.116}%
 \contentsline {subsection}{Trova Documento}{59}{section*.119}%
 \contentsline {subsection}{Filtra Documento}{60}{section*.121}%
-\contentsline {chapter}{Progettazione}{61}{chapter*.124}%
+\contentsline {section}{Diagrammi di Attività}{61}{section*.123}%
+\contentsline {subsection}{Login Utente}{61}{section*.124}%
+\contentsline {subsection}{Registrazione Utente}{62}{section*.126}%
+\contentsline {subsection}{CRUD Attività}{63}{section*.128}%
+\contentsline {subsection}{Trova Documento}{64}{section*.130}%
+\contentsline {subsection}{Filtra Documento}{65}{section*.132}%
+\contentsline {chapter}{Progettazione}{66}{chapter*.135}%
 \contentsfinish 

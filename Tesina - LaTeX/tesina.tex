@@ -1655,12 +1655,12 @@ Il diagramma di sequenza illustra le operazioni principali di gestione delle att
 
 \begin{figure}[!ht]
   \centering
-  \includegraphics[width=\textwidth,trim=0 775pt 0 0,clip]{DiagrammaSequenzaCRUDAttivita}
+  \includegraphics[width=\textwidth,trim=0 730pt 0 0,clip]{DiagrammaSequenzaCRUDAttivita}
 \end{figure}
 \clearpage
 \begin{figure}[!ht]
   \centering
-  \includegraphics[width=\textwidth,trim=0 0 0 735pt,clip]{DiagrammaSequenzaCRUDAttivita}
+  \includegraphics[width=\textwidth,trim=0 0 0 730pt,clip]{DiagrammaSequenzaCRUDAttivita}
 \end{figure}
 
 \clearpage
@@ -1681,6 +1681,53 @@ Il diagramma di sequenza mostra il processo di filtraggio avanzato dei documenti
 \begin{figure*}[!ht]
     \centering
     \includegraphics[width=1\textwidth]{DiagrammaSequenzaFiltraDocumento}
+\end{figure*}
+
+\clearpage
+\newsection{Diagrammi di Attività}
+
+\newsubsection{Login Utente}
+Il diagramma rappresenta il processo di autenticazione di un utente. Dopo l’inserimento delle credenziali, il sistema le valida e consente l’accesso se corrette; altrimenti richiede un nuovo tentativo mostrando un messaggio di errore.
+
+\begin{figure*}[!ht]
+    \centering
+    \includegraphics[width=0.78\textwidth]{DiagrammaAttivitaLoginUtente}
+\end{figure*}
+
+\clearpage
+\newsubsection{Registrazione Utente}
+Il diagramma mostra il processo di registrazione di un nuovo utente, sia da parte di un cliente sia da parte dello staff. Dopo l’inserimento dei dati, il sistema effettua la validazione e controlla l’unicità dell’email. In caso di errori o email già esistente, l’utente deve ripetere l’inserimento finché i dati non sono corretti. Solo dopo i controlli viene creato l’account con il ruolo appropriato e confermata l’avvenuta registrazione.
+
+\begin{figure*}[!ht]
+    \centering
+    \includegraphics[width=0.78\textwidth]{DiagrammaAttivitaRegistrazioneUtente}
+\end{figure*}
+
+\clearpage
+\newsubsection{CRUD Attività}
+Il diagramma illustra la gestione completa delle attività attraverso operazioni di creazione, visualizzazione, modifica ed eliminazione. Le operazioni includono controlli di validazione e, se necessario, conferme da parte dell’utente. In fase di creazione sono previsti anche flussi quali l’assegnazione di un operatore e di un mezzo. Il diagramma evidenzia quindi le alternative e le condizioni che regolano il ciclo di vita di un’attività.
+
+\begin{figure*}[!ht]
+    \centering
+    \includegraphics[width=1\textwidth]{DiagrammaAttivitaCRUDAttivita}
+\end{figure*}
+
+\clearpage
+\newsubsection{Trova Documento}
+Ricerca semplice basata su un singolo criterio: il sistema valida il criterio, restituisce l’elenco dei documenti trovati (iterando su ciascuno) o segnala l’assenza di risultati / l’errore di validazione.
+
+\begin{figure*}[!ht]
+    \centering
+    \includegraphics[width=1\textwidth]{DiagrammaAttivitaTrovaDocumento}
+\end{figure*}
+
+\clearpage
+\newsubsection{Filtra Documento}
+Filtraggio avanzato che estende la ricerca base: dopo la validazione dei criteri multipli viene eseguita la logica di TrovaDocumento e, se ci sono risultati base, si applicano i filtri avanzati per ottenere l’elenco finale o l’assenza di corrispondenze.
+
+\begin{figure*}[!ht]
+    \centering
+    \includegraphics[width=1\textwidth]{DiagrammaAttivitaFiltraDocumento}
 \end{figure*}
 
 \newchapter{Progettazione}
