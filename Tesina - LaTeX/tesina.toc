@@ -11,10 +11,10 @@
 \contentsline {chapter}{Analisi}{50}{chapter*.99}%
 \contentsline {section}{Diagrammi delle Classi di Analisi}{50}{section*.100}%
 \contentsline {subsection}{Package di Analisi}{50}{section*.101}%
-\contentsline {subsection}{Package di Analisi: Utente}{51}{section*.103}%
-\contentsline {subsection}{Package di Analisi: Mezzo}{52}{section*.105}%
-\contentsline {subsection}{Package di Analisi: Attività}{53}{section*.107}%
-\contentsline {subsection}{Package di Analisi: Documento}{54}{section*.109}%
+\contentsline {subsection}{Classi di Analisi: Utente}{51}{section*.103}%
+\contentsline {subsection}{Classi di Analisi: Mezzo}{52}{section*.105}%
+\contentsline {subsection}{Classi di Analisi: Attività}{53}{section*.107}%
+\contentsline {subsection}{Classi di Analisi: Documento}{54}{section*.109}%
 \contentsline {section}{Diagrammi di Sequenza}{55}{section*.111}%
 \contentsline {subsection}{Login Utente}{55}{section*.112}%
 \contentsline {subsection}{Registrazione Utente}{56}{section*.114}%
@@ -30,5 +30,13 @@
 \contentsline {chapter}{Progettazione}{66}{chapter*.135}%
 \contentsline {section}{Diagrammi delle Classi di Progettazione}{66}{section*.136}%
 \contentsline {subsection}{Package di Progettazione}{66}{section*.137}%
-\contentsline {subsection}{Package di Progettazione: Utente}{67}{section*.139}%
+\contentsline {subsection}{Classi di Progettazione: Utente}{67}{section*.139}%
+\contentsline {subsection}{Classi di Progettazione: Mezzo}{68}{section*.141}%
+\contentsline {subsection}{Classi di Progettazione: Attività}{69}{section*.143}%
+\contentsline {subsection}{Classi di Progettazione: Documento}{70}{section*.145}%
+\contentsline {subsection}{Classi di Progettazione: Controllers}{71}{section*.147}%
+\contentsline {section}{Diagramma dei Componenti}{72}{section*.149}%
+\contentsline {section}{Diagrammi delle Macchine a Stati}{73}{section*.150}%
+\contentsline {subsection}{Macchine a Stati: Attività}{73}{section*.151}%
+\contentsline {subsection}{Macchine a Stati: Mezzo}{74}{section*.153}%
 \contentsfinish 

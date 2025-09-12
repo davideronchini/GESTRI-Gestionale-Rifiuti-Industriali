@@ -1591,7 +1591,7 @@ Il diagramma mostra la struttura dei package del sistema e le dipendenze tra i m
 \end{figure*}
 
 \clearpage
-\newsubsection{Package di Analisi: Utente}
+\newsubsection{Classi di Analisi: Utente}
 Il diagramma evidenzia le relazioni tra la classe Utente e le altre classi del sistema, mettendo in luce associazioni, dipendenze e responsabilità condivise tra i diversi ruoli.
 
 \begin{figure*}[!ht]
@@ -1600,7 +1600,7 @@ Il diagramma evidenzia le relazioni tra la classe Utente e le altre classi del s
 \end{figure*}
 
 \clearpage
-\newsubsection{Package di Analisi: Mezzo}
+\newsubsection{Classi di Analisi: Mezzo}
 Il diagramma mette in evidenza le classi che modellano i mezzi, le loro proprietà e le relazioni con le attività e le informazioni di manutenzione.
 
 \begin{figure*}[!ht]
@@ -1609,7 +1609,7 @@ Il diagramma mette in evidenza le classi che modellano i mezzi, le loro propriet
 \end{figure*}
 
 \clearpage
-\newsubsection{Package di Analisi: Attività}
+\newsubsection{Classi di Analisi: Attività}
 Il diagramma descrive le classi coinvolte nella gestione delle attività di carico/scarico, mostrando attributi, operazioni e collegamenti con operatori e mezzi.
 
 \begin{figure*}[!ht]
@@ -1618,7 +1618,7 @@ Il diagramma descrive le classi coinvolte nella gestione delle attività di cari
 \end{figure*}
 
 \clearpage
-\newsubsection{Package di Analisi: Documento}
+\newsubsection{Classi di Analisi: Documento}
 Il diagramma illustra la struttura delle classi che rappresentano i documenti (es. FIR), con le relazioni e le responsabilità nel ciclo di vita dei documenti.
 
 \begin{figure*}[!ht]
@@ -1742,6 +1742,75 @@ Il diagramma mostra la struttura dei package del sistema e le dipendenze tra i m
 \end{figure*}
 
 \clearpage
-\newsubsection{Package di Progettazione: Utente}
+\newsubsection{Classi di Progettazione: Utente}
+
+Il diagramma delle classi di Utente e Assenza è una rappresentazione che riprende ed espande l'analisi iniziale. Le classi Utente e Assenza sono state arricchite con i dettagli di progettazione necessari per l'implementazione, inclusi attributi e metodi per la gestione e l'autenticazione.
+
+\begin{figure*}[!ht]
+    \centering
+    \includegraphics[width=1\textwidth]{DiagrammaClassiUtenteProgettazione}
+\end{figure*}
+
+\clearpage
+\newsubsection{Classi di Progettazione: Mezzo}
+
+Il diagramma delle classi di Mezzo riprende il modello di analisi e lo raffina per la fase di progettazione. Le classi Mezzo e la classe associata Rimorchio sono state arricchite con i dettagli necessari per l'implementazione, come gli attributi specifici e i metodi di gestione. Le associazioni con l'enumerazione per lo stato del veicolo rendono il modello una base solida per lo sviluppo.
+
+\begin{figure*}[!ht]
+    \centering
+    \includegraphics[width=1\textwidth]{DiagrammaClassiMezzoProgettazione}
+\end{figure*}
+
+\clearpage
+\newsubsection{Classi di Progettazione: Attività}
+
+Il diagramma delle classi di Attività è stato perfezionato per la progettazione. La classe Attività è stata arricchita con dettagli specifici e metodi di gestione. L'introduzione della classe intermedia UtenteAttivita risolve il legame molti a molti (many-to-many) tra Utente e Attività, rendendo il modello pronto per l'implementazione.
+
+\begin{figure*}[!ht]
+    \centering
+    \includegraphics[width=1\textwidth]{DiagrammaClassiAttivitaProgettazione}
+\end{figure*}
+
+\clearpage
+\newsubsection{Classi di Progettazione: Documento}
+Il diagramma delle classi di Documento è un'evoluzione del modello di analisi. La classe Documento è stata arricchita con i dettagli di progettazione necessari, inclusi attributi e metodi per la gestione. Le associazioni con l'enumerazione per il tipo di documento rendono il modello una base solida per lo sviluppo.
+
+\begin{figure*}[!ht]
+    \centering
+    \includegraphics[width=1\textwidth]{DiagrammaClassiDocumentoProgettazione}
+\end{figure*}
+
+\clearpage
+\newsubsection{Classi di Progettazione: Controllers}
+
+Questo diagramma delle classi si discosta dagli altri, concentrandosi sull'architettura del software piuttosto che sul modello dati. Mostra i controller del sistema (es. UtenteController, MezzoController, ecc.), che fungono da intermediari tra l'interfaccia utente e le entità. Le relazioni tra i controller e le rispettive entità (es. Utente, Mezzo, ecc.) sono indicate con una dipendenza (<use>), evidenziando che i controller utilizzano le entità per svolgere le loro funzioni. Questo modello illustra la separazione dei compiti a un livello più alto, cruciale per l'organizzazione del codice e la manutenzione.
+
+\begin{figure*}[!ht]
+    \centering
+    \includegraphics[width=1\textwidth]{DiagrammaClassiControllersProgettazione}
+\end{figure*}
+
+\clearpage
+\newsection{Diagramma dei Componenti}
+
+\clearpage
+\newsection{Diagrammi delle Macchine a Stati}
+
+\newsubsection{Macchine a Stati: Attività}
+Questo diagramma di stato modella il ciclo di vita di un'attività. L'attività inizia nello stato Programmata e passa allo stato Iniziata solo quando la sua data coincide con quella odierna. L'attività si sposta quindi nello stato Terminata solo dopo che il documento "FIR" (Foglio di Itinerario e Registro) corrispondente è stato caricato. Il diagramma mostra un flusso sequenziale ma, come in tutti i diagrammi di stato, un'uscita dal sistema può verificarsi in qualsiasi momento. Se un'attività viene eliminata, il suo stato si conclude, rappresentato nel diagramma dal simbolo Exit, che indica la terminazione del ciclo di vita dell'oggetto.
+
+\begin{figure*}[!ht]
+    \centering
+    \includegraphics[width=0.39\textwidth]{DiagrammaMacchineStatiAttivita}
+\end{figure*}
+
+\clearpage
+\newsubsection{Macchine a Stati: Mezzo}
+Questo diagramma di stato, una volta corretto, modella il ciclo di vita completo di un mezzo. Il mezzo inizia nello stato Disponibile e passa allo stato Occupato quando viene assegnato a un'attività. Al termine dell'attività, il mezzo ritorna allo stato Disponibile, pronto per una nuova assegnazione. Se la condizione di scadenzaRevisione < oggi viene verificata come vera, il mezzo entra nello stato di Manutenzione, per poi tornare nuovamente Disponibile una volta che i lavori sono stati completati. In ogni momento, se il mezzo viene eliminato dal sistema, il suo stato si conclude, come rappresentato dal simbolo di Exit nel diagramma UML, che indica la terminazione del ciclo di vita dell'oggetto.
+
+\begin{figure*}[!ht]
+    \centering
+    \includegraphics[width=0.39\textwidth]{DiagrammaMacchineStatiMezzo}
+\end{figure*}
 
 \end{document}
