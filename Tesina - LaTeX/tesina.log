@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.6)  10 SEP 2025 15:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.6)  12 SEP 2025 02:04
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -2554,10 +2554,10 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [49
 
  <./img/MatriceMapping.png (PNG copy)>]
-<./img/DiagrammaPackage.png, id=750, 352.52313pt x 238.87718pt>
-File: ./img/DiagrammaPackage.png Graphic file (type png)
-<use ./img/DiagrammaPackage.png>
-Package pdftex.def Info: ./img/DiagrammaPackage.png  used on input line 1590.
+<./img/DiagrammaPackageAnalisi.png, id=750, 352.52313pt x 238.87718pt>
+File: ./img/DiagrammaPackageAnalisi.png Graphic file (type png)
+<use ./img/DiagrammaPackageAnalisi.png>
+Package pdftex.def Info: ./img/DiagrammaPackageAnalisi.png  used on input line 1590.
 (pdftex.def)             Requested size: 452.9679pt x 306.95728pt.
 
 Overfull \hbox (34.71422pt too wide) has occurred while \output is active
@@ -2581,12 +2581,12 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 
 [50
 
- <./img/DiagrammaPackage.png (PNG copy)>]
-<./img/DiagrammaClassiUtente.png, id=757, 594.71039pt x 361.90167pt>
-File: ./img/DiagrammaClassiUtente.png Graphic file (type png)
-<use ./img/DiagrammaClassiUtente.png>
-Package pdftex.def Info: ./img/DiagrammaClassiUtente.png  used on input line 1599.
-(pdftex.def)             Requested size: 452.9679pt x 275.65556pt.
+ <./img/DiagrammaPackageAnalisi.png (PNG copy)>]
+<./img/DiagrammaClassiUtenteAnalisi.png, id=757, 594.71039pt x 349.21306pt>
+File: ./img/DiagrammaClassiUtenteAnalisi.png Graphic file (type png)
+<use ./img/DiagrammaClassiUtenteAnalisi.png>
+Package pdftex.def Info: ./img/DiagrammaClassiUtenteAnalisi.png  used on input line 1599.
+(pdftex.def)             Requested size: 452.9679pt x 265.99081pt.
 
 Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [][]|  
@@ -2609,11 +2609,11 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 
 [51
 
- <./img/DiagrammaClassiUtente.png (PNG copy)>]
-<./img/DiagrammaClassiMezzo.png, id=763, 478.30603pt x 275.28801pt>
-File: ./img/DiagrammaClassiMezzo.png Graphic file (type png)
-<use ./img/DiagrammaClassiMezzo.png>
-Package pdftex.def Info: ./img/DiagrammaClassiMezzo.png  used on input line 1608.
+ <./img/DiagrammaClassiUtenteAnalisi.png (PNG copy)>]
+<./img/DiagrammaClassiMezzoAnalisi.png, id=763, 478.30603pt x 275.28801pt>
+File: ./img/DiagrammaClassiMezzoAnalisi.png Graphic file (type png)
+<use ./img/DiagrammaClassiMezzoAnalisi.png>
+Package pdftex.def Info: ./img/DiagrammaClassiMezzoAnalisi.png  used on input line 1608.
 (pdftex.def)             Requested size: 452.9679pt x 260.7156pt.
 
 Overfull \hbox (34.71422pt too wide) has occurred while \output is active
@@ -2637,12 +2637,12 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 
 [52
 
- <./img/DiagrammaClassiMezzo.png (PNG copy)>]
-<./img/DiagrammaClassiAttivita.png, id=769, 530.71558pt x 222.3268pt>
-File: ./img/DiagrammaClassiAttivita.png Graphic file (type png)
-<use ./img/DiagrammaClassiAttivita.png>
-Package pdftex.def Info: ./img/DiagrammaClassiAttivita.png  used on input line 1617.
-(pdftex.def)             Requested size: 452.9679pt x 189.76569pt.
+ <./img/DiagrammaClassiMezzoAnalisi.png (PNG copy)>]
+<./img/DiagrammaClassiAttivitaAnalisi.png, id=769, 530.71558pt x 322.73244pt>
+File: ./img/DiagrammaClassiAttivitaAnalisi.png Graphic file (type png)
+<use ./img/DiagrammaClassiAttivitaAnalisi.png>
+Package pdftex.def Info: ./img/DiagrammaClassiAttivitaAnalisi.png  used on input line 1617.
+(pdftex.def)             Requested size: 452.9679pt x 275.46634pt.
 
 Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [][]|  
@@ -2665,11 +2665,11 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 
 [53
 
- <./img/DiagrammaClassiAttivita.png (PNG copy)>]
-<./img/DiagrammaClassiDocumento.png, id=776, 567.12642pt x 222.3268pt>
-File: ./img/DiagrammaClassiDocumento.png Graphic file (type png)
-<use ./img/DiagrammaClassiDocumento.png>
-Package pdftex.def Info: ./img/DiagrammaClassiDocumento.png  used on input line 1626.
+ <./img/DiagrammaClassiAttivitaAnalisi.png (PNG copy)>]
+<./img/DiagrammaClassiDocumentoAnalisi.png, id=776, 567.12642pt x 222.3268pt>
+File: ./img/DiagrammaClassiDocumentoAnalisi.png Graphic file (type png)
+<use ./img/DiagrammaClassiDocumentoAnalisi.png>
+Package pdftex.def Info: ./img/DiagrammaClassiDocumentoAnalisi.png  used on input line 1626.
 (pdftex.def)             Requested size: 452.9679pt x 177.5733pt.
 
 Overfull \hbox (34.71422pt too wide) has occurred while \output is active
@@ -2693,7 +2693,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 
 [54
 
- <./img/DiagrammaClassiDocumento.png (PNG copy)>]
+ <./img/DiagrammaClassiDocumentoAnalisi.png (PNG copy)>]
 <./img/DiagrammaSequenzaLoginUtente.png, id=782, 417.06963pt x 435.82672pt>
 File: ./img/DiagrammaSequenzaLoginUtente.png Graphic file (type png)
 <use ./img/DiagrammaSequenzaLoginUtente.png>
@@ -3035,14 +3035,14 @@ LaTeX Font Warning: Size substitutions with differences
  ) 
 Here is how much of TeX's memory you used:
  69684 strings out of 474116
- 1731041 string characters out of 5743683
- 2453100 words of memory out of 5000000
+ 1731461 string characters out of 5743683
+ 2453099 words of memory out of 5000000
  90617 multiletter control sequences out of 15000+600000
  577648 words of font info for 80 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  91i,12n,120p,853b,1047s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfcc1000.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on tesina.pdf (68 pages, 1830144 bytes).
+Output written on tesina.pdf (68 pages, 1832839 bytes).
 PDF statistics:
  1085 PDF objects out of 1200 (max. 8388607)
  926 compressed objects within 10 object streams
