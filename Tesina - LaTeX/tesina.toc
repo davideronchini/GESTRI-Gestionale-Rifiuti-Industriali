@@ -9,7 +9,7 @@
 \contentsline {section}{Diagrammi dei Casi d'Uso}{10}{section*.50}%
 \contentsline {section}{Matrice di Mapping}{49}{section*.96}%
 \contentsline {chapter}{Analisi}{50}{chapter*.99}%
-\contentsline {section}{Diagrammi delle Classi}{50}{section*.100}%
+\contentsline {section}{Diagrammi delle Classi di Analisi}{50}{section*.100}%
 \contentsline {subsection}{Package di Analisi}{50}{section*.101}%
 \contentsline {subsection}{Package di Analisi: Utente}{51}{section*.103}%
 \contentsline {subsection}{Package di Analisi: Mezzo}{52}{section*.105}%
@@ -28,4 +28,7 @@
 \contentsline {subsection}{Trova Documento}{64}{section*.130}%
 \contentsline {subsection}{Filtra Documento}{65}{section*.132}%
 \contentsline {chapter}{Progettazione}{66}{chapter*.135}%
+\contentsline {section}{Diagrammi delle Classi di Progettazione}{66}{section*.136}%
+\contentsline {subsection}{Package di Progettazione}{66}{section*.137}%
+\contentsline {subsection}{Package di Progettazione: Utente}{67}{section*.139}%
 \contentsfinish 
