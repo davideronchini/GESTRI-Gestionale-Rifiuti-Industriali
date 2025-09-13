@@ -39,4 +39,10 @@
 \contentsline {section}{Diagrammi delle Macchine a Stati}{73}{section*.151}%
 \contentsline {subsection}{Macchine a Stati: Attività}{73}{section*.152}%
 \contentsline {subsection}{Macchine a Stati: Mezzo}{74}{section*.154}%
+\contentsline {chapter}{Implementazione}{75}{chapter*.157}%
+\contentsline {section}{Diagramma di Deployment}{75}{section*.158}%
+\contentsline {section}{Tecnologie Utilizzate}{76}{section*.159}%
+\contentsline {section}{Mockup}{77}{section*.160}%
+\contentsline {section}{Verifica e Validazione del Software: Unit Tests}{78}{section*.161}%
+\contentsline {section}{Istruzioni per l'Esecuzione in Locale}{79}{section*.162}%
 \contentsfinish 
