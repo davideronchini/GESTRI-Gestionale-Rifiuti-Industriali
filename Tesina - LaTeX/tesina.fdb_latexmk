@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1757756351.6371 "/Users/davide/Documents/GitHub/GESTRI-Gestionale-Rifiuti-Industriali/Tesina - LaTeX/tesina.tex" "tesina.pdf" "tesina" 1757756355.07036 0
-  "/Users/davide/Documents/GitHub/GESTRI-Gestionale-Rifiuti-Industriali/Tesina - LaTeX/tesina.tex" 1757756351.41128 95451 96262b3ff829f98fd089fe5e17cf439e ""
+["pdflatex"] 1757785790.74449 "/Users/davide/Documents/GitHub/GESTRI-Gestionale-Rifiuti-Industriali/Tesina - LaTeX/tesina.tex" "tesina.pdf" "tesina" 1757785794.09858 0
+  "/Users/davide/Documents/GitHub/GESTRI-Gestionale-Rifiuti-Industriali/Tesina - LaTeX/tesina.tex" 1757785790.29035 96067 1dd5f4439ca3c5c12500602190b5400c ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -352,7 +352,8 @@
   "img/DiagrammaClassiMezzoProgettazione.png" 1757755319.1158 45108 65c115761dd3879fdd1e60531c5e7afb ""
   "img/DiagrammaClassiUtenteAnalisi.png" 1757635484.93469 45484 b14809e8d4c231e60c310d45e0d09cfe ""
   "img/DiagrammaClassiUtenteProgettazione.png" 1757711567.0729 65721 adf050290e147b55f3562cbb3bd0b9f1 ""
-  "img/DiagrammaMacchineStatiAttivita.png" 1757756261.33214 27522 2fd6531d7698eedd1541f1a8475268cf ""
+  "img/DiagrammaComponenti.png" 1757785694.64324 171446 a053e0e70b24a3da21a957d3b7ecd31a ""
+  "img/DiagrammaMacchineStatiAttivita.png" 1757770970.92388 27606 120195eb678f119fdd56788dbd08fafd ""
   "img/DiagrammaMacchineStatiMezzo.png" 1757755960.4404 43776 0dc4aa12ec7c7a395ae142c5aa693550 ""
   "img/DiagrammaPackageAnalisi.png" 1757687684.17769 16688 cfe0d1fae32e64249a59b5d4168c469a ""
   "img/DiagrammaPackageProgettazione.png" 1757666729.91029 16673 9407f8463f9b18b4c8704a6b8c1cb1f0 ""
@@ -370,9 +371,9 @@
   "img/RequisitiFunzionali.png" 1756938220.47871 22899 ffb66dd19f445263412e24c72b2026cc ""
   "img/RequisitiNonFunzionali.png" 1755893625.21548 15266 998b765d55c49f5375e1b6a7d233c6d3 ""
   "img/univpm_logo.png" 1755773557.14645 572038 2c65ef26c2d0ad88311d8e9b99461627 ""
-  "tesina.aux" 1757756354.86718 17362 7442fab4580095c5306d67ffad43c14a "pdflatex"
-  "tesina.tex" 1757756351.41128 95451 96262b3ff829f98fd089fe5e17cf439e ""
-  "tesina.toc" 1757756354.87158 2760 b73b8d078959e5008930fc1da1110e9b "pdflatex"
+  "tesina.aux" 1757785793.8959 17362 95dfac78e7b9d0fbf32d6072b4f84146 "pdflatex"
+  "tesina.tex" 1757785790.29035 96067 1dd5f4439ca3c5c12500602190b5400c ""
+  "tesina.toc" 1757785793.90085 2760 9a7c2cee9ad0682e701f218bb192726d "pdflatex"
   (generated)
   "tesina.aux"
   "tesina.log"

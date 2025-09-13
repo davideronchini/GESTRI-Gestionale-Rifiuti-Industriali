@@ -1792,6 +1792,12 @@ Questo diagramma delle classi si discosta dagli altri, concentrandosi sull'archi
 
 \clearpage
 \newsection{Diagramma dei Componenti}
+Questo diagramma illustra l'architettura di alto livello del sistema, focalizzandosi sulle dipendenze tra i suoi componenti. Si evidenzia che le entità di dominio, come Utente, Attività, Mezzo e Documento, non interagiscono direttamente tra loro, ma delegano la loro logica a un insieme di Controller. I controller (UtenteController, AttivitaController, MezzoController, DocumentoController) espongono delle interfacce che sono utilizzate per separare la logica applicativa dalla gestione dei dati. 
+
+\begin{figure*}[!ht]
+    \centering
+    \includegraphics[width=1\textwidth]{DiagrammaComponenti}
+\end{figure*}
 
 \clearpage
 \newsection{Diagrammi delle Macchine a Stati}
@@ -1806,7 +1812,7 @@ Questo diagramma di stato modella il ciclo di vita di un'attività. L'attività 
 
 \clearpage
 \newsubsection{Macchine a Stati: Mezzo}
-Questo diagramma di stato, una volta corretto, modella il ciclo di vita completo di un mezzo. Il mezzo inizia nello stato Disponibile e passa allo stato Occupato quando viene assegnato a un'attività. Al termine dell'attività, il mezzo ritorna allo stato Disponibile, pronto per una nuova assegnazione. Se la condizione di scadenzaRevisione < oggi viene verificata come vera, il mezzo entra nello stato di Manutenzione, per poi tornare nuovamente Disponibile una volta che i lavori sono stati completati. In ogni momento, se il mezzo viene eliminato dal sistema, il suo stato si conclude, come rappresentato dal simbolo di Exit nel diagramma UML, che indica la terminazione del ciclo di vita dell'oggetto.
+Questo diagramma di stato modella il ciclo di vita completo di un mezzo. Il mezzo inizia nello stato Disponibile e passa allo stato Occupato quando viene assegnato a un'attività. Al termine dell'attività, il mezzo ritorna allo stato Disponibile, pronto per una nuova assegnazione. Se il mezzo si danneggia o la condizione scadenzaRevisione < oggi viene verificata come vera, il mezzo entra nello stato di Manutenzione, per poi tornare nuovamente Disponibile una volta che i lavori sono stati completati. In ogni momento, se il mezzo viene eliminato dal sistema, il suo stato si conclude, come rappresentato dal simbolo ExitPoint nel diagramma UML, che indica la terminazione del ciclo di vita dell'oggetto.
 
 \begin{figure*}[!ht]
     \centering

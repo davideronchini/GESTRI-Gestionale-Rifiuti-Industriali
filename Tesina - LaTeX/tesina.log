@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.6)  13 SEP 2025 11:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.6)  13 SEP 2025 19:49
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -3169,6 +3169,12 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [71
 
  <./img/DiagrammaClassiControllersProgettazione.png (PNG copy)>]
+<./img/DiagrammaComponenti.png, id=917, 1356.02794pt x 854.55138pt>
+File: ./img/DiagrammaComponenti.png Graphic file (type png)
+<use ./img/DiagrammaComponenti.png>
+Package pdftex.def Info: ./img/DiagrammaComponenti.png  used on input line 1799.
+(pdftex.def)             Requested size: 452.9679pt x 285.45825pt.
+
 Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [][]|  
  []
@@ -3190,11 +3196,11 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 
 [72
 
-]
-<./img/DiagrammaMacchineStatiAttivita.png, id=921, 255.42755pt x 458.99725pt>
+ <./img/DiagrammaComponenti.png (PNG copy)>]
+<./img/DiagrammaMacchineStatiAttivita.png, id=923, 255.42755pt x 458.99725pt>
 File: ./img/DiagrammaMacchineStatiAttivita.png Graphic file (type png)
 <use ./img/DiagrammaMacchineStatiAttivita.png>
-Package pdftex.def Info: ./img/DiagrammaMacchineStatiAttivita.png  used on input line 1804.
+Package pdftex.def Info: ./img/DiagrammaMacchineStatiAttivita.png  used on input line 1810.
 (pdftex.def)             Requested size: 303.48766pt x 545.40108pt.
 
 Overfull \hbox (34.71422pt too wide) has occurred while \output is active
@@ -3219,10 +3225,10 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [73
 
  <./img/DiagrammaMacchineStatiAttivita.png (PNG copy)>]
-<./img/DiagrammaMacchineStatiMezzo.png, id=927, 377.90038pt x 727.11343pt>
+<./img/DiagrammaMacchineStatiMezzo.png, id=929, 377.90038pt x 727.11343pt>
 File: ./img/DiagrammaMacchineStatiMezzo.png Graphic file (type png)
 <use ./img/DiagrammaMacchineStatiMezzo.png>
-Package pdftex.def Info: ./img/DiagrammaMacchineStatiMezzo.png  used on input line 1813.
+Package pdftex.def Info: ./img/DiagrammaMacchineStatiMezzo.png  used on input line 1819.
 (pdftex.def)             Requested size: 298.96046pt x 575.25653pt.
 
 Overfull \hbox (34.71422pt too wide) has occurred while \output is active
@@ -3258,18 +3264,18 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 69818 strings out of 474116
- 1736367 string characters out of 5743683
+ 69831 strings out of 474116
+ 1736779 string characters out of 5743683
  2453100 words of memory out of 5000000
- 90724 multiletter control sequences out of 15000+600000
+ 90736 multiletter control sequences out of 15000+600000
  577648 words of font info for 80 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  91i,12n,120p,853b,1047s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfcc1000.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on tesina.pdf (76 pages, 2217974 bytes).
+Output written on tesina.pdf (76 pages, 2389895 bytes).
 PDF statistics:
- 1200 PDF objects out of 1200 (max. 8388607)
- 1021 compressed objects within 11 object streams
- 541 named destinations out of 1000 (max. 500000)
- 646 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1202 PDF objects out of 1440 (max. 8388607)
+ 1022 compressed objects within 11 object streams
+ 542 named destinations out of 1000 (max. 500000)
+ 651 words of extra memory for PDF output out of 10000 (max. 10000000)
 

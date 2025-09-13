@@ -36,7 +36,7 @@
 \contentsline {subsection}{Classi di Progettazione: Documento}{70}{section*.145}%
 \contentsline {subsection}{Classi di Progettazione: Controllers}{71}{section*.147}%
 \contentsline {section}{Diagramma dei Componenti}{72}{section*.149}%
-\contentsline {section}{Diagrammi delle Macchine a Stati}{73}{section*.150}%
-\contentsline {subsection}{Macchine a Stati: Attività}{73}{section*.151}%
-\contentsline {subsection}{Macchine a Stati: Mezzo}{74}{section*.153}%
+\contentsline {section}{Diagrammi delle Macchine a Stati}{73}{section*.151}%
+\contentsline {subsection}{Macchine a Stati: Attività}{73}{section*.152}%
+\contentsline {subsection}{Macchine a Stati: Mezzo}{74}{section*.154}%
 \contentsfinish 
