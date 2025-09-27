@@ -65,38 +65,47 @@
 \newchapter{Descrizione del Progetto}
 
 \newsection*{Panoramica Generale}
-Il progetto si inserisce all’interno del contesto della gestione di un sistema avanzato destinato al monitoraggio e al controllo di un insieme complesso di dati e processi. 
-L’obiettivo principale è fornire un’infrastruttura affidabile e centralizzata, capace di gestire in maniera integrata le informazioni provenienti da più fonti e di garantire 
-un accesso sicuro e differenziato in base ai ruoli degli utenti.  
-Il sistema non si limita alla sola raccolta dei dati, ma prevede una loro elaborazione, archiviazione e presentazione attraverso interfacce chiare e coerenti, 
-con particolare attenzione alla scalabilità e alla manutenibilità futura.
-
-\newsection*{Utenti}
-Gli utenti del sistema sono suddivisi in due categorie principali.  
-La prima è quella degli \textbf{Operatori}, figure incaricate dell’inserimento e dell’aggiornamento delle informazioni di base, che costituiscono il nucleo operativo della piattaforma.  
-La seconda è rappresentata dallo \textbf{Staff}, che eredita tutte le funzionalità proprie degli Operatori ma dispone inoltre di strumenti aggiuntivi per il monitoraggio, 
-la supervisione e la gestione delle configurazioni globali del sistema.  
-Per riassumere in modo uniforme le logiche comuni, è stato introdotto un attore generico denominato \textbf{User}, che rappresenta un’astrazione dei comportamenti condivisi 
-tra tutte le tipologie di utenti.
+Il progetto consiste nello sviluppo di \textbf{GESTRI}, un gestionale per il trasporto di rifiuti industriali, pensato per supportare le aziende nella pianificazione, monitoraggio e tracciabilità delle operazioni.
+L’obiettivo è offrire uno strumento intuitivo così da semplificare la gestione delle attività quotidiane, riducendo errori e tempi di coordinamento.
+\\
+Il sistema consente agli utenti di interagire secondo il proprio ruolo.
+Gli Operatori hanno la possibilità di aggiornare i dati di base e modificare la propria anagrafica, garantendo che le informazioni personali e operative siano sempre corrette. 
+Lo Staff dispone di strumenti avanzati che gli permettono di creare nuove attività, assegnare i mezzi di trasporto più idonei, coordinare le operazioni e supervisionare l’andamento complessivo. 
+I Clienti, oltre a commissionare il servizio, possono a loro volta creare richieste di attività, consultare lo stato delle operazioni in corso e accedere ai documenti relativi ai rifiuti conferiti.
+\\
+Le attività rappresentano il fulcro del sistema e racchiudono tutte le informazioni necessarie al loro svolgimento: tipologia di rifiuto, scadenze e mezzi di trasporto assegnati.
+Ogni attività è tracciata passo dopo passo, così da fornire una visione aggiornata e affidabile sia agli operatori sia ai clienti.
+\\
+Un ruolo fondamentale è ricoperto dalla gestione documentale. 
+Ogni trasporto è accompagnato da un FIR (Formulario Identificazione Rifiuto), documento obbligatorio che certifica il percorso del rifiuto dal produttore fino alla destinazione finale, e da un CER (Codice Europeo del Rifiuto), che identifica in maniera univoca la tipologia del rifiuto trattato.
+L’integrazione digitale di questi documenti assicura tracciabilità completa, riduzione degli errori di compilazione e conformità alle normative vigenti.
+\\
+In sintesi, GESTRI permette di centralizzare e automatizzare l’intero processo di gestione dei rifiuti industriali: gli utenti possono creare e seguire attività, i mezzi vengono assegnati in modo mirato, i documenti vengono caricati e archiviati in modo sicuro, e tutte le operazioni restano tracciabili e verificabili.
+Il risultato è una piattaforma che rende il servizio più efficiente, trasparente e affidabile, migliorando sia il lavoro delle aziende che l’esperienza dei clienti.
 
 \newsection*{Gestione dei Dati}
-Uno dei cardini del progetto è la gestione strutturata dei dati.  
-Il sistema deve infatti raccogliere informazioni eterogenee, archiviarle in modo sicuro e consentirne il recupero secondo criteri di rapidità ed efficienza.  
-Sono previsti meccanismi di aggiornamento costante e di sincronizzazione, così da garantire la coerenza delle informazioni nel tempo.  
-Particolare attenzione è stata posta anche agli aspetti di integrità e consistenza, evitando ridondanze superflue e introducendo controlli atti a prevenire errori nella fase di registrazione.
+La gestione dei dati rappresenta un elemento centrale del progetto. 
+Il sistema è stato progettato per garantire un’organizzazione chiara e strutturata delle informazioni, supportata da procedure di aggiornamento e validazione che ne assicurano l’affidabilità nel tempo.
+\\
+Particolare attenzione è rivolta ai principi di integrità e consistenza, così da mantenere i dati coerenti e privi di ridondanze inutili.
+\\
+In questo modo, la piattaforma garantisce un flusso informativo ordinato, sicuro e facilmente consultabile, a beneficio sia degli operatori interni sia dei clienti.	
 
 \newsection*{Architettura del Sistema}
-L’architettura del sistema è stata progettata seguendo un approccio modulare, che consente di distinguere chiaramente i diversi livelli funzionali.  
-Il livello di acquisizione si occupa di raccogliere i dati dalle fonti esterne, normalizzandoli e predisponendoli all’elaborazione.  
-Segue un livello logico-gestionale, in cui le informazioni vengono trattate secondo le regole definite dal dominio applicativo.  
-Infine, il livello di presentazione ha il compito di fornire agli utenti una visione chiara e comprensibile dello stato del sistema, adattandosi ai privilegi associati a ciascun ruolo.  
-La modularità facilita inoltre l’eventuale estensione futura, consentendo di aggiungere nuove funzionalità senza compromettere la stabilità delle componenti esistenti.
+L’architettura di GESTRI è concepita secondo un approccio modulare, così da favorire la scalabilità, la manutenzione e l’evoluzione futura della piattaforma. I principali componenti possono essere riassunti come segue:
+\begin{itemize}
+    \item \textbf{Interfaccia Utente (Front-end):} fornisce un ambiente semplice e intuitivo per l’interazione degli utenti, adattato alle diverse tipologie di attori (Operatori, Staff, Clienti). 
+    È progettata per garantire chiarezza, usabilità e accesso rapido alle funzionalità principali.
+    \item \textbf{Logica Applicativa (Back-end):} rappresenta il cuore del sistema, gestisce i processi interni e applica le regole di business. 
+    Qui risiedono i meccanismi di registrazione, monitoraggio delle attività, generazione dei documenti e gestione dei permessi degli utenti.
+    \item \textbf{Gestione dei Dati (Database):} si occupa della memorizzazione strutturata delle informazioni. 
+    La progettazione segue criteri di integrità e consistenza, sfruttando relazioni tra entità per ridurre ridondanze e facilitare le operazioni di ricerca e consultazione.
+    \item \textbf{Servizi di Supporto:} includono funzionalità trasversali come autenticazione, controlli di sicurezza, backup e strumenti di reportistica.
+\end{itemize}
+Questa architettura a più livelli permette di separare in modo chiaro presentazione, logica e dati, garantendo così robustezza, flessibilità e una più agevole gestione del sistema nel tempo.
 
-\newsection*{Interfacce e Accesso}
-L’accesso al sistema avviene attraverso interfacce pensate per essere intuitive e coerenti, in grado di fornire a ciascun utente esattamente le funzioni necessarie al proprio ruolo.  
-Gli Operatori interagiscono principalmente con strumenti di inserimento e aggiornamento, mentre lo Staff dispone di viste aggiuntive che consentono una supervisione complessiva.  
-La gestione delle credenziali garantisce la distinzione tra i diversi profili, rafforzando il livello di sicurezza e impedendo utilizzi impropri delle funzionalità disponibili.
-
+\newsection*{Accesso}
+La gestione delle credenziali assicura una netta distinzione tra i profili e rafforza il livello di sicurezza, prevenendo usi impropri e garantendo che ciascun utente operi esclusivamente nell’ambito delle proprie competenze.
 
 \newchapter{Glossario dei Termini}
 
@@ -108,13 +117,16 @@ La gestione delle credenziali garantisce la distinzione tra i diversi profili, r
 \bottomrule
 \endfoot
 \endlastfoot
-Utente & Ruolo generico da cui derivano Client e Operator. Ha la capacità di accedere al sistema. & TECNICO & - \\
-Client & Soggetto che commissiona il servizio e consulta documenti e stato delle attività. & BUSINESS & - \\
-Operator & Figura incaricata di eseguire operazioni pratiche di carico/scarico, compilazione documenti e gestione mezzi. Estende le funzionalità dello Staff. & BUSINESS & - \\
+Account & Area personale dell'utente. & TECNICO & Profilo \\
+Login & Processo con cui un utente viene identificato e entra nella piattaforma. & TECNICO & Accesso \\
+Utente & Ruolo generico da cui derivano Cliente e Operatore. Ha la capacità di accedere al sistema. & TECNICO & - \\
+Cliente & Soggetto che commissiona il servizio e consulta documenti e stato delle attività. & BUSINESS & - \\
+Operatore & Soggetto incaricato di eseguire operazioni pratiche di carico/scarico e compilazione domcumenti. Estende le funzionalità dello Staff. & BUSINESS & - \\
 Staff & Personale amministrativo che gestisce l'organizzazione dei turni, le assenze e le attività complessive. & BUSINESS & - \\
 Attività & Operazione di carico o scarico di rifiuti, con assegnazione di operatori e mezzi. & BUSINESS & - \\
 Mezzo & Veicolo utilizzato per il trasporto dei rifiuti. & BUSINESS & - \\
-FIR & Documento obbligatorio che accompagna il trasporto dei rifiuti industriali. & BUSINESS & Formulario di Identificazione Rifiuti \\
+CER &Sequenze numeriche, composte da 6 cifre riunite in coppie, volte ad identificare un rifiuto, di norma, in base al processo produttivo da cui è originato. & BUSINESS & Catalogo Europeo dei Rifiuti \\
+FIR & Documento obbligatorio che accompagna il trasporto dei rifiuti per garantirne la tracciabilità, riportando informazioni sul produttore, sul rifiuto, sul trasportatore e sull'impianto di destinazione. & BUSINESS & Formulario di Identificazione Rifiuti \\
 Turno & Periodo temporale in cui un operatore è assegnato a un'attività. & BUSINESS & - \\
 Gestione Utente & Area del sistema che si occupa di registrazione, login, e amministrazione dei profili utente. & TECNICO & - \\
 Gestione Attività & Area del sistema che gestisce la creazione, l'aggiornamento e il monitoraggio delle operazioni di carico/scarico rifiuti. & TECNICO & - \\
@@ -138,15 +150,15 @@ Nella presente sezione si analizzano in modo approfondito i requisiti del sistem
 
 \newsubsubsection*{RF1: Registrazione Utente}
 
-Il sistema dovrà permettere la registrazione di nuovi utenti (amministratori, operatori, staff) inserendo i dati necessari.
+Il sistema dovrà permettere la registrazione di nuovi utenti (Clienti, Operatori, Staff) inserendo i dati necessari.
 
 \newsubsubsection*{RF2: Login Utente}
 
-Il sistema dovrà permettere all’utente di autenticarsi tramite email e password.
+Il sistema dovrà permettere all’Utente di autenticarsi tramite email e password.
 
 \newsubsubsection*{RF3: Recupero Credenziali}
 
-Il sistema dovrà permettere il recupero delle credenziali tramite procedura (es. email) per operatori e staff.
+Il sistema dovrà permettere il recupero delle credenziali tramite procedura (es. email) per Operatori e Staff.
 
 \newsubsubsection*{RF4: Visualizza Utente}
 
@@ -154,21 +166,21 @@ Il sistema dovrà permettere all'Utente di visualizzare i propri dati anagrafici
 
 \newsubsubsection*{RF5: Modifica Ruolo}
 
-Il sistema dovrà permettere allo Staff di assegnare e modificare il ruolo dell'utente (USER, OPERATOR, STAFF).
+Il sistema dovrà permettere allo Staff di assegnare e modificare il ruolo dell'Utente (Cliente, Operatore, Staff).
 
 \newsubsubsection*{RF6: Modifica Utente}
 
-Il sistema dovrà permettere la modifica delle informazioni anagrafiche e dei dati di contatto di un utente.
+Il sistema dovrà permettere la modifica delle informazioni anagrafiche e dei dati di contatto di un Utente.
 
 \newsubsubsection*{RF7: Elimina Utente}
 
-Il sistema dovrà permettere la cancellazione di un account utente e la gestione coerente dei dati associati.
+Il sistema dovrà permettere la cancellazione di un account Utente e la gestione coerente dei dati associati.
 
 \newsubsection*{Area: Gestione Assenza}
 
 \newsubsubsection*{RF8: CRUD Assenza}
 
-Il sistema dovrà permettere allo staff di registrare, approvare e monitorare le assenze del personale.
+Il sistema dovrà permettere allo Staff di registrare, approvare e monitorare le assenze del personale.
 
 \newsubsection*{Area: Gestione Attività}
 
@@ -178,7 +190,7 @@ Il sistema dovrà permettere la creazione, lettura, aggiornamento e cancellazion
 
 \newsubsubsection*{RF10: Assegnazione Operatore}
 
-Il sistema dovrà permettere l'assegnazione di uno o più operatori a ciascuna attività, con controllo delle disponibilità.
+Il sistema dovrà permettere l'assegnazione di uno o più Operatori a ciascuna attività, con controllo delle disponibilità.
 
 \newsubsubsection*{RF11: Assegnazione Mezzo}
 
@@ -196,21 +208,21 @@ Il sistema dovrà permettere il filtraggio e la ricerca dei documenti tramite cr
 
 \newsubsubsection*{RF14: Notifica Rinnovo Corso Sicurezza}
 
-Il sistema dovrà inviare notifiche per il rinnovo dei corsi di sicurezza agli utenti interessati prima della scadenza.
+Il sistema dovrà inviare notifiche per il rinnovo dei corsi di sicurezza agli Utenti interessati prima della scadenza.
 
 \newsubsubsection*{RF15: Notifica Scadenza Documento}
 
-Il sistema dovrà inviare notifiche relative alle scadenze dei documenti (es. FIR, consegne, ritiri) agli utenti interessati.
+Il sistema dovrà inviare notifiche relative alle scadenze dei documenti (es. FIR, consegne, ritiri) agli Utenti interessati.
 
 \newsubsection*{Area: Gestione Mezzo}
 
 \newsubsubsection*{RF16: CRUD Mezzo}
 
-Il sistema dovrà permettere la creazione, lettura, aggiornamento e cancellazione dei mezzi, inclusi dati tecnici, capacità, assicurazione, revisione, manutenzione e stato del mezzo.
+Il sistema dovrà permettere la creazione, lettura, aggiornamento e cancellazione dei mezzi, inclusi dati tecnici.
 
 \newsubsubsection*{RF17: Filtra Mezzo}
 
-Il sistema dovrà permettere il filtraggio e la ricerca dei mezzi per stato, capacità, disponibilità, scadenze assicurative e altri attributi rilevanti.
+Il sistema dovrà permettere il filtraggio e la ricerca dei mezzi per attributi rilevanti.
 
 \begin{figure*}[ht]
     \centering
@@ -341,7 +353,9 @@ Il diagramma individua gli attori coinvolti nel sistema e visualizza le connessi
 \clearpage
 \newsubsection*{Gestione Utente}
 
-Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione degli utenti, incluse registrazione, autenticazione, assegnazione di ruoli e modifica dei profili.
+Il seguente diagramma descrive le relazioni tra attori e casi d'uso per la gestioni degli Utenti. 
+Racchiude la possibilità di registrare, modificare ed eliminare un Utente, effettuare il login e recuperare le credenziali in caso di smarrimento.
+Sono previsti, inoltre, casi d'uso per la modifica del ruolo e per la consultazione dei dati tramite le operazioni di visualizzazione e ricerca degli Utenti.
 
 \begin{figure*}[ht]
     \centering
@@ -407,7 +421,7 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
         \item Il sistema richiede all’Utente di inserire email e password
         \item Il sistema valida le credenziali fornite
     \end{enumerate}
-    \item Il sistema autentica l’Utente e lo reindirizza alla pagina principale/area riservata
+    \item Il sistema autentica l’Utente e lo reindirizza alla pagina principale
 \end{enumerate}\\ \hline
 \textbf{Postcondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
     \item L’Utente ha effettuato il login al proprio account e può accedere alle funzionalità autorizzate
@@ -433,7 +447,7 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
 \end{enumerate} \\ \hline
 \textbf{Sequenza degli eventi principale} &
 \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item Il caso d'uso inizia quando l'Utente seleziona l’opzione "Recupera credenziali"
+    \item Il caso d'uso inizia quando l'Utente seleziona l’opzione "Password dimenticata?"
     \item \texttt{While} l'Utente non ha inserito l'email
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
         \item Il sistema richiede all’Utente di inserire la propria email
@@ -478,7 +492,7 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
         \item \texttt{Extend} \textit{TrovaUtente} 
         \item Il sistema mostra l’elenco degli Operatori registrati
         \item Lo Staff seleziona un Operatore dall’elenco
-        \item Il sistema mostra i dati anagrafici completi e le informazioni aggiuntive (ruolo, turni, assenze, attività corrente collegata)
+        \item Il sistema mostra i dati anagrafici completi e le informazioni aggiuntive (ruolo, assenze, attività corrente e documenti collegati)
     \end{enumerate}
 \end{enumerate}\\ \hline
 \end{tabular}
@@ -524,7 +538,7 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
 \hline
 \multicolumn{2}{|c|}{\textbf{Caso d’uso: ModificaRuolo}} \\ \hline
 \textbf{ID} & 6 \\ \hline
-\textbf{Breve descrizione} & Lo Staff modifica il ruolo all’Operatore e/o allo Staff \\ \hline
+\textbf{Breve descrizione} & Lo Staff modifica il ruolo dell’Operatore\\ \hline
 \textbf{Attori primari} & Staff \\ \hline
 \textbf{Attori secondari} & Nessuno \\ \hline
 \textbf{Precondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
@@ -534,7 +548,7 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
 \textbf{Sequenza degli eventi principale} &
 \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
     \item Il caso d’uso inizia quando lo Staff seleziona l’Operatore da modificare
-    \item Lo Staff può modificare il ruolo dell’Operatore
+    \item Lo Staff modifica il ruolo dell’Operatore
     \item \texttt{If} la modifica è confermata e i dati sono validi
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
         \item Il sistema aggiorna il ruolo dell’Operatore
@@ -580,17 +594,19 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
     \item I dati anagrafici dell’Utente vengono aggiornati nel sistema
     \end{enumerate} \\ \hline
 \textbf{Sequenza degli eventi alternativa} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt] 
-    \item Lo Staff richiede la modifica
-    \item Il sistema mostra l’elenco di tutti gli Operatori registrati
-    \item Lo Staff seleziona l’Operatore da modificare dall’elenco
+    \item \texttt{If} È lo Staff che richiede la modifica
+    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item Il sistema mostra l'elenco di tutti gli Operatori registrati
+    \item Lo Staff seleziona l'Operatore da modificare dall'elenco
     \item Lo Staff modifica i dati desiderati
     \item \texttt{If} I dati inseriti sono validi
-    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \begin{enumerate}[label=\arabic{enumi}.\arabic{enumii}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
         \item Il sistema aggiorna i dati modificati
-    \end{enumerate}
+        \end{enumerate}
     \item \texttt{Else}
-    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \begin{enumerate}[label=\arabic{enumi}.\arabic{enumii}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
         \item Il sistema mostra un messaggio di errore e richiede una nuova modifica
+        \end{enumerate}
     \end{enumerate}
 \end{enumerate}\\ \hline
 \end{tabular}
@@ -629,15 +645,20 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
     \end{enumerate}
 \end{enumerate} \\ \hline
 \textbf{Sequenza degli eventi alternativa} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt] 
-    \item Il caso d'uso inizia quando lo Staff seleziona l'opzione di eliminazione del profilo dall'elenco
-    \item \texttt{If} Lo Staff conferma l’operazione
+    \item \texttt{If} È lo Staff che richiede l'eliminazione
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Il sistema elimina l’Utente e mostra un messaggio di conferma
-    \end{enumerate}
+    \item Il sistema mostra l'elenco di tutti gli Operatori registrati
+    \item Lo Staff seleziona l'Operatore da eliminare dall'elenco
+    \item Lo Staff seleziona l'opzione di eleminazione
+    \item \texttt{If} Lo Staff conferma l'operazione
+    \begin{enumerate}[label=\arabic{enumi}.\arabic{enumii}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+        \item Il sistema elimina l'Utente e mostra un messaggio di conferma
+        \end{enumerate}
     \item \texttt{Else}
-    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Il sistema annulla l’operazione e non apporta modifiche
-\end{enumerate}
+    \begin{enumerate}[label=\arabic{enumi}.\arabic{enumii}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+        \item Il sistema annulla l'operazione
+        \end{enumerate}
+    \end{enumerate}
 \end{enumerate}\\ \hline
 \end{tabular}
 \end{table}
@@ -647,7 +668,9 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
 \clearpage
 \newsubsection*{Gestione Assenza}
 
-La sottosezione descrive i casi d'uso relativi alla gestione delle assenze del personale (ferie, malattia, permessi). In questa area sono documentate le operazioni principali: creazione, visualizzazione, modifica ed eliminazione delle assenze, con l'indicazione degli attori coinvolti (principalmente lo Staff) e delle precondizioni necessarie.
+Il seguente diagramma descrive le realazioni tra attori e casi d'uso per la gestione delle assenze del personale, come: aspettativa, ferie, malattia, maternità e permesso.
+Racchiude la possibilità di creazione, modifica ed eliminazione di assenze.
+Sono previsti, inoltre, casi d'uso per la consultazione di esse tramite le operazioni di visualizzazione.
 
 \begin{figure*}[ht]
     \centering
