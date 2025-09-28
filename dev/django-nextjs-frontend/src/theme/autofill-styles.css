@@ -1,0 +1,68 @@
+/**
+ * autofill-styles.css
+ * Solution for browser autofill and suggestion UI
+ */
+
+/* 
+ * Base style for inputs with activated autofill
+ */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  /* Usa il colore del tuo background qui */
+  -webkit-box-shadow: 0 0 0 100px transparent inset !important;
+  background-color: transparent !important;
+  -webkit-text-fill-color: rgba(44, 44, 44, 0.6) !important;
+  font-family: 'Poppins', sans-serif !important;
+  transition: background-color 9999s ease-in-out 0s !important;
+}
+
+/* 
+ * Style for datalist and autocomplete options
+ * These selectors target the autocomplete options displayed by the browser
+ */
+input::-webkit-calendar-picker-indicator,
+datalist option,
+input::-webkit-list-button,
+input::-webkit-outer-spin-button, 
+input::-webkit-inner-spin-button,
+input::-webkit-contacts-auto-fill-button,
+input::-webkit-credentials-auto-fill-button {
+  background-color: transparent !important;
+  color: rgba(44, 44, 44, 0.6) !important;
+  font-family: 'Poppins', sans-serif !important;
+}
+
+/* 
+ * Style for autocomplete UI elements in browsers
+ * This is an attempt to target the autocomplete dropdown
+ */
+::-webkit-input-placeholder,
+::-webkit-textfield-decoration-container,
+::-webkit-media-controls-panel,
+::-webkit-search-cancel-button {
+  font-family: 'Poppins', sans-serif !important;
+  background-color: transparent !important;
+  color: rgba(44, 44, 44, 0.6) !important;
+}
+
+/* 
+ * Hack to modify Chrome suggestions appearance
+ * Attempts to influence the autocomplete preview
+ */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  input, select, textarea {
+    font-family: 'Poppins', sans-serif !important;
+  }
+  
+  input:hover, input:focus {
+    font-family: 'Poppins', sans-serif !important;
+  }
+}
+
+/* Focus style for inputs */
+input:focus {
+  border-color: #17BC6A !important;
+  outline-color: #17BC6A !important;
+}

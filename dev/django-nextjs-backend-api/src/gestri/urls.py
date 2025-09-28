@@ -15,8 +15,31 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+# Nascondi il modello Group dal pannello admin se presente.
+# Lo facciamo qui perché `urls.py` viene importato all'avvio di Django,
+# garantendo che la deregistrazione sia eseguita prima che l'admin venga mostrato.
+try:
+    from django.contrib.auth.models import Group
+    admin.site.unregister(Group)
+except Exception:
+    # Se l'import o la deregistrazione falliscono, ignoriamo l'errore.
+    pass
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
+
+# Configure admin site
+admin.site.site_header = "GESTRI - Gestionale Rifiuti Industriali"
+admin.site.site_title = "GESTRI Admin"
+admin.site.index_title = "Pannello di Amministrazione"
+
+from .api import api
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/', api.urls),
 ]
+
+# Serve media files in development
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

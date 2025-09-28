@@ -9,8 +9,9 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
-
+import datetime
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,12 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-sc5!s)pt$6j))q#x#0*=xbgx(yy4k#n%5cbynia^4=@^r7mac='
+SECRET_KEY = config("DJANGO_SECRET_KEY", cast=str)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DJANGO_DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -37,11 +38,26 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # third party
+    'corsheaders',
+    'ninja_extra',
+    'ninja_jwt',
+    # internal
+    'waitlists',
+    'utente',
+    'attivita',
+    'documento',
+    'assenza',
+    'mezzo',
+    'rimorchio',
+    'mezzo_rimorchio',
+    'utente_attivita',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -50,6 +66,13 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'gestri.urls'
+
+CORS_URLS_REGEX = r'^/api/.*$'
+CORS_ALLOWED_ORIGINS = []
+
+ENV_CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS', cast=str, default="")
+for origin in ENV_CORS_ALLOWED_ORIGINS.split(","):
+    CORS_ALLOWED_ORIGINS.append(f"{origin}".strip().lower())
 
 TEMPLATES = [
     {
@@ -116,7 +139,26 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+# Media files (User uploaded files)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Configurazione del modello di autenticazione personalizzato
+AUTH_USER_MODEL = 'utente.Utente'
+
+# Backend di autenticazione che utilizza l'email
+AUTHENTICATION_BACKENDS = [
+    'utente.auth.EmailBackend',
+    'django.contrib.auth.backends.ModelBackend',  # Manteniamo anche il backend predefinito
+]
+
+NINJA_JWT = {
+    'ACCESS TOKEN_LIFETIME': datetime.timedelta(minutes=60),
+    'REFRESH TOKEN_LIFETIME': datetime.timedelta(days=7),
+}
+    
