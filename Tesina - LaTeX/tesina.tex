@@ -685,7 +685,7 @@ Sono previsti, inoltre, casi d'uso per la consultazione di esse tramite le opera
 \hline
 \multicolumn{2}{|c|}{\textbf{Caso d’uso: CreaAssenza}} \\ \hline
 \textbf{ID} & 9 \\ \hline
-\textbf{Breve descrizione} & Lo Staff crea una nuova assenza (ferie, malattia, permesso) per un Operatore \\ \hline
+\textbf{Breve descrizione} & Lo Staff crea una nuova assenza (aspettativa, ferie, malattia, maternità, permesso) per un Operatore \\ \hline
 \textbf{Attori primari} & Staff \\ \hline
 \textbf{Attori secondari} & Nessuno \\ \hline
 \textbf{Precondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
@@ -740,7 +740,7 @@ Sono previsti, inoltre, casi d'uso per la consultazione di esse tramite le opera
 \textbf{Postcondizioni} & \begin{enumerate}[label=\arabic*.,leftmargin=14pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
         \item L’Operatore visualizza le informazioni sulle assenze.
 \end{enumerate} \\ \hline
-\textbf{Sequenza degli eventi alternativa} & Nessuna. \\ \hline
+\textbf{Sequenza degli eventi alternativa} & Nessuna \\ \hline
 \end{tabular}
 \end{table}
 
@@ -818,7 +818,9 @@ Sono previsti, inoltre, casi d'uso per la consultazione di esse tramite le opera
 \clearpage
 \newsubsection*{Gestione Mezzo}
 
-Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione dei mezzi, come anagrafica, manutenzione, disponibilità e scadenze assicurative.
+Il seguente diagramma descrive le relazioni tra attori e casi d’uso per la gestione dei mezzi.\\ 
+Racchiude la possibilità di creazione, modifica ed eliminazione dei mezzi. Sono previsti, inoltre, casi d’uso per la consultazione di essi tramite le operazioni di visualizzazione, ricerca e filtraggio.
+
 
 \begin{figure*}[ht]
     \centering
@@ -842,7 +844,7 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
 	\textbf{Sequenza degli eventi principale} &
 \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
     \item Il caso d’uso inizia quando lo Staff seleziona l'opzione di creazione di un nuovo mezzo
-    \item Il sistema richiede l’inserimento dei dati (targa, modello, anno, categoria, stato)
+    \item Il sistema richiede l’inserimento dei dati (targa, chilometraggio, consumo carburante, scadenza revisione, scadenza assicurazione, stato mezzo, rimorchio)
     \item Lo Staff inserisce i dati
     \item \texttt{If} i dati inseriti sono validi e non duplicati
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
@@ -885,7 +887,7 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
     \end{enumerate} \\ \hline
     	\textbf{Sequenza degli eventi principale} & \begin{enumerate}[label=\arabic*.,leftmargin=14pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
         \item Il caso d'uso inizia quando l'Operatore seleziona il mezzo da visualizzare
-        \item Il sistema mostra i dati del mezzo (targa, modello, stato, ecc.)
+        \item Il sistema mostra i dati del mezzo (targa, chilometraggio, ecc.)
     \end{enumerate}\\ \hline
     	\textbf{Postcondizioni} & \begin{enumerate}[label=\arabic*.,leftmargin=14pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
         \item I dati del mezzo selezionato vengono visualizzati.
@@ -895,7 +897,7 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
         \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
             \item \texttt{Extend} \textit{TrovaMezzo}
             \item Lo Staff seleziona il mezzo da visualizzare
-            \item Il sistema mostra i dati del mezzo (targa, modello, stato, ecc.)
+            \item Il sistema mostra i dati del mezzo (targa, chilometraggio, ecc.)
         \end{enumerate}
     \end{enumerate} \\ \hline
 \end{tabular}
@@ -908,8 +910,8 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
 \begin{tabular}{|p{3.9cm}|p{9.9cm}|}
 \hline
 \multicolumn{2}{|c|}{\textbf{Caso d’uso: TrovaMezzo}} \\ \hline
-        extbf{ID} & 15 \\ \hline
-        extbf{Breve descrizione} & Lo Staff esegue la ricerca di uno o più mezzi \\ \hline
+        \textbf{ID} & 15 \\ \hline
+        \textbf{Breve descrizione} & Lo Staff esegue la ricerca di uno o più mezzi \\ \hline
 	\textbf{Attori primari} & Staff \\ \hline
 	\textbf{Attori secondari} & Nessuno \\ \hline
 	\textbf{Precondizioni} & \begin{enumerate}[label=\arabic*.,leftmargin=14pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
@@ -917,7 +919,7 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
     \end{enumerate} \\ \hline
 	\textbf{Sequenza degli eventi principale} & 
 \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item Il caso d’uso inizia quando lo Staff inserisce il singolo criterio di ricerca nella barra dedicata (es. nome, targa)
+    \item Il caso d’uso inizia quando lo Staff inserisce il singolo criterio di ricerca nella barra dedicata (es. rimorchio, targa)
     \item \texttt{Extend} \textit{FiltraMezzo}
     \item \texttt{While} il criterio di ricerca non è vuoto
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
@@ -935,7 +937,7 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
     	\textbf{Postcondizioni} & \begin{enumerate}[label=\arabic*.,leftmargin=14pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
         \item Lo Staff visualizza l’elenco dei mezzi corrispondenti ai criteri.
         \end{enumerate} \\ \hline
-    	\textbf{Sequenza degli eventi alternativa} & Nessuna. \\ \hline
+    	\textbf{Sequenza degli eventi alternativa} & Nessuna \\ \hline
 \end{tabular}
 \end{table}
 
@@ -948,7 +950,7 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
 \hline
 \multicolumn{2}{|c|}{\textbf{Caso d’uso: FiltraMezzo}} \\ \hline
 	\textbf{ID} & 16 \\ \hline
-	\textbf{Breve descrizione} & Lo Staff filtra i mezzi in base a criteri avanzati (modello, stato, ecc.) \\ \hline
+	\textbf{Breve descrizione} & Lo Staff filtra i mezzi in base a criteri avanzati (es. rimorchio, targa) \\ \hline
 	\textbf{Attori primari} & Staff \\ \hline
 	\textbf{Attori secondari} & Nessuno \\ \hline
 	\textbf{Precondizioni} & \begin{enumerate}[label=\arabic*.,leftmargin=14pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
@@ -956,7 +958,7 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
     \end{enumerate} \\ \hline
 	\textbf{Sequenza degli eventi principale} & 
 \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item Il caso d'uso inizia quando lo Staff applica uno o più filtri durante l'azione di ricerca del mezzo (es. modello, stato, ecc.)
+    \item Il caso d'uso inizia quando lo Staff applica uno o più filtri durante l'azione di ricerca del mezzo (es. rimorchio, targa)
     \item \texttt{If} esistono mezzi che rispettano i filtri
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
         \item Il sistema mostra l’elenco dei mezzi filtrati
@@ -1050,7 +1052,9 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
 \clearpage
 \newsubsection*{Gestione Attività}
 
-Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione delle attività (carico/scarico rifiuti), compresa l'assegnazione di operatori e mezzi.
+Il seguente diagramma descrive le relazioni tra attori e casi d’uso per la gestione delle attività.\\
+Racchiude la possibilità di creazione, modifica ed eliminazione delle attività, con assegnazione di operatori e mezzi associati. Sono previsti, inoltre, casi d’uso per la consultazione di esse tramite le operazioni di visualizzazione e ricerca.
+
 
 \begin{figure*}[ht]
     \centering
@@ -1078,6 +1082,7 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
     \item Il Cliente o lo Staff inserisce i dati
     \item \texttt{Extend} \textit{AssegnaOperatore}
     \item \texttt{Extend} \textit{AssegnaMezzo}
+    \item \texttt{Extend} \textit{AssegnaDocumento}
     \item \texttt{If} i dati sono validi
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
         \item Il sistema registra la nuova attività
@@ -1113,23 +1118,16 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
 	\textbf{Attori secondari} & Nessuno \\ \hline
 	\textbf{Precondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
     \item L’attività esiste
-    \item L’operatore è registrato
+    \item L’Operatore è registrato nel sistema
 \end{enumerate} \\ \hline
 	\textbf{Sequenza degli eventi principale} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item Il caso d'uso inizia quando lo Staff seleziona l'opzione di assegnazione di un operatore all'attività
+    \item Il caso d'uso inizia quando lo Staff seleziona l'opzione di assegnazione di un Operatore all'attività
     \item \texttt{Extend} \textit{TrovaUtente}
-    \item Lo Staff seleziona un operatore da assegnare all'attività
-    \item \texttt{If} L’Operatore è disponibile
-    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Il sistema registra l’assegnazione
-    \end{enumerate}
-    \item \texttt{Else}
-    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Il sistema mostra il messaggio d’errore “L’operatore non è disponibile”
-    \end{enumerate}
+    \item Lo Staff seleziona un Operatore da assegnare all'attività
+    \item Il sistema registra l’assegnazione
 \end{enumerate} \\ \hline
 	\textbf{Postcondizioni} & \begin{enumerate}[label=\arabic*.,leftmargin=14pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item L’operatore è assegnato all’attività.
+        \item L’Operatore è assegnato all’attività.
     \end{enumerate} \\ \hline
 	\textbf{Sequenza degli eventi alternativa} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
     \item \texttt{If} lo Staff non conferma l’operazione
@@ -1186,8 +1184,41 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
 \renewcommand{\arraystretch}{1.9}
 \begin{tabular}{|p{3.9cm}|p{9.9cm}|}
 \hline
-\multicolumn{2}{|c|}{\textbf{Caso d’uso: VisualizzaAttivita}} \\ \hline
+\multicolumn{2}{|c|}{\textbf{Caso d’uso: AssegnaDocumento}} \\ \hline
 	\textbf{ID} & 22 \\ \hline
+	\textbf{Breve descrizione} & Lo Staff assegna un documento ad un’attività \\ \hline
+	\textbf{Attori primari} & Staff \\ \hline
+	\textbf{Attori secondari} & Nessuno \\ \hline
+	\textbf{Precondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item L’attività esiste
+    \item Il documento è registrato nel sistema
+\end{enumerate} \\ \hline
+	\textbf{Sequenza degli eventi principale} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item Il caso d'uso inizia quando lo Staff seleziona l'opzione di assegnazione di un documento all'attività
+    \item \texttt{Extend} \textit{TrovaDocumento}
+    \item Lo Staff seleziona un docuemnto da assegnare all'attività
+    \item Il sistema registra l’assegnazione
+\end{enumerate} \\ \hline
+	\textbf{Postcondizioni} & \begin{enumerate}[label=\arabic*.,leftmargin=14pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+        \item Il docuemnto è assegnato all’attività.
+    \end{enumerate} \\ \hline
+	\textbf{Sequenza degli eventi alternativa} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item \texttt{If} lo Staff non conferma l’operazione
+    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+        \item Il sistema annulla l’operazione e non apporta modifiche
+    \end{enumerate}
+\end{enumerate} \\ \hline
+\end{tabular}
+\end{table}
+
+\clearpage
+\begin{table}[H]
+\vspace*{-0cm}
+\renewcommand{\arraystretch}{1.9}
+\begin{tabular}{|p{3.9cm}|p{9.9cm}|}
+\hline
+\multicolumn{2}{|c|}{\textbf{Caso d’uso: VisualizzaAttivita}} \\ \hline
+	\textbf{ID} & 23 \\ \hline
 	\textbf{Breve descrizione} & Il Cliente o lo Staff visualizza l’attività selezionata \\ \hline
 	\textbf{Attori primari} & Cliente, Staff \\ \hline
 	\textbf{Attori secondari} & Nessuno \\ \hline
@@ -1200,8 +1231,8 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
     \item Lo Staff seleziona un’attività da visualizzare
     \item Il sistema mostra le informazioni sull’attività selezionata
 \end{enumerate} \\ \hline
-	\textbf{Postcondizioni} & Nessuna. \\ \hline
-	\textbf{Sequenza degli eventi alternativa} & Nessuna. \\ \hline
+	\textbf{Postcondizioni} & Nessuna \\ \hline
+	\textbf{Sequenza degli eventi alternativa} & Nessuna \\ \hline
 \end{tabular}
 \end{table}
 
@@ -1212,7 +1243,7 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
 \begin{tabular}{|p{3.9cm}|p{9.9cm}|}
 \hline
 \multicolumn{2}{|c|}{\textbf{Caso d’uso: TrovaAttivita}} \\ \hline
-	\textbf{ID} & 23 \\ \hline
+	\textbf{ID} & 24 \\ \hline
 	\textbf{Breve descrizione} & Il Cliente o lo Staff cerca un’attività \\ \hline
 	\textbf{Attori primari} & Cliente, Staff \\ \hline
 	\textbf{Attori secondari} & Nessuno \\ \hline
@@ -1234,8 +1265,8 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
         \item Il sistema mostra “Nessuna attività trovata”
     \end{enumerate}
 \end{enumerate} \\ \hline
-	\textbf{Postcondizioni} & Nessuna. \\ \hline
-	\textbf{Sequenza degli eventi alternativa} & Nessuna. \\ \hline
+	\textbf{Postcondizioni} & Nessuna \\ \hline
+	\textbf{Sequenza degli eventi alternativa} & Nessuna \\ \hline
 \end{tabular}
 \end{table}
 
@@ -1246,7 +1277,7 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
 \begin{tabular}{|p{3.9cm}|p{9.9cm}|}
 \hline
 \multicolumn{2}{|c|}{\textbf{Caso d’uso: ModificaAttivita}} \\ \hline
-	\textbf{ID} & 24 \\ \hline
+	\textbf{ID} & 25 \\ \hline
 	\textbf{Breve descrizione} & Il Cliente o lo Staff modifica un’attività esistente \\ \hline
 	\textbf{Attori primari} & Cliente, Staff \\ \hline
 	\textbf{Attori secondari} & Nessuno \\ \hline
@@ -1286,7 +1317,7 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
 \begin{tabular}{|p{3.9cm}|p{9.9cm}|}
 \hline
 \multicolumn{2}{|c|}{\textbf{Caso d’uso: EliminaAttivita}} \\ \hline
-	\textbf{ID} & 25 \\ \hline
+	\textbf{ID} & 26 \\ \hline
 	\textbf{Breve descrizione} & Il Cliente o lo Staff elimina un’attività esistente \\ \hline
 	\textbf{Attori primari} & Cliente, Staff \\ \hline
 	\textbf{Attori secondari} & Nessuno \\ \hline
@@ -1296,8 +1327,7 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
 \end{enumerate} \\ \hline
 	\textbf{Sequenza degli eventi principale} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
     \item Il caso d'uso inizia quando il Cliente o lo Staff seleziona l'opzione di eliminazione dell'attività
-    \item Il Cliente o lo Staff seleziona l'attività da eliminare
-    \item Il sistema elimina l’attività selezionata
+    \item Il sistema elimina l’attività selezionata e mostra un messaggio di conferma
 \end{enumerate} \\ \hline
 	\textbf{Postcondizioni} & \begin{enumerate}[label=\arabic*.,leftmargin=14pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
         \item L’attività è eliminata
@@ -1315,7 +1345,9 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso per la gestione de
 
 \newsubsection*{Gestione Documento}
 
-Il diagramma evidenzia le relazioni tra attori e casi d’uso relativi alla creazione, gestione e notifica dei documenti (es. FIR, scadenze, rinnovi).
+Il seguente diagramma descrive le relazioni tra attori e casi d’uso per la gestione dei documenti.\\ 
+Racchiude la possibilità di creazione, modifica ed eliminazione dei documenti. Sono previsti, inoltre, casi d’uso per la consultazione di essi tramite le operazioni di visualizzazione, ricerca e filtraggio. I vari documenti e il rinnovo corsi per la sicurezza sul lavoro vengono notificati in caso di scadenza.
+
 
 \begin{figure*}[ht]
     \centering
@@ -1329,7 +1361,7 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso relativi alla crea
 \begin{tabular}{|p{3.9cm}|p{9.9cm}|}
 \hline
 \multicolumn{2}{|c|}{\textbf{Caso d’uso: CreaDocumento}} \\ \hline
-	\textbf{ID} & 26 \\ \hline
+	\textbf{ID} & 27 \\ \hline
 	\textbf{Breve descrizione} & Lo Staff crea un nuovo documento nel sistema \\ \hline
 	\textbf{Attori primari} & Staff \\ \hline
 	\textbf{Attori secondari} & Nessuno \\ \hline
@@ -1341,6 +1373,7 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso relativi alla crea
     \item Il caso d’uso inizia quando lo Staff seleziona l'opzione di creazione del documento
     \item Il sistema richiede i dati del documento
     \item Lo Staff inserisce i dati
+    \item \texttt{Extend} \textit{AssociaOperatore}
     \item \texttt{If} i dati sono validi e non duplicati
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
         \item Il sistema registra il documento
@@ -1364,13 +1397,43 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso relativi alla crea
 \end{table}
 
 \clearpage
+\renewcommand{\arraystretch}{1.9}
+\begin{table}[H]
+\vspace*{-0cm}
+\begin{tabular}{|p{3.9cm}|p{9.9cm}|}
+\hline
+\multicolumn{2}{|c|}{\textbf{Caso d’uso: AssociaOperatore}} \\ \hline
+	\textbf{ID} & 28 \\ \hline
+	\textbf{Breve descrizione} & Lo Staff un Operatore ad un documento di tipo non FIR \\ \hline
+	\textbf{Attori primari} & Staff \\ \hline
+	\textbf{Attori secondari} & Nessuno \\ \hline
+	\textbf{Precondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+        \item Lo Staff è stato autenticato dal sistema
+        \item Il documento di tipo non FIR esiste
+        \item L'Operatore è registrato nel sistema
+    \end{enumerate} \\ \hline
+	\textbf{Sequenza degli eventi principale} &
+\begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item Il caso d’uso inizia quando lo Staff seleziona l'opzione di asegnazione di un documento di tipo non FIR ad Operatore
+    \item \texttt{Extend} \textit{TrovaUtente}
+    \item Lo Staff seleziona un Operatore da associare al documento di tipo non FIR
+    \item Il sistea registra l'assegnazione
+\end{enumerate}\\ \hline
+	\textbf{Postcondizioni} & \begin{enumerate}[label=\arabic*.,leftmargin=14pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+        \item L'Operatore è associato al documento di tipo non FIR
+    \end{enumerate} \\ \hline
+	\textbf{Sequenza degli eventi alternativa} & Nessuna \\ \hline
+\end{tabular}
+\end{table}
+
+\clearpage
 \begin{table}[H]
 \vspace*{-0cm}
 \renewcommand{\arraystretch}{1.9}
 \begin{tabular}{|p{3.9cm}|p{9.9cm}|}
 \hline
 \multicolumn{2}{|c|}{\textbf{Caso d’uso: VisualizzaDocumento}} \\ \hline
-	\textbf{ID} & 27 \\ \hline
+	\textbf{ID} & 29 \\ \hline
 	\textbf{Breve descrizione} & L’Operatore visualizza i dati di un documento \\ \hline
 	\textbf{Attori primari} & Operatore \\ \hline
 	\textbf{Attori secondari} & Nessuno \\ \hline
@@ -1397,7 +1460,7 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso relativi alla crea
 \begin{tabular}{|p{3.9cm}|p{9.9cm}|}
 \hline
 \multicolumn{2}{|c|}{\textbf{Caso d’uso: TrovaDocumento}} \\ \hline
-	\textbf{ID} & 28 \\ \hline
+	\textbf{ID} & 30 \\ \hline
 	\textbf{Breve descrizione} & L’Operatore ricerca uno o più documenti \\ \hline
 	\textbf{Attori primari} & Operatore \\ \hline
 	\textbf{Attori secondari} & Nessuno \\ \hline
@@ -1406,13 +1469,13 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso relativi alla crea
     \end{enumerate} \\ \hline
 	\textbf{Sequenza degli eventi principale} & 
 \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item Il caso d’uso inizia quando l’Operatore inserisce il singolo criterio di ricerca nella barra dedicata (es. ID documento, nome)
+    \item Il caso d’uso inizia quando l’Operatore inserisce il singolo criterio di ricerca nella barra dedicata (es. ID documento, tipo)
     \item \texttt{Extend} \textit{FiltraDocumento}
     \item \texttt{If} il documento esiste
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
         \item \texttt{For Each} documento trovato
         \begin{enumerate}[label=\arabic{enumi}.\arabic{enumii}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-            \item Il sistema mostra le informazioni base del documento (es. ID, nome, ecc.)
+            \item Il sistema mostra le informazioni base del documento (es. ID, tipo, ecc.)
         \end{enumerate}
     \end{enumerate}
     \item \texttt{Else}
@@ -1432,7 +1495,7 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso relativi alla crea
 \begin{tabular}{|p{3.9cm}|p{9.9cm}|}
 \hline
 \multicolumn{2}{|c|}{\textbf{Caso d’uso: FiltraDocumento}} \\ \hline
-	\textbf{ID} & 29 \\ \hline
+	\textbf{ID} & 31 \\ \hline
 	\textbf{Breve descrizione} & L'Operatore filtra i documenti in base a criteri avanzati (tipo, data di creazione, ecc.)  \\ \hline
 	\textbf{Attori primari} & Operatore  \\ \hline
 	\textbf{Attori secondari} & Nessuno \\ \hline
@@ -1465,7 +1528,7 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso relativi alla crea
 \begin{tabular}{|p{3.9cm}|p{9.9cm}|}
 \hline
 \multicolumn{2}{|c|}{\textbf{Caso d’uso: ModificaDocumento}} \\ \hline
-	\textbf{ID} & 30 \\ \hline
+	\textbf{ID} & 32 \\ \hline
 	\textbf{Breve descrizione} & Lo Staff modifica i dati di un documento esistente \\ \hline
 	\textbf{Attori primari} & Staff \\ \hline
 	\textbf{Attori secondari} & Nessuno \\ \hline
@@ -1507,7 +1570,7 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso relativi alla crea
 \begin{tabular}{|p{3.9cm}|p{9.9cm}|}
 \hline
 \multicolumn{2}{|c|}{\textbf{Caso d’uso: EliminaDocumento}} \\ \hline
-	\textbf{ID} & 31 \\ \hline
+	\textbf{ID} & 33 \\ \hline
 	\textbf{Breve descrizione} & Lo Staff elimina un documento dal sistema \\ \hline
 	\textbf{Attori primari} & Staff \\ \hline
 	\textbf{Attori secondari} & Nessuno \\ \hline
@@ -1518,8 +1581,7 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso relativi alla crea
 	\textbf{Sequenza degli eventi principale} & 
 \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
     \item Il caso d’uso inizia quando lo Staff seleziona l'opzione di eliminazione del documento
-    \item Lo Staff seleziona il documento da eliminare
-    \item Il sistema elimina il documento selezionato
+    \item Il sistema elimina il documento selezionato e mostra un messaggio di conferma
 \end{enumerate}\\ \hline
 	\textbf{Postcondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
         \item Il documento è eliminato
@@ -1541,7 +1603,7 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso relativi alla crea
 \begin{tabular}{|p{3.9cm}|p{9.9cm}|}
 \hline
 \multicolumn{2}{|c|}{\textbf{Caso d’uso: NotificaRinnovoCorsoSicurezza}} \\ \hline
-	\textbf{ID} & 32 \\ \hline
+	\textbf{ID} & 34 \\ \hline
 	\textbf{Breve descrizione} & Il sistema invia le notifiche relative al rinnovo dei corsi sulla sicurezza \\ \hline
 	\textbf{Attori primari} & Tempo \\ \hline
 	\textbf{Attori secondari} & Nessuno \\ \hline
@@ -1560,7 +1622,7 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso relativi alla crea
     \begin{enumerate}[label=\arabic*.,leftmargin=14pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
         \item Le notifiche di rinnovo dei corsi sulla sicurezza sono state inviate
     \end{enumerate} \\ \hline
-	\textbf{Sequenza degli eventi alternativa} & Nessuna. \\ \hline
+	\textbf{Sequenza degli eventi alternativa} & Nessuna \\ \hline
 \end{tabular}
 \end{table}
 
@@ -1571,7 +1633,7 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso relativi alla crea
 \begin{tabular}{|p{3.9cm}|p{9.9cm}|}
 \hline
 \multicolumn{2}{|c|}{\textbf{Caso d’uso: NotificaScadenzaDocumento}} \\ \hline
-	\textbf{ID} & 33 \\ \hline
+	\textbf{ID} & 35 \\ \hline
 	\textbf{Breve descrizione} & Il sistema invia la notifica per la scadenza dei documenti (es. compilazione FIR, possibilità di eliminazione documento, ecc.) \\ \hline
 	\textbf{Attori primari} & Tempo \\ \hline
 	\textbf{Attori secondari} & Nessuno \\ \hline
@@ -1602,6 +1664,7 @@ Il diagramma evidenzia le relazioni tra attori e casi d’uso relativi alla crea
 \end{figure*}
 
 \newchapter{Analisi}
+Nella presente sezione si raccolgono i principali diagrammi UML utilizzati per modellare il sistema. I diagrammi delle classi, che rappresentano le entità principali e le loro relazioni. I diagrammi di sequenza, che mostrano l’ordine delle interazioni tra gli oggetti. Infine i diagrammi di attività, che descrivono il flusso delle operazioni e dei processi all’interno del sistema.
 
 \newsection{Diagrammi delle Classi di Analisi}
 
@@ -1674,7 +1737,8 @@ Il diagramma di sequenza mostra il processo di registrazione di un nuovo utente 
 \clearpage
 \newsubsection{CRUD Attività}
 \noindent
-Il diagramma di sequenza illustra le operazioni principali di gestione delle attività, comprendendo creazione, visualizzazione, modifica ed eliminazione. Viene rappresentato come l’attore interagisce con il sistema per svolgere ciascuna di queste funzioni, con il sistema che valida i dati e aggiorna le informazioni in modo coerente.
+Il seguente diagramma di sequenza illustra le operazioni pincipali di gestione delle attività, comprendendo creazione, visualizza, modifica e eliminazione.
+Mostra come l’attore interagisce con il sistema per eseguire ciascuna di queste funzioni, evidenziando i passaggi di validazione dei dati e l’aggiornamento coerente delle informazioni da parte del sistema.
 
 \begin{figure}[!ht]
   \centering
@@ -1754,7 +1818,7 @@ Filtraggio avanzato che estende la ricerca base: dopo la validazione dei criteri
 \end{figure*}
 
 \newchapter{Progettazione}
-
+Nella presente sezione si presentano i diagrammi utilizzati per definire la struttura e l’architettura del sistema. I diagrammi delle classi di progettazione, che dettagliano le classi con attributi e metodi. Il diagramma dei componenti, che mostra l’organizzazione dei moduli software. I diagrammi delle macchine a stati, che descrivono i comportamenti e le transizioni degli oggetti. Infine, il diagramma ER, che rappresenta la struttura del database e le relazioni tra le entità.
 \newsection{Diagrammi delle Classi di Progettazione}
 \newsubsection{Package di Progettazione}
 Il diagramma mostra la struttura dei package del sistema e le dipendenze tra i moduli principali, evidenziando come le classi siano organizzate per responsabilità.
@@ -1842,9 +1906,17 @@ Questo diagramma di stato modella il ciclo di vita completo di un mezzo. Il mezz
     \includegraphics[width=0.66\textwidth]{DiagrammaMacchineStatiMezzo}
 \end{figure*}
 
-\newchapter{Implementazione}
+\clearpage
+\newsubsection{Diagramma Entità-Relazione} 
+Il seguente diagramma ER espone la struttura del sistema gestionale, mostrando entità come utenti, attività, assenze, documenti, mezzi e rimorchi, insieme ai loro attributi e collegamenti.
+
+\newchapter{Implementazione} 
+La seguente sezione è dedicata al flusso di lavoro dell’implementazione, nella quale sono stati
+inseriti: il diagramma di deployment, una descrizione delle tecnologie utilizzate, il mockup ed
+infine la descrizione unit test.
 
 \newsection{Diagramma di Deployment}
+Il diagramma rappresenta il deployment dell’applicazione, mostrando come le diverse componenti (frontend, backend e database) sono distribuite in container separati e come comunicano tra loro.
 
 \clearpage
 \newsection{Tecnologie Utilizzate}
