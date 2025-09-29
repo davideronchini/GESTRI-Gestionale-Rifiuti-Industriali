@@ -46,7 +46,11 @@
 \contentsline {subsection}{Tecnologie Backend}{80}{section*.166}%
 \contentsline {subsection}{Tecnologie Frontend}{80}{section*.170}%
 \contentsline {subsection}{Database}{80}{section*.174}%
-\contentsline {section}{Mockup}{81}{section*.176}%
-\contentsline {section}{Verifica e Validazione del Software: Unit Tests}{82}{section*.177}%
-\contentsline {section}{Istruzioni per l'Esecuzione in Locale}{83}{section*.178}%
+\contentsline {subsection}{Tecnologie Version Control System}{81}{section*.176}%
+\contentsline {subsection}{Altre tecnologie utilizzate}{81}{section*.179}%
+\contentsline {section}{Mockup}{82}{section*.181}%
+\contentsline {section}{Verifica e Validazione del Software: Unit Tests}{83}{section*.182}%
+\contentsline {subsection}{Unit Test}{83}{section*.183}%
+\contentsline {subsection}{Test Manuali}{83}{section*.184}%
+\contentsline {section}{Istruzioni per l'Esecuzione in Locale}{84}{section*.185}%
 \contentsfinish 
