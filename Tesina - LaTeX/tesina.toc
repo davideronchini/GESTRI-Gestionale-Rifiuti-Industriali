@@ -1,49 +1,52 @@
 \babel@toc {italian}{}\relax 
 \babel@toc {italian}{}\relax 
-\contentsline {chapter}{Descrizione del Progetto}{2}{chapter*.3}%
-\contentsline {chapter}{Glossario dei Termini}{4}{chapter*.9}%
-\contentsline {chapter}{Gestione dei requisiti}{6}{chapter*.11}%
-\contentsline {section}{Requisiti Funzionali}{6}{section*.12}%
-\contentsline {section}{Requisiti Non Funzionali}{9}{section*.38}%
-\contentsline {section}{Tabella MoSCoW dei Requisiti}{10}{section*.50}%
-\contentsline {section}{Diagrammi dei Casi d'Uso}{12}{section*.51}%
-\contentsline {section}{Matrice di Mapping}{53}{section*.99}%
-\contentsline {chapter}{Analisi}{54}{chapter*.102}%
-\contentsline {section}{Diagrammi delle Classi di Analisi}{54}{section*.103}%
-\contentsline {subsection}{Package di Analisi}{54}{section*.104}%
-\contentsline {subsection}{Classi di Analisi: Utente}{55}{section*.106}%
-\contentsline {subsection}{Classi di Analisi: Mezzo}{56}{section*.108}%
-\contentsline {subsection}{Classi di Analisi: Attività}{57}{section*.110}%
-\contentsline {subsection}{Classi di Analisi: Documento}{58}{section*.112}%
-\contentsline {section}{Diagrammi di Sequenza}{59}{section*.114}%
-\contentsline {subsection}{Login Utente}{59}{section*.115}%
-\contentsline {subsection}{Registrazione Utente}{60}{section*.117}%
-\contentsline {subsection}{CRUD Attività}{61}{section*.119}%
-\contentsline {subsection}{Trova Documento}{63}{section*.122}%
-\contentsline {subsection}{Filtra Documento}{64}{section*.124}%
-\contentsline {section}{Diagrammi di Attività}{65}{section*.126}%
-\contentsline {subsection}{Login Utente}{65}{section*.127}%
-\contentsline {subsection}{Registrazione Utente}{66}{section*.129}%
-\contentsline {subsection}{CRUD Attività}{67}{section*.131}%
-\contentsline {subsection}{Trova Documento}{68}{section*.133}%
-\contentsline {subsection}{Filtra Documento}{69}{section*.135}%
-\contentsline {chapter}{Progettazione}{70}{chapter*.138}%
-\contentsline {section}{Diagrammi delle Classi di Progettazione}{70}{section*.139}%
-\contentsline {subsection}{Package di Progettazione}{70}{section*.140}%
-\contentsline {subsection}{Classi di Progettazione: Utente}{71}{section*.142}%
-\contentsline {subsection}{Classi di Progettazione: Mezzo}{72}{section*.144}%
-\contentsline {subsection}{Classi di Progettazione: Attività}{73}{section*.146}%
-\contentsline {subsection}{Classi di Progettazione: Documento}{74}{section*.148}%
-\contentsline {subsection}{Classi di Progettazione: Controllers}{75}{section*.150}%
-\contentsline {section}{Diagramma dei Componenti}{76}{section*.152}%
-\contentsline {section}{Diagrammi delle Macchine a Stati}{77}{section*.154}%
-\contentsline {subsection}{Macchine a Stati: Attività}{77}{section*.155}%
-\contentsline {subsection}{Macchine a Stati: Mezzo}{78}{section*.157}%
-\contentsline {subsection}{Diagramma Entità-Relazione}{79}{section*.159}%
-\contentsline {chapter}{Implementazione}{80}{chapter*.162}%
-\contentsline {section}{Diagramma di Deployment}{80}{section*.163}%
-\contentsline {section}{Tecnologie Utilizzate}{81}{section*.165}%
-\contentsline {section}{Mockup}{82}{section*.166}%
-\contentsline {section}{Verifica e Validazione del Software: Unit Tests}{83}{section*.167}%
-\contentsline {section}{Istruzioni per l'Esecuzione in Locale}{84}{section*.168}%
+\contentsline {chapter}{Descrizione del Progetto}{1}{chapter*.3}%
+\contentsline {chapter}{Glossario dei Termini}{3}{chapter*.9}%
+\contentsline {chapter}{Gestione dei requisiti}{5}{chapter*.11}%
+\contentsline {section}{Requisiti Funzionali}{5}{section*.12}%
+\contentsline {section}{Requisiti Non Funzionali}{8}{section*.38}%
+\contentsline {section}{Tabella MoSCoW dei Requisiti}{9}{section*.50}%
+\contentsline {section}{Diagrammi dei Casi d'Uso}{11}{section*.51}%
+\contentsline {section}{Matrice di Mapping}{52}{section*.99}%
+\contentsline {chapter}{Analisi}{53}{chapter*.102}%
+\contentsline {section}{Diagrammi delle Classi di Analisi}{53}{section*.103}%
+\contentsline {subsection}{Package di Analisi}{53}{section*.104}%
+\contentsline {subsection}{Classi di Analisi: Utente}{54}{section*.106}%
+\contentsline {subsection}{Classi di Analisi: Mezzo}{55}{section*.108}%
+\contentsline {subsection}{Classi di Analisi: Attività}{56}{section*.110}%
+\contentsline {subsection}{Classi di Analisi: Documento}{57}{section*.112}%
+\contentsline {section}{Diagrammi di Sequenza}{58}{section*.114}%
+\contentsline {subsection}{Login Utente}{58}{section*.115}%
+\contentsline {subsection}{Registrazione Utente}{59}{section*.117}%
+\contentsline {subsection}{CRUD Attività}{60}{section*.119}%
+\contentsline {subsection}{Trova Documento}{62}{section*.122}%
+\contentsline {subsection}{Filtra Documento}{63}{section*.124}%
+\contentsline {section}{Diagrammi di Attività}{64}{section*.126}%
+\contentsline {subsection}{Login Utente}{64}{section*.127}%
+\contentsline {subsection}{Registrazione Utente}{65}{section*.129}%
+\contentsline {subsection}{CRUD Attività}{66}{section*.131}%
+\contentsline {subsection}{Trova Documento}{67}{section*.133}%
+\contentsline {subsection}{Filtra Documento}{68}{section*.135}%
+\contentsline {chapter}{Progettazione}{69}{chapter*.138}%
+\contentsline {section}{Diagrammi delle Classi di Progettazione}{69}{section*.139}%
+\contentsline {subsection}{Package di Progettazione}{69}{section*.140}%
+\contentsline {subsection}{Classi di Progettazione: Utente}{70}{section*.142}%
+\contentsline {subsection}{Classi di Progettazione: Mezzo}{71}{section*.144}%
+\contentsline {subsection}{Classi di Progettazione: Attività}{72}{section*.146}%
+\contentsline {subsection}{Classi di Progettazione: Documento}{73}{section*.148}%
+\contentsline {subsection}{Classi di Progettazione: Controllers}{74}{section*.150}%
+\contentsline {section}{Diagramma dei Componenti}{75}{section*.152}%
+\contentsline {section}{Diagrammi delle Macchine a Stati}{76}{section*.154}%
+\contentsline {subsection}{Macchine a Stati: Attività}{76}{section*.155}%
+\contentsline {subsection}{Macchine a Stati: Mezzo}{77}{section*.157}%
+\contentsline {subsection}{Diagramma Entità-Relazione}{78}{section*.159}%
+\contentsline {chapter}{Implementazione}{79}{chapter*.162}%
+\contentsline {section}{Diagramma di Deployment}{79}{section*.163}%
+\contentsline {section}{Tecnologie Utilizzate}{80}{section*.165}%
+\contentsline {subsection}{Tecnologie Backend}{80}{section*.166}%
+\contentsline {subsection}{Tecnologie Frontend}{80}{section*.170}%
+\contentsline {subsection}{Database}{80}{section*.174}%
+\contentsline {section}{Mockup}{81}{section*.176}%
+\contentsline {section}{Verifica e Validazione del Software: Unit Tests}{82}{section*.177}%
+\contentsline {section}{Istruzioni per l'Esecuzione in Locale}{83}{section*.178}%
 \contentsfinish 

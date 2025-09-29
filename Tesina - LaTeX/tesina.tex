@@ -1939,6 +1939,32 @@ Il diagramma rappresenta il deployment dell’applicazione, mostrando come le di
 \clearpage
 \newsection{Tecnologie Utilizzate}
 
+\newsubsection{Tecnologie Backend} 
+
+\newsubsubsection*{Django} 
+Django è un framework web di alto livello, sviluppato in Python, pensato per semplificare e velocizzare la realizzazione di applicazioni web. La scelta di questo utilizzo è dovuta ai suoi numerosi vantaggi, tra cui la rapidità di sviluppo, l’elevato livello di sicurezza e la ricchezza di funzionalità integrate che riducono la necessità di codice ridondante.\\
+
+\newsubsubsection*{Django Ninja API} 
+Django Ninja è un framework per la creazione di API basato su Django. Consente di sviluppare endpoint RESTful in maniera rapida, con un’ottima integrazione al modello dati e una gestione automatica della documentazione (OpenAPI/Swagger). La scelta di questo utilizzo è motivata dalla possibilità di ridurre il codice boilerplate garantendo al contempo elevate performance e la solidità dell’ecosistema Django.\\
+
+\newsubsubsection*{Pydantic} 
+Pydantic è una libreria Python per la validazione e la serializzazione dei dati tramite modelli tipizzati. È stata utilizzata in combinazione con Django Ninja per garantire la correttezza dei dati in ingresso e in uscita dalle API. La scelta di questo utilizzo è dovuta alla sua precisione, che permette di intercettare errori legati ai dati in modo semplice e veloce.
+
+
+\newsubsection{Tecnologie Frontend} 
+\newsubsubsection*{Next.js} 
+Next.js è un framework frontend basato su React che offre funzionalità avanzate come il rendering lato server (SSR) e la generazione statica delle pagine. La scelta di questo utilizzo è volta a garantire un’ottima ottimizzazione delle performance e una migliore indicizzazione SEO, oltre che per la sua flessibilità nello sviluppo di interfacce web moderne.
+
+\newsubsubsection*{Mantine} 
+Mantine è una libreria di componenti UI moderna e altamente personalizzabile, utilizzata all’interno del progetto con Next.js. La scelta di questo utilizzo è stata fatta per la sua ampia collezione di componenti pronti all’uso ha semplificato la realizzazione di un’interfaccia utente coerente ed esteticamente gradevole, riducendo i tempi di sviluppo.
+\newsubsubsection*{Tailwind CSS} 
+Tailwind CSS è un framework CSS basato su classi utility, che consente di stilizzare rapidamente le interfacce in modo modulare e scalabile. La scelta di questo utilizzo è motivata dal fatto che, nel nostro progetto, è stato installato ed è utilizzato anche da Mantine per la personalizzazione grafica, permettendo un controllo dettagliato sul design senza sacrificare la produttività.
+
+\newsubsection{Database} 
+\newsubsubsection*{SQLite} 
+SQLite è un database relazionale leggero e serverless, integrato direttamente nell'applicazione senza necessità di un processo server separato. La scelta di questo utilizzo è motivata dalla sua capacità di garantire elevate performance e dalla semplicità di gestione, grazie all'assenza di configurazioni complesse. Il database è contenuto in un singolo file, facilitando la portabilità e la gestione dei dati. Inoltre, supporta transazioni ACID, assicurando integrità e affidabilità anche in caso di crash o interruzioni.
+
+
 \clearpage
 \newsection{Mockup}
 
