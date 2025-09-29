@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.9.26)  29 SEP 2025 12:34
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.9.26)  29 SEP 2025 21:56
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1638,12 +1638,12 @@ Underfull \hbox (badness 10000) in alignment at lines 292--296
  []
 
 
-Underfull \hbox (badness 1237) in paragraph at lines 338--338
+Underfull \hbox (badness 1237) in paragraph at lines 342--342
 []|\T1/cmr/m/n/10 RNF4: Re-cu-pe-ro Cre-den-zia-li tra-mi-te
  []
 
 
-Underfull \hbox (badness 10000) in alignment at lines 296--348
+Underfull \hbox (badness 10000) in alignment at lines 296--352
 [] [] []
  []
 
@@ -1695,7 +1695,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 <./img/Attori.png, id=281, 537.00626pt x 589.20125pt>
 File: ./img/Attori.png Graphic file (type png)
 <use ./img/Attori.png>
-Package pdftex.def Info: ./img/Attori.png  used on input line 358.
+Package pdftex.def Info: ./img/Attori.png  used on input line 362.
 (pdftex.def)             Requested size: 452.9679pt x 496.99347pt.
 
 
@@ -1725,7 +1725,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 <./img/GestioneUtente.png, id=289, 634.4313pt x 478.30603pt>
 File: ./img/GestioneUtente.png Graphic file (type png)
 <use ./img/GestioneUtente.png>
-Package pdftex.def Info: ./img/GestioneUtente.png  used on input line 370.
+Package pdftex.def Info: ./img/GestioneUtente.png  used on input line 374.
 (pdftex.def)             Requested size: 452.9679pt x 341.50453pt.
 
 
@@ -1947,7 +1947,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 <./img/GestioneAssenza.png, id=425, 551.67938pt x 253.22084pt>
 File: ./img/GestioneAssenza.png Graphic file (type png)
 <use ./img/GestioneAssenza.png>
-Package pdftex.def Info: ./img/GestioneAssenza.png  used on input line 685.
+Package pdftex.def Info: ./img/GestioneAssenza.png  used on input line 689.
 (pdftex.def)             Requested size: 452.9679pt x 207.91675pt.
 
 
@@ -2073,7 +2073,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 <./img/GestioneMezzo.png, id=491, 604.64061pt x 388.93398pt>
 File: ./img/GestioneMezzo.png Graphic file (type png)
 <use ./img/GestioneMezzo.png>
-Package pdftex.def Info: ./img/GestioneMezzo.png  used on input line 835.
+Package pdftex.def Info: ./img/GestioneMezzo.png  used on input line 839.
 (pdftex.def)             Requested size: 452.9679pt x 291.37335pt.
 
 
@@ -2247,7 +2247,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 <./img/GestioneAttivita.png, id=587, 714.97649pt x 552.78275pt>
 File: ./img/GestioneAttivita.png Graphic file (type png)
 <use ./img/GestioneAttivita.png>
-Package pdftex.def Info: ./img/GestioneAttivita.png  used on input line 1069.
+Package pdftex.def Info: ./img/GestioneAttivita.png  used on input line 1073.
 (pdftex.def)             Requested size: 452.9679pt x 350.21184pt.
 
 
@@ -2469,7 +2469,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 <./img/GestioneDocumento.png, id=714, 569.88481pt x 630.01787pt>
 File: ./img/GestioneDocumento.png Graphic file (type png)
 <use ./img/GestioneDocumento.png>
-Package pdftex.def Info: ./img/GestioneDocumento.png  used on input line 1362.
+Package pdftex.def Info: ./img/GestioneDocumento.png  used on input line 1366.
 (pdftex.def)             Requested size: 452.9679pt x 500.76569pt.
 
 
@@ -2715,7 +2715,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 <./img/MatriceMapping.png, id=838, 646.66594pt x 882.29625pt>
 File: ./img/MatriceMapping.png Graphic file (type png)
 <use ./img/MatriceMapping.png>
-Package pdftex.def Info: ./img/MatriceMapping.png  used on input line 1671.
+Package pdftex.def Info: ./img/MatriceMapping.png  used on input line 1675.
 (pdftex.def)             Requested size: 452.9679pt x 618.02051pt.
 
 
@@ -2745,7 +2745,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 <./img/DiagrammaPackageAnalisi.png, id=845, 352.52313pt x 244.39397pt>
 File: ./img/DiagrammaPackageAnalisi.png Graphic file (type png)
 <use ./img/DiagrammaPackageAnalisi.png>
-Package pdftex.def Info: ./img/DiagrammaPackageAnalisi.png  used on input line 1684.
+Package pdftex.def Info: ./img/DiagrammaPackageAnalisi.png  used on input line 1688.
 (pdftex.def)             Requested size: 452.9679pt x 314.04636pt.
 
 
@@ -2775,7 +2775,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 <./img/DiagrammaClassiUtenteAnalisi.png, id=852, 539.54245pt x 355.8332pt>
 File: ./img/DiagrammaClassiUtenteAnalisi.png Graphic file (type png)
 <use ./img/DiagrammaClassiUtenteAnalisi.png>
-Package pdftex.def Info: ./img/DiagrammaClassiUtenteAnalisi.png  used on input line 1693.
+Package pdftex.def Info: ./img/DiagrammaClassiUtenteAnalisi.png  used on input line 1697.
 (pdftex.def)             Requested size: 452.9679pt x 298.74039pt.
 
 
@@ -2805,7 +2805,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 <./img/DiagrammaClassiMezzoAnalisi.png, id=858, 484.92618pt x 411.00114pt>
 File: ./img/DiagrammaClassiMezzoAnalisi.png Graphic file (type png)
 <use ./img/DiagrammaClassiMezzoAnalisi.png>
-Package pdftex.def Info: ./img/DiagrammaClassiMezzoAnalisi.png  used on input line 1702.
+Package pdftex.def Info: ./img/DiagrammaClassiMezzoAnalisi.png  used on input line 1706.
 (pdftex.def)             Requested size: 452.9679pt x 383.92665pt.
 
 
@@ -2835,7 +2835,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 <./img/DiagrammaClassiAttivitaAnalisi.png, id=864, 501.47656pt x 339.28282pt>
 File: ./img/DiagrammaClassiAttivitaAnalisi.png Graphic file (type png)
 <use ./img/DiagrammaClassiAttivitaAnalisi.png>
-Package pdftex.def Info: ./img/DiagrammaClassiAttivitaAnalisi.png  used on input line 1711.
+Package pdftex.def Info: ./img/DiagrammaClassiAttivitaAnalisi.png  used on input line 1715.
 (pdftex.def)             Requested size: 452.9679pt x 306.46477pt.
 
 
@@ -2865,7 +2865,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 <./img/DiagrammaClassiDocumentoAnalisi.png, id=870, 567.12642pt x 358.5916pt>
 File: ./img/DiagrammaClassiDocumentoAnalisi.png Graphic file (type png)
 <use ./img/DiagrammaClassiDocumentoAnalisi.png>
-Package pdftex.def Info: ./img/DiagrammaClassiDocumentoAnalisi.png  used on input line 1720.
+Package pdftex.def Info: ./img/DiagrammaClassiDocumentoAnalisi.png  used on input line 1724.
 (pdftex.def)             Requested size: 452.9679pt x 286.40858pt.
 
 
@@ -2895,7 +2895,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 <./img/DiagrammaSequenzaLoginUtente.png, id=876, 417.06963pt x 435.82672pt>
 File: ./img/DiagrammaSequenzaLoginUtente.png Graphic file (type png)
 <use ./img/DiagrammaSequenzaLoginUtente.png>
-Package pdftex.def Info: ./img/DiagrammaSequenzaLoginUtente.png  used on input line 1732.
+Package pdftex.def Info: ./img/DiagrammaSequenzaLoginUtente.png  used on input line 1736.
 (pdftex.def)             Requested size: 452.9679pt x 473.34592pt.
 
 
@@ -2925,7 +2925,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 <./img/DiagrammaSequenzaRegistrazioneUtente.png, id=883, 488.78793pt x 486.58122pt>
 File: ./img/DiagrammaSequenzaRegistrazioneUtente.png Graphic file (type png)
 <use ./img/DiagrammaSequenzaRegistrazioneUtente.png>
-Package pdftex.def Info: ./img/DiagrammaSequenzaRegistrazioneUtente.png  used on input line 1742.
+Package pdftex.def Info: ./img/DiagrammaSequenzaRegistrazioneUtente.png  used on input line 1746.
 (pdftex.def)             Requested size: 452.9679pt x 450.92699pt.
 
 
@@ -2955,7 +2955,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 <./img/DiagrammaSequenzaCRUDAttivita.png, id=889, 545.61092pt x 1464.70879pt>
 File: ./img/DiagrammaSequenzaCRUDAttivita.png Graphic file (type png)
 <use ./img/DiagrammaSequenzaCRUDAttivita.png>
-Package pdftex.def Info: ./img/DiagrammaSequenzaCRUDAttivita.png  used on input line 1753.
+Package pdftex.def Info: ./img/DiagrammaSequenzaCRUDAttivita.png  used on input line 1757.
 (pdftex.def)             Requested size: 452.9679pt x 609.9651pt.
 
 
@@ -2984,7 +2984,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
  <./img/DiagrammaSequenzaCRUDAttivita.png (PNG copy)>]
 File: ./img/DiagrammaSequenzaCRUDAttivita.png Graphic file (type png)
 <use ./img/DiagrammaSequenzaCRUDAttivita.png>
-Package pdftex.def Info: ./img/DiagrammaSequenzaCRUDAttivita.png  used on input line 1758.
+Package pdftex.def Info: ./img/DiagrammaSequenzaCRUDAttivita.png  used on input line 1762.
 (pdftex.def)             Requested size: 452.9679pt x 609.9651pt.
 
 
@@ -3014,7 +3014,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 <./img/DiagrammaSequenzaTrovaDocumento.png, id=905, 462.85901pt x 579.81503pt>
 File: ./img/DiagrammaSequenzaTrovaDocumento.png Graphic file (type png)
 <use ./img/DiagrammaSequenzaTrovaDocumento.png>
-Package pdftex.def Info: ./img/DiagrammaSequenzaTrovaDocumento.png  used on input line 1768.
+Package pdftex.def Info: ./img/DiagrammaSequenzaTrovaDocumento.png  used on input line 1772.
 (pdftex.def)             Requested size: 452.9679pt x 567.4363pt.
 
 
@@ -3044,7 +3044,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 <./img/DiagrammaSequenzaFiltraDocumento.png, id=911, 481.6161pt x 637.74138pt>
 File: ./img/DiagrammaSequenzaFiltraDocumento.png Graphic file (type png)
 <use ./img/DiagrammaSequenzaFiltraDocumento.png>
-Package pdftex.def Info: ./img/DiagrammaSequenzaFiltraDocumento.png  used on input line 1778.
+Package pdftex.def Info: ./img/DiagrammaSequenzaFiltraDocumento.png  used on input line 1782.
 (pdftex.def)             Requested size: 452.9679pt x 599.8273pt.
 
 
@@ -3074,7 +3074,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 <./img/DiagrammaAttivitaLoginUtente.png, id=917, 288.52832pt x 487.1329pt>
 File: ./img/DiagrammaAttivitaLoginUtente.png Graphic file (type png)
 <use ./img/DiagrammaAttivitaLoginUtente.png>
-Package pdftex.def Info: ./img/DiagrammaAttivitaLoginUtente.png  used on input line 1789.
+Package pdftex.def Info: ./img/DiagrammaAttivitaLoginUtente.png  used on input line 1793.
 (pdftex.def)             Requested size: 353.31439pt x 596.56836pt.
 
 
@@ -3104,7 +3104,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 <./img/DiagrammaAttivitaRegistrazioneUtente.png, id=924, 338.17946pt x 515.82024pt>
 File: ./img/DiagrammaAttivitaRegistrazioneUtente.png Graphic file (type png)
 <use ./img/DiagrammaAttivitaRegistrazioneUtente.png>
-Package pdftex.def Info: ./img/DiagrammaAttivitaRegistrazioneUtente.png  used on input line 1798.
+Package pdftex.def Info: ./img/DiagrammaAttivitaRegistrazioneUtente.png  used on input line 1802.
 (pdftex.def)             Requested size: 353.31439pt x 538.93544pt.
 
 
@@ -3134,7 +3134,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 <./img/DiagrammaAttivitaCRUDAttivita.png, id=930, 1095.08359pt x 590.84863pt>
 File: ./img/DiagrammaAttivitaCRUDAttivita.png Graphic file (type png)
 <use ./img/DiagrammaAttivitaCRUDAttivita.png>
-Package pdftex.def Info: ./img/DiagrammaAttivitaCRUDAttivita.png  used on input line 1807.
+Package pdftex.def Info: ./img/DiagrammaAttivitaCRUDAttivita.png  used on input line 1811.
 (pdftex.def)             Requested size: 452.9679pt x 244.39522pt.
 
 
@@ -3164,7 +3164,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 <./img/DiagrammaAttivitaTrovaDocumento.png, id=936, 759.11084pt x 687.39252pt>
 File: ./img/DiagrammaAttivitaTrovaDocumento.png Graphic file (type png)
 <use ./img/DiagrammaAttivitaTrovaDocumento.png>
-Package pdftex.def Info: ./img/DiagrammaAttivitaTrovaDocumento.png  used on input line 1816.
+Package pdftex.def Info: ./img/DiagrammaAttivitaTrovaDocumento.png  used on input line 1820.
 (pdftex.def)             Requested size: 452.9679pt x 410.17313pt.
 
 
@@ -3194,7 +3194,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 <./img/DiagrammaAttivitaFiltraDocumento.png, id=942, 758.00748pt x 738.6987pt>
 File: ./img/DiagrammaAttivitaFiltraDocumento.png Graphic file (type png)
 <use ./img/DiagrammaAttivitaFiltraDocumento.png>
-Package pdftex.def Info: ./img/DiagrammaAttivitaFiltraDocumento.png  used on input line 1825.
+Package pdftex.def Info: ./img/DiagrammaAttivitaFiltraDocumento.png  used on input line 1829.
 (pdftex.def)             Requested size: 452.9679pt x 441.43045pt.
 
 
@@ -3224,7 +3224,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 <./img/DiagrammaPackageProgettazione.png, id=948, 348.66138pt x 253.22084pt>
 File: ./img/DiagrammaPackageProgettazione.png Graphic file (type png)
 <use ./img/DiagrammaPackageProgettazione.png>
-Package pdftex.def Info: ./img/DiagrammaPackageProgettazione.png  used on input line 1836.
+Package pdftex.def Info: ./img/DiagrammaPackageProgettazione.png  used on input line 1840.
 (pdftex.def)             Requested size: 452.9679pt x 328.97838pt.
 
 
@@ -3254,7 +3254,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 <./img/DiagrammaClassiUtenteProgettazione.png, id=955, 631.12122pt x 433.06831pt>
 File: ./img/DiagrammaClassiUtenteProgettazione.png Graphic file (type png)
 <use ./img/DiagrammaClassiUtenteProgettazione.png>
-Package pdftex.def Info: ./img/DiagrammaClassiUtenteProgettazione.png  used on input line 1846.
+Package pdftex.def Info: ./img/DiagrammaClassiUtenteProgettazione.png  used on input line 1850.
 (pdftex.def)             Requested size: 452.9679pt x 310.83095pt.
 
 
@@ -3284,7 +3284,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 <./img/DiagrammaClassiMezzoProgettazione.png, id=962, 480.51274pt x 484.92618pt>
 File: ./img/DiagrammaClassiMezzoProgettazione.png Graphic file (type png)
 <use ./img/DiagrammaClassiMezzoProgettazione.png>
-Package pdftex.def Info: ./img/DiagrammaClassiMezzoProgettazione.png  used on input line 1856.
+Package pdftex.def Info: ./img/DiagrammaClassiMezzoProgettazione.png  used on input line 1860.
 (pdftex.def)             Requested size: 452.9679pt x 457.13295pt.
 
 
@@ -3314,7 +3314,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 <./img/DiagrammaClassiAttivitaProgettazione.png, id=968, 530.1639pt x 396.1058pt>
 File: ./img/DiagrammaClassiAttivitaProgettazione.png Graphic file (type png)
 <use ./img/DiagrammaClassiAttivitaProgettazione.png>
-Package pdftex.def Info: ./img/DiagrammaClassiAttivitaProgettazione.png  used on input line 1866.
+Package pdftex.def Info: ./img/DiagrammaClassiAttivitaProgettazione.png  used on input line 1870.
 (pdftex.def)             Requested size: 452.9679pt x 338.43222pt.
 
 
@@ -3344,7 +3344,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 <./img/DiagrammaClassiDocumentoProgettazione.png, id=974, 551.67938pt x 435.27504pt>
 File: ./img/DiagrammaClassiDocumentoProgettazione.png Graphic file (type png)
 <use ./img/DiagrammaClassiDocumentoProgettazione.png>
-Package pdftex.def Info: ./img/DiagrammaClassiDocumentoProgettazione.png  used on input line 1875.
+Package pdftex.def Info: ./img/DiagrammaClassiDocumentoProgettazione.png  used on input line 1879.
 (pdftex.def)             Requested size: 452.9679pt x 357.3994pt.
 
 
@@ -3374,7 +3374,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 <./img/DiagrammaClassiControllersProgettazione.png, id=980, 726.56175pt x 474.99596pt>
 File: ./img/DiagrammaClassiControllersProgettazione.png Graphic file (type png)
 <use ./img/DiagrammaClassiControllersProgettazione.png>
-Package pdftex.def Info: ./img/DiagrammaClassiControllersProgettazione.png  used on input line 1885.
+Package pdftex.def Info: ./img/DiagrammaClassiControllersProgettazione.png  used on input line 1889.
 (pdftex.def)             Requested size: 452.9679pt x 296.1397pt.
 
 
@@ -3404,7 +3404,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 <./img/DiagrammaComponenti.png, id=986, 1356.02794pt x 854.55138pt>
 File: ./img/DiagrammaComponenti.png Graphic file (type png)
 <use ./img/DiagrammaComponenti.png>
-Package pdftex.def Info: ./img/DiagrammaComponenti.png  used on input line 1894.
+Package pdftex.def Info: ./img/DiagrammaComponenti.png  used on input line 1898.
 (pdftex.def)             Requested size: 452.9679pt x 285.45825pt.
 
 
@@ -3434,7 +3434,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 <./img/DiagrammaMacchineStatiAttivita.png, id=992, 255.42755pt x 458.99725pt>
 File: ./img/DiagrammaMacchineStatiAttivita.png Graphic file (type png)
 <use ./img/DiagrammaMacchineStatiAttivita.png>
-Package pdftex.def Info: ./img/DiagrammaMacchineStatiAttivita.png  used on input line 1905.
+Package pdftex.def Info: ./img/DiagrammaMacchineStatiAttivita.png  used on input line 1909.
 (pdftex.def)             Requested size: 303.48766pt x 545.40108pt.
 
 
@@ -3464,7 +3464,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 <./img/DiagrammaMacchineStatiMezzo.png, id=999, 377.90038pt x 727.11343pt>
 File: ./img/DiagrammaMacchineStatiMezzo.png Graphic file (type png)
 <use ./img/DiagrammaMacchineStatiMezzo.png>
-Package pdftex.def Info: ./img/DiagrammaMacchineStatiMezzo.png  used on input line 1914.
+Package pdftex.def Info: ./img/DiagrammaMacchineStatiMezzo.png  used on input line 1918.
 (pdftex.def)             Requested size: 298.96046pt x 575.25653pt.
 
 
@@ -3494,7 +3494,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 <./img/DiagrammaEntitaRelazioni.png, id=1005, 1353.82123pt x 703.39122pt>
 File: ./img/DiagrammaEntitaRelazioni.png Graphic file (type png)
 <use ./img/DiagrammaEntitaRelazioni.png>
-Package pdftex.def Info: ./img/DiagrammaEntitaRelazioni.png  used on input line 1923.
+Package pdftex.def Info: ./img/DiagrammaEntitaRelazioni.png  used on input line 1927.
 (pdftex.def)             Requested size: 452.9679pt x 235.33968pt.
 
 
@@ -3524,7 +3524,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 <./img/DiagrammaDeployment.png, id=1011, 428.10321pt x 383.96886pt>
 File: ./img/DiagrammaDeployment.png Graphic file (type png)
 <use ./img/DiagrammaDeployment.png>
-Package pdftex.def Info: ./img/DiagrammaDeployment.png  used on input line 1936.
+Package pdftex.def Info: ./img/DiagrammaDeployment.png  used on input line 1940.
 (pdftex.def)             Requested size: 452.9679pt x 406.27267pt.
 
 
@@ -3551,12 +3551,12 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [79
 
  <./img/DiagrammaDeployment.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 1945--1946
+Underfull \hbox (badness 10000) in paragraph at lines 1949--1950
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1948--1949
+Underfull \hbox (badness 10000) in paragraph at lines 1952--1953
 
  []
 
@@ -3692,13 +3692,13 @@ LaTeX Font Warning: Size substitutions with differences
 Here is how much of TeX's memory you used:
  70878 strings out of 473190
  1764011 string characters out of 5715800
- 2488999 words of memory out of 5000000
+ 2490999 words of memory out of 5000000
  92628 multiletter control sequences out of 15000+600000
  578416 words of font info for 80 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  89i,12n,120p,844b,1202s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfcc1000.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on tesina.pdf (87 pages, 2753615 bytes).
+Output written on tesina.pdf (87 pages, 2753721 bytes).
 PDF statistics:
  1369 PDF objects out of 1440 (max. 8388607)
  1169 compressed objects within 12 object streams
