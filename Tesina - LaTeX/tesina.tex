@@ -135,7 +135,7 @@ Gestione Mezzo & Area del sistema che tiene traccia dei dati tecnici, assicurati
 MoSCoW & Criterio di prioritizzazione dei requisiti: Must, Should, Could, Won't. & TECNICO & - \\
 \end{longtable}
 
-\newchapter{Requisiti}
+\newchapter{Gestione dei requisiti}
 
 Nella presente sezione si analizzano in modo approfondito i requisiti del sistema, procedendo alla loro suddivisione secondo le seguenti categorie:
 \begin{itemize}
@@ -196,41 +196,49 @@ Il sistema dovrà permettere l'assegnazione di uno o più Operatori a ciascuna a
 
 Il sistema dovrà permettere l'assegnazione del mezzo più idoneo all'attività in base al tipo di rifiuto e al carico previsto.
 
+\newsubsubsection*{RF12: Assegnazione Documento}
+
+Il sistema dovrà permettere l'assegnazione del documento di tipo FIR all'attività in base al tipo di rifiuto e al carico previsto.
+
 \newsubsection*{Area: Gestione Documento}
 
-\newsubsubsection*{RF12: CRUD Documento FIR}
+\newsubsubsection*{RF13: CRUD Documento FIR}
 
 Il sistema dovrà permettere la creazione, lettura, aggiornamento e cancellazione del documento (es. Formulario di Identificazione Rifiuto - FIR associato a un'attività assegnata oppure Documento Corso sulla Sicurezza associato all'Operatore).
 
-\newsubsubsection*{RF13: Filtra Documento}
+\newsubsubsection*{RF14: Associa Operatore}
+
+Il sistema dovrà permettere l’assegnazione dell’Operatore al documento di tipo non FIR. 
+
+\newsubsubsection*{RF15: Filtra Documento}
 
 Il sistema dovrà permettere il filtraggio e la ricerca dei documenti tramite criteri multipli (tipologia, data, stato, operatore, attività).
 
-\newsubsubsection*{RF14: Notifica Rinnovo Corso Sicurezza}
+\newsubsubsection*{RF16: Notifica Rinnovo Corso Sicurezza}
 
 Il sistema dovrà inviare notifiche per il rinnovo dei corsi di sicurezza agli Utenti interessati prima della scadenza.
 
-\newsubsubsection*{RF15: Notifica Scadenza Documento}
+\newsubsubsection*{RF17: Notifica Scadenza Documento}
 
 Il sistema dovrà inviare notifiche relative alle scadenze dei documenti (es. FIR, consegne, ritiri) agli Utenti interessati.
 
 \newsubsection*{Area: Gestione Mezzo}
 
-\newsubsubsection*{RF16: CRUD Mezzo}
+\newsubsubsection*{RF18: CRUD Mezzo}
 
 Il sistema dovrà permettere la creazione, lettura, aggiornamento e cancellazione dei mezzi, inclusi dati tecnici.
 
-\newsubsubsection*{RF17: Filtra Mezzo}
+\newsubsubsection*{RF19: Filtra Mezzo}
 
 Il sistema dovrà permettere il filtraggio e la ricerca dei mezzi per attributi rilevanti.
 
-\begin{figure*}[ht]
+\begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{RequisitiFunzionali}
-\end{figure*}
+    \includegraphics[width=\textwidth]{RequisitiFunzionali}
+\end{figure}
+\clearpage
 
 
-\vphantom{space}\\[6cm]
 \newsection{Requisiti Non Funzionali}
 
 % Requisiti non funzionali (testo inserito automaticamente)
@@ -1910,6 +1918,11 @@ Questo diagramma di stato modella il ciclo di vita completo di un mezzo. Il mezz
 \newsubsection{Diagramma Entità-Relazione} 
 Il seguente diagramma ER espone la struttura del sistema gestionale, mostrando entità come utenti, attività, assenze, documenti, mezzi e rimorchi, insieme ai loro attributi e collegamenti.
 
+\begin{figure*}[!ht]
+    \centering
+    \includegraphics[width=1\textwidth]{DiagrammaEntitaRelazioni}
+\end{figure*}
+
 \newchapter{Implementazione} 
 La seguente sezione è dedicata al flusso di lavoro dell’implementazione, nella quale sono stati
 inseriti: il diagramma di deployment, una descrizione delle tecnologie utilizzate, il mockup ed
@@ -1917,6 +1930,11 @@ infine la descrizione unit test.
 
 \newsection{Diagramma di Deployment}
 Il diagramma rappresenta il deployment dell’applicazione, mostrando come le diverse componenti (frontend, backend e database) sono distribuite in container separati e come comunicano tra loro.
+
+\begin{figure*}[!ht]
+    \centering
+    \includegraphics[width=1\textwidth]{DiagrammaDeployment.png}
+\end{figure*}
 
 \clearpage
 \newsection{Tecnologie Utilizzate}
