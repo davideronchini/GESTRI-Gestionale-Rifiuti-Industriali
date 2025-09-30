@@ -71,8 +71,7 @@ L’obiettivo è offrire uno strumento intuitivo così da semplificare la gestio
 Il sistema consente agli utenti di interagire secondo il proprio ruolo.
 Gli Operatori hanno la possibilità di aggiornare i dati di base e modificare la propria anagrafica, garantendo che le informazioni personali e operative siano sempre corrette. 
 Lo Staff dispone di strumenti avanzati che gli permettono di creare nuove attività, assegnare i mezzi di trasporto più idonei, coordinare le operazioni e supervisionare l’andamento complessivo. 
-I Clienti, oltre a commissionare il servizio, possono a loro volta creare richieste di attività, consultare lo stato delle operazioni in corso e accedere ai documenti relativi ai rifiuti conferiti.
-\\
+I Clienti, oltre a commissionare il servizio, possono a loro volta creare richieste di attività e consultare lo stato delle operazioni in corso.
 Le attività rappresentano il fulcro del sistema e racchiudono tutte le informazioni necessarie al loro svolgimento: tipologia di rifiuto, scadenze e mezzi di trasporto assegnati.
 Ogni attività è tracciata passo dopo passo, così da fornire una visione aggiornata e affidabile sia agli operatori sia ai clienti.
 \\
@@ -100,7 +99,7 @@ L’architettura di GESTRI è concepita secondo un approccio modulare, così da 
     Qui risiedono i meccanismi di registrazione, monitoraggio delle attività, generazione dei documenti e gestione dei permessi degli utenti.
     \item \textbf{Gestione dei Dati (Database):} si occupa della memorizzazione strutturata delle informazioni. 
     La progettazione segue criteri di integrità e consistenza, sfruttando relazioni tra entità per ridurre ridondanze e facilitare le operazioni di ricerca e consultazione.
-    \item \textbf{Servizi di Supporto:} includono funzionalità trasversali come autenticazione, controlli di sicurezza, backup e strumenti di reportistica.
+    \item \textbf{Servizi di Supporto:} includono funzionalità trasversali come autenticazione, controlli di sicurezza e strumenti di reportistica.
 \end{itemize}
 Questa architettura a più livelli permette di separare in modo chiaro presentazione, logica e dati, garantendo così robustezza, flessibilità e una più agevole gestione del sistema nel tempo.
 
@@ -119,20 +118,17 @@ La gestione delle credenziali assicura una netta distinzione tra i profili e raf
 \endlastfoot
 Account & Area personale dell'utente. & TECNICO & Profilo \\
 Login & Processo con cui un utente viene identificato e entra nella piattaforma. & TECNICO & Accesso \\
+Sistema & Insieme organizzato di componenti interconnessi che lavorano insieme per svolgere una o più funzioni definite. & TECNICO & Gestionale, Programma, Sito \\
 Utente & Ruolo generico da cui derivano Cliente e Operatore. Ha la capacità di accedere al sistema. & TECNICO & - \\
 Cliente & Soggetto che commissiona il servizio e consulta documenti e stato delle attività. & BUSINESS & - \\
 Operatore & Soggetto incaricato di eseguire operazioni pratiche di carico/scarico e compilazione domcumenti. Estende le funzionalità dello Staff. & BUSINESS & - \\
 Staff & Personale amministrativo che gestisce l'organizzazione dei turni, le assenze e le attività complessive. & BUSINESS & - \\
-Attività & Operazione di carico o scarico di rifiuti, con assegnazione di operatori e mezzi. & BUSINESS & - \\
-Mezzo & Veicolo utilizzato per il trasporto dei rifiuti. & BUSINESS & - \\
+Attività & Operazione di carico o scarico di rifiuti, con assegnazione di operatori, mezzi e documenti di tipo FIR. & BUSINESS & - \\
+Mezzo & Veicolo utilizzato per il trasporto dei rifiuti. & BUSINESS & Veicolo \\
 CER &Sequenze numeriche, composte da 6 cifre riunite in coppie, volte ad identificare un rifiuto, di norma, in base al processo produttivo da cui è originato. & BUSINESS & Catalogo Europeo dei Rifiuti \\
 FIR & Documento obbligatorio che accompagna il trasporto dei rifiuti per garantirne la tracciabilità, riportando informazioni sul produttore, sul rifiuto, sul trasportatore e sull'impianto di destinazione. & BUSINESS & Formulario di Identificazione Rifiuti \\
 Turno & Periodo temporale in cui un operatore è assegnato a un'attività. & BUSINESS & - \\
-Gestione Utente & Area del sistema che si occupa di registrazione, login, e amministrazione dei profili utente. & TECNICO & - \\
-Gestione Attività & Area del sistema che gestisce la creazione, l'aggiornamento e il monitoraggio delle operazioni di carico/scarico rifiuti. & TECNICO & - \\
-Gestione Documento & Area del sistema che gestisce la creazione, archiviazione e notifica di documenti come il FIR. & TECNICO & - \\
-Gestione Mezzo & Area del sistema che tiene traccia dei dati tecnici, assicurativi e di manutenzione dei veicoli. & TECNICO & - \\
-MoSCoW & Criterio di prioritizzazione dei requisiti: Must, Should, Could, Won't. & TECNICO & - \\
+
 \end{longtable}
 
 \newchapter{Gestione dei requisiti}
@@ -158,15 +154,15 @@ Il sistema dovrà permettere all’Utente di autenticarsi tramite email e passwo
 
 \newsubsubsection*{RF3: Recupero Credenziali}
 
-Il sistema dovrà permettere il recupero delle credenziali tramite procedura (es. email) per Operatori e Staff.
+Il sistema dovrà permettere il recupero delle credenziali tramite procedura (es. email).
 
 \newsubsubsection*{RF4: Visualizza Utente}
 
-Il sistema dovrà permettere all'Utente di visualizzare i propri dati anagrafici e le informazioni correlate (ruolo, turni, assenze, attività); lo Staff dovrà poter visualizzare i dati di altri utenti per scopi di gestione e supervisione.
+Il sistema dovrà permettere all'Utente di visualizzare i propri dati anagrafici e le informazioni correlate (ruolo, turni, assenze, attività); lo Staff dovrà poter visualizzare i dati di altri Utenti per scopi di gestione e supervisione.
 
 \newsubsubsection*{RF5: Modifica Ruolo}
 
-Il sistema dovrà permettere allo Staff di assegnare e modificare il ruolo dell'Utente (Cliente, Operatore, Staff).
+Il sistema dovrà permettere allo Staff di assegnare e modificare il ruolo dell'Utente (Operatore e Staff).
 
 \newsubsubsection*{RF6: Modifica Utente}
 
@@ -180,7 +176,7 @@ Il sistema dovrà permettere la cancellazione di un account Utente e la gestione
 
 \newsubsubsection*{RF8: CRUD Assenza}
 
-Il sistema dovrà permettere allo Staff di registrare, approvare e monitorare le assenze del personale.
+Il sistema dovrà permettere allo Staff di registrare e monitorare le assenze del personale.
 
 \newsubsection*{Area: Gestione Attività}
 
@@ -194,7 +190,7 @@ Il sistema dovrà permettere l'assegnazione di uno o più Operatori a ciascuna a
 
 \newsubsubsection*{RF11: Assegnazione Mezzo}
 
-Il sistema dovrà permettere l'assegnazione del mezzo più idoneo all'attività in base al tipo di rifiuto e al carico previsto.
+Il sistema dovrà permettere l'assegnazione del mezzo rimorchio all'attività in base al tipo di rifiuto e al carico previsto.
 
 \newsubsubsection*{RF12: Assegnazione Documento}
 
@@ -212,15 +208,15 @@ Il sistema dovrà permettere l’assegnazione dell’Operatore al documento di t
 
 \newsubsubsection*{RF15: Filtra Documento}
 
-Il sistema dovrà permettere il filtraggio e la ricerca dei documenti tramite criteri multipli (tipologia, data, stato, operatore, attività).
+Il sistema dovrà permettere il filtraggio e la ricerca dei documenti tramite criteri multipli.
 
 \newsubsubsection*{RF16: Notifica Rinnovo Corso Sicurezza}
 
-Il sistema dovrà inviare notifiche per il rinnovo dei corsi di sicurezza agli Utenti interessati prima della scadenza.
+Il sistema dovrà inviare notifiche per il rinnovo dei corsi di sicurezza agli Operatori interessati prima della scadenza.
 
 \newsubsubsection*{RF17: Notifica Scadenza Documento}
 
-Il sistema dovrà inviare notifiche relative alle scadenze dei documenti (es. FIR, consegne, ritiri) agli Utenti interessati.
+Il sistema dovrà inviare notifiche relative alle scadenze dei documenti (es. FIR, consegne, ritiri) agli Operatori interessati.
 
 \newsubsection*{Area: Gestione Mezzo}
 
@@ -262,9 +258,9 @@ Il sistema dovrà permettere il recupero delle credenziali tramite email.
 
 \newsubsection*{Area: Gestione UI/UX}
 
-\newsubsubsection*{RNF5: Visualizzazione Turni con Calendario}
+\newsubsubsection*{RNF5: Visualizzazione Attivita con Calendario}
 
-Il sistema dovrà offrire una visualizzazione dei turni tramite un calendario integrato.
+Il sistema dovrà offrire una visualizzazione delle attività tramite un calendario integrato.
 
 \newsubsubsection*{RNF6: Interfaccia Responsive}
 
@@ -287,7 +283,7 @@ Il sistema dovrà inviare notifiche 30 giorni prima dell'eliminazione di un docu
 \clearpage
 \newsection{Tabella MoSCoW dei Requisiti}
 
-Di seguito la matrice MoSCoW che classifica i requisiti del sistema secondo le priorità: M (Must-have), S (Should-have), C (Could-have), W (Won't-have).
+Di seguito la matrice MoSCoW che classifica i requisiti del sistema secondo le priorità: M (Must-have), S (Should-have), C (Could-have), W (Want-have).
 
 \begin{longtable}{|p{4.5cm}|p{6.25cm}|p{2cm}|}
 \hline
@@ -347,7 +343,7 @@ Gestione UI/UX & RNF6: Interfaccia Responsive & Should \\
 \hline
 Gestione UI/UX & RNF7: Notifica Scadenza Compilazione Documento & Should \\
 \hline
-Gestione UI/UX & RNF8: Notifica Eliminazione Documento & Won't \\
+Gestione UI/UX & RNF8: Notifica Eliminazione Documento & Want \\
 \hline
 \end{longtable}
 
@@ -383,7 +379,7 @@ Sono previsti, inoltre, casi d'uso per la modifica del ruolo e per la consultazi
 \multicolumn{2}{|c|}{\textbf{Caso d’uso: RegistrazioneUtente}} \\ \hline
 \textbf{ID} & 1 \\ \hline
 \textbf{Breve descrizione} & L'Utente si registra nel sistema, con un ruolo che dipende dal punto di accesso \\ \hline
-\textbf{Attori primari} & Utente, Staff \\ \hline
+\textbf{Attori primari} & Cliente, Staff \\ \hline
 \textbf{Attori secondari} & Nessuno \\ \hline
 \textbf{Precondizioni} & Nessuna \\ \hline
 \textbf{Sequenza degli eventi principale} &
@@ -504,7 +500,7 @@ Sono previsti, inoltre, casi d'uso per la modifica del ruolo e per la consultazi
         \item \texttt{Extend} \textit{TrovaUtente} 
         \item Il sistema mostra l’elenco degli Operatori registrati
         \item Lo Staff seleziona un Operatore dall’elenco
-        \item Il sistema mostra i dati anagrafici completi e le informazioni aggiuntive (ruolo, assenze, attività corrente e documenti collegati)
+        \item Il sistema mostra i dati anagrafici completi e le informazioni aggiuntive 
     \end{enumerate}
 \end{enumerate}\\ \hline
 \end{tabular}
@@ -526,7 +522,7 @@ Sono previsti, inoltre, casi d'uso per la modifica del ruolo e per la consultazi
 \end{enumerate} \\ \hline
 \textbf{Sequenza degli eventi principale} &
 \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item Il caso d’uso inizia quando lo Staff inserisce il criterio di ricerca nella barra dedicata (es. nome, cognome, email, ecc.)
+    \item Il caso d’uso inizia quando lo Staff inserisce il criterio di ricerca nella barra dedicata 
     \item Il sistema ricerca l’Utente che soddisfa i criteri desiderati dallo Staff
     \item \texttt{If} Il sistema trova uno o più utenti
     \begin{enumerate}[label=\arabic{enumi}.\arabic{enumii}.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
@@ -614,6 +610,7 @@ Sono previsti, inoltre, casi d'uso per la modifica del ruolo e per la consultazi
     \item \texttt{If} I dati inseriti sono validi
     \begin{enumerate}[label=\arabic{enumi}.\arabic{enumii}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
         \item Il sistema aggiorna i dati modificati
+        \item \texttt{Include} \textit{(VisualizzaUtente)} 
         \end{enumerate}
     \item \texttt{Else}
     \begin{enumerate}[label=\arabic{enumi}.\arabic{enumii}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
@@ -705,8 +702,8 @@ Sono previsti, inoltre, casi d'uso per la consultazione di esse tramite le opera
     \item L’Operatore per cui viene registrata l’assenza esiste
 \end{enumerate} \\ \hline
 \textbf{Sequenza degli eventi principale} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item Il caso d’uso inizia quando lo Staff seleziona “Nuova assenza”
-    \item Il sistema richiede i dati dell’assenza (tipo, data inizio, data fine)
+    \item Il caso d’uso inizia quando lo Staff seleziona l'operazione di creazione dell'assenza
+    \item Il sistema richiede i dati dell’assenza
     \item Lo Staff inserisce i dati
     \item \texttt{If} I dati sono validi
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
@@ -856,7 +853,7 @@ Racchiude la possibilità di creazione, modifica ed eliminazione dei mezzi. Sono
 	\textbf{Sequenza degli eventi principale} &
 \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
     \item Il caso d’uso inizia quando lo Staff seleziona l'opzione di creazione di un nuovo mezzo
-    \item Il sistema richiede l’inserimento dei dati (targa, chilometraggio, consumo carburante, scadenza revisione, scadenza assicurazione, stato mezzo, rimorchio)
+    \item Il sistema richiede l’inserimento dei dati
     \item Lo Staff inserisce i dati
     \item \texttt{If} i dati inseriti sono validi e non duplicati
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
@@ -899,7 +896,7 @@ Racchiude la possibilità di creazione, modifica ed eliminazione dei mezzi. Sono
     \end{enumerate} \\ \hline
     	\textbf{Sequenza degli eventi principale} & \begin{enumerate}[label=\arabic*.,leftmargin=14pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
         \item Il caso d'uso inizia quando l'Operatore seleziona il mezzo da visualizzare
-        \item Il sistema mostra i dati del mezzo (targa, chilometraggio, ecc.)
+        \item Il sistema mostra i dati del mezzo 
     \end{enumerate}\\ \hline
     	\textbf{Postcondizioni} & \begin{enumerate}[label=\arabic*.,leftmargin=14pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
         \item I dati del mezzo selezionato vengono visualizzati.
@@ -909,7 +906,7 @@ Racchiude la possibilità di creazione, modifica ed eliminazione dei mezzi. Sono
         \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
             \item \texttt{Extend} \textit{TrovaMezzo}
             \item Lo Staff seleziona il mezzo da visualizzare
-            \item Il sistema mostra i dati del mezzo (targa, chilometraggio, ecc.)
+            \item Il sistema mostra i dati del mezzo 
         \end{enumerate}
     \end{enumerate} \\ \hline
 \end{tabular}
@@ -931,23 +928,23 @@ Racchiude la possibilità di creazione, modifica ed eliminazione dei mezzi. Sono
     \end{enumerate} \\ \hline
 	\textbf{Sequenza degli eventi principale} & 
 \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item Il caso d’uso inizia quando lo Staff inserisce il singolo criterio di ricerca nella barra dedicata (es. rimorchio, targa)
+    \item Il caso d’uso inizia quando lo Staff inserisce il singolo criterio di ricerca nella barra dedicata 
     \item \texttt{Extend} \textit{FiltraMezzo}
     \item \texttt{While} il criterio di ricerca non è vuoto
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Il sistema trova i mezzi corrispondenti.
+        \item Il sistema trova i mezzi corrispondenti
         \item \texttt{If} viene trovato almeno un mezzo
         \begin{enumerate}[label=\arabic{enumi}.\arabic{enumii}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
             \item Il sistema mostra l’elenco dei mezzi corrispondenti.
         \end{enumerate}
         \item \texttt{Else}
         \begin{enumerate}[label=\arabic{enumi}.\arabic{enumii}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-            \item Il sistema mostra il messaggio “Nessun mezzo trovato”.
+            \item Il sistema mostra il messaggio “Nessun mezzo trovato”
         \end{enumerate}
     \end{enumerate}
 \end{enumerate}\\ \hline
     	\textbf{Postcondizioni} & \begin{enumerate}[label=\arabic*.,leftmargin=14pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Lo Staff visualizza l’elenco dei mezzi corrispondenti ai criteri.
+        \item Lo Staff visualizza l’elenco dei mezzi corrispondenti ai criteri
         \end{enumerate} \\ \hline
     	\textbf{Sequenza degli eventi alternativa} & Nessuna \\ \hline
 \end{tabular}
@@ -962,7 +959,7 @@ Racchiude la possibilità di creazione, modifica ed eliminazione dei mezzi. Sono
 \hline
 \multicolumn{2}{|c|}{\textbf{Caso d’uso: FiltraMezzo}} \\ \hline
 	\textbf{ID} & 16 \\ \hline
-	\textbf{Breve descrizione} & Lo Staff filtra i mezzi in base a criteri avanzati (es. rimorchio, targa) \\ \hline
+	\textbf{Breve descrizione} & Lo Staff filtra i mezzi in base a criteri avanzati  \\ \hline
 	\textbf{Attori primari} & Staff \\ \hline
 	\textbf{Attori secondari} & Nessuno \\ \hline
 	\textbf{Precondizioni} & \begin{enumerate}[label=\arabic*.,leftmargin=14pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
@@ -970,7 +967,7 @@ Racchiude la possibilità di creazione, modifica ed eliminazione dei mezzi. Sono
     \end{enumerate} \\ \hline
 	\textbf{Sequenza degli eventi principale} & 
 \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item Il caso d'uso inizia quando lo Staff applica uno o più filtri durante l'azione di ricerca del mezzo (es. rimorchio, targa)
+    \item Il caso d'uso inizia quando lo Staff applica uno o più filtri durante l'azione di ricerca del mezzo 
     \item \texttt{If} esistono mezzi che rispettano i filtri
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
         \item Il sistema mostra l’elenco dei mezzi filtrati
@@ -1198,21 +1195,21 @@ Racchiude la possibilità di creazione, modifica ed eliminazione delle attività
 \hline
 \multicolumn{2}{|c|}{\textbf{Caso d’uso: AssegnaDocumento}} \\ \hline
 	\textbf{ID} & 22 \\ \hline
-	\textbf{Breve descrizione} & Lo Staff assegna un documento ad un’attività \\ \hline
+	\textbf{Breve descrizione} & Lo Staff assegna un documento di tipo FIR ad un’attività \\ \hline
 	\textbf{Attori primari} & Staff \\ \hline
 	\textbf{Attori secondari} & Nessuno \\ \hline
 	\textbf{Precondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
     \item L’attività esiste
-    \item Il documento è registrato nel sistema
+    \item Il documento di tipo FIR è registrato nel sistema
 \end{enumerate} \\ \hline
 	\textbf{Sequenza degli eventi principale} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
     \item Il caso d'uso inizia quando lo Staff seleziona l'opzione di assegnazione di un documento all'attività
     \item \texttt{Extend} \textit{TrovaDocumento}
-    \item Lo Staff seleziona un docuemnto da assegnare all'attività
+    \item Lo Staff seleziona un documento di tipo FIR da assegnare all'attività
     \item Il sistema registra l’assegnazione
 \end{enumerate} \\ \hline
 	\textbf{Postcondizioni} & \begin{enumerate}[label=\arabic*.,leftmargin=14pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Il docuemnto è assegnato all’attività.
+        \item Il documento di tipo FIR è assegnato all’attività.
     \end{enumerate} \\ \hline
 	\textbf{Sequenza degli eventi alternativa} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
     \item \texttt{If} lo Staff non conferma l’operazione
@@ -1263,7 +1260,7 @@ Racchiude la possibilità di creazione, modifica ed eliminazione delle attività
     \item Il Cliente o lo Staff è autenticato
 \end{enumerate} \\ \hline
 	\textbf{Sequenza degli eventi principale} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item Il caso d’uso inizia quando il Cliente o lo Staff inserisce il singolo critero di ricerca nella barra dedicata (es. ID attività, nome)
+    \item Il caso d’uso inizia quando il Cliente o lo Staff inserisce il singolo critero di ricerca nella barra dedicata 
     \item Il sistema esegue la ricerca
     \item \texttt{If} l’attività esiste
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
@@ -1481,13 +1478,13 @@ Racchiude la possibilità di creazione, modifica ed eliminazione dei documenti. 
     \end{enumerate} \\ \hline
 	\textbf{Sequenza degli eventi principale} & 
 \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item Il caso d’uso inizia quando l’Operatore inserisce il singolo criterio di ricerca nella barra dedicata (es. ID documento, tipo)
+    \item Il caso d’uso inizia quando l’Operatore inserisce il singolo criterio di ricerca nella barra dedicata 
     \item \texttt{Extend} \textit{FiltraDocumento}
     \item \texttt{If} il documento esiste
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
         \item \texttt{For Each} documento trovato
         \begin{enumerate}[label=\arabic{enumi}.\arabic{enumii}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-            \item Il sistema mostra le informazioni base del documento (es. ID, tipo, ecc.)
+            \item Il sistema mostra le informazioni base del documento 
         \end{enumerate}
     \end{enumerate}
     \item \texttt{Else}
@@ -1508,7 +1505,7 @@ Racchiude la possibilità di creazione, modifica ed eliminazione dei documenti. 
 \hline
 \multicolumn{2}{|c|}{\textbf{Caso d’uso: FiltraDocumento}} \\ \hline
 	\textbf{ID} & 31 \\ \hline
-	\textbf{Breve descrizione} & L'Operatore filtra i documenti in base a criteri avanzati (tipo, data di creazione, ecc.)  \\ \hline
+	\textbf{Breve descrizione} & L'Operatore filtra i documenti in base a criteri avanzati \\ \hline
 	\textbf{Attori primari} & Operatore  \\ \hline
 	\textbf{Attori secondari} & Nessuno \\ \hline
 	\textbf{Precondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
@@ -1646,7 +1643,7 @@ Racchiude la possibilità di creazione, modifica ed eliminazione dei documenti. 
 \hline
 \multicolumn{2}{|c|}{\textbf{Caso d’uso: NotificaScadenzaDocumento}} \\ \hline
 	\textbf{ID} & 35 \\ \hline
-	\textbf{Breve descrizione} & Il sistema invia la notifica per la scadenza dei documenti (es. compilazione FIR, possibilità di eliminazione documento, ecc.) \\ \hline
+	\textbf{Breve descrizione} & Il sistema invia la notifica per la scadenza dei documenti \\ \hline
 	\textbf{Attori primari} & Tempo \\ \hline
 	\textbf{Attori secondari} & Nessuno \\ \hline
 	\textbf{Precondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
