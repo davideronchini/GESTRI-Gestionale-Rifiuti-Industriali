@@ -96,7 +96,7 @@ L’architettura di GESTRI è concepita secondo un approccio modulare, così da 
     \item \textbf{Interfaccia Utente (Front-end):} fornisce un ambiente semplice e intuitivo per l’interazione degli utenti, adattato alle diverse tipologie di attori (Operatori, Staff, Clienti). 
     È progettata per garantire chiarezza, usabilità e accesso rapido alle funzionalità principali.
     \item \textbf{Logica Applicativa (Back-end):} rappresenta il cuore del sistema, gestisce i processi interni e applica le regole di business. 
-    Qui risiedono i meccanismi di registrazione, monitoraggio delle attività, generazione dei documenti e gestione dei permessi degli utenti.
+    Qui risiedono i meccanismi come quelli di registrazione, monitoraggio delle attività, generazione dei documenti e gestione dei permessi degli utenti.
     \item \textbf{Gestione dei Dati (Database):} si occupa della memorizzazione strutturata delle informazioni. 
     La progettazione segue criteri di integrità e consistenza, sfruttando relazioni tra entità per ridurre ridondanze e facilitare le operazioni di ricerca e consultazione.
     \item \textbf{Servizi di Supporto:} includono funzionalità trasversali come autenticazione, controlli di sicurezza e strumenti di reportistica.
@@ -388,19 +388,27 @@ Sono previsti, inoltre, casi d'uso per la modifica del ruolo e per la consultazi
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
         \item Il sistema mostra il modulo di registrazione
         \item Il Cliente inserisce le proprie informazioni (nome, cognome, email, password)
+        \item \texttt{While} le credenziali inserite del Cliente non sono valide
+        \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+        \item Il sistema richiede al Cliente di inserire le sue informazioni
+    \end{enumerate}
         \item Il sistema valida i dati inseriti
         \item Il sistema crea un nuovo account con il ruolo di Cliente
     \end{enumerate}
 \end{enumerate}\\ \hline
 \textbf{Postcondizioni} & 
 \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-\item È stato creato un nuovo account utente con un ruolo specifico (Cliente, Operatore o Staff) 
+\item È stato creato un nuovo account Utente con ruolo Cliente
 \end{enumerate} \\ \hline
 \textbf{Sequenza degli eventi alternativa} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
     \item \texttt{If} l'Utente è un membro dello Staff che accede alla pagina di gestione utenti interna, allora
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item Il sistema mostra un modulo di creazione utente
-        \item Il membro dello Staff inserisce le informazioni del nuovo utente (nome, cognome, email, password) e seleziona il ruolo desiderato (Operatore o Staff)
+        \item Il sistema mostra un modulo di creazione Utente
+        \item Il membro dello Staff inserisce le informazioni del nuovo Utente (nome, cognome, email, password) e seleziona il ruolo desiderato (Operatore o Staff)
+        \item \texttt{While} le credenziali inserite dell'Utente non sono valide
+        \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+        \item Il sistema richiede allo Staff di inserire le sue informazioni
+    \end{enumerate}
         \item Il sistema valida i dati inseriti
         \item Il sistema crea un nuovo account con il ruolo specificato (Operatore o Staff)
     \end{enumerate}
