@@ -587,6 +587,10 @@ INPUT ./tesina.toc
 INPUT tesina.toc
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/jknappen/ec/eccc1000.tfm
 OUTPUT tesina.toc
+INPUT ./img/CodiceCER.jpg
+INPUT ./img/CodiceCER.jpg
+INPUT ./img/CodiceCER.jpg
+INPUT ./img/CodiceCER.jpg
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
 INPUT ./img/RequisitiFunzionali.png
