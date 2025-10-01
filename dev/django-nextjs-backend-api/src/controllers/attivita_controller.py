@@ -29,17 +29,23 @@ class AttivitaController:
             user_id (int): ID of the user making the request
             
         Returns:
-            list: List of activities authorized for the user
+            QuerySet: QuerySet of activities authorized for the user
         """
-        if user_role == Ruolo.STAFF:
-            # STAFF sees all activities
-            return Attivita.objects.all()
-        elif user_role == Ruolo.OPERATORE:
-            # OPERATORE sees only activities they are assigned to
-            return Attivita.objects.filter(utenti_assegnati__id=user_id)
-        else:  # Ruolo.CLIENTE
-            # CLIENTE sees only activities they created
-            return Attivita.objects.filter(utente_creatore__id=user_id)
+        try:
+            if user_role == Ruolo.STAFF:
+                # STAFF sees all activities
+                return Attivita.objects.all().order_by('-data_creazione')
+            elif user_role == Ruolo.OPERATORE:
+                # OPERATORE sees only activities they are assigned to
+                # Se non ci sono associazioni, restituisce un queryset vuoto
+                return Attivita.objects.filter(utente_attivita__utente_id=user_id).distinct().order_by('-data_creazione')
+            else:  # Ruolo.CLIENTE
+                # CLIENTE sees only activities they created
+                return Attivita.objects.filter(utente_creatore__id=user_id).order_by('-data_creazione')
+        except Exception as e:
+            print(f"Errore in list_attivita: {str(e)}")
+            # In caso di errore, restituisci un queryset vuoto
+            return Attivita.objects.none()
     
     @staticmethod
     def list_attivita_by_stato(stato, user_role, user_id):
@@ -59,7 +65,7 @@ class AttivitaController:
         if user_role == Ruolo.STAFF:
             return base_query
         elif user_role == Ruolo.OPERATORE:
-            return base_query.filter(utenti_assegnati__id=user_id)
+            return base_query.filter(utente_attivita__utente_id=user_id)
         else:  # Ruolo.CLIENTE
             return base_query.filter(utente_creatore__id=user_id)
     
@@ -85,7 +91,7 @@ class AttivitaController:
             return base_query
         elif user_role == Ruolo.OPERATORE:
             # OPERATORE sees only activities they are assigned to
-            return base_query.filter(utenti_assegnati__id=user_id)
+            return base_query.filter(utente_attivita__utente_id=user_id)
         else:  # Ruolo.CLIENTE
             # CLIENTE sees only activities they created
             return base_query.filter(utente_creatore__id=user_id)
@@ -108,7 +114,7 @@ class AttivitaController:
         if user_role == Ruolo.STAFF:
             return base_query
         elif user_role == Ruolo.OPERATORE:
-            return base_query.filter(utenti_assegnati__id=user_id)
+            return base_query.filter(utente_attivita__utente_id=user_id)
         else:  # Ruolo.CLIENTE
             return base_query.filter(utente_creatore__id=user_id)
     
@@ -131,14 +137,14 @@ class AttivitaController:
         if str(user_id) != str(utente_id) and user_role != Ruolo.STAFF:
             if user_role == Ruolo.OPERATORE:
                 # OPERATOR can only see activities to which they are assigned together with the requested user
-                return Attivita.objects.filter(utenti_assegnati__id=utente_id).filter(utenti_assegnati__id=user_id), None
+                return Attivita.objects.filter(utente_attivita__utente_id=utente_id).filter(utente_attivita__utente_id=user_id), None
             else:  # Ruolo.CLIENTE
                 # CLIENT cannot see activities of other users
                 return [], "You are not authorized to view activities of other users"
         
         # STAFF can view activities of any user
         # User can view their own activities
-        return Attivita.objects.filter(utenti_assegnati__id=utente_id), None
+        return Attivita.objects.filter(utente_attivita__utente_id=utente_id), None
     
     @staticmethod
     def list_attivita_by_mezzo_rimorchio(mezzo_rimorchio_id, user_role, user_id):
@@ -158,7 +164,7 @@ class AttivitaController:
         if user_role == Ruolo.STAFF:
             return base_query
         elif user_role == Ruolo.OPERATORE:
-            return base_query.filter(utenti_assegnati__id=user_id)
+            return base_query.filter(utente_attivita__utente_id=user_id)
         else:  # Ruolo.CLIENTE
             return base_query.filter(utente_creatore__id=user_id)
     
@@ -184,7 +190,7 @@ class AttivitaController:
             if user_role == Ruolo.STAFF:
                 # STAFF can view any activity
                 return attivita, None
-            elif user_role == Ruolo.OPERATORE and attivita.utenti_assegnati.filter(id=user_id).exists():
+            elif user_role == Ruolo.OPERATORE and attivita.utente_attivita.filter(utente_id=user_id).exists():
                 # OPERATOR can only view activities to which they are assigned
                 return attivita, None
             elif user_role == Ruolo.CLIENTE and attivita.utente_creatore_id == user_id:
@@ -193,6 +199,101 @@ class AttivitaController:
             else:
                 # User is not authorized to view this activity
                 return None, "You are not authorized to view this activity"
+        except Attivita.DoesNotExist:
+            return None, "Activity not found"
+
+    @staticmethod
+    def get_attivita_detail(attivita_id, user_role, user_id):
+        """
+        Gets detailed information about a specific activity including related objects.
+        
+        Args:
+            attivita_id (int): ID of the activity
+            user_role (str): Role of the user making the request
+            user_id (int): ID of the user making the request
+            
+        Returns:
+            tuple: (attivita_detail, error)
+                - attivita_detail (dict): Detailed activity data with related objects, or None if not found/not authorized
+                - error (str): Error message, or None if the operation succeeded
+        """
+        try:
+            # Use select_related and prefetch_related for efficient queries
+            attivita = Attivita.objects.select_related(
+                'utente_creatore',
+                'mezzo_rimorchio',
+                'mezzo_rimorchio__mezzo',
+                'mezzo_rimorchio__rimorchio'
+            ).prefetch_related(
+                'utente_attivita__utente',
+                'documenti'
+            ).get(id=attivita_id)
+            
+            # Verify authorization based on role
+            authorized = False
+            if user_role == Ruolo.STAFF:
+                # STAFF can view any activity
+                authorized = True
+            elif user_role == Ruolo.OPERATORE and attivita.utente_attivita.filter(utente_id=user_id).exists():
+                # OPERATOR can only view activities to which they are assigned
+                authorized = True
+            elif user_role == Ruolo.CLIENTE and attivita.utente_creatore_id == user_id:
+                # CLIENT can only view activities they created
+                authorized = True
+            
+            if not authorized:
+                return None, "You are not authorized to view this activity"
+            
+            # Build detailed response
+            detail = {
+                'id': attivita.id,
+                'titolo': attivita.titolo,
+                'descrizione': attivita.descrizione,
+                'statoAttivita': attivita.statoAttivita,
+                'data': attivita.data,
+                'luogo': attivita.luogo,
+                'codiceCer': attivita.codiceCer,
+                'durata': attivita.durata,
+                'data_creazione': attivita.data_creazione,
+                'data_modifica': attivita.data_modifica,
+                'utente_creatore': {
+                    'id': attivita.utente_creatore.id,
+                    'email': attivita.utente_creatore.email,
+                    'nome': attivita.utente_creatore.nome,
+                    'cognome': attivita.utente_creatore.cognome,
+                },
+                'mezzo_rimorchio': None,
+                'operatori_assegnati': []
+            }
+            
+            # Add mezzo_rimorchio details if exists
+            if attivita.mezzo_rimorchio:
+                detail['mezzo_rimorchio'] = {
+                    'id': attivita.mezzo_rimorchio.id,
+                    'mezzo': {
+                        'id': attivita.mezzo_rimorchio.mezzo.id,
+                        'targa': attivita.mezzo_rimorchio.mezzo.targa,
+                        'statoMezzo': attivita.mezzo_rimorchio.mezzo.statoMezzo,
+                        'immagine': attivita.mezzo_rimorchio.mezzo.immagine.name if attivita.mezzo_rimorchio.mezzo.immagine else None,
+                    },
+                    'rimorchio': {
+                        'id': attivita.mezzo_rimorchio.rimorchio.id,
+                        'nome': attivita.mezzo_rimorchio.rimorchio.nome,
+                        'tipoRimorchio': attivita.mezzo_rimorchio.rimorchio.tipoRimorchio,
+                    }
+                }
+            
+            # Add assigned operators
+            for utente_attivita in attivita.utente_attivita.all():
+                detail['operatori_assegnati'].append({
+                    'id': utente_attivita.utente.id,
+                    'email': utente_attivita.utente.email,
+                    'nome': utente_attivita.utente.nome,
+                    'cognome': utente_attivita.utente.cognome,
+                })
+            
+            return detail, None
+            
         except Attivita.DoesNotExist:
             return None, "Activity not found"
     
@@ -269,7 +370,7 @@ class AttivitaController:
             if user_role == Ruolo.STAFF:
                 # STAFF can modify any activity
                 pass
-            elif user_role == Ruolo.OPERATORE and attivita.utenti_assegnati.filter(id=user_id).exists():
+            elif user_role == Ruolo.OPERATORE and attivita.utente_attivita.filter(utente_id=user_id).exists():
                 # OPERATOR can only modify activities to which they are assigned and with limitations
                 # Cannot change the creator user
                 if payload.dict().get("utente_creatore_id") and payload.utente_creatore_id != attivita.utente_creatore_id:

@@ -1,7 +1,8 @@
 "use client"
 
 import { useAuth } from "@/providers/authProvider";
-import { useEffect, useState, useRef } from "react";
+import { useAuthGuard } from "@/hooks/useAuthGuard";
+import { useEffect, useState, useRef, useCallback } from "react";
 import useSWR from "swr";
 import { Container, Title, Text, Box, Group, Avatar, Menu, useMantineColorScheme, useMantineTheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
@@ -169,10 +170,6 @@ export default function Home() {
 
   // Gestisci errori 401 per tutte le API con un ref per evitare loop
   const hasHandled401 = useRef(false);
-  
-  // SWR condizionato: esegue solo se l'auth è inizializzato e l'utente è autenticato
-  const shouldFetch = !auth.isLoading && auth.isAuthenticated;
-  // Rimosso SWR per ATTIVITA_API_URL che non serve
 
   // Funzione per convertire timestamp in formato YYYY-MM-DD
   const formatDateForAPI = (timestamp) => {
@@ -186,7 +183,7 @@ export default function Home() {
 
   // SWR per le attività basate sulla data selezionata
   const formattedDate = formatDateForAPI(selectedTimestamp);
-  const attivitaAPIUrl = shouldFetch ? `${ATTIVITA_API_URL}/by-date/${formattedDate}` : null;
+  const attivitaAPIUrl = `${ATTIVITA_API_URL}/by-date/${formattedDate}`;
   
   const { 
     data: attivitaData, 
@@ -208,7 +205,7 @@ export default function Home() {
   );
 
   // SWR per i mezzi in manutenzione
-  const mezziManutenzioneAPIUrl = shouldFetch ? `${MEZZO_API_URL}by-stato/MANUTENZIONE` : null;
+  const mezziManutenzioneAPIUrl = `${MEZZO_API_URL}by-stato/MANUTENZIONE`;
   
   const { 
     data: mezziManutenzioneData, 
@@ -229,7 +226,7 @@ export default function Home() {
   );
 
   // SWR per i documenti dell'attività selezionata
-  const documentiAPIUrl = shouldFetch && selectedActivityId ? `${ATTIVITA_API_URL}${selectedActivityId}/documento` : null;
+  const documentiAPIUrl = selectedActivityId ? `${ATTIVITA_API_URL}${selectedActivityId}/documento` : null;
   
   const { 
     data: documentiData, 
@@ -257,44 +254,12 @@ export default function Home() {
     return documentiData;
   })();
 
-  useEffect(()=>{
-    console.log('Home page useEffect - isLoading:', auth.isLoading, 'isAuthenticated:', auth.isAuthenticated);
-    
-    // Evita redirect se l'auth non è ancora inizializzato
-    if (auth.isLoading) return;
-    
-    // Se l'utente non è autenticato, reindirizza al login
-    if (!auth.isAuthenticated && auth.loginRequiredRedirect) {
-      console.log('User not authenticated, calling loginRequiredRedirect');
-      auth.loginRequiredRedirect();
-      return;
-    }
-  }, [auth.isLoading, auth.isAuthenticated])
+  // Usa il hook personalizzato per gestire l'autenticazione
+  const authGuard = useAuthGuard({
+    errors: [attivitaError, mezziManutenzioneError, documentiError]
+  });
 
-  // Gestisci errori 401 per tutte le API - usa un approccio più semplice
-  const lastAuthState = useRef({ isAuthenticated: auth.isAuthenticated, isLoading: auth.isLoading });
-  
-  useEffect(() => {
-    // Controlla 401 su tutte le API solo se c'è stato un cambiamento nello stato auth
-    const hasAttivita401Error = attivitaError?.status === 401;
-    const hasMezzi401Error = mezziManutenzioneError?.status === 401;
-    const hasDocumenti401Error = documentiError?.status === 401;
-    const hasAny401Error = hasAttivita401Error || hasMezzi401Error || hasDocumenti401Error;
-    
-    // Controlla se lo stato auth è cambiato
-    const authStateChanged = 
-      lastAuthState.current.isAuthenticated !== auth.isAuthenticated ||
-      lastAuthState.current.isLoading !== auth.isLoading;
-    
-    if (hasAny401Error && !auth.isLoading && auth.isAuthenticated) {
-      console.log('401 error detected from APIs, calling loginRequiredRedirect');
-      auth.loginRequiredRedirect();
-    }
-    
-    // Aggiorna lo stato precedente
-    lastAuthState.current = { isAuthenticated: auth.isAuthenticated, isLoading: auth.isLoading };
-    
-  }, [attivitaError?.status, mezziManutenzioneError?.status, documentiError?.status, auth.isLoading, auth.isAuthenticated, auth.loginRequiredRedirect])
+
 
   // Effect per monitorare il timestamp per le API
   useEffect(() => {
@@ -365,12 +330,12 @@ export default function Home() {
   }, [transformedAttivita, selectedActivityId]);
 
   // Mostra loading mentre l'auth si inizializza
-  if (auth.isLoading) {
+  if (authGuard.isLoading) {
     return <div>Caricamento...</div>;
   }
 
-  // Se non autenticato, non mostrare nulla (il redirect è in corso)
-  if (!auth.isAuthenticated) {
+  // Se non autenticato o redirect in corso, non mostrare nulla
+  if (!authGuard.isAuthenticated || authGuard.redirectInProgress) {
     return null;
   }
 
@@ -665,7 +630,7 @@ export default function Home() {
       </Box>
 
   {/* Row: activities list + documento preview (becomes stacked on small screens) */}
-  <Box style={{ display: 'flex', gap: '24px', marginTop: '35px', flexWrap: isStacked ? 'wrap' : 'nowrap', alignItems: 'stretch', marginBottom: isStacked ? '75px' : '40px' }}>
+  <Box style={{ display: 'flex', gap: '24px', marginTop: '35px', flexWrap: isStacked ? 'wrap' : 'nowrap', alignItems: 'stretch', marginBottom: isStacked ? '85px' : '85px' }}>
   {/* Left column: Activities */}
   <Box style={{ flex: isStacked ? '1 1 100%' : '1 1 60%', minWidth: isStacked ? '100%' : '300px', overflow: 'hidden' }}>
           <AppLargeText style={{fontSize: '18px' }}>

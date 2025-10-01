@@ -1,6 +1,7 @@
 "use client"
 
 import { useAuth } from "@/providers/authProvider";
+import { useAuthGuard } from "@/hooks/useAuthGuard";
 import WaitlistForm from "../waitlists/forms";
 import { useEffect, useState, useRef } from "react";
 import useSWR from "swr";
@@ -24,12 +25,9 @@ const WAITLIST_API_URL = '/api/waitlists/'
 export default function Page() {
   const auth = useAuth();
 
-  // SWR condizionato: esegue solo se l'auth è inizializzato e l'utente è autenticato
-  const shouldFetch = !auth.isLoading && auth.isAuthenticated;
-  const swrKey = shouldFetch ? WAITLIST_API_URL : null;
-  
+  // SWR condizionato: esegue solo se l'auth è inizializzato e l'utente è autenticato  
   const { data, error, isLoading } = useSWR(
-    swrKey, 
+    !auth.isLoading && auth.isAuthenticated ? WAITLIST_API_URL : null, 
     fetcher, 
     {
       revalidateOnFocus: false,
@@ -40,43 +38,20 @@ export default function Page() {
     }
   );
 
-  useEffect(()=>{
-    console.log('Documenti page useEffect - isLoading:', auth.isLoading, 'isAuthenticated:', auth.isAuthenticated);
-    
-    // Evita redirect se l'auth non è ancora inizializzato
-    if (auth.isLoading) return;
-    
-    // Se l'utente non è autenticato, reindirizza al login
-    if (!auth.isAuthenticated) {
-      console.log('User not authenticated, redirecting to login');
-      auth.loginRequiredRedirect();
-      return;
-    }
-  }, [auth.isLoading, auth.isAuthenticated])
+  // Usa il hook personalizzato per gestire l'autenticazione
+  const authGuard = useAuthGuard({
+    errors: [error]
+  });
 
-  // Gestisci errori 401 con un ref per evitare loop
-  const hasHandled401 = useRef(false);
-  
-  useEffect(() => {
-    if (error?.status === 401 && !auth.isLoading && !hasHandled401.current) {
-      console.log('401 error detected, redirecting to login');
-      hasHandled401.current = true;
-      auth.loginRequiredRedirect();
-    }
-    
-    // Reset del flag quando non c'è più errore 401
-    if (error?.status !== 401) {
-      hasHandled401.current = false;
-    }
-  }, [error?.status, auth.isLoading])
+
 
   // Mostra loading mentre l'auth si inizializza
-  if (auth.isLoading) {
+  if (authGuard.isLoading) {
     return <div>Caricamento...</div>;
   }
 
-  // Se non autenticato, non mostrare nulla (il redirect è in corso)
-  if (!auth.isAuthenticated) {
+  // Se non autenticato o redirect in corso, non mostrare nulla
+  if (!authGuard.isAuthenticated || authGuard.redirectInProgress) {
     return null;
   }
 

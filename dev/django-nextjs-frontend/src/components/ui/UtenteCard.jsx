@@ -4,25 +4,17 @@ import { Box, Button, Image, useMantineTheme } from '@mantine/core';
 import AppPaper from './AppPaper';
 import AppLargeText from './AppLargeText';
 import AppNormalText from './AppNormalText';
-import AppSubmitButton from './AppSubmitButton';
 
-export default function MezzoCard({
-  previewSrc,
-  id,
-  stato = 'DISPONIBILE',
-  onView,
-  style,
-  ...props
-}) {
+export default function UtenteCard({ previewSrc, id, nome, ruolo = '', stato = 'ATTIVO', onView, style, ...props }) {
   const theme = useMantineTheme();
 
   const getStatusColor = (s) => {
     switch ((s || '').toUpperCase()) {
-      case 'DISPONIBILE':
+      case 'ATTIVO':
         return '#17BC6A';
-      case 'MANUTENZIONE':
+      case 'ASSENTE':
         return '#f59e0b';
-      case 'OCCUPATO':
+      case 'BLOCCATO':
         return '#ef4444';
       default:
         return theme.colors.gray[5];
@@ -38,27 +30,26 @@ export default function MezzoCard({
       {...props}
     >
       <Box style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', margin: 0, overflow: 'hidden', flex: '0 0 auto', width: 'auto' }}>
-        <Box style={{ padding: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', boxSizing: 'border-box', minHeight: '0'}}>
+        <Box style={{ padding: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', boxSizing: 'border-box', minHeight: 0 }}>
           <Image
-            src={previewSrc ?? '/images/login-bg.png'}
-            alt={`Mezzo#${id}`}
+            src={previewSrc ?? '/images/generic-user.png'}
+            alt={nome ? nome : `Utente#${id}`}
             fit="cover"
-            style={{ width: '120px', height: '120px', maxWidth: '100%', objectFit: 'cover', borderRadius: '8px', padding: '0px', flexShrink: 0, margin: '0 auto', boxSizing: 'border-box' }}
+            style={{ width: '120px', height: '120px', maxWidth: '100%', objectFit: 'cover', borderRadius: '8px', padding: '0px', flexShrink: 0, margin: '0 auto' }}
           />
         </Box>
       </Box>
 
-      <Box style={{ flex: '1 1 auto', minWidth: 0, display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'stretch', paddingRight: '20px', boxSizing: 'border-box', overflow: 'hidden' }}>
+  <Box style={{ flex: '1 1 auto', minWidth: 0, display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'stretch', paddingRight: '20px', boxSizing: 'border-box', overflow: 'hidden' }}>
         <Box style={{ width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', minWidth: 0, overflow: 'hidden', marginTop: '20px' }}>
           <AppLargeText style={{ fontSize: 18, fontWeight: 600, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginTop: '0px', display: 'block', width: '100%', maxWidth: '100%', boxSizing: 'border-box' }}>
-            Mezzo#{id}
+            {nome ? nome : `Utente#${id}`}
           </AppLargeText>
 
           <Box style={{ display: 'flex', alignItems: 'center', gap: '10px', marginTop: '0px' }}>
             <AppNormalText style={{ fontSize: 14, color: theme.colors.gray[6] }}>
-              Stato:
+              {`ID: ${id}`}
             </AppNormalText>
-            <Box style={{ width: '10px', height: '10px', borderRadius: '999px', backgroundColor: statusColor }} />
           </Box>
         </Box>
 

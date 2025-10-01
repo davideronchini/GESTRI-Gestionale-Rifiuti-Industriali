@@ -9,7 +9,7 @@ class UtenteAdmin(UserAdmin):
     """
     Admin interface configuration for the Utente model
     """
-    list_display = ('email', 'nome', 'cognome', 'ruolo', 'is_staff')
+    list_display = ('id', 'email', 'nome', 'cognome', 'ruolo', 'is_staff')
     filter_horizontal = ('user_permissions',)  # Rimuovo 'groups' da qui
     list_filter = ('is_staff', 'is_superuser', 'is_active')  # Rimuovo 'groups' da qui
     fieldsets = (

@@ -1,0 +1,82 @@
+.fieldWrapper {
+  position: relative;
+  width: 100%;
+  min-width: 0; /* allow flex children to shrink properly */
+}
+
+.inputContainer {
+  position: relative;
+}
+
+.label {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: all 0.18s ease;
+  color: #ffffff; /* always white */
+  background: transparent;
+  padding: 0 4px;
+  pointer-events: none;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.labelTop {
+  top: -0px;
+  font-size: 14px; /* requested size when floated */
+  color: #ffffff; /* keep white when floated */
+  background: transparent; /* no background when floated */
+}
+
+.labelHidden {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.12s ease, visibility 0.12s ease;
+}
+
+.input {
+  width: 100%;
+  min-width: 0;
+  padding: 14px 12px;
+  padding-right: 120px; /* room for the right placeholder */
+  border: 1px solid #e5e7eb; /* gray-200 */
+  border-radius: 8px;
+  outline: none;
+  font-size: 15px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.5); /* requested value style */
+  caret-color: rgba(255, 255, 255, 0.5);
+  box-sizing: border-box;
+  text-align: left;
+  background: transparent;
+}
+
+.input:focus {
+  border-color: transparent; /* blue-600 */
+  box-shadow: 0 0 0 0px rgba(37,99,235,0.08);
+}
+
+.placeholder {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  font-size: 15px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-50%);
+  pointer-events: none;
+  transition: opacity 0.12s ease, transform 0.12s ease;
+}
+
+.placeholderLeft {
+  left: 12px;
+  right: auto;
+  transform: translateY(-50%);
+}
+
+.placeholderHidden {
+  opacity: 0;
+  transform: translateY(-50%) translateX(6px);
+}

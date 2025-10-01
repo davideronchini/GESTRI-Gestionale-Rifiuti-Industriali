@@ -106,3 +106,32 @@ class Utente(AbstractUser):
             self.cognome = self.last_name
             
         super().save(*args, **kwargs)
+
+    @property
+    def attestati(self):
+        """
+        Alias/shortcut to access documents associated with this user.
+
+        The `documento.Documento` model defines the ForeignKey with
+        `related_name='documenti'`, so this returns the corresponding
+        queryset to provide a convenient bidirectional access point.
+        """
+        # Directly use the related_name defined in `documento.models`
+        # for clarity and performance.
+        return self.documenti.all()
+
+    @property
+    def assenze(self):
+        """
+        Alias/shortcut to access Assenza objects related to this user.
+
+        This returns Assenza instances where the user appears either in the
+        `operatore` field (related_name='assenze') or in the legacy `utente`
+        field (related_name='assenze_vecchie'). We import the model locally to
+        avoid circular imports at module import time.
+        """
+        from django.db.models import Q
+        # Import locally to avoid circular import during app loading
+        from ..assenza.models import Assenza
+
+        return Assenza.objects.filter(Q(operatore=self) | Q(utente=self)).distinct()

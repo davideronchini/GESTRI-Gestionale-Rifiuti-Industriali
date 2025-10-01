@@ -10,7 +10,7 @@ class MezzoRimorchioAdmin(admin.ModelAdmin):
     """
     list_display = ('id', 'mezzo', 'rimorchio', 'data_associazione', 'data_dissociazione', 'attivo')
     list_filter = ('attivo', 'data_associazione', 'data_dissociazione')
-    search_fields = ('id', 'mezzo__targa', 'rimorchio__targa')
+    search_fields = ('id', 'mezzo__targa', 'rimorchio__nome')
     date_hierarchy = 'data_associazione'
     
     fieldsets = (
