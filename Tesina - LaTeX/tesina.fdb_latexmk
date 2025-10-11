@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1760091032.45872 "/Users/sara/Downloads/GESTRI-Gestionale-Rifiuti-Industriali/Tesina - LaTeX/tesina.tex" "tesina.pdf" "tesina" 1760091035.81684 0
-  "/Users/sara/Downloads/GESTRI-Gestionale-Rifiuti-Industriali/Tesina - LaTeX/tesina.tex" 1760091031.73952 109351 737a1f17e5f2d98cd6ce44025c955719 ""
+["pdflatex"] 1760215771.09949 "/Users/sara/Downloads/GESTRI-Gestionale-Rifiuti-Industriali/Tesina - LaTeX/tesina.tex" "tesina.pdf" "tesina" 1760215774.51713 0
+  "/Users/sara/Downloads/GESTRI-Gestionale-Rifiuti-Industriali/Tesina - LaTeX/tesina.tex" 1760093203.40721 109351 737a1f17e5f2d98cd6ce44025c955719 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -360,7 +360,7 @@
   "img/DiagrammaSequenzaCRUDAttivita.png" 1759136091.71901 87214 c392e5f30ffc3d2ec8ebec9280ad9d5d ""
   "img/DiagrammaSequenzaFiltraDocumento.png" 1757509664.28171 35773 6c00ef73e842c471c20e201c1b711436 ""
   "img/DiagrammaSequenzaLoginUtente.png" 1757509664.28188 22005 8a31b9fa5066a51e60fa8619b5968f5f ""
-  "img/DiagrammaSequenzaRegistrazioneUtente.png" 1757509664.28206 25240 6018f5d0235eab0b4f83ca56970189f9 ""
+  "img/DiagrammaSequenzaRegistrazioneUtente.png" 1760215762.78826 53348 f7fbe32c6d23eea807387f64a58e837d ""
   "img/DiagrammaSequenzaTrovaDocumento.png" 1757509664.28227 30477 b736e0f1661a43ac1b9b1c34dcbf1137 ""
   "img/GestioneAssenza.png" 1756938641.20584 33685 2e60f4e2c738a5eaf62aa6a0b61e6ad1 ""
   "img/GestioneAttivita.png" 1759132407.48676 91367 22a06bd86720b356f1e41852e8ef1c87 ""
@@ -371,9 +371,9 @@
   "img/RequisitiFunzionali.png" 1759133769.56849 23814 539267b6345754803c8e57c36df8b379 ""
   "img/RequisitiNonFunzionali.png" 1759224647.63734 15313 156405093746ac9aee199b1ec56669e8 ""
   "img/univpm_logo.png" 1755853629.60692 572038 2c65ef26c2d0ad88311d8e9b99461627 ""
-  "tesina.aux" 1760091035.65251 23583 6e54039e8118ea90a419031c011a6a4b "pdflatex"
-  "tesina.tex" 1760091031.73952 109351 737a1f17e5f2d98cd6ce44025c955719 ""
-  "tesina.toc" 1760091035.65773 3731 36252ab2da0ce2e48033b4746819be26 "pdflatex"
+  "tesina.aux" 1760215774.34688 23583 6e54039e8118ea90a419031c011a6a4b "pdflatex"
+  "tesina.tex" 1760093203.40721 109351 737a1f17e5f2d98cd6ce44025c955719 ""
+  "tesina.toc" 1760215774.35276 3731 36252ab2da0ce2e48033b4746819be26 "pdflatex"
   (generated)
   "tesina.aux"
   "tesina.log"
