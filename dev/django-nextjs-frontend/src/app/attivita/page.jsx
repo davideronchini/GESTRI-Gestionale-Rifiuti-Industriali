@@ -8,11 +8,11 @@ import { Container, Box, Group, useMantineTheme, Menu, Avatar, useMantineColorSc
 import { showNotification } from '@mantine/notifications';
 import AppTable from '@/components/ui/AppTable';
 import AppLargeText from '@/components/ui/AppLargeText';
-import { IconBell, IconMoon, IconSettings, IconSun, IconTrash, IconUser } from "@tabler/icons-react";
+import { IconBell, IconMoon, IconSettings, IconSun, IconTrash, IconUser, IconLock } from "@tabler/icons-react";
 import { useRouter } from "next/navigation";
 
 const fetcher = async url =>{
-  const res = await fetch(url)
+  const res = await fetch(url, { credentials: 'include' })
 
   if (!res.ok){
     const error = new Error('An error occurred while fetching the data.');
@@ -27,6 +27,7 @@ const fetcher = async url =>{
 }
 
 const ATTIVITA_API_URL = '/api/attivita/'
+const ATTIVITA_BASE = ATTIVITA_API_URL.replace(/\/+$/, '')
 
 export default function Page() {
   const auth = useAuth();
@@ -85,8 +86,7 @@ export default function Page() {
 
   // Funzione per aggiungere una nuova attività
   const handleAddAttivita = () => {
-    console.log('Aggiungi nuova attività');
-    // TODO: Implementare la logica per aggiungere attività
+    router.push('/attivita/crea');
   };
 
   // Funzione per filtrare le attività
@@ -101,9 +101,10 @@ export default function Page() {
     // TODO: Implementare la logica per cercare attività
   };
 
+  // Only fetch when user is authenticated. Prevents repeated 401s during auth transitions.
   const { data, error, isLoading } = useSWR(
-    ATTIVITA_API_URL, 
-    fetcher, 
+    auth.isAuthenticated ? ATTIVITA_BASE : null,
+    fetcher,
     {
       revalidateOnFocus: false,
       revalidateOnReconnect: false,
@@ -128,6 +129,26 @@ export default function Page() {
       setTableData(data);
     }
   }, [data]);
+
+  // If user becomes unauthenticated, clear the attivita SWR cache immediately to avoid showing
+  // data belonging to the previous user until a full refresh occurs.
+  useEffect(() => {
+    if (!auth.isAuthenticated) {
+      try { 
+        // clear main key and any common variants
+        mutate(ATTIVITA_BASE, null, { revalidate: false });
+        mutate(`${ATTIVITA_BASE}/by-date/`, null, { revalidate: false });
+      } catch (e) { /* ignore */ }
+      setTableData([]);
+    }
+  }, [auth.isAuthenticated]);
+
+  // Proactively revalidate when component mounts to ensure we have fresh data
+  useEffect(() => {
+    try {
+      mutate(`${ATTIVITA_BASE}/by-date/`, null, { revalidate: true }).catch(() => {});
+    } catch (e) { /* ignore */ }
+  }, []);
 
   // Effetto separato per gestire i filtri e i dati
   useEffect(() => {
@@ -164,6 +185,10 @@ export default function Page() {
 
   // Funzione che esegue la ricerca con i parametri specificati
   const performSearch = async (term, filters) => {
+    if (!auth.isAuthenticated) {
+      console.log('performSearch skipped: user not authenticated');
+      return;
+    }
     try {
       // Normalizza il termine di ricerca: stringa vuota se non valido o placeholder
       const searchTerm = (!term || term === 'Cerca...' || term.trim() === '') ? '' : term.trim();
@@ -304,16 +329,20 @@ export default function Page() {
                                     </Menu.Item>
                                     <Menu.Item 
                                       leftSection={<IconSettings size={14} />}
-                                      onClick={handleSettings}
+                                      rightSection={<IconLock size={14} />}
+                                      onClick={() => showNotification({ title: 'Funzione bloccata', message: 'Questa funzione non è disponibile', color: 'yellow' })}
+                                      style={{ cursor: 'not-allowed', opacity: 0.6 }}
                                     >
                                       Impostazioni
                                     </Menu.Item>
                                     <Menu.Divider />
                                     <Menu.Item 
-                                      leftSection={colorScheme === 'dark' ? <IconSun size={14} /> : <IconMoon size={14} />}
-                                      onClick={handleThemeToggle}
+                                      leftSection={<IconSun size={14} />}
+                                      rightSection={<IconLock size={14} />}
+                                      onClick={() => showNotification({ title: 'Funzione bloccata', message: 'Questa funzione non è disponibile', color: 'yellow' })}
+                                      style={{ cursor: 'not-allowed', opacity: 0.6 }}
                                     >
-                                      {colorScheme === 'dark' ? 'Tema Chiaro' : 'Tema Scuro'}
+                                      Tema Chiaro
                                     </Menu.Item>
                                   </Menu.Dropdown>
                                 </Menu>
@@ -323,7 +352,7 @@ export default function Page() {
       {/* Example table - replace with real data when available */}
       <Box style={{ marginTop: 25 }}>
         <AppTable
-          title="Mostra tutte le attività"
+          title="Tutte le attività"
           onHoverLineClick={(row) =>  router.push(`/attivita/${row?.id}`)}
           onAddClick={handleAddAttivita}
           onFilterClick={handleFilterAttivita}

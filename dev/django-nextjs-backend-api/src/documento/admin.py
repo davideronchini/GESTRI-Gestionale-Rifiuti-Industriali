@@ -8,6 +8,7 @@ class DocumentoAdmin(admin.ModelAdmin):
     """
     Configurazione dell'interfaccia di amministrazione per il modello Documento
     """
+    # Use model fields directly to avoid custom parsing during changelist rendering
     list_display = ('tipoDocumento', 'operatore', 'dataInserimento', 'dataScadenza')
     list_filter = ('tipoDocumento', 'dataInserimento', 'dataScadenza')
     search_fields = ('operatore__email', 'operatore__first_name', 'operatore__last_name')

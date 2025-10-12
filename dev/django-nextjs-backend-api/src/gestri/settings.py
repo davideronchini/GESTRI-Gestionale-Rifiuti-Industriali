@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'ninja_extra',
     'ninja_jwt',
     # internal
-    'waitlists',
     'utente',
     'attivita',
     'documento',
@@ -63,11 +62,13 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'ninja.compatibility.files.fix_request_files_middleware',  # Required for PUT/PATCH with files
 ]
 
 ROOT_URLCONF = 'gestri.urls'
 
-CORS_URLS_REGEX = r'^/api/.*$'
+# Allow CORS for both API and media files
+CORS_URLS_REGEX = r'^/(api|media)/.*$'
 CORS_ALLOWED_ORIGINS = []
 
 ENV_CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS', cast=str, default="")
@@ -125,9 +126,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'it-it'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Rome'
 
 USE_I18N = True
 

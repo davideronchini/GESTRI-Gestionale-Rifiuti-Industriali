@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from django.utils import timezone
 
 class TipoRimorchio(models.TextChoices):
     """
@@ -31,6 +32,19 @@ class Rimorchio(models.Model):
         verbose_name=_("Tipo Rimorchio"),
         default=TipoRimorchio.ALTRO
     )
+    
+    # Immagine
+    immagine = models.FileField(
+        upload_to='rimorchi/immagini/',
+        null=True,
+        blank=True,
+        verbose_name=_("Immagine del rimorchio"),
+        help_text=_("Carica un'immagine del rimorchio (formati supportati: JPG, PNG)")
+    )
+    
+    # Metadata
+    data_creazione = models.DateTimeField(default=timezone.now, verbose_name=_("Data creazione"))
+    data_modifica = models.DateTimeField(auto_now=True, verbose_name=_("Data modifica"))
     
     class Meta:
         verbose_name = _("Rimorchio")

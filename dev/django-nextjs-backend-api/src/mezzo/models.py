@@ -51,5 +51,18 @@ class Mezzo(models.Model):
         verbose_name_plural = _("Mezzi")
         ordering = ['targa']
     
+    def save(self, *args, **kwargs):
+        """
+        Override del metodo save per gestire automaticamente isDanneggiato
+        quando lo stato è MANUTENZIONE
+        """
+        # Se lo stato è MANUTENZIONE, imposta automaticamente isDanneggiato a True
+        if self.statoMezzo == StatoMezzo.MANUTENZIONE:
+            self.isDanneggiato = True
+        # Se lo stato non è MANUTENZIONE, puoi decidere se resettarlo o mantenerlo
+        # Per ora lo lasciamo inalterato se non è MANUTENZIONE
+        
+        super().save(*args, **kwargs)
+    
     def __str__(self):
         return f"{self.targa} - {self.get_statoMezzo_display()}"

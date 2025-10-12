@@ -7,7 +7,26 @@ scripts:
     - cd src && python manage.py migrate
   shell:
     - cd src && python manage.py shell
+  test:
+    - cd src && python manage.py test
+  test:documento:
+    - cd src && python manage.py test documento.tests
+  test:mezzo:
+    - cd src && python manage.py test mezzo.tests
+  test:rimorchio:
+    - cd src && python manage.py test rimorchio.tests
+  test:assenza:
+    - cd src && python manage.py test assenza.tests
+  test:utente:
+    - cd src && python manage.py test utente.tests
+  test:utente_attivita:
+    - cd src && python manage.py test utente_attivita.tests
+  test:mezzo_rimorchio:
+    - cd src && python manage.py test mezzo_rimorchio.tests
+  test:attivita:
+    - cd src && python manage.py test attivita.tests
+  # (already defined above) document tests available via 'test:documento'
   curl_auth: |
-    curl -X POST -H "Content-Type: application/json" -d '{"email": "admin@example.com", "password": "admin_psw"}' http://127.0.0.1:8001/api/token/pair
+    curl -X POST -H "Content-Type: application/json" -d '{"email": "admin@gmail.com.com", "password": "admin"}' http://127.0.0.1:8001/api/token/pair
   curl_protect: |
     curl -X GET -H "Authorization: Bearer <curl_auth-access-token>" http://127.0.0.1:8001/api/me

@@ -1,11 +1,14 @@
 "use client";
 import React from 'react';
-import { Box, Button, Image, useMantineTheme } from '@mantine/core';
+import { Box, Button, Image, useMantineTheme, ActionIcon } from '@mantine/core';
+import { IconTrash } from '@tabler/icons-react';
 import AppPaper from './AppPaper';
 import AppLargeText from './AppLargeText';
 import AppNormalText from './AppNormalText';
 
-export default function UtenteCard({ previewSrc, id, nome, ruolo = '', stato = 'ATTIVO', onView, style, ...props }) {
+export default function UtenteCard({ previewSrc, id, nome, ruolo = '', stato = 'ATTIVO', onView, onDelete, // controls showing delete icon
+  isEditable = false,
+  style, ...props }) {
   const theme = useMantineTheme();
 
   const getStatusColor = (s) => {
@@ -42,9 +45,21 @@ export default function UtenteCard({ previewSrc, id, nome, ruolo = '', stato = '
 
   <Box style={{ flex: '1 1 auto', minWidth: 0, display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'stretch', paddingRight: '20px', boxSizing: 'border-box', overflow: 'hidden' }}>
         <Box style={{ width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', minWidth: 0, overflow: 'hidden', marginTop: '20px' }}>
-          <AppLargeText style={{ fontSize: 18, fontWeight: 600, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginTop: '0px', display: 'block', width: '100%', maxWidth: '100%', boxSizing: 'border-box' }}>
-            {nome ? nome : `Utente#${id}`}
-          </AppLargeText>
+          <div style={{ display: 'flex', alignItems: 'center', width: '100%', justifyContent: 'space-between' }}>
+            <AppLargeText style={{ fontSize: 18, fontWeight: 600, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', marginTop: '0px', display: 'block', width: '100%', maxWidth: '100%', boxSizing: 'border-box' }}>
+              {nome ? nome : `Utente#${id}`}
+            </AppLargeText>
+            {isEditable && typeof onDelete === 'function' && (
+              <ActionIcon
+                onClick={(e) => { e.stopPropagation(); onDelete(); }}
+                variant="transparent"
+                title="Rimuovi operatore"
+                style={{ marginLeft: '8px' }}
+              >
+                <IconTrash style={{ width: '25px', height: '25px', color: '#919293', strokeWidth: '1.7' }} />
+              </ActionIcon>
+            )}
+          </div>
 
           <Box style={{ display: 'flex', alignItems: 'center', gap: '10px', marginTop: '0px' }}>
             <AppNormalText style={{ fontSize: 14, color: theme.colors.gray[6] }}>

@@ -88,3 +88,30 @@ class AttivitaDetailSchema(Schema):
     
     class Config:
         from_attributes = True
+
+class AttivitaUpdateSchema(Schema):
+    """
+    Schema for updating an Attivita
+    """
+    titolo: Optional[str] = None
+    descrizione: Optional[str] = None
+    statoAttivita: Optional[str] = None
+    data: Optional[datetime] = None
+    luogo: Optional[str] = None
+    codiceCer: Optional[str] = None
+    durata: Optional[int] = None
+
+class AttivitaCreateSchema(Schema):
+    """
+    Schema for creating a new Attivita
+    """
+    titolo: str
+    descrizione: Optional[str] = None
+    statoAttivita: Optional[str] = 'PROGRAMMATA'
+    data: Optional[datetime] = None
+    luogo: Optional[str] = None
+    codiceCer: Optional[str] = None
+    durata: Optional[int] = None
+    mezzo_rimorchio_id: Optional[int] = None
+    utenti_assegnati_ids: Optional[List[int]] = []
+    documenti_ids: Optional[List[int]] = []

@@ -6,7 +6,10 @@ import {
   Container, 
   Box,
   Group,
+  Loader,
+  Center,
 } from '@mantine/core';
+import { useEffect } from 'react';
 import Image from 'next/image';
 import AppPaper from '@/components/ui/AppPaper';
 import AppTextInput from '@/components/ui/AppTextInput';
@@ -15,12 +18,13 @@ import AppSubmitButton from '@/components/ui/AppSubmitButton';
 import { IconLock, IconMail } from '@tabler/icons-react';
 import { notifications } from '@mantine/notifications';
 import AppSmallText from "@/components/ui/AppSmallText";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const LOGIN_URL = '/api/login/'
 
 export default function LoginPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const auth = useAuth();
 
   const form = useForm({
@@ -34,9 +38,30 @@ export default function LoginPage() {
     },
   });
 
-  // Mostra loading durante l'inizializzazione dell'auth
-  if (auth.isLoading) {
-    return <div>Caricamento...</div>;
+  // Reindirizza gli utenti già autenticati
+  useEffect(() => {
+    if (!auth.isLoading && auth.isAuthenticated) {
+      console.log('🔐 LoginPage: User already authenticated, redirecting');
+      
+      // Controlla se c'è un next parameter
+      const nextParam = searchParams?.get('next');
+      const decodedNext = nextParam ? decodeURIComponent(nextParam) : null;
+      const invalidPages = ['/login', '/register', '/logout'];
+      const isSafeNext = decodedNext && decodedNext.startsWith('/') && !invalidPages.includes(decodedNext);
+      
+      // Redirect alla pagina appropriata
+      const redirectTo = isSafeNext ? decodedNext : '/';
+      router.replace(redirectTo);
+    }
+  }, [auth.isLoading, auth.isAuthenticated, router, searchParams]);
+
+  // Mostra loading durante l'inizializzazione dell'auth o durante il redirect
+  if (auth.isLoading || (!auth.isLoading && auth.isAuthenticated)) {
+    return (
+      <Center style={{ height: '100vh' }}>
+        <Loader size="lg" />
+      </Center>
+    );
   }
 
   async function handleSubmit(values) {
@@ -61,7 +86,19 @@ export default function LoginPage() {
           message: `Benvenuto ${data.email}`,
           color: 'green',
         });
-        auth.login(data?.email);
+            // Do a single whoami check to confirm server-side session (no polling/delays).
+            // If it fails, we still proceed to update client state because whoami is a best-effort
+            // verification (the backend session/cookies are authoritative).
+            try {
+              const who = await fetch('/api/whoami', { method: 'GET', credentials: 'include' });
+              if (!who.ok) {
+                console.warn('Login: whoami returned not-ok status', who.status);
+              }
+            } catch (e) {
+              console.warn('Login: whoami call failed', e);
+            }
+
+            auth.login(data?.email);
       } else {
         const errorMessage =
           (data && (data.error || data.detail || data.message)) ||

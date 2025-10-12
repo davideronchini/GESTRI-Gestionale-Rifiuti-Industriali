@@ -1,6 +1,6 @@
 from ninja import Schema
 from typing import Optional
-from datetime import datetime, date
+from datetime import datetime
 
 class DocumentoSchema(Schema):
     """
@@ -9,7 +9,8 @@ class DocumentoSchema(Schema):
     id: int
     tipoDocumento: str
     dataInserimento: datetime
-    dataScadenza: Optional[date] = None
+    dataScadenza: Optional[datetime] = None
     file: Optional[str] = None
+    file_url: Optional[str] = None
     operatore_id: Optional[int] = None
     operatore_nome: Optional[str] = None

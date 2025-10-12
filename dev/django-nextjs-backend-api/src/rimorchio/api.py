@@ -1,4 +1,5 @@
-from ninja import Router
+from ninja import Router, File
+from ninja.files import UploadedFile
 from typing import List
 from django.shortcuts import get_object_or_404
 from django.http import HttpRequest
@@ -8,17 +9,17 @@ from .schemas import RimorchioSchema, RimorchioCreateSchema, RimorchioUpdateSche
 from controllers.mezzo_controller import MezzoController
 import helpers
 
-router = Router(tags=["rimorchios"])
+router = Router(tags=["rimorchi"])
 
-@router.get("/", response=List[RimorchioSchema], auth=helpers.api_auth_any_authenticated)
-def list_rimorchios(request: HttpRequest):
+@router.get("/", response=List[RimorchioSchema], auth=helpers.api_auth_staff_or_operatore)
+def list_rimorchi(request: HttpRequest):
     """
-    Get a list of all rimorchios
+    Get a list of all rimorchi
     """
     # Usa il controller per ottenere tutti i rimorchi
     return MezzoController.list_rimorchi()
 
-@router.get("/{rimorchio_id}", response=RimorchioSchema, auth=helpers.api_auth_any_authenticated)
+@router.get("/{rimorchio_id}", response=RimorchioSchema, auth=helpers.api_auth_staff_or_operatore)
 def get_rimorchio(request: HttpRequest, rimorchio_id: int):
     """
     Get details of a specific rimorchio by ID
@@ -69,3 +70,29 @@ def delete_rimorchio(request: HttpRequest, rimorchio_id: int):
         return {"error": error}
     
     return {"success": success}
+
+@router.post("/{rimorchio_id}/upload-image", auth=helpers.api_auth_staff_only)
+def upload_rimorchio_image(request: HttpRequest, rimorchio_id: int, immagine: UploadedFile = File(...)):
+    """
+    Upload an image for a rimorchio.
+    """
+    try:
+        # Get the rimorchio
+        rimorchio = Rimorchio.objects.get(id=rimorchio_id)
+        
+        # Delete old image if exists
+        if rimorchio.immagine:
+            rimorchio.immagine.delete(save=False)
+        
+        # Save the new image
+        rimorchio.immagine = immagine
+        rimorchio.save()
+        
+        return {
+            "success": True,
+            "immagine": rimorchio.immagine.name if rimorchio.immagine else None
+        }
+    except Rimorchio.DoesNotExist:
+        return {"error": "Rimorchio non trovato"}
+    except Exception as e:
+        return {"error": str(e)}

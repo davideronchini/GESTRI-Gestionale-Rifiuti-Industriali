@@ -3,11 +3,11 @@
 import { useAuth } from "@/providers/authProvider";
 import { useAuthGuard } from "@/hooks/useAuthGuard";
 import { useEffect, useState, useRef, useCallback } from "react";
-import useSWR from "swr";
+import useSWR, { mutate } from "swr";
 import { Container, Title, Text, Box, Group, Avatar, Menu, useMantineColorScheme, useMantineTheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
-import { IconUser, IconSettings, IconSun, IconMoon, IconBell, IconChevronLeft, IconChevronRight, IconCheck, IconX } from '@tabler/icons-react';
-import { useRouter } from 'next/navigation';
+import { IconUser, IconSettings, IconSun, IconMoon, IconBell, IconChevronLeft, IconChevronRight, IconCheck, IconX, IconLock } from '@tabler/icons-react';
+import { useRouter, usePathname } from 'next/navigation';
 import AppLargeText from '@/components/ui/AppLargeText';
 import AppNormalText from "@/components/ui/AppNormalText";
 import AppPaper from '@/components/ui/AppPaper';
@@ -15,14 +15,17 @@ import CalendarDate from '@/components/ui/CalendarDate';
 import AttivitaCard from '@/components/ui/AttivitaCard';
 import DocumentoCard from '@/components/ui/DocumentoCard';
 import MezzoCard from '@/components/ui/MezzoCard';
-import { DJANGO_MEDIA_URL } from '@/config/config';
+import { DJANGO_BASE_URL, DJANGO_MEDIA_URL } from '@/config/config';
+import RequireRole from "@/components/RequireRole";
 
 const ATTIVITA_API_URL = '/api/attivita/';
+// normalized base used to construct by-date and other variants without double-slash issues
+const ATTIVITA_BASE = ATTIVITA_API_URL.replace(/\/+$/, '');
 const MEZZO_API_URL = '/api/mezzi/';
 const DOCUMENTO_API_URL = '/api/documenti/';
 
 const fetcher = async url =>{
-  const res = await fetch(url)
+  const res = await fetch(url, { credentials: 'include' })
 
   if (!res.ok){
     const error = new Error('An error occurred while fetching the data.');
@@ -54,7 +57,10 @@ export default function Home() {
   
   // Stati per la gestione del calendario
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const [selectedDayIndex, setSelectedDayIndex] = useState(0);
+  // Inizializza con il giorno corrente invece del primo del mese
+  const [selectedDayIndex, setSelectedDayIndex] = useState(() => {
+    return new Date().getDate() - 1; // -1 perché l'indice parte da 0
+  });
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [tempMonth, setTempMonth] = useState(new Date().getMonth());
   const [tempYear, setTempYear] = useState(new Date().getFullYear());
@@ -162,7 +168,6 @@ export default function Home() {
   const handleLogout = async () => {
     try {
       await auth.logout();
-      router.push('/login');
     } catch (error) {
       console.error('Errore durante il logout:', error);
     }
@@ -183,15 +188,15 @@ export default function Home() {
 
   // SWR per le attività basate sulla data selezionata
   const formattedDate = formatDateForAPI(selectedTimestamp);
-  const attivitaAPIUrl = `${ATTIVITA_API_URL}/by-date/${formattedDate}`;
+  const attivitaAPIUrl = `${ATTIVITA_BASE}/by-date/${formattedDate}`;
   
   const { 
     data: attivitaData, 
     error: attivitaError, 
     isLoading: attivitaLoading 
   } = useSWR(
-    attivitaAPIUrl, 
-    fetcher, 
+    auth?.isAuthenticated ? attivitaAPIUrl : null,
+    fetcher,
     {
       revalidateOnFocus: false,
       revalidateOnReconnect: false,
@@ -204,6 +209,34 @@ export default function Home() {
     }
   );
 
+  // If user becomes unauthenticated, clear the attivita SWR key immediately so
+  // navigation back to Home doesn't show the previous user's data.
+  useEffect(() => {
+    if (!auth?.isAuthenticated) {
+      try {
+        mutate(ATTIVITA_BASE, null, { revalidate: false }).catch(() => {});
+        mutate(`${ATTIVITA_BASE}/by-date/${formattedDate}`, null, { revalidate: false }).catch(() => {});
+      } catch (e) { /* ignore */ }
+    }
+  }, [auth?.isAuthenticated]);
+
+  // When date changes, proactively revalidate the by-date key to ensure fresh data
+  useEffect(() => {
+    try {
+      mutate(`${ATTIVITA_BASE}/by-date/${formattedDate}`, null, { revalidate: true }).catch(() => {});
+    } catch (e) { /* ignore */ }
+  }, [formattedDate]);
+
+  // Revalidate when route becomes home (helps when navigating client-side back to Home)
+  const pathname = usePathname();
+  useEffect(() => {
+    if (pathname === '/') {
+      try {
+        mutate(`${ATTIVITA_BASE}/by-date/${formattedDate}`, null, { revalidate: true }).catch(() => {});
+      } catch (e) { /* ignore */ }
+    }
+  }, [pathname]);
+
   // SWR per i mezzi in manutenzione
   const mezziManutenzioneAPIUrl = `${MEZZO_API_URL}by-stato/MANUTENZIONE`;
   
@@ -212,8 +245,8 @@ export default function Home() {
     error: mezziManutenzioneError, 
     isLoading: mezziManutenzioneLoading 
   } = useSWR(
-    mezziManutenzioneAPIUrl, 
-    fetcher, 
+    auth?.isAuthenticated ? mezziManutenzioneAPIUrl : null,
+    fetcher,
     {
       revalidateOnFocus: false,
       revalidateOnReconnect: false,
@@ -233,8 +266,8 @@ export default function Home() {
     error: documentiError, 
     isLoading: documentiLoading 
   } = useSWR(
-    documentiAPIUrl, 
-    fetcher, 
+    auth?.isAuthenticated ? documentiAPIUrl : null,
+    fetcher,
     {
       revalidateOnFocus: false,
       revalidateOnReconnect: false,
@@ -313,6 +346,15 @@ export default function Home() {
 
   // Trasforma i dati delle attività
   const transformedAttivita = transformAttivitaData(attivitaData);
+  
+  // Debug: log per verificare quante attività vengono ricevute dal backend
+  useEffect(() => {
+    if (attivitaData) {
+      console.log(`📊 [HOME] Attività ricevute dal backend per ${formattedDate}:`, attivitaData.length);
+      console.log(`👤 [HOME] Ruolo utente:`, auth.ruolo);
+      console.log(`📋 [HOME] Attività:`, attivitaData);
+    }
+  }, [attivitaData, formattedDate, auth.ruolo]);
 
   // Se la lista delle attività cambia e l'attività selezionata non è più presente,
   // resettare la selezione per evitare che il documento precedente rimanga visibile.
@@ -383,6 +425,9 @@ export default function Home() {
 
   return (
     <Container size="lg">
+      <RequireRole
+        allowedRoles={['STAFF', 'OPERATORE', 'CLIENTE']}
+        fallback={<div style={{ padding: '1rem', textAlign: 'start' }}>Non hai i permessi per visualizzare questa pagina.</div>}>
       {/* Header con titolo e profilo */}
       <Box style={{marginTop: '24px'}}>
         <Group justify="space-between" align="center">
@@ -436,16 +481,20 @@ export default function Home() {
                   </Menu.Item>
                   <Menu.Item 
                     leftSection={<IconSettings size={14} />}
-                    onClick={handleSettings}
+                    rightSection={<IconLock size={14} />}
+                    onClick={() => showNotification({ title: 'Funzione bloccata', message: 'Questa funzione non è disponibile', color: 'yellow' })}
+                    style={{ cursor: 'not-allowed', opacity: 0.6 }}
                   >
                     Impostazioni
                   </Menu.Item>
                   <Menu.Divider />
                   <Menu.Item 
-                    leftSection={colorScheme === 'dark' ? <IconSun size={14} /> : <IconMoon size={14} />}
-                    onClick={handleThemeToggle}
+                    leftSection={<IconSun size={14} />}
+                    rightSection={<IconLock size={14} />}
+                    onClick={() => showNotification({ title: 'Funzione bloccata', message: 'Questa funzione non è disponibile', color: 'yellow' })}
+                    style={{ cursor: 'not-allowed', opacity: 0.6 }}
                   >
-                    {colorScheme === 'dark' ? 'Tema Chiaro' : 'Tema Scuro'}
+                    Tema Chiaro
                   </Menu.Item>
                 </Menu.Dropdown>
               </Menu>
@@ -670,6 +719,7 @@ export default function Home() {
           </Box>
         </Box>
 
+        <RequireRole allowedRoles={['STAFF', 'OPERATORE']}>
         {/* Vertical divider - hide when stacked */}
         {!isStacked && (
           <Box style={{ width: '1px', marginLeft: '-15px', backgroundColor: colorScheme === 'dark' ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.06)', borderRadius: '1px'}} />
@@ -701,7 +751,7 @@ export default function Home() {
               </AppPaper>
             ) : (
               <DocumentoCard
-                previewSrc={normalizedDocumento?.file ? `${DJANGO_MEDIA_URL}${normalizedDocumento.file}` : "/images/FIR-preview.png"}
+                previewSrc={normalizedDocumento?.file ? `${DJANGO_BASE_URL}${normalizedDocumento.file}` : "/images/FIR-preview.png"}
                 title={normalizedDocumento?.tipoDocumento || "Documento"}
                 subtitle={normalizedDocumento?.operatore_nome || "Operatore non specificato"}
                 documentId={normalizedDocumento?.id}
@@ -717,8 +767,11 @@ export default function Home() {
             </AppPaper>
           )}
         </Box>
+        </RequireRole>
       </Box>
-
+    
+    <RequireRole allowedRoles={['STAFF']}>
+    {/* Sezione mezzi in manutenzione */}
     <AppLargeText style={{fontSize: '18px' }}>
       Mezzi in manutenzione
     </AppLargeText>
@@ -745,14 +798,15 @@ export default function Home() {
                 id={m.id}
                 stato={m.statoMezzo}
                 previewSrc={m.immagine ? `${DJANGO_MEDIA_URL}${m.immagine}` : "/images/login-bg.png"}
-                onView={() => { if (m.id) router.push(`/mezzi/${m.id}`); }}
+                onView={() => { if (m.id) router.push(`/mezzo/${m.id}`); }}
               />
             </Box>
           ))
         )}
       </Box>
     </Box>
-
+    </RequireRole>
+    </RequireRole>
     </Container>
   );
 }

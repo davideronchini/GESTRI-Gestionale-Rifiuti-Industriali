@@ -1,10 +1,14 @@
 "use client";
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 import { Box, Button, Group, Image, useMantineTheme } from '@mantine/core';
+import { Document, Page, pdfjs } from 'react-pdf';
 import AppPaper from './AppPaper';
 import AppLargeText from './AppLargeText';
 import AppNormalText from './AppNormalText';
 import AppSubmitButton from './AppSubmitButton';
+
+// Configura il worker di PDF.js usando CDN per la versione compatibile con react-pdf 9.2.1
+pdfjs.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@4.8.69/build/pdf.worker.min.mjs`;
 
 export default function DocumentoCard({
   previewSrc,
@@ -16,6 +20,20 @@ export default function DocumentoCard({
   ...props
 }) {
   const theme = useMantineTheme();
+  const [pdfError, setPdfError] = useState(false);
+  
+  // Determina se il file è un PDF
+  const isPdf = useMemo(() => {
+    if (!previewSrc || typeof previewSrc !== 'string') return false;
+    const lowerSrc = previewSrc.toLowerCase();
+    return lowerSrc.endsWith('.pdf') || lowerSrc.includes('.pdf?');
+  }, [previewSrc]);
+
+  // Reset dell'errore quando cambia il file sorgente
+  React.useEffect(() => {
+    setPdfError(false);
+  }, [previewSrc]);
+  
   return (
     <AppPaper
       p={0}
@@ -25,14 +43,68 @@ export default function DocumentoCard({
       {/* Image area: behaves as left column on wide, full-width on small */}
       <Box style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', margin: 0, overflow: 'hidden', flex: '0 0 auto', width: 'auto' }}>
         <Box style={{ padding: '30px', display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', boxSizing: 'border-box', minHeight: 0 }}>
-          {previewSrc ? (
+          {isPdf && previewSrc && !pdfError ? (
+            // Mostra prima pagina del PDF
+            <Box
+              style={{
+                width: 140,
+                height: 180,
+                borderRadius: '8px',
+                overflow: 'hidden',
+                backgroundColor: theme.colors.gray[8],
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                flexShrink: 0,
+                margin: '0 auto'
+              }}
+            >
+              <Document
+                key={previewSrc} // Forza il remount quando cambia il file
+                file={previewSrc}
+                onLoadError={(error) => {
+                  // Ignora silenziosamente gli errori 404 che possono verificarsi durante il cambio file
+                  if (!error.message.includes('Missing PDF')) {
+                    console.warn('PDF non disponibile:', error.message);
+                  }
+                  setPdfError(true);
+                }}
+                loading={
+                  <Box style={{ color: theme.colors.gray[5], fontSize: '12px' }}>
+                    Caricamento...
+                  </Box>
+                }
+              >
+                <Page
+                  pageNumber={1}
+                  width={140}
+                  renderTextLayer={false}
+                  renderAnnotationLayer={false}
+                />
+              </Document>
+            </Box>
+          ) : (isPdf && pdfError) ? (
+            // Fallback quando il PDF ha un errore
+            <Image
+              src="/images/FIR-preview.png"
+              alt="Anteprima documento non disponibile"
+              fit="cover"
+              style={{ width: 140, height: 180, maxWidth: '100%', objectFit: 'cover', borderRadius: '8px', backgroundColor: theme.colors.gray[3], flexShrink: 0, margin: '0 auto' }}
+            />
+          ) : previewSrc ? (
+            // Mostra immagine per altri tipi di file
             <Image
               src={previewSrc}
               alt={title}
               fit="cover"
               style={{ width: 140, height: 180, maxWidth: '100%', objectFit: 'cover', borderRadius: '8px', padding: '0px', flexShrink: 0, margin: '0 auto' }}
+              onError={(e) => {
+                // Fallback se anche l'immagine fallisce
+                e.currentTarget.src = "/images/FIR-preview.png";
+              }}
             />
           ) : (
+            // Placeholder se non c'è preview
             <Image
               src="/images/FIR-preview.png"
               alt="Anteprima documento"

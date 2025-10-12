@@ -33,10 +33,10 @@ class Documento(models.Model):
         auto_now_add=True, 
         verbose_name=_("Data inserimento")
     )
-    dataScadenza = models.DateField(
-        null=True, 
-        blank=True, 
-        verbose_name=_("Data scadenza")
+    dataScadenza = models.DateTimeField(
+        null=True,
+        blank=True,
+        verbose_name=_("Data scadenza (data e ora)")
     )
     
     # File del documento
@@ -64,3 +64,29 @@ class Documento(models.Model):
     
     def __str__(self):
         return f"Documento {self.get_tipoDocumento_display()} ({self.operatore})"
+
+    def save(self, *args, **kwargs):
+        """
+        Override del save(): se il tipoDocumento viene cambiato in FIR e
+        l'istanza aveva un operatore associato, dissociarlo (set operatore a None).
+
+        Logica:
+        - Se l'istanza è già persistente (ha pk), recuperiamo dai DB il valore
+          precedente di tipoDocumento.
+        - Se il valore precedente è diverso dall'attuale e il nuovo valore è FIR
+          e c'era un operatore, lo rimuoviamo.
+        """
+        try:
+            if self.pk is not None:
+                old = Documento.objects.filter(pk=self.pk).only('tipoDocumento', 'operatore').first()
+                if old and old.tipoDocumento != self.tipoDocumento:
+                    # Tipo cambiato
+                    if self.tipoDocumento == TipoDocumento.FIR and old.operatore is not None:
+                        # Dissocia operatore
+                        self.operatore = None
+        except Exception:
+            # Non blocchiamo il salvataggio per errori di lettura precedente; propagate
+            # l'eccezione solo in caso di problemi gravi.
+            pass
+
+        super().save(*args, **kwargs)

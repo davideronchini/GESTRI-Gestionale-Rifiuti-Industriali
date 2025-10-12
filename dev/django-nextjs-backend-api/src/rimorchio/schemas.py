@@ -31,5 +31,6 @@ class RimorchioSchema(RimorchioBaseSchema):
     Includes all fields plus id and metadata
     """
     id: int
-    data_creazione: datetime
-    data_modifica: datetime
+    immagine: Optional[str] = None
+    data_creazione: Optional[datetime] = None
+    data_modifica: Optional[datetime] = None

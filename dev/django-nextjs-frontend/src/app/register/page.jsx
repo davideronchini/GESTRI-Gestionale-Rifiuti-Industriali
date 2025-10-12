@@ -78,8 +78,8 @@ export default function RegisterPage() {
           message: 'Account creato con successo! Ora puoi effettuare il login.',
           color: 'green',
         });
-        // Redirect al login dopo registrazione completata
-        router.push('/login');
+  // Redirect al login dopo registrazione completata
+  router.replace('/login');
       } else {
         const errorMessage =
           (data && (data.error || data.detail || data.message)) ||

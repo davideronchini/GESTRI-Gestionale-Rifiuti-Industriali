@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { AppShell, Group, ActionIcon } from '@mantine/core';
+import { AppShell, Group, ActionIcon, Loader, Center } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { useAuth } from '@/providers/authProvider';
 import { usePathname } from 'next/navigation';
@@ -32,8 +32,17 @@ export default function AppLayoutWrapper({ children }) {
     return <>{children}</>;
   }
 
+  // Mostra loader durante l'inizializzazione dell'auth per pagine protette
+  if (auth.isLoading) {
+    return (
+      <Center style={{ height: '100vh', backgroundColor: colorScheme === 'dark' ? '#1A1B1E' : '#f5f5f5' }}>
+        <Loader size="lg" />
+      </Center>
+    );
+  }
+
   // Se l'utente non è autenticato e non è una pagina pubblica, 
-  // mostra solo il contenuto senza navbar
+  // mostra solo il contenuto senza navbar (useAuthGuard gestirà il redirect)
   if (!auth.isAuthenticated) {
     return (
       <AppShell padding="md">

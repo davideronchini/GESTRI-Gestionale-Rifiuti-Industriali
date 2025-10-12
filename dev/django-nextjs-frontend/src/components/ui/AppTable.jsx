@@ -9,6 +9,7 @@ import { useState, useEffect, useRef } from 'react';
 import AppNormalText from './AppNormalText';
 import AppLargeText from './AppLargeText';
 import AppTextInput from './AppTextInput';
+import RequireRole from '../RequireRole';
 
 /**
  * AppTable
@@ -21,7 +22,9 @@ import AppTextInput from './AppTextInput';
  * - onHoverLineClick: function(row, index) called when hover line is clicked
  * - onAddClick: function called when plus icon is clicked
  * - onFilterClick: function called when filter icon is clicked
+ * - onFilterChange: function called when filters change
  * - onSearch: function(searchTerm) called when search input changes
+ * - getStatusColor: optional function(stato) that returns a color string for status indicators
  *
  * Note: Rows are not clickable for navigation. Only icons and hover line can be interactive.
  */
@@ -37,7 +40,8 @@ export default function AppTable({
   onAddClick,
   onFilterClick,
   onFilterChange,
-  onSearch
+  onSearch,
+  getStatusColor
 }){
   const theme = useMantineTheme();
   const { colorScheme } = useMantineColorScheme();
@@ -160,12 +164,18 @@ export default function AppTable({
               const stato = String(cellValue).toUpperCase();
               let color = '#ADB5BD'; // grigio di default
               
-              if (stato === 'PROGRAMMATA' || stato === 'PIANIFICATA') {
-                color = '#FA5252'; // rosso
-              } else if (stato === 'INIZIATA' || stato === 'IN_CORSO') {
-                color = '#E29D14'; // arancione
-              } else if (stato === 'TERMINATA' || stato === 'COMPLETATA') {
-                color = '#17BC6A'; // verde
+              // Usa la funzione personalizzata se fornita, altrimenti usa la mappatura di default per attività
+              if (typeof getStatusColor === 'function') {
+                color = getStatusColor(stato);
+              } else {
+                // Mappatura di default per attività
+                if (stato === 'PROGRAMMATA' || stato === 'PIANIFICATA') {
+                  color = '#FA5252'; // rosso
+                } else if (stato === 'INIZIATA' || stato === 'IN_CORSO') {
+                  color = '#E29D14'; // arancione
+                } else if (stato === 'TERMINATA' || stato === 'COMPLETATA') {
+                  color = '#17BC6A'; // verde
+                }
               }
               
               return (
@@ -226,6 +236,7 @@ export default function AppTable({
             const isMenuOpen = openedMenu === menuKey;
             
             return (
+              <RequireRole key={col.key} allowedRoles={['STAFF', 'CLIENTE']}>
               <td
                 key={col.key}
                 data-icon-column="true"
@@ -316,6 +327,7 @@ export default function AppTable({
                   </Menu.Dropdown>
                 </Menu>
               </td>
+              </RequireRole>
             );
           }
           
@@ -415,6 +427,7 @@ export default function AppTable({
           
           <Group gap="sm">
             {/* Pulsante Plus */}
+            <RequireRole allowedRoles={['STAFF', 'CLIENTE']}>
             {onAddClick && (
               <Box
                 style={{
@@ -440,6 +453,7 @@ export default function AppTable({
                 <IconPlus size={20} color="#17BC6A" />
               </Box>
             )}
+            </RequireRole>
 
             {/* Pulsante Filter -> apre un Menu con i titoli delle colonne per impostare il filtro */}
             {onFilterClick && (

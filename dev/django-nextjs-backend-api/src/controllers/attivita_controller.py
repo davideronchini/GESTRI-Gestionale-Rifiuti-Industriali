@@ -1,3 +1,8 @@
+from documento.models import Documento
+from django.db.models import Q
+from utente.models import Ruolo
+from django.http import Http404
+from django.core.exceptions import PermissionDenied
 """
 Controller for managing activities.
 This module contains the business logic for operations on activities.
@@ -9,7 +14,6 @@ from attivita.models import Attivita, StatoAttivita
 from utente.models import Utente, Ruolo
 from mezzo_rimorchio.models import MezzoRimorchio
 from utente_attivita.models import UtenteAttivita
-from controllers.utente_controller import UtenteController
 
 
 class AttivitaController:
@@ -38,169 +42,18 @@ class AttivitaController:
             elif user_role == Ruolo.OPERATORE:
                 # OPERATORE sees only activities they are assigned to
                 # Se non ci sono associazioni, restituisce un queryset vuoto
-                return Attivita.objects.filter(utente_attivita__utente_id=user_id).distinct().order_by('-data_creazione')
+                return Attivita.objects.filter(
+                    utente_attivita__utente_id=user_id
+                ).distinct().order_by('-data_creazione')
             else:  # Ruolo.CLIENTE
                 # CLIENTE sees only activities they created
-                return Attivita.objects.filter(utente_creatore__id=user_id).order_by('-data_creazione')
+                return Attivita.objects.filter(
+                    utente_creatore__id=user_id
+                ).order_by('-data_creazione')
         except Exception as e:
             print(f"Errore in list_attivita: {str(e)}")
             # In caso di errore, restituisci un queryset vuoto
             return Attivita.objects.none()
-    
-    @staticmethod
-    def list_attivita_by_stato(stato, user_role, user_id):
-        """
-        Ottiene tutte le attività filtrate per stato in base al ruolo dell'utente.
-        
-        Args:
-            stato (str): State of the activity
-            user_role (str): Role of the user making the request
-            user_id (int): ID of the user making the request
-            
-        Returns:
-            list: List of activities filtered by state
-        """
-        base_query = Attivita.objects.filter(statoAttivita=stato)
-        
-        if user_role == Ruolo.STAFF:
-            return base_query
-        elif user_role == Ruolo.OPERATORE:
-            return base_query.filter(utente_attivita__utente_id=user_id)
-        else:  # Ruolo.CLIENTE
-            return base_query.filter(utente_creatore__id=user_id)
-    
-    @staticmethod
-    def list_attivita_by_date(data, user_role, user_id):
-        """
-        Gets all activities scheduled for a specific date based on user role.
-        Filters by the 'data' field (activity scheduled date).
-        
-        Args:
-            data (date): Date to filter activities by (YYYY-MM-DD)
-            user_role (str): Role of the user making the request
-            user_id (int): ID of the user making the request
-            
-        Returns:
-            list: List of activities scheduled for the specified date
-        """
-        # Query base: filtra per data di svolgimento dell'attività (solo la data, non l'ora)
-        base_query = Attivita.objects.filter(data__date=data).order_by('data')
-        
-        # Applica filtri basati sul ruolo dell'utente
-        if user_role == Ruolo.STAFF:
-            return base_query
-        elif user_role == Ruolo.OPERATORE:
-            # OPERATORE sees only activities they are assigned to
-            return base_query.filter(utente_attivita__utente_id=user_id)
-        else:  # Ruolo.CLIENTE
-            # CLIENTE sees only activities they created
-            return base_query.filter(utente_creatore__id=user_id)
-
-    @staticmethod
-    def list_attivita_by_tipo(tipo, user_role, user_id):
-        """
-        Gets all activities filtered by type based on user role.
-        
-        Args:
-            tipo (str): Type of the activity
-            user_role (str): Role of the user making the request
-            user_id (int): ID of the user making the request
-            
-        Returns:
-            list: List of activities filtered by type
-        """
-        base_query = Attivita.objects.filter(tipo=tipo)
-        
-        if user_role == Ruolo.STAFF:
-            return base_query
-        elif user_role == Ruolo.OPERATORE:
-            return base_query.filter(utente_attivita__utente_id=user_id)
-        else:  # Ruolo.CLIENTE
-            return base_query.filter(utente_creatore__id=user_id)
-    
-    @staticmethod
-    def list_attivita_by_utente(utente_id, user_role, user_id):
-        """
-        Gets all activities for a specific user based on the role of the user making the request.
-        
-        Args:
-            utente_id (int): ID of the user whose activities are requested
-            user_role (str): Role of the user making the request
-            user_id (int): ID of the user making the request
-            
-        Returns:
-            tuple: (attivita, error)
-                - attivita (list): List of activities for the user
-                - error (str): Error message, or None if the operation succeeded
-        """
-        # Check if user is trying to view activities of another user
-        if str(user_id) != str(utente_id) and user_role != Ruolo.STAFF:
-            if user_role == Ruolo.OPERATORE:
-                # OPERATOR can only see activities to which they are assigned together with the requested user
-                return Attivita.objects.filter(utente_attivita__utente_id=utente_id).filter(utente_attivita__utente_id=user_id), None
-            else:  # Ruolo.CLIENTE
-                # CLIENT cannot see activities of other users
-                return [], "You are not authorized to view activities of other users"
-        
-        # STAFF can view activities of any user
-        # User can view their own activities
-        return Attivita.objects.filter(utente_attivita__utente_id=utente_id), None
-    
-    @staticmethod
-    def list_attivita_by_mezzo_rimorchio(mezzo_rimorchio_id, user_role, user_id):
-        """
-        Gets all activities for a specific vehicle-trailer based on the user's role.
-        
-        Args:
-            mezzo_rimorchio_id (int): ID of the vehicle-trailer
-            user_role (str): Role of the user making the request
-            user_id (int): ID of the user making the request
-            
-        Returns:
-            list: List of activities for the vehicle-trailer
-        """
-        base_query = Attivita.objects.filter(mezzo_rimorchio_id=mezzo_rimorchio_id)
-        
-        if user_role == Ruolo.STAFF:
-            return base_query
-        elif user_role == Ruolo.OPERATORE:
-            return base_query.filter(utente_attivita__utente_id=user_id)
-        else:  # Ruolo.CLIENTE
-            return base_query.filter(utente_creatore__id=user_id)
-    
-    @staticmethod
-    def get_attivita(attivita_id, user_role, user_id):
-        """
-        Gets a specific activity based on the user's role.
-        
-        Args:
-            attivita_id (int): ID of the activity
-            user_role (str): Role of the user making the request
-            user_id (int): ID of the user making the request
-            
-        Returns:
-            tuple: (attivita, error)
-                - attivita (Attivita): The requested activity, or None if not found or not authorized
-                - error (str): Error message, or None if the operation succeeded
-        """
-        try:
-            attivita = Attivita.objects.get(id=attivita_id)
-            
-            # Verify authorization based on role
-            if user_role == Ruolo.STAFF:
-                # STAFF can view any activity
-                return attivita, None
-            elif user_role == Ruolo.OPERATORE and attivita.utente_attivita.filter(utente_id=user_id).exists():
-                # OPERATOR can only view activities to which they are assigned
-                return attivita, None
-            elif user_role == Ruolo.CLIENTE and attivita.utente_creatore_id == user_id:
-                # CLIENT can only view activities they created
-                return attivita, None
-            else:
-                # User is not authorized to view this activity
-                return None, "You are not authorized to view this activity"
-        except Attivita.DoesNotExist:
-            return None, "Activity not found"
 
     @staticmethod
     def get_attivita_detail(attivita_id, user_role, user_id):
@@ -300,121 +153,81 @@ class AttivitaController:
     @staticmethod
     def create_attivita(payload, user_role, user_id):
         """
-        Creates a new activity based on the user's role.
+        Creates a new activity.
         
         Args:
-            payload (dict): Data of the activity to create
+            payload (AttivitaCreateSchema): Data for the new activity
             user_role (str): Role of the user making the request
             user_id (int): ID of the user making the request
             
         Returns:
             tuple: (attivita, error)
-                - attivita (Attivita): The created activity, or None if the operation failed
-                - error (str): Error message, or None if the operation succeeded
-        """
-        # For CLIENT and OPERATOR, the creator is always the authenticated user
-        if user_role in [Ruolo.CLIENTE, Ruolo.OPERATORE]:
-            # Force utente_creatore to be the current user
-            payload.utente_creatore_id = user_id
-        
-        # Limitations for non-STAFF users
-        if user_role != Ruolo.STAFF:
-            # CLIENT and OPERATOR cannot assign activities to STAFF users
-            if payload.utenti_assegnati_ids and payload.utenti_assegnati_ids:
-                from utente.models import Utente
-                staff_ids = Utente.objects.filter(ruolo=Ruolo.STAFF).values_list('id', flat=True)
-                if any(user_id in staff_ids for user_id in payload.utenti_assegnati_ids):
-                    return None, "You cannot assign activities to STAFF users"
-        
-        try:
-            with transaction.atomic():
-                # Extract m2m fields
-                utenti_assegnati_ids = payload.utenti_assegnati_ids or []
-                documenti_ids = payload.documenti_ids or []
-                
-                # Create attivita without m2m fields
-                attivita_data = payload.dict(exclude={"utenti_assegnati_ids", "documenti_ids"})
-                attivita = Attivita.objects.create(**attivita_data)
-                
-                # Add m2m relationships
-                if utenti_assegnati_ids:
-                    attivita.utenti_assegnati.set(utenti_assegnati_ids)
-                
-                if documenti_ids:
-                    attivita.documenti.set(documenti_ids)
-                
-                return attivita, None
-        except Exception as e:
-            return None, str(e)
-    
-    @staticmethod
-    def update_attivita(attivita_id, payload, user_role, user_id):
-        """
-        Updates an existing activity based on the user's role.
-        
-        Args:
-            attivita_id (int): ID of the activity to update
-            payload (dict): Data of the activity to update
-            user_role (str): Role of the user making the request
-            user_id (int): ID of the user making the request
-            
-        Returns:
-            tuple: (attivita, error)
-                - attivita (Attivita): The updated activity, or None if not found or not authorized
+                - attivita (Attivita): Created activity object, or None if failed
                 - error (str): Error message, or None if the operation succeeded
         """
         try:
-            attivita = Attivita.objects.get(id=attivita_id)
+            # Get the user who is creating the activity
+            try:
+                utente_creatore = Utente.objects.get(id=user_id)
+            except Utente.DoesNotExist:
+                return None, "User not found"
             
-            # Verify authorization based on role
-            if user_role == Ruolo.STAFF:
-                # STAFF can modify any activity
-                pass
-            elif user_role == Ruolo.OPERATORE and attivita.utente_attivita.filter(utente_id=user_id).exists():
-                # OPERATOR can only modify activities to which they are assigned and with limitations
-                # Cannot change the creator user
-                if payload.dict().get("utente_creatore_id") and payload.utente_creatore_id != attivita.utente_creatore_id:
-                    return None, "You cannot change the creator of the activity"
-            elif user_role == Ruolo.CLIENTE and attivita.utente_creatore_id == user_id:
-                # CLIENT can only modify activities they created and with limitations
-                # Cannot change the creator user
-                if payload.dict().get("utente_creatore_id") and payload.utente_creatore_id != user_id:
-                    return None, "You cannot change the creator of the activity"
-            else:
-                # User is not authorized to modify this activity
-                return None, "You are not authorized to modify this activity"
+            # Validate mezzo_rimorchio if provided
+            mezzo_rimorchio = None
+            if payload.mezzo_rimorchio_id:
+                try:
+                    mezzo_rimorchio = MezzoRimorchio.objects.get(id=payload.mezzo_rimorchio_id, attivo=True)
+                    
+                    # Check if mezzo is available
+                    from mezzo.models import StatoMezzo
+                    if mezzo_rimorchio.mezzo.statoMezzo != StatoMezzo.DISPONIBILE:
+                        return None, f"Il mezzo non è disponibile (stato: {mezzo_rimorchio.mezzo.statoMezzo})"
+                    
+                    # Check if mezzo is already assigned to another activity
+                    other_activity = Attivita.objects.filter(
+                        mezzo_rimorchio=mezzo_rimorchio,
+                        statoAttivita__in=[StatoAttivita.PROGRAMMATA, StatoAttivita.INIZIATA]
+                    ).first()
+                    
+                    if other_activity:
+                        return None, f"Il mezzo è già assegnato all'attività '{other_activity.titolo}'"
+                        
+                except MezzoRimorchio.DoesNotExist:
+                    return None, "Mezzo-rimorchio non trovato o non attivo"
             
-            # Limitations for non-STAFF users
-            if user_role != Ruolo.STAFF and payload.dict().get("utenti_assegnati_ids"):
-                # CLIENT and OPERATOR cannot assign activities to STAFF users
-                from utente.models import Utente
-                staff_ids = Utente.objects.filter(ruolo=Ruolo.STAFF).values_list('id', flat=True)
-                if any(user_id in staff_ids for user_id in payload.utenti_assegnati_ids):
-                    return None, "You cannot assign activities to STAFF users"
-            
+            # Create the activity
             with transaction.atomic():
-                # Extract m2m fields
-                utenti_assegnati_ids = payload.dict().get("utenti_assegnati_ids")
-                documenti_ids = payload.dict().get("documenti_ids")
+                attivita = Attivita.objects.create(
+                    titolo=payload.titolo,
+                    descrizione=payload.descrizione,
+                    statoAttivita=payload.statoAttivita or StatoAttivita.PROGRAMMATA,
+                    data=payload.data,
+                    luogo=payload.luogo,
+                    codiceCer=payload.codiceCer,
+                    durata=payload.durata,
+                    utente_creatore=utente_creatore,
+                    mezzo_rimorchio=mezzo_rimorchio
+                )
                 
-                # Update non-m2m fields
-                update_data = payload.dict(exclude={"utenti_assegnati_ids", "documenti_ids"}, exclude_unset=True)
-                for attr, value in update_data.items():
-                    setattr(attivita, attr, value)
+                # Associate operators if provided
+                if payload.utenti_assegnati_ids:
+                    for operatore_id in payload.utenti_assegnati_ids:
+                        try:
+                            operatore = Utente.objects.get(id=operatore_id, ruolo=Ruolo.OPERATORE, is_active=True)
+                            UtenteAttivita.objects.create(
+                                attivita=attivita,
+                                utente=operatore
+                            )
+                        except Utente.DoesNotExist:
+                            # Skip invalid operator IDs
+                            pass
                 
-                # Update m2m relationships if provided
-                if utenti_assegnati_ids is not None:
-                    attivita.utenti_assegnati.set(utenti_assegnati_ids)
+                # Note: documenti_ids handling would go here if needed in the future
                 
-                if documenti_ids is not None:
-                    attivita.documenti.set(documenti_ids)
-                
-                attivita.save()
-                return attivita, None
-        except Attivita.DoesNotExist:
-            return None, "Activity not found"
+            return attivita, None
+            
         except Exception as e:
-            return None, str(e)
+            return None, f"Errore durante la creazione: {str(e)}"
     
     @staticmethod
     def delete_attivita(attivita_id, user_role, user_id):
@@ -448,281 +261,131 @@ class AttivitaController:
                 return False, "You are not authorized to delete this activity"
         except Attivita.DoesNotExist:
             return False, "Activity not found"
-    
-    # ------ METHODS FOR UTENTE_ATTIVITA APIs ------
-    
+
     @staticmethod
-    def list_utente_attivita():
+    def update_attivita(attivita_id, user_role, user_id, update_data):
         """
-        Gets all user-activity associations.
-        
-        Returns:
-            list: List of all user-activity associations
-        """
-        return UtenteAttivita.objects.all()
-    
-    @staticmethod
-    def get_utente_attivita(utente_attivita_id):
-        """
-        Gets a specific user-activity association.
+        Updates an activity based on the user's role.
         
         Args:
-            utente_attivita_id (int): ID of the user-activity association
+            attivita_id (int): ID of the activity to update
+            user_role (str): Role of the user making the request
+            user_id (int): ID of the user making the request
+            update_data (dict): Dictionary with fields to update
             
         Returns:
-            tuple: (utente_attivita, error)
-                - utente_attivita (UtenteAttivita): The requested user-activity association, or None if not found
+            tuple: (attivita_detail, error)
+                - attivita_detail (dict): Updated activity details, or None if failed
                 - error (str): Error message, or None if the operation succeeded
         """
         try:
-            utente_attivita = UtenteAttivita.objects.get(id=utente_attivita_id)
-            return utente_attivita, None
-        except UtenteAttivita.DoesNotExist:
-            return None, "User-activity association not found"
-    
-    @staticmethod
-    def create_utente_attivita(utente_id, attivita_id):
-        """
-        Creates a new user-activity association.
-        
-        Args:
-            utente_id (int): ID of the user
-            attivita_id (int): ID of the activity
+            attivita = Attivita.objects.select_related(
+                'utente_creatore',
+                'mezzo_rimorchio',
+                'mezzo_rimorchio__mezzo',
+                'mezzo_rimorchio__rimorchio'
+            ).prefetch_related(
+                'utente_attivita__utente'
+            ).get(id=attivita_id)
             
-        Returns:
-            tuple: (utente_attivita, error)
-                - utente_attivita (UtenteAttivita): The created user-activity association, or None if the operation failed
-                - error (str): Error message, or None if the operation succeeded
-        """
-        try:
-            # Check if the association already exists
-            if UtenteAttivita.objects.filter(utente_id=utente_id, attivita_id=attivita_id).exists():
-                return None, "The user is already associated with this activity"
+            # Verify authorization based on role
+            authorized = False
+            if user_role == Ruolo.STAFF:
+                # STAFF can update any activity
+                authorized = True
+            elif user_role == Ruolo.CLIENTE and attivita.utente_creatore_id == user_id:
+                # CLIENT can only update activities they created
+                authorized = True
             
-            utente_attivita = UtenteAttivita.objects.create(
-                utente_id=utente_id,
-                attivita_id=attivita_id
-            )
-            return utente_attivita, None
-        except Exception as e:
-            return None, str(e)
-    
-    @staticmethod
-    def delete_utente_attivita(utente_attivita_id):
-        """
-        Deletes a user-activity association.
-        
-        Args:
-            utente_attivita_id (int): ID of the user-activity association
+            if not authorized:
+                return None, "You are not authorized to update this activity"
             
-        Returns:
-            tuple: (success, error)
-                - success (bool): True if deletion succeeded, False otherwise
-                - error (str): Error message, or None if the operation succeeded
-        """
-        try:
-            utente_attivita = UtenteAttivita.objects.get(id=utente_attivita_id)
-            utente_attivita.delete()
-            return True, None
-        except UtenteAttivita.DoesNotExist:
-            return False, "User-activity association not found"
-    
-    # ------ METODI DI UTILITÀ ------
-    
-    @staticmethod
-    def associa_documento_a_attivita(documento_id, attivita_id):
-        """
-        Associa un documento a un'attività.
-        
-        Args:
-            documento_id (int): ID del documento
-            attivita_id (int): ID dell'attività
+            # Update fields if provided
+            if 'titolo' in update_data and update_data['titolo'] is not None:
+                attivita.titolo = update_data['titolo']
+            if 'descrizione' in update_data and update_data['descrizione'] is not None:
+                attivita.descrizione = update_data['descrizione']
+            if 'statoAttivita' in update_data and update_data['statoAttivita'] is not None:
+                attivita.statoAttivita = update_data['statoAttivita']
+            if 'data' in update_data and update_data['data'] is not None:
+                attivita.data = update_data['data']
+            if 'luogo' in update_data and update_data['luogo'] is not None:
+                attivita.luogo = update_data['luogo']
+            if 'codiceCer' in update_data and update_data['codiceCer'] is not None:
+                attivita.codiceCer = update_data['codiceCer']
+            if 'durata' in update_data and update_data['durata'] is not None:
+                attivita.durata = update_data['durata']
             
-        Returns:
-            tuple: (successo, messaggio) dove:
-                - successo (bool): True se l'operazione è riuscita, False altrimenti
-                - messaggio (str): Messaggio informativo
-        """
-        try:
-            from documento.models import Documento
-            documento = Documento.objects.get(id=documento_id)
-        except Documento.DoesNotExist:
-            return False, "Documento non trovato"
-        except ImportError:
-            return False, "Modello Documento non disponibile"
-        
-        try:
-            attivita = Attivita.objects.get(id=attivita_id)
-        except Attivita.DoesNotExist:
-            return False, "Attività non trovata"
-        
-        # Verifico se il documento è già associato all'attività
-        if documento in attivita.documenti.all():
-            return True, "Il documento è già associato all'attività"
-        
-        # Associo il documento all'attività
-        attivita.documenti.add(documento)
-        attivita.save()
-        
-        return True, "Documento associato all'attività con successo"
-    
-    @staticmethod
-    def crea_attivita(titolo, data, creatore_id, descrizione=None, luogo=None, 
-                     codice_cer=None, mezzo_rimorchio_id=None, note=None):
-        """
-        Crea una nuova attività.
-        
-        Args:
-            titolo (str): Titolo dell'attività
-            data (datetime): Data dell'attività
-            creatore_id (int): ID dell'utente che crea l'attività
-            descrizione (str, optional): Descrizione dell'attività
-            luogo (str, optional): Luogo dell'attività
-            codice_cer (str, optional): Codice CER dell'attività
-            mezzo_rimorchio_id (int, optional): ID del mezzo e rimorchio
-            note (str, optional): Note aggiuntive
-            
-        Returns:
-            tuple: (attivita, creata, messaggio)
-                - attivita (Attivita): L'oggetto Attivita creato, o None se l'operazione è fallita
-                - creata (bool): True se l'operazione è riuscita, False altrimenti
-                - messaggio (str): Messaggio informativo o di errore
-        """
-        try:
-            creatore = Utente.objects.get(id=creatore_id)
-        except Utente.DoesNotExist:
-            return None, False, "Utente creatore non trovato"
-        
-        # Verifica del mezzo e rimorchio
-        mezzo_rimorchio = None
-        if mezzo_rimorchio_id:
+            attivita.save()
+
+            # If the activity date was modified, remove assigned operators
+            # who have an Assenza covering the new activity date.
             try:
-                mezzo_rimorchio = MezzoRimorchio.objects.get(id=mezzo_rimorchio_id)
-                
-                # Verifico se il mezzo è già occupato nella data specificata
-                mezzi_occupati = Attivita.objects.filter(
-                    mezzo_rimorchio=mezzo_rimorchio,
-                    data__date=data.date(),
-                    statoAttivita__in=[StatoAttivita.PROGRAMMATA, StatoAttivita.INIZIATA]
-                )
-                
-                if mezzi_occupati.exists():
-                    return None, False, "Il mezzo e rimorchio selezionato è già assegnato ad un'altra attività in questa data"
-                    
-            except MezzoRimorchio.DoesNotExist:
-                return None, False, "Mezzo e rimorchio non trovato"
-        
-        # Creazione dell'attività
-        attivita = Attivita.objects.create(
-            titolo=titolo,
-            descrizione=descrizione,
-            data=data,
-            luogo=luogo,
-            codiceCer=codice_cer,
-            utente_creatore=creatore,
-            mezzo_rimorchio=mezzo_rimorchio,
-            note=note,
-            statoAttivita=StatoAttivita.PROGRAMMATA
-        )
-        
-        return attivita, True, "Attività creata con successo"
-    
+                if 'data' in update_data and attivita.data:
+                    activity_date = attivita.data.date()
+                    # Import locally to avoid circular imports
+                    from assenza.models import Assenza as AssenzaModel
+                    from utente_attivita.models import UtenteAttivita as UtenteAttivitaModel
 
-    
-    @staticmethod
-    def cambia_stato_attivita(attivita_id, nuovo_stato, utente_id=None):
-        """
-        Cambia lo stato di un'attività.
-        
-        Args:
-            attivita_id (int): ID dell'attività
-            nuovo_stato (str): Nuovo stato dell'attività (StatoAttivita)
-            utente_id (int, optional): ID dell'utente che effettua il cambio di stato
+                    # Get all assigned user associations for this activity
+                    assigned_qs = UtenteAttivitaModel.objects.filter(attivita=attivita).select_related('utente')
+                    to_remove = []
+                    for ua in assigned_qs:
+                        uid = getattr(ua, 'utente_id', None)
+                        if not uid:
+                            continue
+
+                        # Check if this user has any assenza covering activity_date
+                        has_assenza = AssenzaModel.objects.filter(
+                            (Q(operatore_id=uid) | Q(utente_id=uid)) & (
+                                Q(dataInizio__lte=activity_date, dataFine__gte=activity_date) |
+                                Q(data_inizio__lte=activity_date, data_fine__gte=activity_date)
+                            )
+                        ).exists()
+
+                        if has_assenza:
+                            to_remove.append(ua.id)
+
+                    if to_remove:
+                        with transaction.atomic():
+                            UtenteAttivitaModel.objects.filter(id__in=to_remove).delete()
+            except Exception:
+                # Don't break update flow due to cleanup errors; log in stdout
+                print(f"Warning: failed to cleanup assignments after activity update {attivita_id}")
             
-        Returns:
-            tuple: (successo, messaggio, attivita)
-                - successo (bool): True se l'operazione è riuscita, False altrimenti
-                - messaggio (str): Messaggio informativo o di errore
-                - attivita (Attivita): L'oggetto Attivita aggiornato, o None se l'operazione è fallita
-        """
-        try:
-            attivita = Attivita.objects.get(id=attivita_id)
+            # Return updated activity details using the get_attivita_detail method
+            return AttivitaController.get_attivita_detail(attivita_id, user_role, user_id)
+            
         except Attivita.DoesNotExist:
-            return False, "Attività non trovata", None
+            return None, "Activity not found"
         
-        # Verifica se il nuovo stato è valido
-        stati_validi = [choice[0] for choice in StatoAttivita.choices]
-        if nuovo_stato not in stati_validi:
-            return False, f"Stato non valido. Stati validi: {', '.join(stati_validi)}", None
-        
-        # Verifica se il cambio di stato è logico
-        if attivita.statoAttivita == StatoAttivita.TERMINATA and nuovo_stato != StatoAttivita.TERMINATA:
-            return False, "Non è possibile cambiare lo stato di un'attività già terminata", None
-        
-        # Aggiorno lo stato
-        vecchio_stato = attivita.statoAttivita
-        attivita.statoAttivita = nuovo_stato
-        attivita.save()
-        
-        # Potremmo aggiungere qui altre logiche, come registrare il cambio di stato in un log
-        
-        return True, f"Stato dell'attività cambiato da {vecchio_stato} a {nuovo_stato}", attivita
-    
     @staticmethod
-    def verifica_risorse_disponibili(data, numero_operatori=1, mezzo_rimorchio_id=None):
+    def list_attivita_by_date(data, user_role, user_id):
         """
-        Verifica se ci sono risorse disponibili (operatori, mezzi) per una data specifica.
+        Gets all activities scheduled for a specific date based on user role.
+        Filters by the 'data' field (activity scheduled date).
         
         Args:
-            data (date): Data per cui verificare la disponibilità
-            numero_operatori (int, optional): Numero di operatori richiesti
-            mezzo_rimorchio_id (int, optional): ID del mezzo e rimorchio richiesto
+            data (date): Date to filter activities by (YYYY-MM-DD)
+            user_role (str): Role of the user making the request
+            user_id (int): ID of the user making the request
             
         Returns:
-            dict: Dizionario con il risultato della verifica:
-                {
-                    'disponibile': bool,
-                    'operatori_disponibili': list,  # Lista di operatori disponibili
-                    'mezzo_disponibile': bool,  # True se il mezzo specificato è disponibile
-                    'mezzi_disponibili': list  # Lista di mezzi disponibili
-                }
+            list: List of activities scheduled for the specified date
         """
-        # Verifico la disponibilità degli operatori
-        operatori_disponibili = UtenteController.trova_operatori_disponibili(data)
+        # Build a role-scoped base queryset using the existing list_attivita
+        # helper to ensure consistent permission rules across list endpoints.
+        try:
+            role_qs = AttivitaController.list_attivita(user_role=user_role, user_id=user_id)
+            # Now filter that role-scoped queryset by the requested date
+            qs = role_qs.filter(data__date=data).order_by('-data')
+            return qs
+        except Exception as e:
+            print(f"Errore in list_attivita_by_date: {str(e)}")
+            return Attivita.objects.none()
         
-        # Verifico la disponibilità del mezzo specifico
-        mezzo_disponibile = True
-        if mezzo_rimorchio_id:
-            mezzi_occupati = Attivita.objects.filter(
-                mezzo_rimorchio_id=mezzo_rimorchio_id,
-                data__date=data,
-                statoAttivita__in=[StatoAttivita.PROGRAMMATA, StatoAttivita.INIZIATA]
-            )
-            mezzo_disponibile = not mezzi_occupati.exists()
-        
-        # Verifico tutti i mezzi disponibili
-        mezzi_occupati_ids = Attivita.objects.filter(
-            data__date=data,
-            statoAttivita__in=[StatoAttivita.PROGRAMMATA, StatoAttivita.INIZIATA]
-        ).values_list('mezzo_rimorchio_id', flat=True)
-        
-        mezzi_disponibili = MezzoRimorchio.objects.exclude(id__in=mezzi_occupati_ids)
-        
-        # Determino se ci sono risorse sufficienti
-        disponibile = (
-            len(operatori_disponibili) >= numero_operatori and
-            (not mezzo_rimorchio_id or mezzo_disponibile)
-        )
-        
-        return {
-            'disponibile': disponibile,
-            'operatori_disponibili': operatori_disponibili,
-            'mezzo_disponibile': mezzo_disponibile,
-            'mezzi_disponibili': list(mezzi_disponibili)
-        }
-
     @staticmethod
-    def get_documento_by_attivita(attivita_id):
+    def get_documento_by_attivita(attivita_id, user_role, user_id):
         """
         Gets the document associated with a specific activity.
         
@@ -733,24 +396,334 @@ class AttivitaController:
             dict or None: Document data associated with the activity, or None if no document
         """
         try:
-            attivita = Attivita.objects.get(id=attivita_id)
-            documento = attivita.documenti.first()  # Get the first (and presumably only) document
-            
+            attivita = Attivita.objects.select_related('utente_creatore').prefetch_related('documenti', 'utente_attivita').get(id=attivita_id)
+
+            # Authorization: STAFF can see, OPERATORE only if assigned, CLIENTE only if creator
+            authorized = False
+            if user_role == Ruolo.STAFF:
+                authorized = True
+            elif user_role == Ruolo.OPERATORE and attivita.utente_attivita.filter(utente_id=user_id).exists():
+                authorized = True
+            elif user_role == Ruolo.CLIENTE and attivita.utente_creatore_id == user_id:
+                authorized = True
+
+            if not authorized:
+                 raise PermissionDenied("Not authorized to view this document")
+
+            documento = attivita.documenti.first()
             if not documento:
                 return None
-            
-            # Convert to dictionary with proper file handling
+
             documento_data = {
                 'id': documento.id,
                 'tipoDocumento': documento.tipoDocumento,
                 'dataInserimento': documento.dataInserimento,
                 'dataScadenza': documento.dataScadenza,
-                'file': documento.file.name if documento.file and documento.file.name else None,
+                'file': documento.file.url if documento.file else None,
                 'operatore_id': documento.operatore.id if documento.operatore else None,
                 'operatore_nome': f"{documento.operatore.first_name} {documento.operatore.last_name}" if documento.operatore else None
             }
-            
+
             return documento_data
-            
         except Attivita.DoesNotExist:
             return None
+
+    @staticmethod
+    def associa_mezzo_rimorchio(attivita_id, mezzo_rimorchio_id, user_role, user_id):
+        """
+        Associates a mezzo-rimorchio to an activity.
+        If a mezzo is already associated, it will be replaced.
+        
+        Args:
+            attivita_id (int): Activity ID to associate mezzo to
+            mezzo_rimorchio_id (int): MezzoRimorchio ID to associate
+            user_role (str): Role of the user making the request
+            user_id (int): ID of the user making the request
+            
+        Returns:
+            tuple: (success: bool, error: str or None)
+        """
+        try:
+            # Check if activity exists and user has permission
+            try:
+                attivita = Attivita.objects.get(id=attivita_id)
+            except Attivita.DoesNotExist:
+                return False, "Attività non trovata"
+            
+            # Permission check
+            if user_role == Ruolo.CLIENTE and attivita.utente_creatore.id != user_id:
+                return False, "Non autorizzato a modificare questa attività"
+            elif user_role == Ruolo.OPERATORE:
+                # Check if operatore is assigned to this activity
+                if not UtenteAttivita.objects.filter(attivita=attivita, utente_id=user_id).exists():
+                    return False, "Non autorizzato a modificare questa attività"
+            # STAFF can modify any activity
+            
+            # Check if mezzo_rimorchio exists and is available
+            try:
+                mezzo_rimorchio = MezzoRimorchio.objects.get(id=mezzo_rimorchio_id, attivo=True)
+            except MezzoRimorchio.DoesNotExist:
+                return False, "Mezzo-rimorchio non trovato o non attivo"
+            
+            # Check if mezzo is available (DISPONIBILE status)
+            from mezzo.models import StatoMezzo
+            if mezzo_rimorchio.mezzo.statoMezzo != StatoMezzo.DISPONIBILE:
+                return False, f"Il mezzo non è disponibile (stato: {mezzo_rimorchio.mezzo.statoMezzo})"
+            
+            # Check if mezzo is already assigned to another activity
+            other_activity = Attivita.objects.filter(
+                mezzo_rimorchio=mezzo_rimorchio,
+                statoAttivita__in=[StatoAttivita.PROGRAMMATA, StatoAttivita.INIZIATA]
+            ).exclude(id=attivita_id).first()
+            
+            if other_activity:
+                return False, f"Il mezzo è già assegnato all'attività '{other_activity.titolo}'"
+            
+            # Associate mezzo to activity (replace existing if any)
+            with transaction.atomic():
+                attivita.mezzo_rimorchio = mezzo_rimorchio
+                attivita.save()
+            
+            return True, None
+            
+        except Exception as e:
+            return False, f"Errore durante l'associazione: {str(e)}"
+    
+    @staticmethod
+    def dissocia_mezzo_rimorchio(attivita_id, user_role, user_id):
+        """
+        Dissociates mezzo-rimorchio from an activity.
+        
+        Args:
+            attivita_id (int): Activity ID to dissociate mezzo from
+            user_role (str): Role of the user making the request
+            user_id (int): ID of the user making the request
+            
+        Returns:
+            tuple: (success: bool, error: str or None)
+        """
+        try:
+            # Check if activity exists and user has permission
+            try:
+                attivita = Attivita.objects.get(id=attivita_id)
+            except Attivita.DoesNotExist:
+                return False, "Attività non trovata"
+            
+            # Permission check
+            if user_role == Ruolo.CLIENTE and attivita.utente_creatore.id != user_id:
+                return False, "Non autorizzato a modificare questa attività"
+            elif user_role == Ruolo.OPERATORE:
+                # Check if operatore is assigned to this activity
+                if not UtenteAttivita.objects.filter(attivita=attivita, utente_id=user_id).exists():
+                    return False, "Non autorizzato a modificare questa attività"
+            # STAFF can modify any activity
+            
+            # Check if there's a mezzo associated
+            if not attivita.mezzo_rimorchio:
+                return False, "Nessun mezzo associato a questa attività"
+            
+            # Dissociate mezzo from activity
+            with transaction.atomic():
+                attivita.mezzo_rimorchio = None
+                attivita.save()
+            
+            return True, None
+            
+        except Exception as e:
+            return False, f"Errore durante la dissociazione: {str(e)}"
+    
+    @staticmethod
+    def list_operatori_disponibili(attivita_id=None):
+        """
+        Gets the list of operators (OPERATORE role) available for assignment.
+
+        If attivita_id is provided, excludes users who have an absence
+        covering the date of the activity.
+
+        Returns:
+            list: List of operators with OPERATORE role
+        """
+        try:
+            # Base queryset: active operators
+            operatori_qs = Utente.objects.filter(
+                ruolo=Ruolo.OPERATORE,
+                is_active=True
+            ).order_by('cognome', 'nome')
+
+            # If attivita_id provided, try to obtain the activity date and
+            # exclude users who have an Assenza that covers that date.
+            if attivita_id is not None:
+                try:
+                    attivita = Attivita.objects.get(id=attivita_id)
+                    # If activity has no date, we can't filter by assenze
+                    if attivita.data:
+                        activity_date = attivita.data.date()
+                        # Import Assenza here to avoid circular imports at module level
+                        from assenza.models import Assenza
+
+                        # Find assenze that include the activity date.
+                        # The model has duplicated legacy/new fields (dataInizio/dataFine and data_inizio/data_fine),
+                        # so check both sets of fields when filtering.
+                        assenti_qs = Assenza.objects.filter(
+                            Q(dataInizio__lte=activity_date, dataFine__gte=activity_date) |
+                            Q(data_inizio__lte=activity_date, data_fine__gte=activity_date)
+                        )
+
+                        # Collect user ids from both fields (operatore and utente)
+                        assenti_ids = set()
+                        for a in assenti_qs:
+                            if getattr(a, 'operatore_id', None):
+                                assenti_ids.add(a.operatore_id)
+                            if getattr(a, 'utente_id', None):
+                                assenti_ids.add(a.utente_id)
+
+                        if assenti_ids:
+                            operatori_qs = operatori_qs.exclude(id__in=list(assenti_ids))
+                except Attivita.DoesNotExist:
+                    # If activity not found, fall back to returning all operators
+                    pass
+
+            result = []
+            for operatore in operatori_qs:
+                operatore_data = {
+                    'id': operatore.id,
+                    'email': operatore.email,
+                    'nome': operatore.nome,
+                    'cognome': operatore.cognome,
+                    'ruolo': operatore.ruolo,
+                }
+                result.append(operatore_data)
+
+            return result
+        except Exception as e:
+            print(f"Errore in list_operatori_disponibili: {str(e)}")
+            return []
+
+    @staticmethod
+    def list_attivita_for_operatore(operatore_id, requesting_user_role, requesting_user_id):
+        """
+        Returns activities where the given user is assigned or is the creator.
+        Permissions: STAFF can view any operatore's activities; OPERATORE can view only their own; CLIENTE maybe limited.
+        """
+        try:
+            # Base queryset: activities where the user is assigned OR is the creator
+            qs_assigned = Attivita.objects.filter(utente_attivita__utente_id=operatore_id)
+            qs_created = Attivita.objects.filter(utente_creatore_id=operatore_id)
+
+            qs = (qs_assigned | qs_created).distinct().order_by('-data_creazione')
+
+            # Apply requesting user's permissions
+            if requesting_user_role == Ruolo.STAFF:
+                return qs
+            elif requesting_user_role == Ruolo.OPERATORE:
+                # operatore can view only their own activities
+                if int(requesting_user_id) == int(operatore_id):
+                    return qs
+                else:
+                    return Attivita.objects.none()
+            else:
+                # CLIENTE: only allow viewing activities they created if operatore_id matches, otherwise none
+                if int(requesting_user_id) == int(operatore_id):
+                    return qs_created.order_by('-data_creazione')
+                return Attivita.objects.none()
+        except Exception as e:
+            print(f"Errore in list_attivita_for_operatore: {str(e)}")
+            return Attivita.objects.none()
+    
+    @staticmethod
+    def associa_operatore(attivita_id, operatore_id, user_role, user_id):
+        """
+        Associates an operator to an activity.
+        
+        Args:
+            attivita_id (int): Activity ID to associate operator to
+            operatore_id (int): Operator (Utente) ID to associate
+            user_role (str): Role of the user making the request
+            user_id (int): ID of the user making the request
+            
+        Returns:
+            tuple: (success: bool, error: str or None)
+        """
+        try:
+            # Check if activity exists and user has permission
+            try:
+                attivita = Attivita.objects.get(id=attivita_id)
+            except Attivita.DoesNotExist:
+                return False, "Attività non trovata"
+            
+            # Permission check
+            if user_role == Ruolo.CLIENTE and attivita.utente_creatore.id != user_id:
+                return False, "Non autorizzato a modificare questa attività"
+            elif user_role == Ruolo.OPERATORE:
+                # Check if operatore is assigned to this activity
+                if not UtenteAttivita.objects.filter(attivita=attivita, utente_id=user_id).exists():
+                    return False, "Non autorizzato a modificare questa attività"
+            # STAFF can modify any activity
+            
+            # Check if operator exists and has OPERATORE role
+            try:
+                operatore = Utente.objects.get(id=operatore_id, ruolo=Ruolo.OPERATORE, is_active=True)
+            except Utente.DoesNotExist:
+                return False, "Operatore non trovato o non attivo"
+            
+            # Check if operator is already assigned to this activity
+            if UtenteAttivita.objects.filter(attivita=attivita, utente=operatore).exists():
+                return False, "L'operatore è già assegnato a questa attività"
+            
+            # Create the association
+            UtenteAttivita.objects.create(
+                attivita=attivita,
+                utente=operatore
+            )
+            
+            return True, None
+            
+        except Exception as e:
+            return False, f"Errore durante l'associazione: {str(e)}"
+    
+    @staticmethod
+    def dissocia_operatore(attivita_id, operatore_id, user_role, user_id):
+        """
+        Dissociates an operator from an activity.
+        
+        Args:
+            attivita_id (int): Activity ID to dissociate operator from
+            operatore_id (int): Operator (Utente) ID to dissociate
+            user_role (str): Role of the user making the request
+            user_id (int): ID of the user making the request
+            
+        Returns:
+            tuple: (success: bool, error: str or None)
+        """
+        try:
+            # Check if activity exists and user has permission
+            try:
+                attivita = Attivita.objects.get(id=attivita_id)
+            except Attivita.DoesNotExist:
+                return False, "Attività non trovata"
+            
+            # Permission check
+            if user_role == Ruolo.CLIENTE and attivita.utente_creatore.id != user_id:
+                return False, "Non autorizzato a modificare questa attività"
+            elif user_role == Ruolo.OPERATORE:
+                # Check if operatore is assigned to this activity
+                if not UtenteAttivita.objects.filter(attivita=attivita, utente_id=user_id).exists():
+                    return False, "Non autorizzato a modificare questa attività"
+            # STAFF can modify any activity
+            
+            # Check if the association exists
+            try:
+                utente_attivita = UtenteAttivita.objects.get(
+                    attivita=attivita,
+                    utente_id=operatore_id
+                )
+            except UtenteAttivita.DoesNotExist:
+                return False, "L'operatore non è assegnato a questa attività"
+            
+            # Delete the association
+            utente_attivita.delete()
+            
+            return True, None
+            
+        except Exception as e:
+            return False, f"Errore durante la dissociazione: {str(e)}"

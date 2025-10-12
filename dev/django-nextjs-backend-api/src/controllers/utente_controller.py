@@ -1,16 +1,14 @@
 """
 Controller for user management.
-This module contains the business logic for operations on users,
-such as absence management, operator availability, etc.
+This module contains the business logic for operations on users.
 """
 from datetime import datetime, date
 from django.db.models import Q
+from django.db import transaction
 from django.contrib.auth import authenticate
 from ninja_jwt.tokens import RefreshToken
 from utente.models import Utente, Ruolo
 from assenza.models import Assenza
-from attivita.models import Attivita, StatoAttivita
-from utente_attivita.models import UtenteAttivita
 
 
 class UtenteController:
@@ -19,28 +17,6 @@ class UtenteController:
     """
     
     # ------ METHODS FOR UTENTE API ------
-    
-    @staticmethod
-    def get_staff_operatori(user_id):
-        """
-        Gets all users with STAFF or OPERATORE roles, excluding the current user.
-        
-        Args:
-            user_id (int): ID of the current user to exclude from results
-            
-        Returns:
-            list: List of users with STAFF or OPERATORE roles, excluding the current user
-        """
-        # Get all users with STAFF or OPERATORE roles, excluding the current user
-        users = Utente.objects.filter(
-            ruolo__in=[Ruolo.STAFF, Ruolo.OPERATORE]
-        ).exclude(id=user_id)
-        
-        # Set isAutenticato flag for each user
-        for user in users:
-            user.isAutenticato = user.is_authenticated
-            
-        return users
     
     @staticmethod
     def login(email, password):
@@ -72,20 +48,6 @@ class UtenteController:
             }, None
         except Exception as e:
             return False, None, f"Error during login: {str(e)}"
-    
-    @staticmethod
-    def get_current_user(user):
-        """
-        Gets the currently authenticated user.
-        
-        Args:
-            user (Utente): The authenticated user
-            
-        Returns:
-            Utente: The authenticated user with the isAutenticato flag set
-        """
-        user.isAutenticato = user.is_authenticated
-        return user
     
     @staticmethod
     def register_user(payload, is_authenticated=False, user_role=None):
@@ -151,529 +113,318 @@ class UtenteController:
                 error_dict = {"non_field_errors": [str(e)]}
             
             return False, None, error_dict
-    
+
     @staticmethod
-    def list_utenti():
+    def update_user(utente_id, payload, requesting_user_role=None, requesting_user_id=None):
         """
-        Gets all users.
-        
-        Returns:
-            list: List of all users
+        Aggiorna i campi di un utente se autorizzato.
+        - STAFF può aggiornare qualsiasi utente e cambiare ruolo
+        - Utente normale può aggiornare solo il proprio record e non può cambiare ruolo
+
+        Restituisce (user, None) in caso di successo oppure (None, error_message)
         """
-        users = Utente.objects.all()
-        for user in users:
-            user.isAutenticato = user.is_authenticated
-        return users
-    
-    @staticmethod
-    def get_utente(utente_id, user_role, user_id):
-        """
-        Gets a specific user.
-        
-        Args:
-            utente_id (int): ID of the user to get
-            user_role (str): Role of the user making the request
-            user_id (int): ID of the user making the request
-            
-        Returns:
-            tuple: (user, error)
-                - user (Utente): The requested user, or None if not found or not authorized
-                - error (str): Error message, or None if the operation succeeded
-        """
-        # Verify authorization
-        if user_role != Ruolo.STAFF and user_id != utente_id:
-            return None, "Not authorized"
-        
         try:
             utente = Utente.objects.get(id=utente_id)
-            utente.isAutenticato = utente.is_authenticated
+
+            # controllo autorizzazioni
+            if requesting_user_role != Ruolo.STAFF:
+                # se non staff, può modificare solo se è se stesso
+                if int(requesting_user_id) != int(utente_id):
+                    return None, "You are not authorized to update this user"
+
+            # Campi aggiornabili
+            # Solo STAFF può cambiare il ruolo
+            if hasattr(payload, 'ruolo') and payload.ruolo is not None:
+                if requesting_user_role == Ruolo.STAFF:
+                    if payload.ruolo in [choice[0] for choice in Ruolo.choices]:
+                        utente.ruolo = payload.ruolo
+                    else:
+                        return None, f"Invalid role. Choose from: {', '.join([choice[0] for choice in Ruolo.choices])}"
+                else:
+                    # non-staff non può cambiare ruolo
+                    pass
+
+            # Aggiorna altri campi se forniti
+            if hasattr(payload, 'email') and payload.email is not None:
+                utente.email = payload.email
+            if hasattr(payload, 'nome') and payload.nome is not None:
+                utente.nome = payload.nome
+            if hasattr(payload, 'cognome') and payload.cognome is not None:
+                utente.cognome = payload.cognome
+            if hasattr(payload, 'dataDiNascita') and payload.dataDiNascita is not None:
+                utente.dataDiNascita = payload.dataDiNascita
+            if hasattr(payload, 'luogoDiNascita') and payload.luogoDiNascita is not None:
+                utente.luogoDiNascita = payload.luogoDiNascita
+            if hasattr(payload, 'residenza') and payload.residenza is not None:
+                utente.residenza = payload.residenza
+
+            utente.save()
             return utente, None
         except Utente.DoesNotExist:
             return None, "User not found"
-    
-    @staticmethod
-    def create_utente(payload):
-        """
-        Creates a new user.
-        
-        Args:
-            payload (dict): Data of the user to create
-            
-        Returns:
-            tuple: (user, error)
-                - user (Utente): The created user, or None if the operation failed
-                - error (str): Error message, or None if the operation succeeded
-        """
-        try:
-            utente = Utente.objects.create_user(
-                email=payload.email,
-                password=payload.password,
-                nome=payload.nome,
-                cognome=payload.cognome,
-                dataDiNascita=payload.dataDiNascita,
-                luogoDiNascita=payload.luogoDiNascita,
-                residenza=payload.residenza,
-                ruolo=payload.ruolo
-            )
-            utente.isAutenticato = utente.is_authenticated
-            return utente, None
         except Exception as e:
             return None, str(e)
-    
-    @staticmethod
-    def update_utente(utente_id, payload, user_role, user_id):
-        """
-        Updates an existing user.
-        
-        Args:
-            utente_id (int): ID of the user to update
-            payload (dict): Data of the user to update
-            user_role (str): Role of the user making the request
-            user_id (int): ID of the user making the request
-            
-        Returns:
-            tuple: (user, error)
-                - user (Utente): The updated user, or None if not found or not authorized
-                - error (str): Error message, or None if the operation succeeded
-        """
-        # Verify authorization
-        if user_role != Ruolo.STAFF and user_id != utente_id:
-            return None, "Not authorized"
-        
-        try:
-            utente = Utente.objects.get(id=utente_id)
-            
-            # Non-STAFF cannot change roles
-            if user_role != Ruolo.STAFF and payload.dict().get("ruolo") and payload.ruolo != utente.ruolo:
-                return None, "Only administrators can change user roles"
-            
-            # Update only provided fields
-            for field, value in payload.dict(exclude_unset=True).items():
-                setattr(utente, field, value)
-            
-            utente.save()
-            utente.isAutenticato = utente.is_authenticated
-            return utente, None
-        except Utente.DoesNotExist:
-            return None, "User not found"
-    
-    @staticmethod
-    def delete_utente(utente_id):
-        """
-        Deletes a user.
-        
-        Args:
-            utente_id (int): ID of the user to delete
-            
-        Returns:
-            tuple: (success, error)
-                - success (bool): True if deletion succeeded, False otherwise
-                - error (str): Error message, or None if the operation succeeded
-        """
-        try:
-            utente = Utente.objects.get(id=utente_id)
-            utente.delete()
-            return True, None
-        except Utente.DoesNotExist:
-            return False, "User not found"
-    
-    # ------ METHODS FOR ABSENCE APIs ------
-    
+
+    # ------ METHODS FOR ASSENZA API ------
+
     @staticmethod
     def list_assenze(user_role, user_id):
         """
-        Gets all absences based on the user's role.
-        
-        Args:
-            user_role (str): Role of the user making the request
-            user_id (int): ID of the user making the request
-            
-        Returns:
-            list: List of absences authorized for the user
+        Restituisce le assenze visibili all'utente in base al ruolo.
+        STAFF vede tutte, OPERATORE vede le proprie (operatore), CLIENTE vede le proprie (utente).
         """
-        # Admin sees all absences
-        if user_role == Ruolo.STAFF:
-            return Assenza.objects.all()
-        # Normal users see only their own absences
-        return Assenza.objects.filter(operatore_id=user_id) | Assenza.objects.filter(utente_id=user_id)
-    
+        try:
+            if user_role == Ruolo.STAFF:
+                return Assenza.objects.all().order_by('-dataInizio')
+            elif user_role == Ruolo.OPERATORE:
+                return Assenza.objects.filter(operatore_id=user_id).order_by('-dataInizio')
+            else:
+                return Assenza.objects.filter(utente_id=user_id).order_by('-dataInizio')
+        except Exception as e:
+            print(f"Errore in list_assenze: {str(e)}")
+            return Assenza.objects.none()
+
     @staticmethod
     def get_assenza(assenza_id, user_role, user_id):
         """
-        Gets a specific absence.
-        
-        Args:
-            assenza_id (int): ID of the absence to get
-            user_role (str): Role of the user making the request
-            user_id (int): ID of the user making the request
-            
-        Returns:
-            tuple: (absence, error)
-                - absence (Assenza): The requested absence, or None if not found or not authorized
-                - error (str): Error message, or None if the operation succeeded
+        Restituisce una singola assenza se l'utente è autorizzato.
+        Ritorna (assenza, None) oppure (None, error_message).
         """
         try:
-            assenza = Assenza.objects.get(id=assenza_id)
-            
-            # Verify authorization
-            if user_role != Ruolo.STAFF and assenza.operatore_id != user_id and assenza.utente_id != user_id:
-                return None, "Not authorized"
-            
-            return assenza, None
+            assenza = Assenza.objects.select_related('operatore', 'utente').get(id=assenza_id)
+
+            # autorizzazione
+            if user_role == Ruolo.STAFF:
+                return assenza, None
+            if assenza.operatore_id == user_id or assenza.utente_id == user_id:
+                return assenza, None
+
+            return None, "You are not authorized to view this absence"
         except Assenza.DoesNotExist:
             return None, "Absence not found"
-    
+        except Exception as e:
+            return None, str(e)
+
     @staticmethod
     def create_assenza(payload, user_role, user_id):
         """
-        Creates a new absence.
-        
-        Args:
-            payload (dict): Data of the absence to create
-            user_role (str): Role of the user making the request
-            user_id (int): ID of the user making the request
-            
-        Returns:
-            tuple: (absence, error)
-                - absence (Assenza): The created absence, or None if the operation failed
-                - error (str): Error message, or None if the operation succeeded
+        Crea una nuova assenza. STAFF può creare per qualsiasi utente/operatore,
+        gli utenti normali possono creare solo per sé (operatore_id sarà user_id).
+        Ritorna (assenza, None) oppure (None, error_message).
         """
-        operatore_id = payload.operatore_id
-        
-        # If the user is not staff, they can create absences only for themselves
-        if user_role != Ruolo.STAFF and operatore_id != user_id:
-            operatore_id = user_id
-        
         try:
+            # Determina l'operatore associato
+            operatore_id = getattr(payload, 'operatore_id', None)
+
+            if user_role == Ruolo.STAFF:
+                # STAFF può specificare operatore_id
+                operatore = None
+                if operatore_id:
+                    try:
+                        operatore = Utente.objects.get(id=operatore_id)
+                    except Utente.DoesNotExist:
+                        return None, "Operatore non trovato"
+            else:
+                # utenti normali possono creare solo per sé
+                operatore = Utente.objects.get(id=user_id)
+
             assenza = Assenza.objects.create(
-                operatore_id=operatore_id,
-                tipoAssenza=payload.tipoAssenza,
-                dataInizio=payload.dataInizio,
-                dataFine=payload.dataFine
+                operatore=operatore,
+                tipoAssenza=getattr(payload, 'tipoAssenza', None) or getattr(payload, 'tipo', None),
+                dataInizio=getattr(payload, 'dataInizio', None) or getattr(payload, 'data_inizio', None),
+                dataFine=getattr(payload, 'dataFine', None) or getattr(payload, 'data_fine', None),
             )
-            
+
+            # Cleanup: dissociate this user from activities that fall inside the absence interval
+            try:
+                from attivita.models import Attivita
+                from utente_attivita.models import UtenteAttivita
+
+                start = getattr(assenza, 'dataInizio', None) or getattr(assenza, 'data_inizio', None)
+                end = getattr(assenza, 'dataFine', None) or getattr(assenza, 'data_fine', None)
+
+                if operatore and start and end:
+                    conflicting_activities = Attivita.objects.filter(
+                        data__date__gte=start,
+                        data__date__lte=end
+                    ).values_list('id', flat=True)
+
+                    if conflicting_activities:
+                        with transaction.atomic():
+                            UtenteAttivita.objects.filter(
+                                utente_id=operatore.id,
+                                attivita_id__in=list(conflicting_activities)
+                            ).delete()
+            except Exception:
+                print(f"Warning: failed to cleanup assignments after creating assenza for operatore {getattr(operatore, 'id', None)}")
+
             return assenza, None
         except Exception as e:
-            return None, str(e)
-    
+            return None, f"Errore durante la creazione: {str(e)}"
+
     @staticmethod
     def update_assenza(assenza_id, payload, user_role, user_id):
         """
-        Updates an existing absence.
-        
-        Args:
-            assenza_id (int): ID of the absence to update
-            payload (dict): Data of the absence to update
-            user_role (str): Role of the user making the request
-            user_id (int): ID of the user making the request
-            
-        Returns:
-            tuple: (absence, error)
-                - absence (Assenza): The updated absence, or None if not found or not authorized
-                - error (str): Error message, or None if the operation succeeded
+        Aggiorna un'assenza esistente se autorizzato.
+        Ritorna (assenza, None) oppure (None, error_message).
         """
         try:
             assenza = Assenza.objects.get(id=assenza_id)
-            
-            # Verify authorization
-            if user_role != Ruolo.STAFF and assenza.operatore_id != user_id and assenza.utente_id != user_id:
-                return None, "Not authorized"
-            
-            # Update only provided fields
-            payload_dict = payload.dict(exclude_unset=True)
-            for field, value in payload_dict.items():
-                setattr(assenza, field, value)
-            
+
+            # autorizzazione
+            if user_role != Ruolo.STAFF and not (assenza.operatore_id == user_id or assenza.utente_id == user_id):
+                return None, "You are not authorized to update this absence"
+
+            # Aggiorna campi se forniti
+            if hasattr(payload, 'tipoAssenza') and payload.tipoAssenza is not None:
+                assenza.tipoAssenza = payload.tipoAssenza
+            if hasattr(payload, 'dataInizio') and payload.dataInizio is not None:
+                assenza.dataInizio = payload.dataInizio
+            if hasattr(payload, 'dataFine') and payload.dataFine is not None:
+                assenza.dataFine = payload.dataFine
+            if hasattr(payload, 'operatore_id') and payload.operatore_id is not None:
+                # solo STAFF può cambiare l'operatore
+                if user_role == Ruolo.STAFF:
+                    try:
+                        new_op = Utente.objects.get(id=payload.operatore_id)
+                        assenza.operatore = new_op
+                    except Utente.DoesNotExist:
+                        return None, "Operatore non trovato"
+
             assenza.save()
+
+            # After updating the assenza dates or operatore, remove conflicting assignments
+            try:
+                from attivita.models import Attivita
+                from utente_attivita.models import UtenteAttivita
+
+                start = getattr(assenza, 'dataInizio', None) or getattr(assenza, 'data_inizio', None)
+                end = getattr(assenza, 'dataFine', None) or getattr(assenza, 'data_fine', None)
+                op_id = getattr(assenza, 'operatore_id', None) or getattr(assenza, 'utente_id', None)
+
+                if op_id and start and end:
+                    conflicting_activities = Attivita.objects.filter(
+                        data__date__gte=start,
+                        data__date__lte=end
+                    ).values_list('id', flat=True)
+
+                    if conflicting_activities:
+                        with transaction.atomic():
+                            UtenteAttivita.objects.filter(
+                                utente_id=op_id,
+                                attivita_id__in=list(conflicting_activities)
+                            ).delete()
+            except Exception:
+                print(f"Warning: failed to cleanup assignments after updating assenza {assenza_id}")
+
             return assenza, None
         except Assenza.DoesNotExist:
             return None, "Absence not found"
-    
+        except Exception as e:
+            return None, str(e)
+
     @staticmethod
     def delete_assenza(assenza_id, user_role, user_id):
         """
-        Deletes an absence.
-        
-        Args:
-            assenza_id (int): ID of the absence to delete
-            user_role (str): Role of the user making the request
-            user_id (int): ID of the user making the request
-            
-        Returns:
-            tuple: (success, error)
-                - success (bool): True if deletion succeeded, False otherwise
-                - error (str): Error message, or None if the operation succeeded
+        Elimina un'assenza se autorizzato. Ritorna (success_bool, error_message).
         """
         try:
             assenza = Assenza.objects.get(id=assenza_id)
-            
-            # Verify authorization
-            if user_role != Ruolo.STAFF and assenza.operatore_id != user_id and assenza.utente_id != user_id:
-                return False, "Not authorized"
-            
-            assenza.delete()
-            return True, None
+
+            if user_role == Ruolo.STAFF:
+                assenza.delete()
+                return True, None
+            if assenza.operatore_id == user_id or assenza.utente_id == user_id:
+                assenza.delete()
+                return True, None
+
+            return False, "You are not authorized to delete this absence"
         except Assenza.DoesNotExist:
             return False, "Absence not found"
-    
+        except Exception as e:
+            return False, str(e)
+
     @staticmethod
     def get_assenze_by_operatore(operatore_id, user_role, user_id):
         """
-        Gets all absences for a specific operator.
-        
-        Args:
-            operatore_id (int): ID of the operator
-            user_role (str): Role of the user making the request
-            user_id (int): ID of the user making the request
-            
-        Returns:
-            tuple: (absences, error)
-                - absences (list): List of absences for the operator, or None if not authorized
-                - error (str): Error message, or None if the operation succeeded
+        Restituisce le assenze per un dato operatore se autorizzato.
+        STAFF vede tutte; OPERATORE può vedere solo le proprie; altri non autorizzati.
         """
-        # Verify authorization
-        if user_role != Ruolo.STAFF and user_id != operatore_id:
-            return None, "Not authorized"
-        
-        return (Assenza.objects.filter(operatore_id=operatore_id) | Assenza.objects.filter(utente_id=operatore_id)), None
-    
-    # ------ UTILITY METHODS ------
-    
-    @staticmethod
-    def controlla_disponibilita_operatore(operatore_id, data_inizio, data_fine=None):
-        """
-        Checks if an operator is available in a specific period.
-        
-        Args:
-            operatore_id (int): ID of the operator to check
-            data_inizio (date): Start date of the period to check
-            data_fine (date, optional): End date of the period to check. If None, checks only for data_inizio.
-            
-        Returns:
-            dict: Dictionary with the result of the availability check:
-                {
-                    'disponibile': bool,
-                    'motivi_indisponibilita': list,  # List of strings with the reasons for unavailability
-                    'conflitti': {
-                        'assenze': list,  # List of Absence objects
-                        'attivita': list  # List of Activity objects
-                    }
-                }
-        """
-        # If data_fine is not specified, check only for data_inizio
-        data_fine = data_fine or data_inizio
-        
-        # Verify that operatore_id corresponds to a user with OPERATORE role
         try:
-            operatore = Utente.objects.get(id=operatore_id, ruolo=Ruolo.OPERATORE)
-        except Utente.DoesNotExist:
+            if user_role == Ruolo.STAFF:
+                return Assenza.objects.filter(operatore_id=operatore_id).order_by('-dataInizio'), None
+            if user_role == Ruolo.OPERATORE and int(operatore_id) == int(user_id):
+                return Assenza.objects.filter(operatore_id=operatore_id).order_by('-dataInizio'), None
+
+            return None, "You are not authorized to view these absences"
+        except Exception as e:
+            return None, str(e)
+
+    @staticmethod
+    def get_attivita_e_documenti_per_utente(utente_id, requesting_user_role=None, requesting_user_id=None):
+        """
+        Ritorna le attività assegnate, le attività create e i documenti non-FIR
+        relativi a un dato utente/operatore.
+
+        Questo helper può essere usato da più endpoint (es. dettaglio utente, retribuzione)
+        per avere lo stesso comportamento e controllo dei permessi.
+
+        Returns:
+            tuple: (result_dict, None) in caso di successo oppure (None, error_message)
+        """
+        try:
+            # Import dinamico per evitare dipendenze circolari a livello di modulo
+            from utente_attivita.models import UtenteAttivita
+            from attivita.models import Attivita
+            from documento.models import Documento
+
+            # Attività assegnate
+            attivita = []
+            try:
+                ua_qs = UtenteAttivita.objects.filter(utente_id=utente_id).select_related('attivita')
+                for ua in ua_qs:
+                    at = ua.attivita
+                    attivita.append({
+                        'id': at.id,
+                        'titolo': getattr(at, 'titolo', None),
+                        'statoAttivita': getattr(at, 'statoAttivita', None),
+                        'data': getattr(at, 'data', None),
+                        'luogo': getattr(at, 'luogo', None),
+                    })
+            except Exception:
+                attivita = []
+
+            # Documenti associati all'operatore che NON sono FIR (es. attestati)
+            attestati = []
+            try:
+                doc_qs = Documento.objects.filter(operatore_id=utente_id).exclude(tipoDocumento='FIR').order_by('-dataInserimento')
+                for d in doc_qs:
+                    # Ensure dataScadenza is a date (no time component) because
+                    # the response schema expects a date (pydantic v2 enforces this).
+                    ds = getattr(d, 'dataScadenza', None)
+                    if ds is not None:
+                        try:
+                            # If it's a datetime, convert to date; if already a date, keep it
+                            if isinstance(ds, datetime):
+                                ds = ds.date()
+                        except Exception:
+                            # Fallback: leave as-is (pydantic will validate and raise if incompatible)
+                            pass
+
+                    attestati.append({
+                        'id': d.id,
+                        'tipoDocumento': getattr(d, 'tipoDocumento', None),
+                        'dataInserimento': getattr(d, 'dataInserimento', None),
+                        'dataScadenza': ds,
+                        'file': getattr(d, 'file', None).name if getattr(d, 'file', None) else None,
+                        'operatore_id': getattr(d, 'operatore_id', None),
+                    })
+            except Exception:
+                attestati = []
+
             return {
-                'disponibile': False,
-                'motivi_indisponibilita': ['Operator not found or does not have operator role'],
-                'conflitti': {'assenze': [], 'attivita': []}
-            }
-        
-        # Check if there are absences in the specified period (check on both fields)
-        assenze_conflittuali_new = Assenza.objects.filter(
-            operatore=operatore,
-            dataInizio__lte=data_fine,
-            dataFine__gte=data_inizio
-        )
-        
-        assenze_conflittuali_old = Assenza.objects.filter(
-            utente=operatore,
-            data_inizio__lte=data_fine,
-            data_fine__gte=data_inizio
-        )
-        
-        # Merge the two queries
-        assenze_conflittuali = assenze_conflittuali_new | assenze_conflittuali_old
-        
-        # Check if there are already scheduled or ongoing activities
-        attivita_conflittuali = []
-        utente_attivita = UtenteAttivita.objects.filter(
-            utente=operatore
-        ).select_related('attivita')
-        
-        for ua in utente_attivita:
-            attivita = ua.attivita
-            # Consider only scheduled or started activities with specified date
-            if (attivita.statoAttivita != StatoAttivita.TERMINATA and 
-                attivita.data and 
-                attivita.data.date() == data_inizio):
-                attivita_conflittuali.append(attivita)
-        
-        # Build the result
-        motivi_indisponibilita = []
-        if assenze_conflittuali.exists():
-            motivi_indisponibilita.append('The operator has absences registered in the specified period')
-        
-        if attivita_conflittuali:
-            motivi_indisponibilita.append('The operator is already assigned to other activities in the specified period')
-        
-        disponibile = len(motivi_indisponibilita) == 0
-        
-        return {
-            'disponibile': disponibile,
-            'motivi_indisponibilita': motivi_indisponibilita,
-            'conflitti': {
-                'assenze': list(assenze_conflittuali),
-                'attivita': attivita_conflittuali
-            }
-        }
-    
-    @staticmethod
-    def gestisci_assenza(utente_id, data_inizio, data_fine, tipo, descrizione=None, approvata=False, approvata_da_id=None):
-        """
-        Creates or updates an absence for a user.
-        
-        Args:
-            utente_id (int): ID of the user
-            data_inizio (date): Start date of the absence
-            data_fine (date): End date of the absence
-            tipo (str): Type of absence (SICKNESS, VACATION, etc.)
-            descrizione (str, optional): Description of the absence
-            approvata (bool, optional): If the absence is approved
-            approvata_da_id (int, optional): ID of the user who approved the absence
-            
-        Returns:
-            tuple: (absence, created) where absence is the Absence object and created is a boolean indicating if the absence was created or updated
-        """
-        try:
-            operatore = Utente.objects.get(id=utente_id)
-        except Utente.DoesNotExist:
-            raise ValueError("Operator not found")
-        
-        # Check if an absence already exists for the operator in the same period
-        # Search in both new and old fields
-        assenza_esistente = Assenza.objects.filter(
-            Q(operatore=operatore, dataInizio=data_inizio, dataFine=data_fine) |
-            Q(utente=operatore, data_inizio=data_inizio, data_fine=data_fine)
-        ).first()
-        
-        if assenza_esistente:
-            # Update the existing absence and set the new fields
-            assenza_esistente.operatore = operatore
-            assenza_esistente.dataInizio = data_inizio
-            assenza_esistente.dataFine = data_fine
-            assenza_esistente.tipoAssenza = tipo
-            if descrizione:
-                assenza_esistente.descrizione = descrizione
-            assenza_esistente.approvata = approvata
-            if approvata_da_id:
-                assenza_esistente.approvata_da_id = approvata_da_id
-            assenza_esistente.save()
-            return assenza_esistente, False
-        else:
-            # Create a new absence
-            dati_assenza = {
-                'operatore': operatore,
-                'dataInizio': data_inizio,
-                'dataFine': data_fine,
-                'tipoAssenza': tipo,
-                'descrizione': descrizione,
-                'approvata': approvata
-            }
-            
-            if approvata_da_id:
-                dati_assenza['approvata_da_id'] = approvata_da_id
-            
-            nuova_assenza = Assenza.objects.create(**dati_assenza)
-            return nuova_assenza, True
-    
-    @staticmethod
-    def trova_operatori_disponibili(data, luogo=None):
-        """
-        Finds all operators available on a specific date.
-        
-        Args:
-            data (date): Date to check availability for
-            luogo (str, optional): Location of the activity, to filter operators by geographic area
-            
-        Returns:
-            list: List of available operators
-        """
-        # Get all operators
-        operatori = Utente.objects.filter(ruolo=Ruolo.OPERATORE)
-        
-        # Filter operators who have absences on the specified date (check on both fields)
-        operatori_in_assenza_ids_new = Assenza.objects.filter(
-            operatore__ruolo=Ruolo.OPERATORE,
-            dataInizio__lte=data,
-            dataFine__gte=data
-        ).values_list('operatore_id', flat=True)
-        
-        operatori_in_assenza_ids_old = Assenza.objects.filter(
-            utente__ruolo=Ruolo.OPERATORE,
-            data_inizio__lte=data,
-            data_fine__gte=data
-        ).values_list('utente_id', flat=True)
-        
-        # Filter operators who are already assigned to activities on the specified date
-        operatori_occupati_ids = UtenteAttivita.objects.filter(
-            utente__ruolo=Ruolo.OPERATORE,
-            attivita__data__date=data,
-            attivita__statoAttivita__in=[StatoAttivita.PROGRAMMATA, StatoAttivita.INIZIATA]
-        ).values_list('utente_id', flat=True)
-        
-        # Exclude unavailable operators
-        operatori_non_disponibili_ids = set(list(operatori_in_assenza_ids_new) + list(operatori_in_assenza_ids_old) + list(operatori_occupati_ids))
-        operatori_disponibili = operatori.exclude(id__in=operatori_non_disponibili_ids)
-        
-        # If a location is specified, I could apply additional filters
-        # (this is just a placeholder for a future implementation)
-        if luogo:
-            # Example: filter operators by geographic area
-            # In a real implementation, you should have a model that associates operators with zones
-            pass
-        
-        return list(operatori_disponibili)
-    
-    @staticmethod
-    def assegna_operatore_a_attivita(operatore_id, attivita_id, verifica_disponibilita=True):
-        """
-        Assigns an operator to an activity, optionally checking availability.
-        
-        Args:
-            operatore_id (int): ID of the operator
-            attivita_id (int): ID of the activity
-            verifica_disponibilita (bool, optional): Whether to verify the operator's availability
-            
-        Returns:
-            tuple: (success, message, user_activity)
-                - success (bool): True if the operation succeeded, False otherwise
-                - message (str): Informational or error message
-                - user_activity (UtenteAttivita): The created UtenteAttivita object, or None if the operation failed
-        """
-        try:
-            operatore = Utente.objects.get(id=operatore_id, ruolo=Ruolo.OPERATORE)
-        except Utente.DoesNotExist:
-            return False, "Operator not found or does not have operator role", None
-        
-        try:
-            attivita = Attivita.objects.get(id=attivita_id)
-        except Attivita.DoesNotExist:
-            return False, "Activity not found", None
-        
-        # Check if the operator is already assigned to the activity
-        if UtenteAttivita.objects.filter(utente=operatore, attivita=attivita).exists():
-            return False, "The operator is already assigned to this activity", None
-        
-        # Check the availability of the operator if requested
-        if verifica_disponibilita and attivita.data:
-            data_attivita = attivita.data.date()
-            disponibilita = UtenteController.controlla_disponibilita_operatore(
-                operatore_id=operatore_id, 
-                data_inizio=data_attivita
-            )
-            
-            if not disponibilita['disponibile']:
-                return False, f"Operator not available: {', '.join(disponibilita['motivi_indisponibilita'])}", None
-        
-        # Create the association between operator and activity
-        utente_attivita = UtenteAttivita.objects.create(
-            utente=operatore,
-            attivita=attivita
-        )
-        
-        return True, "Operator successfully assigned to the activity", utente_attivita
+                'attivita': attivita,
+                'attestati': attestati,
+            }, None
+        except Exception as e:
+            return None, str(e)

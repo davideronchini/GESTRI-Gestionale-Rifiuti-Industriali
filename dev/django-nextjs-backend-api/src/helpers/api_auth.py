@@ -1,61 +1,84 @@
 from ninja_jwt.authentication import JWTAuth
-from typing import List, Callable, Optional, Any
+from typing import Callable, List
 from utente.models import Ruolo
 
-def allow_anon(request):
-    """
-    Authentication function that allows anonymous access.
-    Returns True to indicate the user is authenticated, even when they are not.
-    This enables public endpoints that don't require authentication.
+
+"""Helpers for API authentication and authorization.
+
+This module exposes two kinds of utilities:
+
+- simple checkers (functions that accept a Django `request` and return
+  True/False) e.g. `require_staff_or_operatore`. Use these when you need to
+  perform an authorization check inside controller logic or tests.
+
+- Ninja auth stacks (lists) e.g. `api_auth_staff_or_operatore` that combine
+  `JWTAuth()` with a role-checker and are intended to be passed to Ninja
+  endpoints via `auth=`. These ensure the token is validated and then the
+  role is checked.
+
+Examples:
+    @router.get('/x', auth=api_auth_user_required)
+    def view(request):
+        ...
+
+    if not require_staff_or_operatore(request):
+        raise PermissionDenied()
+
+The `auth_with_roles` helper builds `[JWTAuth(), require_roles(...)]` stacks.
+"""
+
+
+def allow_anon(request) -> bool:
+    """Allow anonymous access (used for public endpoints).
+
+    This checker always returns True so Ninja treats the request as allowed
+    by this particular auth backend. Useful for public endpoints or when
+    you want optional token usage (see `api_auth_user_or_anon`).
     """
     return True
 
-def require_staff(request):
+
+def require_authenticated(request) -> bool:
+    """Require a logged-in user (any role)."""
+    return getattr(request.user, "is_authenticated", False)
+
+
+def require_roles(*roles) -> Callable:
+    """Factory returning a request-check function that allows only users with
+    one of the supplied roles.
+
+    Usage:
+        require_staff = require_roles(Ruolo.STAFF)
     """
-    Richiede che l'utente sia autenticato e abbia ruolo STAFF.
-    Usato per operazioni che solo gli amministratori possono eseguire.
-    """
-    return request.user.is_authenticated and request.user.ruolo == Ruolo.STAFF
 
-def require_staff_or_operatore(request):
-    """
-    Richiede che l'utente sia autenticato e abbia ruolo STAFF o OPERATORE.
-    Usato per operazioni che possono essere eseguite da amministratori o operatori.
-    """
-    return request.user.is_authenticated and request.user.ruolo in [Ruolo.STAFF, Ruolo.OPERATORE]
+    def checker(request) -> bool:
+        try:
+            return bool(request.user.is_authenticated and request.user.ruolo in roles)
+        except Exception:
+            return False
 
-def require_staff_or_cliente(request):
-    """
-    Richiede che l'utente sia autenticato e abbia ruolo STAFF o CLIENTE.
-    Usato per operazioni che possono essere eseguite da amministratori o clienti.
-    """
-    return request.user.is_authenticated and request.user.ruolo in [Ruolo.STAFF, Ruolo.CLIENTE]
+    return checker
 
-def require_authenticated(request):
-    """
-    Richiede che l'utente sia autenticato (qualsiasi ruolo).
-    Usato per operazioni che richiedono autenticazione, indipendentemente dal ruolo.
-    """
-    return request.user.is_authenticated
 
-# Standard JWT authentication, requiring valid token
-api_auth_user_required = [JWTAuth()]
+# Backwards-compatible named checkers used by the codebase
+require_staff = require_roles(Ruolo.STAFF)
+require_staff_or_operatore = require_roles(Ruolo.STAFF, Ruolo.OPERATORE)
+require_staff_or_cliente = require_roles(Ruolo.STAFF, Ruolo.CLIENTE)
 
-# JWT auth or anonymous access both allowed
-# First tries JWT, and if that fails, uses allow_anon which always succeeds
-api_auth_user_or_anon = [JWTAuth(), allow_anon]
 
-# No authentication required at all - public access
-api_public = [allow_anon]
+# Ninja auth lists
+api_auth_user_required: List[Callable] = [JWTAuth()]
+api_auth_user_or_anon: List[Callable] = [JWTAuth(), allow_anon]
+api_public: List[Callable] = [allow_anon]
 
-# Solo utenti con ruolo STAFF possono accedere
-api_auth_staff_only = [JWTAuth(), require_staff]
 
-# Solo utenti con ruolo STAFF o OPERATORE possono accedere
-api_auth_staff_or_operatore = [JWTAuth(), require_staff_or_operatore]
+def auth_with_roles(*roles) -> List[Callable]:
+    """Return a Ninja auth list combining JWTAuth and the role checker."""
+    return [JWTAuth(), require_roles(*roles)]
 
-# Solo utenti con ruolo STAFF o CLIENTE possono accedere
-api_auth_staff_or_cliente = [JWTAuth(), require_staff_or_cliente]
 
-# Qualsiasi utente autenticato può accedere (STAFF, OPERATORE, CLIENTE)
-api_auth_any_authenticated = [JWTAuth(), require_authenticated]
+# Common stacks
+api_auth_staff_only = auth_with_roles(Ruolo.STAFF)
+api_auth_staff_or_operatore = auth_with_roles(Ruolo.STAFF, Ruolo.OPERATORE)
+api_auth_staff_or_cliente = auth_with_roles(Ruolo.STAFF, Ruolo.CLIENTE)
+api_auth_any_authenticated = auth_with_roles(Ruolo.STAFF, Ruolo.OPERATORE, Ruolo.CLIENTE)

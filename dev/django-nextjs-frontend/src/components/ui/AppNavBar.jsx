@@ -23,6 +23,7 @@ import { useAuth } from '@/providers/authProvider';
 import { notifications } from '@mantine/notifications';
 import Image from 'next/image';
 import AppNavLink from './AppNavLink';
+import RequireRole from '../RequireRole';
 
 /**
  * AppNavBar
@@ -45,7 +46,6 @@ export default function AppNavBar({ opened, toggle }) {
         message: 'Arrivederci!',
         color: 'blue',
       });
-      router.push('/login');
     } catch (error) {
       notifications.show({
         title: 'Errore',
@@ -55,22 +55,9 @@ export default function AppNavBar({ opened, toggle }) {
     }
   };
 
-  // Configurazione nav links
-  const navLinks = [
-    { href: '/', label: 'Home', icon: IconLayoutDashboard, activeIcon: IconLayoutDashboardFilled },
-    { href: '/attivita', label: 'Attività', icon: IconBriefcase2, activeIcon: IconBriefcase2Filled },
-    { href: '/documenti', label: 'Documenti', icon: IconClipboardText, activeIcon: IconClipboardTextFilled },
-    { href: '/mezzi', label: 'Mezzi', icon: IconTruck, activeIcon: IconTruckFilled },
-    { href: '/utenti', label: 'Utenti', icon: IconUsers, activeIcon: IconUsers },
-  ];
+  // Nota: nav links sono espliciti per permettere di avvolgerli singolarmente con RequireRole
 
-  // Sincronizza activeIndex con pathname
-  React.useEffect(() => {
-    const currentIndex = navLinks.findIndex(link => link.href === pathname);
-    if (currentIndex !== -1 && currentIndex !== activeIndex) {
-      setActiveIndex(currentIndex);
-    }
-  }, [pathname]);
+  // Sincronizza activeIndex con pathname (gestito più sotto con navRoutes)
 
   const handleNavClick = (href, index) => {
     setActiveIndex(index); // Cambia immediatamente lo stato visivo
@@ -81,6 +68,16 @@ export default function AppNavBar({ opened, toggle }) {
   if (!auth.isAuthenticated) {
     return null;
   }
+
+  // Route esplicite corrispondenti ai NavLink (stesso ordine usato sotto)
+  const navRoutes = ['/', '/attivita', '/documenti', '/mezzi', '/utenti'];
+
+  React.useEffect(() => {
+    const currentIndex = navRoutes.findIndex(r => r === pathname);
+    if (currentIndex !== -1 && currentIndex !== activeIndex) {
+      setActiveIndex(currentIndex);
+    }
+  }, [pathname]);
 
   return (
     <AppShell.Navbar p="md">
@@ -117,18 +114,70 @@ export default function AppNavBar({ opened, toggle }) {
             />
             
             <Stack gap="xs" style={{ position: 'relative', zIndex: 2 }}>
-              {navLinks.map((link, index) => (
-                <AppNavLink
-                  key={link.href}
-                  href={link.href}
-                  label={link.label}
-                  icon={link.icon}
-                  activeIcon={link.activeIcon}
-                  active={activeIndex === index}
-                  onClick={() => handleNavClick(link.href, index)}
-                  isActiveIndex={activeIndex === index}
-                />
-              ))}
+              {/* Home */}
+              <RequireRole allowedRoles={['STAFF', 'OPERATORE', 'CLIENTE']}>
+              <AppNavLink
+                href={'/'}
+                label={'Home'}
+                icon={IconLayoutDashboard}
+                activeIcon={IconLayoutDashboardFilled}
+                active={activeIndex === 0}
+                onClick={() => handleNavClick('/', 0)}
+                isActiveIndex={activeIndex === 0}
+              />
+              </RequireRole>
+
+              {/* Attività */}
+              <RequireRole allowedRoles={['STAFF', 'OPERATORE', 'CLIENTE']}>
+              <AppNavLink
+                href={'/attivita'}
+                label={'Attività'}
+                icon={IconBriefcase2}
+                activeIcon={IconBriefcase2Filled}
+                active={activeIndex === 1}
+                onClick={() => handleNavClick('/attivita', 1)}
+                isActiveIndex={activeIndex === 1}
+              />
+              </RequireRole>
+
+              {/* Documenti */}
+              <RequireRole allowedRoles={['STAFF']}>
+              <AppNavLink
+                href={'/documenti'}
+                label={'Documenti'}
+                icon={IconClipboardText}
+                activeIcon={IconClipboardTextFilled}
+                active={activeIndex === 2}
+                onClick={() => handleNavClick('/documenti', 2)}
+                isActiveIndex={activeIndex === 2}
+              />
+              </RequireRole>
+
+              {/* Mezzi */}
+              <RequireRole allowedRoles={['STAFF']}>
+              <AppNavLink
+                href={'/mezzi'}
+                label={'Mezzi'}
+                icon={IconTruck}
+                activeIcon={IconTruckFilled}
+                active={activeIndex === 3}
+                onClick={() => handleNavClick('/mezzi', 3)}
+                isActiveIndex={activeIndex === 3}
+              />
+              </RequireRole>
+
+              {/* Utenti */}
+              <RequireRole allowedRoles={['STAFF']}>
+              <AppNavLink
+                href={'/utenti'}
+                label={'Utenti'}
+                icon={IconUsers}
+                activeIcon={IconUsers}
+                active={activeIndex === 4}
+                onClick={() => handleNavClick('/utenti', 4)}
+                isActiveIndex={activeIndex === 4}
+              />
+              </RequireRole>
             </Stack>
           </Box>
         </Box>

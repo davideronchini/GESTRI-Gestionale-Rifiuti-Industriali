@@ -4,11 +4,19 @@ from datetime import datetime
 from django.http import HttpRequest
 from pydantic import BaseModel
 
-from .schemas import AttivitaSchema, AttivitaDetailSchema
+from .schemas import AttivitaSchema, AttivitaDetailSchema, AttivitaUpdateSchema, AttivitaCreateSchema
 import helpers
 from controllers.attivita_controller import AttivitaController
+from django.http import JsonResponse
+from django.core.exceptions import PermissionDenied
+from django.http import Http404
 
 router = Router(tags=["attivita"])
+
+
+class FilterRequest(BaseModel):
+    filters: List[str] = []
+
 
 @router.get("/", response=List[AttivitaSchema], auth=helpers.api_auth_any_authenticated)
 def list_attivita(request: HttpRequest):
@@ -54,46 +62,41 @@ def get_attivita(request: HttpRequest, attivita_id: int):
     except Exception as e:
         return {"error": str(e)}
 
-@router.get("/by-date/{data}", response=List[AttivitaSchema], auth=helpers.api_auth_any_authenticated)
-def list_attivita_by_date(request: HttpRequest, data: str):
+
+@router.post("/", response=AttivitaDetailSchema, auth=helpers.api_auth_staff_only)
+def create_attivita(request: HttpRequest, payload: AttivitaCreateSchema):
     """
-    Get activities scheduled for a specific date based on user role.
-    Date format: YYYY-MM-DD
-    Filters by the 'data' field (activity scheduled date).
+    Create a new activity.
+    All authenticated users can create activities.
     """
     try:
-        from datetime import datetime, date
-        data_obj = datetime.strptime(data, "%Y-%m-%d").date()
-        
-        # Usa il controller per ottenere le attività filtrate per la data di svolgimento
-        attivita = AttivitaController.list_attivita_by_date(
-            data=data_obj,
+        attivita, error = AttivitaController.create_attivita(
+            payload=payload,
             user_role=request.user.ruolo,
             user_id=request.user.id
         )
-
-        return list(attivita)
+        
+        if error:
+            return {"error": error}
+        
+        # Return detailed activity data
+        attivita_detail, detail_error = AttivitaController.get_attivita_detail(
+            attivita_id=attivita.id,
+            user_role=request.user.ruolo,
+            user_id=request.user.id
+        )
+        
+        if detail_error:
+            return {"error": detail_error}
             
-    except ValueError:
-        return {"error": "Formato data non valido. Usa YYYY-MM-DD"}
+        return attivita_detail
     except Exception as e:
         return {"error": str(e)}
 
-@router.get("/{attivita_id}/documento", auth=helpers.api_auth_any_authenticated)
-def get_documento_by_attivita(request: HttpRequest, attivita_id: int):
-    """
-    Get document associated with a specific activity.
-    """
-    try:
-        # Uses the controller to get document for the activity
-        documento = AttivitaController.get_documento_by_attivita(attivita_id=attivita_id)
-        return documento
-            
-    except Exception as e:
-        return {"error": str(e)}
 
 
-@router.delete("/{attivita_id}", auth=helpers.api_auth_any_authenticated)
+
+@router.delete("/{attivita_id}", auth=helpers.api_auth_staff_or_cliente)
 def delete_attivita(request: HttpRequest, attivita_id: int):
     """
     Delete an activity by ID.
@@ -113,86 +116,30 @@ def delete_attivita(request: HttpRequest, attivita_id: int):
         return {"error": str(e)}
 
 
-@router.get("/filter-by/{field}/{value}", response=List[AttivitaSchema], auth=helpers.api_auth_any_authenticated)
-def filter_attivita(request: HttpRequest, field: str, value: str):
+@router.put("/{attivita_id}", response=AttivitaDetailSchema, auth=helpers.api_auth_staff_or_cliente)
+def update_attivita(request: HttpRequest, attivita_id: int, payload: AttivitaUpdateSchema):
     """
-    Generic filter endpoint. Tries to map common fields to controller methods
-    (stato, tipo, utente, mezzo_rimorchio, data). Otherwise falls back to
-    filtering the role-scoped activities by attribute contains (case-insensitive).
+    Update an activity by ID.
+    Only STAFF and the creator (CLIENTE) can update the activity.
     """
     try:
-        user_role = request.user.ruolo
-        user_id = request.user.id
-
-        # Se il valore è vuoto, restituisci tutte le attività
-        if not value or value.strip() == '':
-            base_qs = list(AttivitaController.list_attivita(user_role=user_role, user_id=user_id))
-            return list(base_qs)
-
-        # Normalize field
-        f = field.lower()
-        value = value.strip()
-
-        # Map some known fields to controller helpers when available
-        if f in ("stato", "statoattivita"):
-            attivita = AttivitaController.list_attivita_by_stato(value, user_role, user_id)
-            return list(attivita)
-
-        if f in ("tipo",):
-            attivita = AttivitaController.list_attivita_by_tipo(value, user_role, user_id)
-            return list(attivita)
-
-        if f in ("utente", "utente_id", "utenteid"):
-            try:
-                uid = int(value)
-            except ValueError:
-                return {"error": "utente id non valido"}
-            attivita = AttivitaController.list_attivita_by_utente(uid, user_role, user_id)
-            return list(attivita)
-
-        if f in ("mezzo_rimorchio", "mezzo-rimorchio", "mezzo_rimorchio_id"):
-            try:
-                mrid = int(value)
-            except ValueError:
-                return {"error": "mezzo_rimorchio id non valido"}
-            attivita = AttivitaController.list_attivita_by_mezzo_rimorchio(mrid, user_role, user_id)
-            return list(attivita)
-
-        if f in ("data", "date"):
-            try:
-                from datetime import datetime
-                data_obj = datetime.strptime(value, "%Y-%m-%d").date()
-            except ValueError:
-                return {"error": "Formato data non valido. Usa YYYY-MM-DD"}
-            attivita = AttivitaController.list_attivita_by_date(data_obj, user_role, user_id)
-            return list(attivita)
-
-        # Fallback: get the role-scoped activities and filter in Python by attribute contains
-        base_qs = list(AttivitaController.list_attivita(user_role=user_role, user_id=user_id))
-        value_lower = value.lower()
-        filtered = []
-        for a in base_qs:
-            # safe getattr
-            val = getattr(a, field, None)
-            if val is None:
-                # try with lowercase field name
-                val = getattr(a, field.lower(), None)
-            if val is None:
-                continue
-            try:
-                s = str(val).lower()
-            except Exception:
-                continue
-            if value_lower in s:
-                filtered.append(a)
-
-        return list(filtered)
+        # Convert payload to dict, excluding None values
+        update_data = payload.dict(exclude_unset=True)
+        
+        attivita_detail, error = AttivitaController.update_attivita(
+            attivita_id=attivita_id,
+            user_role=request.user.ruolo,
+            user_id=request.user.id,
+            update_data=update_data
+        )
+        
+        if error:
+            return {"error": error}
+        
+        return attivita_detail
     except Exception as e:
         return {"error": str(e)}
 
-
-class FilterRequest(BaseModel):
-    filters: List[str] = []
 
 @router.post("/filter-by/{value}", response=List[AttivitaSchema], auth=helpers.api_auth_any_authenticated)
 def filter_attivita_multiple(request: HttpRequest, value: str, filter_data: FilterRequest):
@@ -328,3 +275,192 @@ def cerca_attivita(request: HttpRequest, term: str):
         # In caso di errore, restituisci una lista vuota invece di rompere il frontend
         print(f"Errore in cerca_attivita: {str(e)}")
         return []
+    
+
+@router.get("/by-date/{data}", response=List[AttivitaSchema], auth=helpers.api_auth_any_authenticated)
+def list_attivita_by_date(request: HttpRequest, data: str):
+    """
+    Get activities scheduled for a specific date based on user role.
+    Date format: YYYY-MM-DD
+    Filters by the 'data' field (activity scheduled date).
+    """
+    try:
+        from datetime import datetime, date
+        data_obj = datetime.strptime(data, "%Y-%m-%d").date()
+
+        # Ensure the request has an authenticated user with role and id
+        user_role = getattr(request.user, 'ruolo', None)
+        user_id = getattr(request.user, 'id', None)
+
+        if not user_role or not user_id:
+            # If user is not authenticated or missing role/id, return empty list
+            # (keeps behavior consistent with other list endpoints)
+            return []
+
+        # Use the controller to obtain activities filtered by date and role
+        attivita = AttivitaController.list_attivita_by_date(
+            data=data_obj,
+            user_role=user_role,
+            user_id=user_id
+        )
+
+        return list(attivita)
+            
+    except ValueError:
+        return JsonResponse({"detail": "Formato data non valido. Usa YYYY-MM-DD"}, status=400)
+    except PermissionDenied as e:
+        return JsonResponse({'detail': str(e)}, status=403)
+    except Http404 as e:
+        return JsonResponse({'detail': str(e)}, status=404)
+    except Exception as e:
+        return JsonResponse({'detail': 'Internal server error'}, status=500)
+    
+@router.get("/{attivita_id}/documento", auth=helpers.api_auth_staff_or_operatore)
+def get_documento_by_attivita(request: HttpRequest, attivita_id: int):
+    """
+    Get document associated with a specific activity.
+    """
+    try:
+        # Uses the controller to get document for the activity (with authorization)
+        documento = AttivitaController.get_documento_by_attivita(
+            attivita_id=attivita_id,
+            user_role=request.user.ruolo,
+            user_id=request.user.id
+        )
+        return documento
+            
+    except PermissionDenied as e:
+        return JsonResponse({'detail': str(e)}, status=403)
+    except Http404 as e:
+        return JsonResponse({'detail': str(e)}, status=404)
+    except Exception as e:
+        return JsonResponse({'detail': 'Internal server error'}, status=500)
+
+
+class AssociaMezzoRequest(BaseModel):
+    mezzo_rimorchio_id: int
+
+
+@router.post("/{attivita_id}/associa-mezzo", auth=helpers.api_auth_staff_only)
+def associa_mezzo_attivita(request: HttpRequest, attivita_id: int, payload: AssociaMezzoRequest):
+    """
+    Associate a mezzo-rimorchio to an activity.
+    If a mezzo is already associated, it will be replaced.
+    """
+    try:
+        success, error = AttivitaController.associa_mezzo_rimorchio(
+            attivita_id=attivita_id,
+            mezzo_rimorchio_id=payload.mezzo_rimorchio_id,
+            user_role=request.user.ruolo,
+            user_id=request.user.id
+        )
+        
+        if error:
+            return {"error": error}
+        
+        return {"success": success, "message": "Mezzo associato con successo"}
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@router.delete("/{attivita_id}/dissocia-mezzo", auth=helpers.api_auth_staff_only)
+def dissocia_mezzo_attivita(request: HttpRequest, attivita_id: int):
+    """
+    Dissociate mezzo-rimorchio from an activity.
+    """
+    try:
+        success, error = AttivitaController.dissocia_mezzo_rimorchio(
+            attivita_id=attivita_id,
+            user_role=request.user.ruolo,
+            user_id=request.user.id
+        )
+        
+        if error:
+            return {"error": error}
+        
+        return {"success": success, "message": "Mezzo dissociato con successo"}
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@router.get("/{attivita_id}/operatori/disponibili", response=List[Dict[str, Any]], auth=helpers.api_auth_staff_only)
+def list_operatori_disponibili(request: HttpRequest, attivita_id: int):
+    """
+    Get a list of available operators (OPERATORE role) that can be assigned to an activity.
+    Returns all active operators regardless of current assignments.
+    """
+    try:
+        operatori = AttivitaController.list_operatori_disponibili(attivita_id=attivita_id)
+        return operatori
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@router.get("/operatore/{operatore_id}", response=List[AttivitaSchema], auth=helpers.api_auth_staff_only)
+def list_attivita_by_operatore(request: HttpRequest, operatore_id: int):
+    """
+    Return activities where the given user is assigned or is the creator.
+    This is used by the frontend 'utenti' page to show activities related to a specific user.
+    """
+    try:
+        user_role = getattr(request.user, 'ruolo', None)
+        user_id = getattr(request.user, 'id', None)
+
+        # Use controller to get activities for operator. Controller will handle permissions.
+        attivita = AttivitaController.list_attivita_for_operatore(
+            operatore_id=operatore_id,
+            requesting_user_role=user_role,
+            requesting_user_id=user_id
+        )
+
+        # The controller is expected to return an iterable of Attivita-like objects or dicts
+        return list(attivita)
+    except Exception as e:
+        print(f"Errore in list_attivita_by_operatore: {str(e)}")
+        return []
+
+
+class AssociaOperatoreRequest(BaseModel):
+    operatore_id: int
+
+
+@router.post("/{attivita_id}/associa-operatore", auth=helpers.api_auth_staff_only)
+def associa_operatore_attivita(request: HttpRequest, attivita_id: int, payload: AssociaOperatoreRequest):
+    """
+    Associate an operator to an activity.
+    """
+    try:
+        success, error = AttivitaController.associa_operatore(
+            attivita_id=attivita_id,
+            operatore_id=payload.operatore_id,
+            user_role=request.user.ruolo,
+            user_id=request.user.id
+        )
+        
+        if error:
+            return {"error": error}
+        
+        return {"success": success, "message": "Operatore associato con successo"}
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@router.delete("/{attivita_id}/dissocia-operatore/{operatore_id}", auth=helpers.api_auth_staff_only)
+def dissocia_operatore_attivita(request: HttpRequest, attivita_id: int, operatore_id: int):
+    """
+    Dissociate an operator from an activity.
+    """
+    try:
+        success, error = AttivitaController.dissocia_operatore(
+            attivita_id=attivita_id,
+            operatore_id=operatore_id,
+            user_role=request.user.ruolo,
+            user_id=request.user.id
+        )
+        
+        if error:
+            return {"error": error}
+        
+        return {"success": success, "message": "Operatore dissociato con successo"}
+    except Exception as e:
+        return {"error": str(e)}

@@ -65,7 +65,7 @@ def get_assenza(request, assenza_id: int):
     return assenza
 
 # Endpoint per creare una nuova assenza
-@router.post("/", response=AssenzaSchema, auth=helpers.api_auth_any_authenticated)
+@router.post("/", response=AssenzaSchema, auth=helpers.api_auth_staff_only)
 def create_assenza(request, payload: AssenzaCreateSchema):
     """
     Crea una nuova assenza.
@@ -84,7 +84,7 @@ def create_assenza(request, payload: AssenzaCreateSchema):
     return assenza
 
 # Endpoint per aggiornare un'assenza
-@router.put("/{assenza_id}", response=AssenzaSchema, auth=helpers.api_auth_any_authenticated)
+@router.put("/{assenza_id}", response=AssenzaSchema, auth=helpers.api_auth_staff_only)
 def update_assenza(request, assenza_id: int, payload: AssenzaUpdateSchema):
     """
     Aggiorna un'assenza esistente.
@@ -104,7 +104,7 @@ def update_assenza(request, assenza_id: int, payload: AssenzaUpdateSchema):
     return assenza
 
 # Endpoint per eliminare un'assenza
-@router.delete("/{assenza_id}", auth=helpers.api_auth_any_authenticated)
+@router.delete("/{assenza_id}", auth=helpers.api_auth_staff_only)
 def delete_assenza(request, assenza_id: int):
     """
     Elimina un'assenza.
