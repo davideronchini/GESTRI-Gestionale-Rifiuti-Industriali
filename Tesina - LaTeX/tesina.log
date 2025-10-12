@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.9.26)  11 OCT 2025 22:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.9.26)  12 OCT 2025 19:02
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -2930,11 +2930,11 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [58
 
  <./img/DiagrammaSequenzaLoginUtente.png (PNG copy)>]
-<./img/DiagrammaSequenzaRegistrazioneUtente.png, id=890, 972.61076pt x 717.18321pt>
+<./img/DiagrammaSequenzaRegistrazioneUtente.png, id=890, 559.40291pt x 564.36801pt>
 File: ./img/DiagrammaSequenzaRegistrazioneUtente.png Graphic file (type png)
 <use ./img/DiagrammaSequenzaRegistrazioneUtente.png>
 Package pdftex.def Info: ./img/DiagrammaSequenzaRegistrazioneUtente.png  used on input line 1760.
-(pdftex.def)             Requested size: 452.9679pt x 334.01202pt.
+(pdftex.def)             Requested size: 452.9679pt x 457.00641pt.
 
 
 
@@ -2993,7 +2993,7 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 File: ./img/DiagrammaSequenzaCRUDAttivita.png Graphic file (type png)
 <use ./img/DiagrammaSequenzaCRUDAttivita.png>
 Package pdftex.def Info: ./img/DiagrammaSequenzaCRUDAttivita.png  used on input line 1776.
-(pdftex.def)             Requested size: 452.9679pt x 609.9651pt.
+(pdftex.def)             Requested size: 452.9679pt x 611.62552pt.
 
 
 
@@ -3706,7 +3706,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  89i,12n,120p,844b,1202s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfcc1000.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on tesina.pdf (87 pages, 2843599 bytes).
+Output written on tesina.pdf (87 pages, 2824267 bytes).
 PDF statistics:
  1377 PDF objects out of 1440 (max. 8388607)
  1176 compressed objects within 12 object streams
