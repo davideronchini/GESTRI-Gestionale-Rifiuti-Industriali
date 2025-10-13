@@ -79,12 +79,12 @@ GESTRI-Gestionale-Rifiuti-Industriali/
 if command -v python3 >/dev/null 2>&1; then
   python3 --version
 else
-  # Installa Python 3.11 se non presente
+  # Installa Python 3.13.7.11 se non presente
   if command -v brew >/dev/null 2>&1; then
-    brew install python@3.11
+    brew install python@3.13.7
   else
     sudo apt update
-    sudo apt install -y python3.11 python3.11-venv python3-pip
+    sudo apt install -y python3.13.7 python3.13.7-venv python3-pip
   fi
 fi
 
@@ -94,7 +94,7 @@ cd GESTRI-Gestionale-Rifiuti-Industriali/dev/django-nextjs-backend-api/src
 
 # Aggiorna pip e installa i requirements
 python3 -m pip install --upgrade pip
-pip install -r ../requirements.txt
+python3 -m pip install -r ../requirements.txt
 ```
 
 ### 🐍 Backend -- Windows (PowerShell)
@@ -102,10 +102,10 @@ pip install -r ../requirements.txt
 ```powershell
 # Verifica versione di Python
 if (Get-Command python -ErrorAction SilentlyContinue) {
-  python --version
+  python3 --version
 } else {
-  # Installa Python 3.11 con winget
-  winget install -e --id Python.Python.3.11
+  # Installa Python 3.13.7 con winget
+  winget install -e --id Python.Python.3.13.7
 }
 
 # Clona il repository
@@ -113,8 +113,8 @@ git clone https://github.com/davideronchini/GESTRI-Gestionale-Rifiuti-Industrial
 cd GESTRI-Gestionale-Rifiuti-Industriali\dev\django-nextjs-backend-api\src
 
 # Aggiorna pip e installa i requirements
-python -m pip install --upgrade pip
-pip install -r ..\requirements.txt
+python3 -m pip install --upgrade pip
+python3 -m pip install -r ../requirements.txt
 ```
 
 ### 🌐 Frontend -- macOS / Linux (zsh)
@@ -172,7 +172,7 @@ rav run server
 
 # Oppure avvio manuale (porta 8001)
 cd src
-python manage.py runserver 127.0.0.1:8001
+python3 manage.py runserver 127.0.0.1:8001
 ```
 
 ### 🐍 Backend -- Windows (PowerShell)
@@ -187,7 +187,7 @@ rav run server
 
 # Oppure avvio manuale (porta 8001)
 cd src
-python manage.py runserver 127.0.0.1:8001
+python3 manage.py runserver 127.0.0.1:8001
 ```
 
 ---
@@ -213,7 +213,7 @@ Apri il browser su:
 cd /path/to/GESTRI-Gestionale-Rifiuti-Industriali/dev/django-nextjs-backend-api
 source .venv/bin/activate
 cd src
-rav run test || python manage.py test
+rav run test || python3 manage.py test
 ```
 
 ### 🌐 Frontend
