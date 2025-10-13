@@ -2,9 +2,9 @@
 **`Django + Next.js Fullstack App`**
 
 [![Python](https://img.shields.io/badge/python-3.13.7-blue)](https://www.python.org/) 
-[![Django](https://img.shields.io/badge/framework-Django-green)](https://www.djangoproject.com/) 
-[![Node.js](https://img.shields.io/badge/nodejs-22.19.0-darkgreen)](https://nodejs.org/) 
-[![Next.js](https://img.shields.io/badge/framework-Next.js-orange)](https://nextjs.org/)  
+[![Django](https://img.shields.io/badge/framework-Django-orange)](https://www.djangoproject.com/) 
+[![Node.js](https://img.shields.io/badge/nodejs-22.19.0-green)](https://nodejs.org/) 
+[![Next.js](https://img.shields.io/badge/framework-Next.js-brown)](https://nextjs.org/)  
 [![SQLite](https://img.shields.io/badge/database-SQLite-lightgrey)](https://www.sqlite.org/) 
 [![JavaScript](https://img.shields.io/badge/lang-JavaScript-yellow)](https://developer.mozilla.org/docs/Web/JavaScript) 
 [![CSS](https://img.shields.io/badge/lang-CSS-blue)](https://developer.mozilla.org/docs/Web/CSS) 
