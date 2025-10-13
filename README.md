@@ -22,6 +22,8 @@ Il progetto è composto da due parti principali:
 
 L’obiettivo è fornire un’applicazione completa per la gestione del ciclo dei rifiuti: upload documenti, anagrafiche, mezzi, utenti e workflow operativi.
 
+- Tesina (PDF): [Scarica la tesina (PDF)](./Tesina%20-%20LaTeX/tesina.pdf)
+
 ---
 
 ## 🛠️ Tecnologie principali
