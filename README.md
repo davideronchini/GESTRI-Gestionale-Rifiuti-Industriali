@@ -57,11 +57,7 @@ GESTRI-Gestionale-Rifiuti-Industriali/
 
 # ⚙️ Installazione e Setup
 
-
-
-## 🐍 Backend
-
-### macOS / Linux (zsh)
+### 🐍 Backend -- macOS / Linux (zsh)
 
 ```bash
 # Verifica versione di Python
@@ -86,7 +82,7 @@ python3 -m pip install --upgrade pip
 pip install -r ../requirements.txt
 ````
 
-### Windows (PowerShell)
+### 🐍 Backend -- Windows (PowerShell)
 
 ```powershell
 # Verifica versione di Python
@@ -108,9 +104,7 @@ pip install -r ..\requirements.txt
 
 ---
 
-## 🌐 Frontend
-
-### macOS / Linux (zsh)
+### 🌐 Frontend -- macOS / Linux (zsh)
 
 ```bash
 # Verifica versione di Node.js
@@ -132,7 +126,7 @@ cd /path/to/GESTRI-Gestionale-Rifiuti-Industriali/dev/django-nextjs-frontend
 npm install
 ```
 
-### Windows (PowerShell)
+### 🌐 Frontend -- Windows (PowerShell)
 
 ```powershell
 # Verifica versione di Node.js
@@ -153,11 +147,7 @@ npm install
 
 # 🚀 Esecuzione
 
-
-
-## 🐍 Backend
-
-### macOS / Linux (zsh)
+### 🐍 Backend -- macOS / Linux (zsh)
 
 ```bash
 # Attiva l’ambiente virtuale e avvia il server
@@ -172,7 +162,7 @@ cd src
 python manage.py runserver 127.0.0.1:8001
 ```
 
-### Windows (PowerShell)
+### 🐍 Backend -- Windows (PowerShell)
 
 ```powershell
 # Attiva l’ambiente virtuale e avvia il server
@@ -189,9 +179,7 @@ python manage.py runserver 127.0.0.1:8001
 
 ---
 
-## 🌐 Frontend
-
-### macOS / Windows
+### 🌐 Frontend -- macOS / Windows
 
 ```bash
 # Avvia l’applicazione Next.js in modalità sviluppo
@@ -206,7 +194,7 @@ Apri il browser su:
 
 # 🧪 Test
 
-## Backend
+## 🐍 Backend
 
 ```bash
 cd /path/to/GESTRI-Gestionale-Rifiuti-Industriali/dev/django-nextjs-backend-api
@@ -215,7 +203,7 @@ cd src
 rav run test || python manage.py test
 ```
 
-## Frontend
+## 🌐 Frontend
 
 ```bash
 cd /path/to/GESTRI-Gestionale-Rifiuti-Industriali/dev/django-nextjs-frontend
