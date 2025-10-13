@@ -23,6 +23,7 @@ Il progetto è composto da due parti principali:
 
 L’obiettivo è fornire un’applicazione completa per la gestione del ciclo dei rifiuti: upload documenti, anagrafiche, mezzi, utenti e workflow operativi.
 
+-
 
 La **Tesina in formato PDF** offre una sintesi discorsiva della progettazione del sistema, illustrando: 
 - Requisiti funzionali
