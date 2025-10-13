@@ -57,7 +57,7 @@ GESTRI-Gestionale-Rifiuti-Industriali/
 
 # ⚙️ Installazione e Setup
 
----
+
 
 ## 🐍 Backend
 
@@ -108,7 +108,7 @@ pip install -r ..\requirements.txt
 
 ---
 
-## 💻 Frontend
+## 🌐 Frontend
 
 ### macOS / Linux (zsh)
 
@@ -153,7 +153,7 @@ npm install
 
 # 🚀 Esecuzione
 
----
+
 
 ## 🐍 Backend
 
@@ -240,5 +240,4 @@ npm test
 * `rav` è opzionale: puoi sempre avviare Django con `python manage.py runserver`.
 * In produzione, si consiglia di sostituire **SQLite** con **PostgreSQL** o **MySQL**.
 
-```
 ```
