@@ -27,14 +27,15 @@ L’obiettivo è fornire un’applicazione completa per la gestione del ciclo de
 ## 🛠️ Tecnologie principali
 
 - **Backend**
-  - Python 3.11+
-  - Django
+  - Python >= 3.13.7
+  - Django >= 5.2.6
   - SQLite
   - Dipendenze: `dev/django-nextjs-backend-api/requirements.txt`
 
 - **Frontend**
-  - Node.js (LTS consigliato)
-  - Next.js + React
+  - Node.js (LTS consigliato) >= 22.19.0
+  - Npm >= 11.6.0
+  - Next.js >= 13
   - Tailwind CSS
 
 - **Tooling**
