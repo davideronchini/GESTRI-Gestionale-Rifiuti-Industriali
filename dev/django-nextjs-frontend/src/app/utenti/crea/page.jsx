@@ -373,7 +373,7 @@ export default function CreaUtentePage() {
             <Group justify="space-between" align="center" style={{ marginBottom: "12px" }}>
               <AppLargeText style={{ fontSize: "18px", fontWeight: "600" }}>Assenze</AppLargeText>
               <IconPlus
-                style={{ cursor: "not-allowed", opacity: 0.5 }}
+                style={{ cursor: "not-allowed", width: '22px', height: '22px', color: '#17BC6A', strokeWidth: '1.7' }}
                 onClick={() =>
                   showNotification({
                     title: "Non disponibile",
@@ -412,7 +412,7 @@ export default function CreaUtentePage() {
             <Group justify="space-between" align="center" style={{ marginBottom: "12px" }}>
               <AppLargeText style={{ fontSize: "18px", fontWeight: "600" }}>Attività</AppLargeText>
               <IconPlus
-                style={{ cursor: "not-allowed", opacity: 0.5 }}
+                style={{ cursor: "not-allowed", width: '22px', height: '22px', color: '#17BC6A', strokeWidth: '1.7' }}
                 onClick={() =>
                   showNotification({
                     title: "Non disponibile",
@@ -451,7 +451,7 @@ export default function CreaUtentePage() {
             <Group justify="space-between" align="center" style={{ marginBottom: "12px" }}>
               <AppLargeText style={{ fontSize: "18px", fontWeight: "600" }}>Attestati</AppLargeText>
               <IconPlus
-                style={{ cursor: "not-allowed", opacity: 0.5 }}
+                style={{ cursor: "not-allowed", width: '22px', height: '22px', color: '#17BC6A', strokeWidth: '1.7' }}
                 onClick={() =>
                   showNotification({
                     title: "Non disponibile",

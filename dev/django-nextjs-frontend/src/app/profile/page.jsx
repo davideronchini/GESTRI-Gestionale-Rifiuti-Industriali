@@ -391,7 +391,7 @@ export default function ProfilePage() {
                 <div style={{ flex: 2 }}>
                   <AppSubmitButton
                     fullWidth
-                    color="red"
+                    style={{border: '1px solid #FF5555', background: 'rgba(255, 85, 85, 0.05)', color: '#FF5555'}}
                     onClick={async () => {
                       const confirmed = window.confirm('Sei sicuro di voler eliminare definitivamente il tuo account? Questa operazione non può essere annullata.')
                       if (!confirmed) return
@@ -425,7 +425,7 @@ export default function ProfilePage() {
                 {isEditing && (
                   <RequireRole allowedRoles={['STAFF']}>
                   <Group gap="xs">
-                    <IconPlus style={{ cursor: 'pointer' }} onClick={() => setIsCreateAssenzaModalOpen(true)} />
+                    <IconPlus style={{ cursor: 'pointer', width: '22px', height: '22px', color: '#17BC6A', strokeWidth: '1.7' }} onClick={() => setIsCreateAssenzaModalOpen(true)} />
                     {/* <IconLink style={{ cursor: 'pointer' }} onClick={openAssenzaSelectModal} /> */}
                   </Group>
                   </RequireRole>
@@ -440,6 +440,7 @@ export default function ProfilePage() {
                         leftIcon={<IconCalendarEvent style={{ width: '25px', height: '25px', color: '#919293)', strokeWidth: '1.7' }} />}
                         title={`${formatDate(a.dataInizio || a.data)} - ${formatDate(a.dataFine)}`}
                         rightIcon={<IconTrash style={{ width: '25px', height: '25px', color: '#919293', strokeWidth: '1.7' }} />}
+                        editable={isEditing}
                         onClick={isEditing ? () => {
                           setEditingAssenza({
                             ...a,
@@ -465,17 +466,18 @@ export default function ProfilePage() {
             <div style={{ flex: 1, minWidth: 0 }}>
               <Group justify="space-between" align="center" style={{ marginBottom: '12px' }}>
                 <AppLargeText style={{ fontSize: '18px', fontWeight: '600' }}>Attività</AppLargeText>
-                {isEditing && (<RequireRole allowedRoles={['STAFF']}> <IconPlus style={{ cursor: 'pointer' }} onClick={() => router.push('/attivita/crea')} /> </RequireRole>)}
+                {isEditing && (<RequireRole allowedRoles={['STAFF']}> <IconPlus style={{ cursor: 'pointer', width: '22px', height: '22px', color: '#17BC6A', strokeWidth: '1.7' }} onClick={() => router.push('/attivita/crea')} /> </RequireRole>)}
               </Group>
               <ScrollArea style={{ height: '40vh' }}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                   {utente?.attivita?.length > 0 ? (
                     utente.attivita.map((att) => (
-            <AppAssociationItem
+      <AppAssociationItem
                         key={att.id}
                         leftText={`#${att.id}`}
                         title={att.titolo}
-                        rightIcon={<IconTrash style={{ width: '25px', height: '25px', color: '#919293', strokeWidth: '1.7' }} />}
+      rightIcon={<IconTrash style={{ width: '25px', height: '25px', color: '#919293', strokeWidth: '1.7' }} />}
+      editable={isEditing}
               onClick={!isEditing ? () => router.push(`/attivita/${att.id}`) : undefined}
               onRightIconClick={(e) => { e?.stopPropagation?.(); handleDeleteAssociation('attivita', att.id); }}
                       />
@@ -493,17 +495,18 @@ export default function ProfilePage() {
             <div style={{ flex: 1, minWidth: 0 }}>
               <Group justify="space-between" align="center" style={{ marginBottom: '12px' }}>
                 <AppLargeText style={{ fontSize: '18px', fontWeight: '600' }}>Attestati</AppLargeText>
-                {isEditing && (<RequireRole allowedRoles={['STAFF']}> <IconPlus style={{ cursor: 'pointer' }} onClick={() => router.push('/documento/crea')} /> </RequireRole>)}
+                {isEditing && (<RequireRole allowedRoles={['STAFF']}> <IconPlus style={{ cursor: 'pointer', width: '22px', height: '22px', color: '#17BC6A', strokeWidth: '1.7' }} onClick={() => router.push('/documento/crea')} /> </RequireRole>)}
               </Group>
               <ScrollArea style={{ height: '40vh' }}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                   {utente?.attestati?.length > 0 ? (
                     utente.attestati.map((doc) => (
-            <AppAssociationItem
+      <AppAssociationItem
                         key={doc.id}
                         leftIcon={<IconFileTypePdf style={{ width: '25px', height: '25px', color: '#919293', marginRight: '10px', strokeWidth: '1.7' }} />}
                         title={doc.tipoDocumento || doc.nome}
-                        rightIcon={<IconTrash style={{ width: '25px', height: '25px', color: '#919293', strokeWidth: '1.7' }} />}
+      rightIcon={<IconTrash style={{ width: '25px', height: '25px', color: '#919293', strokeWidth: '1.7' }} />}
+      editable={isEditing}
               onClick={!isEditing ? () => router.push(`/documenti/${doc.id}`) : undefined}
               onRightIconClick={(e) => { e?.stopPropagation?.(); handleDeleteAssociation('attestato', doc.id); }}
                       />

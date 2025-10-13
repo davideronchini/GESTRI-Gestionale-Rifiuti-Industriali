@@ -80,3 +80,47 @@
   opacity: 0;
   transform: translateY(-50%) translateX(6px);
 }
+
+/* Autofill fixes scoped to this component: apply only to inputs that use the module's `.input` class */
+.input:-webkit-autofill,
+.input:-webkit-autofill:focus,
+.input:-webkit-autofill:hover {
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.5) !important;
+  /* ensure size/weight exactly match typed text in this component */
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  font-family: inherit !important;
+  line-height: 1 !important;
+  transition: background-color 5000s ease-in-out 0s !important; /* prevent yellow bg */
+  box-shadow: 0 0 0px 30px transparent inset !important;
+}
+
+/* Firefox autofill pseudo-class scoped to this component */
+.input:-moz-autofill,
+.input:-moz-autofill:focus,
+.input:-moz-autofill:hover {
+  -moz-text-fill-color: rgba(255, 255, 255, 0.5) !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  font-family: inherit !important;
+  line-height: 1 !important;
+  box-shadow: 0 0 0px 30px transparent inset !important;
+}
+
+/* hide the module placeholder when the browser autofills the input so the
+   autofill text doesn't visually overlap our custom placeholder lines */
+.input:-webkit-autofill + .placeholder,
+.input:-webkit-autofill:focus + .placeholder,
+.input:-webkit-autofill:hover + .placeholder {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transform: translateY(-50%) translateX(6px) !important;
+}
+
+.input:-moz-autofill + .placeholder,
+.input:-moz-autofill:focus + .placeholder,
+.input:-moz-autofill:hover + .placeholder {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transform: translateY(-50%) translateX(6px) !important;
+}

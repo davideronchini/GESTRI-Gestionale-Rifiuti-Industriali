@@ -583,7 +583,7 @@ export default function UserDetailPage({ params }) {
                 {isEditing && (
                   <Group gap="xs">
                     {/* Apri modale Crea */}
-                    <IconPlus style={{ cursor: "pointer" }} onClick={() => setIsCreateAssenzaModalOpen(true)} />
+                    <IconPlus style={{ cursor: 'pointer', width: '22px', height: '22px', color: '#17BC6A', strokeWidth: '1.7' }} onClick={() => setIsCreateAssenzaModalOpen(true)} />
                     {/* Se vuoi anche associare da elenco esistente, scommenta la riga seguente: */}
                     {/* <IconLink style={{ cursor: "pointer" }} onClick={openAssenzaSelectModal} /> */}
                   </Group>
@@ -598,6 +598,7 @@ export default function UserDetailPage({ params }) {
                           leftIcon={<IconCalendarEvent style={{ width: '25px', height: '25px', color: '#919293', strokeWidth: '1.7' }} />}
                           title={`${formatDate(assenza.data)} - ${formatDate(assenza.dataFine)}`}
                           rightIcon={<IconTrash style={{ width: '25px', height: '25px', color: '#919293', strokeWidth: '1.7' }} />}
+                          editable={isEditing}
                           // Do not make the card navigate away. If in edit mode, open inline edit modal.
                           onClick={isEditing ? () => {
                             // Initialize editable fields as plain strings so inputs are controlled correctly
@@ -646,7 +647,7 @@ export default function UserDetailPage({ params }) {
               <Group justify="space-between" align="center" style={{ marginBottom: "12px" }}>
                 <AppLargeText style={{ fontSize: "18px", fontWeight: "600" }}>Attività</AppLargeText>
                 {isEditing && (
-                  <IconPlus style={{ cursor: "pointer" }} onClick={() => router.push("/attivita/crea")} />
+                  <IconPlus style={{ cursor: 'pointer', width: '22px', height: '22px', color: '#17BC6A', strokeWidth: '1.7' }} onClick={() => router.push("/attivita/crea")} />
                 )}
               </Group>
               <ScrollArea style={{ height: "40vh" }}>
@@ -658,6 +659,7 @@ export default function UserDetailPage({ params }) {
                         leftText={`#${attivita.id}`}
                         title={attivita.titolo}
                         rightIcon={<IconTrash style={{ width: '25px', height: '25px', color: '#919293', strokeWidth: '1.7' }} />}
+                        editable={isEditing}
                         onClick={!isEditing ? () => router.push(`/attivita/${attivita.id}`) : undefined}
                         onRightIconClick={(e) => { e?.stopPropagation?.(); handleDelete('attivita', attivita.id); }}
                       />
@@ -680,7 +682,7 @@ export default function UserDetailPage({ params }) {
               <Group justify="space-between" align="center" style={{ marginBottom: "12px" }}>
                 <AppLargeText style={{ fontSize: "18px", fontWeight: "600" }}>Attestati</AppLargeText>
                 {isEditing && (
-                  <IconPlus style={{ cursor: "pointer" }} onClick={() => router.push("/documento/crea")} />
+                  <IconPlus style={{ cursor: 'pointer', width: '22px', height: '22px', color: '#17BC6A', strokeWidth: '1.7' }} onClick={() => router.push("/documento/crea")} />
                 )}
               </Group>
               <ScrollArea style={{ height: "40vh" }}>
@@ -692,6 +694,7 @@ export default function UserDetailPage({ params }) {
                         leftIcon={<IconFileTypePdf style={{ width: '25px', height: '25px', color: '#919293', marginRight: '10px', strokeWidth: '1.7' }} />}
                         title={attestato.nome}
                         rightIcon={<IconTrash style={{ width: '25px', height: '25px', color: '#919293', strokeWidth: '1.7' }} />}
+                        editable={isEditing}
                         onClick={!isEditing ? () => router.push(`/documenti/${attestato.id}`) : undefined}
                         onRightIconClick={(e) => { e?.stopPropagation?.(); handleDelete('attestato', attestato.id); }}
                       />

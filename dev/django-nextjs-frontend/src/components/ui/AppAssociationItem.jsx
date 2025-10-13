@@ -1,7 +1,7 @@
 "use client";
 
-import { useMemo } from "react";
-import { Group, Box, Text, ActionIcon, useMantineTheme, rem } from "@mantine/core";
+import React, { useMemo, useState } from "react";
+import { Group, Box, Text, ActionIcon, useMantineTheme, rem, useMantineColorScheme } from "@mantine/core";
 import AppPaper from "@/components/ui/AppPaper";
 import RequireRole from "../RequireRole";
 
@@ -16,6 +16,7 @@ export default function AppAssociationItem({
   leftText,
   title,
   rightIcon,
+  editable = true,
   onClick,
   onRightIconClick,
   disabled,
@@ -23,7 +24,11 @@ export default function AppAssociationItem({
   style,
 }) {
   const theme = useMantineTheme();
+  const { colorScheme } = useMantineColorScheme();
+  const isDark = colorScheme === 'dark';
   const hasLeftText = useMemo(() => typeof leftText === "string" && leftText.length > 0, [leftText]);
+  const [isIconHovered, setIsIconHovered] = useState(false);
+  const hoverBg = isDark ? 'rgba(255, 255, 255, 0.012)' : 'rgba(23,188,106,0.06)';
 
   return (
     <AppPaper
@@ -85,10 +90,12 @@ export default function AppAssociationItem({
 
         {/* right area: fixed width so it doesn't affect title sizing */}
         <Box style={{ width: rem(48), display: 'flex', alignItems: 'center', justifyContent: 'center', marginRight: '0px' }}>
-          {rightIcon && (
+          {rightIcon && editable ? (
             <RequireRole allowedRoles={['STAFF']}>
             <ActionIcon
               size={35}
+              onMouseEnter={() => setIsIconHovered(true)}
+              onMouseLeave={() => setIsIconHovered(false)}
               style={{
                 padding: 0,
                 margin: 0,
@@ -97,6 +104,8 @@ export default function AppAssociationItem({
                 justifyContent: 'center',
                 minWidth: 'unset',
                 lineHeight: 1,
+                transition: 'background-color 120ms ease, transform 80ms ease',
+                backgroundColor: isIconHovered ? hoverBg : 'transparent'
               }}
               variant="subtle"
               onClick={(e) => {
@@ -106,10 +115,16 @@ export default function AppAssociationItem({
               aria-label="azione elemento"
               disabled={disabled}
             >
-              {rightIcon}
+              {React.isValidElement(rightIcon) ? 
+                React.cloneElement(rightIcon, {
+                  size: rightIcon.props?.size ?? 18,
+                  color: isIconHovered ? '#ef4444' : (rightIcon.props?.color ?? '#919293'),
+                  stroke: rightIcon.props?.stroke ?? 1.7,
+                  style: { ...(rightIcon.props?.style || {}), color: isIconHovered ? '#ef4444' : rightIcon.props?.style?.color }
+                }) : rightIcon}
             </ActionIcon>
             </RequireRole>
-          )}
+          ) : null}
         </Box>
       </Group>
     </AppPaper>
