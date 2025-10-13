@@ -10,8 +10,8 @@
 
 GESTRI è un gestionale per la tracciabilità e la gestione dei rifiuti industriali. Il progetto è composto da due parti principali:
 
-- `django-nextjs-backend-api`: backend REST API (Django, Python). Gestisce il modello dati, autenticazione, API per utenti, mezzi, rimorchi, documenti e attività.
-- `django-nextjs-frontend`: frontend moderno (Next.js + React). Interfaccia utente, autenticazione e integrazione con le API del backend.
+- `django-nextjs-backend-api`: backend REST API (Django, Python).
+- `django-nextjs-frontend`: frontend moderno (Next.js + React).
 
 Obiettivo: fornire un'app web completa per la gestione operativa e amministrativa del ciclo dei rifiuti: upload documenti, anagrafiche mezzi/utenti e workflow delle attività.
 
@@ -23,17 +23,16 @@ Obiettivo: fornire un'app web completa per la gestione operativa e amministrativ
 
   - Python 3.11+
   - Django (project: `gestri`)
-  - SQLite (sviluppo, `dev/django-nextjs-backend-api/src/db.sqlite3`)
+  - SQLite (sviluppo: `dev/django-nextjs-backend-api/src/db.sqlite3`)
   - Dipendenze: `dev/django-nextjs-backend-api/requirements.txt`
 
 - Frontend
 
   - Node.js (LTS consigliato)
   - Next.js + React
-  - Tailwind / CSS Modules
 
 - Tooling
-  - `rav` (script wrapper) per comandi utili (es. `rav run dev`, `rav run test`)
+  - `rav` (wrapper per comandi: `rav run server`, `rav run test`, ecc.)
 
 ---
 
@@ -45,107 +44,244 @@ GESTRI-Gestionale-Rifiuti-Industriali/
 │   ├── django-nextjs-backend-api/
 │   │   └── src/                 # Django app (manage.py, app folders, media/, db)
 │   └── django-nextjs-frontend/   # Next.js app (src/, public/, package.json)
-├── Tesina - LaTeX/               # Materiale di tesi e immagini
-├── README.md                     # Questo file
-└── ...
+├── Tesina - LaTeX/
+└── README.md
 ```
-
-Per dettagli esplora `dev/django-nextjs-backend-api/src` e `dev/django-nextjs-frontend`.
 
 ---
 
-## ⚙️ Installazione (TUTTI i comandi)
+## Installazione: panoramica
 
-Di seguito trovi una sezione unica con tutti i comandi necessari per mettere in piedi l'ambiente di sviluppo.
+Di seguito trovi blocchi di comandi separati, pronti da copiare e incollare, organizzati per backend/frontend e per sistema operativo (macOS zsh / Windows PowerShell). Ogni blocco ha una brevissima descrizione sopra e sotto il codice.
 
-### macOS (zsh) — INIZIO INSTALLAZIONE
+---
 
-Esegui i comandi in questa sequenza nel terminale (zsh):
+## Backend — macOS (zsh)
+
+Descrizione: clona il repo, crea e attiva il virtualenv, installa dipendenze e applica le migrazioni.
 
 ```bash
-# 1) Clona il repository e vai nella cartella dev
+# Clona il repository e vai nella cartella del backend
 git clone https://github.com/davideronchini/GESTRI-Gestionale-Rifiuti-Industriali.git
-cd GESTRI-Gestionale-Rifiuti-Industriali/dev
+cd GESTRI-Gestionale-Rifiuti-Industriali/dev/django-nextjs-backend-api/src
 
-# 2) Prerequisiti (Homebrew, Python3, Node). Salta i comandi già installati.
-# Installa Homebrew (se non presente)
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-# Installa Python 3.11 e Git
-brew install python@3.11 git
-# Installa Node.js (LTS)
-brew install node
-
-# 3) Backend: crea virtualenv, installa dipendenze e migrazioni
-cd django-nextjs-backend-api/src
+# Crea virtualenv e attivalo
 python3 -m venv .venv
 source .venv/bin/activate
+
+# Aggiorna pip e installa le dipendenze
 python -m pip install --upgrade pip
 pip install -r ../requirements.txt
+
+# Applica migrazioni Django
 python manage.py migrate
-## (Opzionale) crea superuser:
+
+# (Opzionale) crea superuser:
 # python manage.py createsuperuser
-
-# 4) Frontend: installa dipendenze
-cd ../../django-nextjs-frontend
-npm install
-
-# 5) Avvio (opzionale, per sviluppo)
-# Backend
-cd ../django-nextjs-backend-api/src
-source .venv/bin/activate
-python manage.py runserver
-# Frontend (nuova shell)
-cd ../../django-nextjs-frontend
-npm run dev
 ```
 
-### Windows (PowerShell) — INIZIO INSTALLAZIONE
+Eseguiti questi passaggi, il backend è pronto per essere avviato (vedi sezione Esecuzione).
 
-Esegui in PowerShell (esegui come amministratore se necessario):
+---
+
+## Backend — Windows (PowerShell)
+
+Descrizione: passaggi equivalenti per Windows PowerShell.
 
 ```powershell
-# 1) Clona repository
+# Clona repository e vai nella cartella del backend
 git clone https://github.com/davideronchini/GESTRI-Gestionale-Rifiuti-Industriali.git
-cd GESTRI-Gestionale-Rifiuti-Industriali\dev
+cd GESTRI-Gestionale-Rifiuti-Industriali\dev\django-nextjs-backend-api\src
 
-# 2) Prerequisiti: installa Python e Node (se non li hai installati: https://www.python.org/ e https://nodejs.org/)
-
-# 3) Backend: crea virtualenv e installa dipendenze
-cd .\django-nextjs-backend-api\src
+# Crea virtualenv e attiva (PowerShell)
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
+
+# Aggiorna pip e installa le dipendenze
 python -m pip install --upgrade pip
 pip install -r ..\requirements.txt
+
+# Applica migrazioni Django
 python manage.py migrate
-# (Opzionale) python manage.py createsuperuser
 
-# 4) Frontend
-cd ..\..\django-nextjs-frontend
-npm install
-
-# 5) Avvio (opzionale)
-# Backend (nuova shell):
-cd ..\django-nextjs-backend-api\src
-.\.venv\Scripts\Activate.ps1
-python manage.py runserver
-# Frontend (nuova shell):
-cd ..\..\django-nextjs-frontend
-npm run dev
+# (Opzionale) crea superuser:
+# python manage.py createsuperuser
 ```
 
-## 🧪 Unit Tests (sezione separata)
+Una volta completato, il backend è pronto per l'esecuzione locale.
 
-Ecco i comandi dedicati esclusivamente all'esecuzione degli unit test per backend e frontend.
+---
 
-- Backend (Django)
+## Frontend — macOS (zsh)
+
+Descrizione: entra nella cartella frontend e installa le dipendenze Node.
+
+```bash
+# Vai nella cartella del frontend
+cd ../../../django-nextjs-frontend
+
+# Installa le dipendenze Node
+npm install
+```
+
+Questo comando prepara il frontend (Next.js) per l'esecuzione.
+
+---
+
+## Frontend — Windows (PowerShell)
+
+Descrizione: equivalente Windows per installare le dipendenze del frontend.
+
+```powershell
+# Vai nella cartella del frontend
+cd ..\..\django-nextjs-frontend
+
+# Installa le dipendenze
+npm install
+```
+
+Dopo l'installazione, il frontend è pronto per essere avviato.
+
+---
+
+## Script utili (macOS)
+
+Descrizione: se vuoi usare lo script di setup fornito, rendilo eseguibile ed eseguilo.
+
+```bash
+# Dalla root del repo
+cd ../../
+chmod +x scripts/setup-macos.sh
+./scripts/setup-macos.sh
+```
+
+Lo script esegue una serie di passaggi automatici per creare virtualenv e installare dipendenze.
+
+---
+
+## Script utili (Windows PowerShell)
+
+Descrizione: esegui lo script PowerShell di setup (se fornito) dopo aver impostato la policy di esecuzione.
+
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+.\scripts\setup-windows.ps1
+```
+
+Questo script automatizza la preparazione dell'ambiente su Windows.
+
+---
+
+## 🧾 Test (blocchi separati)
+
+Descrizione: comandi per eseguire i test backend e frontend.
+
+### Backend — esegui test (macOS / Linux)
 
 ```bash
 cd dev/django-nextjs-backend-api/src
 # attiva virtualenv
-source .venv/bin/activate   # macOS / Linux
+source .venv/bin/activate
+# Esegui i test (usa rav se disponibile)
+rav run test || python manage.py test
 ```
 
-Note:
+### Backend — esegui test (Windows PowerShell)
 
-- `rav run test` è un wrapper presente nel repo, in alternativa puoi usare `python manage.py test`.
+```powershell
+cd dev\django-nextjs-backend-api\src
+.\.venv\Scripts\Activate.ps1
+rav run test || python manage.py test
+```
 
+### Frontend — esegui test (macOS / Windows)
+
+```bash
+cd dev/django-nextjs-frontend
+npm test
+```
+
+---
+
+## 🔍 Note su dipendenze
+
+Se non hai già installato Python/Node o Homebrew su macOS, segui i comandi di sistema appropriati (sono riportati nello script di setup fornito). Assicurati di usare Python 3.11+ come indicato nella panoramica del progetto.
+
+---
+
+## Esecuzione (sviluppo)
+
+Descrizione: per il corretto funzionamento locale, sia il backend che il frontend devono essere in esecuzione contemporaneamente. Questa sezione presume che l'installazione sia stata completata seguendo le istruzioni sopra.
+
+### Backend — avviare con rav (macOS / Linux)
+
+Descrizione: attiva il virtualenv e usa il comando `rav` definito in `rav.yaml` per avviare il server o eseguire i test.
+
+```bash
+cd dev/django-nextjs-backend-api/src
+source .venv/bin/activate
+
+# Avvia il server (usa il comando definito in rav.yaml)
+rav run server
+
+# Esegui i test
+rav run test
+```
+
+Se `rav` non è disponibile, puoi avviare manualmente con:
+
+```bash
+python manage.py runserver
+```
+
+### Backend — avviare con rav (Windows PowerShell)
+
+```powershell
+cd dev\django-nextjs-backend-api\src
+.\.venv\Scripts\Activate.ps1
+
+# Avvia il server
+rav run server
+
+# Esegui i test
+rav run test
+```
+
+Nota: su PowerShell i comandi `rav` rimangono gli stessi se lo script è eseguibile sulla tua macchina.
+
+### Frontend — avviare (macOS / Windows)
+
+Descrizione: usa npm (o lo script specifico del progetto) per avviare Next.js.
+
+```bash
+cd dev/django-nextjs-frontend
+npm run dev
+```
+
+Dopo aver avviato entrambi (backend e frontend), apri il browser sulla porta indicata dal frontend (di solito http://localhost:3000) per usare l'app in sviluppo.
+
+---
+
+## Comandi rapidi (ricapitolazione)
+
+Descrizione: alcuni comandi utili riassunti.
+
+```bash
+# Backend: attiva venv e avvia con rav
+cd dev/django-nextjs-backend-api/src && source .venv/bin/activate && rav run server
+
+# Frontend: avvia Next.js
+cd dev/django-nextjs-frontend && npm run dev
+
+# Esegui i test backend
+cd dev/django-nextjs-backend-api/src && source .venv/bin/activate && rav run test
+
+# Esegui i test frontend
+cd dev/django-nextjs-frontend && npm test
+```
+
+---
+
+## Contatti e note finali
+
+Per domande o contributi apri una issue o invia una pull request sul repository GitHub.
