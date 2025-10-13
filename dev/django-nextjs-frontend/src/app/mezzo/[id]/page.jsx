@@ -1,6 +1,7 @@
 "use client"
 
 import { useAuthGuard } from "@/hooks/useAuthGuard";
+import { useAuth } from "@/providers/authProvider";
 import { useState, use, useRef } from "react";
 import useSWR, { mutate } from "swr";
 import { Container, Box, Group, useMantineTheme, Menu, Avatar, useMantineColorScheme, Image } from '@mantine/core';
@@ -291,6 +292,9 @@ export default function MezzoDetailPage({ params }) {
       });
     }
   };
+
+  // Ottieni lo stato d'autenticazione dal provider prima di iniziare le richieste SWR
+  const auth = useAuth();
 
   const { data: mezzo, error, isLoading } = useSWR(
     auth?.isAuthenticated ? `/api/mezzi/${id}` : null,
