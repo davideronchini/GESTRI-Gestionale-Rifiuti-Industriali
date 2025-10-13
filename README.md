@@ -30,7 +30,7 @@ Obiettivo: fornire un'app web completa per la gestione operativa e amministrativ
 
   - Node.js (LTS consigliato)
   - Next.js + React
-  - Tailwind / CSS Modules (se presenti)
+  - Tailwind / CSS Modules
 
 - Tooling
   - `rav` (script wrapper) per comandi utili (es. `rav run dev`, `rav run test`)
@@ -51,16 +51,6 @@ GESTRI-Gestionale-Rifiuti-Industriali/
 ```
 
 Per dettagli esplora `dev/django-nextjs-backend-api/src` e `dev/django-nextjs-frontend`.
-
----
-
-## 🚀 Contratto minimo (inputs / outputs)
-
-- Input: richieste HTTP (JSON), upload file per documenti, credenziali utenti.
-- Output: API JSON, pagine React, file media in `dev/django-nextjs-backend-api/src/media/`.
-- Error modes: validazioni Django, 4xx/5xx sulle API, errori di autenticazione.
-
-Edge cases: database vuoto, upload mancanti o troppo grandi, permessi mancanti.
 
 ---
 
