@@ -1,9 +1,9 @@
 # 🦺 GESTRI — Gestionale Rifiuti Industriali
 **`Django + Next.js Fullstack App`**
 
-[![Python](https://img.shields.io/badge/python-3.11%2B-blue)](https://www.python.org/) 
+[![Python](https://img.shields.io/badge/python-3.13.7%2B-blue)](https://www.python.org/) 
 [![Django](https://img.shields.io/badge/framework-Django-green)](https://www.djangoproject.com/) 
-[![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=node.js&logoColor=white)](https://nodejs.org/)
+[![Node.js](https://img.shields.io/badge/nodejs-22.19.0%2B-green)](https://nodejs.org/) 
 [![Next.js](https://img.shields.io/badge/framework-Next.js-orange)](https://nextjs.org/)  
 [![SQLite](https://img.shields.io/badge/database-SQLite-lightgrey)](https://www.sqlite.org/) 
 [![JavaScript](https://img.shields.io/badge/lang-JavaScript-yellow)](https://developer.mozilla.org/docs/Web/JavaScript) 
