@@ -1,4 +1,3 @@
-```markdown
 # GESTRI — Gestionale Rifiuti Industriali 🗃️
 
 [![Python](https://img.shields.io/badge/python-3.11%2B-blue)](https://www.python.org/)
@@ -237,6 +236,3 @@ npm test
 * **Frontend:** `http://localhost:3000`
 
 GESTRI è ora attivo in modalità sviluppo.
-
-```
-```
