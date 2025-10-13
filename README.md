@@ -55,7 +55,7 @@ GESTRI-Gestionale-Rifiuti-Industriali/
 
 ---
 
-# ⚙️ Installazione e Setup
+## ⚙️ Installazione e Setup
 
 ### 🐍 Backend -- macOS / Linux (zsh)
 
@@ -145,7 +145,7 @@ npm install
 
 ---
 
-# 🚀 Esecuzione
+## 🚀 Esecuzione
 
 ### 🐍 Backend -- macOS / Linux (zsh)
 
@@ -192,9 +192,9 @@ Apri il browser su:
 
 ---
 
-# 🧪 Test
+## 🧪 Test
 
-## 🐍 Backend
+### 🐍 Backend
 
 ```bash
 cd /path/to/GESTRI-Gestionale-Rifiuti-Industriali/dev/django-nextjs-backend-api
@@ -203,7 +203,7 @@ cd src
 rav run test || python manage.py test
 ```
 
-## 🌐 Frontend
+### 🌐 Frontend
 
 ```bash
 cd /path/to/GESTRI-Gestionale-Rifiuti-Industriali/dev/django-nextjs-frontend
@@ -212,7 +212,7 @@ npm test
 
 ---
 
-# 🔗 Collegamenti utili (sviluppo)
+## 🔗 Collegamenti utili (sviluppo)
 
 * **Backend (base URL):** [http://127.0.0.1:8001](http://127.0.0.1:8001)
 * **Pannello Admin:** [http://127.0.0.1:8000/admin](http://127.0.0.1:8000/admin)
@@ -221,7 +221,7 @@ npm test
 
 ---
 
-# 📎 Note finali
+## 📎 Note finali
 
 * Assicurati che **Python 3.11+** e **Node.js LTS** siano installati e accessibili dal terminale.
 * Installa sempre i **requirements Python** prima di eseguire i comandi del backend.
