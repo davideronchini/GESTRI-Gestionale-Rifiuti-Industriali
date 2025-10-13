@@ -51,6 +51,8 @@ INSTALLED_APPS = [
     'rimorchio',
     'mezzo_rimorchio',
     'utente_attivita',
+    # automatically invokes delete method on FileField when you remove model
+    'django_cleanup.apps.CleanupConfig',
 ]
 
 MIDDLEWARE = [
