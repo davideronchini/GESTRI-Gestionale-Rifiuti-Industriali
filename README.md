@@ -23,7 +23,8 @@ Il progetto è composto da due parti principali:
 
 L’obiettivo è fornire un’applicazione completa per la gestione del ciclo dei rifiuti: upload documenti, anagrafiche, mezzi, utenti e workflow operativi.
 
-La **tesina** in formato PDF offre una sintesi discorsiva della progettazione del sistema: descrive i requisiti funzionali, l'architettura, le principali scelte tecnologiche e i diagrammi chiave. Puoi consultarla o scaricarla qui: [Scarica la tesina (PDF)](./Tesina%20-%20LaTeX/tesina.pdf)
+La **tesina** in formato PDF offre una sintesi discorsiva della progettazione del sistema: descrive i requisiti funzionali, l'architettura, le principali scelte tecnologiche e i diagrammi chiave. Puoi consultarla o scaricarla qui: 
+[Scarica la tesina (PDF)](./Tesina%20-%20LaTeX/tesina.pdf)
 
 ---
 
