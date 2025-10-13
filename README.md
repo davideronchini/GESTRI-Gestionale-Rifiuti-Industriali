@@ -56,9 +56,7 @@ Per dettagli esplora `dev/django-nextjs-backend-api/src` e `dev/django-nextjs-fr
 
 ## ⚙️ Installazione (TUTTI i comandi)
 
-Di seguito trovi una sezione unica con tutti i comandi necessari per mettere in piedi l'ambiente di sviluppo. Ogni blocco è marcato con INIZIO / FINE in modo che sia immediato capire dove inizia e dove finisce il processo di installazione.
-
-Nota: sono inclusi script pronti in `scripts/` per macOS e Windows. Non sono inclusi Docker né file LICENSE.
+Di seguito trovi una sezione unica con tutti i comandi necessari per mettere in piedi l'ambiente di sviluppo.
 
 ### macOS (zsh) — INIZIO INSTALLAZIONE
 
@@ -99,15 +97,7 @@ python manage.py runserver
 # Frontend (nuova shell)
 cd ../../django-nextjs-frontend
 npm run dev
-
-# 6) Script utile (esegui da root del repo):
-# rendi eseguibile e lancia lo script di setup
-cd ../../
-chmod +x scripts/setup-macos.sh
-./scripts/setup-macos.sh
 ```
-
-### macOS (zsh) — FINE INSTALLAZIONE
 
 ### Windows (PowerShell) — INIZIO INSTALLAZIONE
 
@@ -141,36 +131,7 @@ python manage.py runserver
 # Frontend (nuova shell):
 cd ..\..\django-nextjs-frontend
 npm run dev
-
-# 6) Script utile (esegui da repo root PowerShell):
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-.\scripts\setup-windows.ps1
 ```
-
-### Windows (PowerShell) — FINE INSTALLAZIONE
-
----
-
-## 🧾 Script forniti
-
-- `scripts/setup-macos.sh` — script zsh che automatizza la creazione del virtualenv, installa le dipendenze Python e Node, e mostra come avviare backend/frontend.
-- `scripts/setup-windows.ps1` — script PowerShell equivalente per Windows.
-
-Puoi eseguire lo script macOS con:
-
-```bash
-chmod +x scripts/setup-macos.sh
-./scripts/setup-macos.sh
-```
-
-E lo script PowerShell con (da PowerShell come amministratore se necessario):
-
-```powershell
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-.\scripts\setup-windows.ps1
-```
-
----
 
 ## 🧪 Unit Tests (sezione separata)
 
@@ -182,41 +143,9 @@ Ecco i comandi dedicati esclusivamente all'esecuzione degli unit test per backen
 cd dev/django-nextjs-backend-api/src
 # attiva virtualenv
 source .venv/bin/activate   # macOS / Linux
-# oppure
-.\.venv\Scripts\Activate.ps1  # PowerShell su Windows
-rav run test || python manage.py test
-```
-
-- Frontend (Next.js)
-
-```bash
-cd dev/django-nextjs-frontend
-npm test
 ```
 
 Note:
 
-- `rav run test` è un wrapper presente nel repo se configurato; altrimenti usa `python manage.py test`.
-- Se non hai ancora creato dati di test o fixtures, alcuni test possono fallire: assicurati di eseguire le migrazioni.
-
----
-
----
-
-## 🔍 Test & utilità
-
-- Backend tests
-
-```bash
-cd dev/django-nextjs-backend-api/src
-# con virtualenv attivo
-rav run test || python manage.py test
-```
-
-- Frontend tests
-
-```bash
-cd dev/django-nextjs-frontend
-npm test
-```
+- `rav run test` è un wrapper presente nel repo, in alternativa puoi usare `python manage.py test`.
 
