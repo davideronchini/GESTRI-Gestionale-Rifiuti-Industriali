@@ -147,23 +147,38 @@ npm install
 
 ## 🚀 Esecuzione
 
-### 🐍 Backend -- Windows (PowerShell) / macOS / Linux (zsh)
+### 🐍 Backend -- Windows (PowerShell, Cmd) / macOS / Linux (zsh)
 
 Vai nella cartella in cui hai clonato il progetto. Clicca il tasto desto e selzione 'Apri nel terminale'.
 ```bash
 # Attiva l’ambiente virtuale e avvia il server
 cd GESTRI-Gestionale-Rifiuti-Industriali/dev/django-nextjs-backend-api
+```
+```bash
+# Se non esiste il file e on funziona il comando successivo
+python -m venv venv
+```
+```bash
+# Per Windows (PowerShell)
+venv\Scripts\Activate.ps1
+```
+```bash
+# Per Windows (Cmd)
+venv\Scripts\activate.bat
+```
+```bash
+# Per macOS / Linux (zsh)
 source .venv/bin/activate
-
+```
+```bash
 # Avvio con rav (se configurato)
 rav run server
-
+```
+```bash
 # Oppure avvio manuale (porta 8001)
 cd src
 python3 manage.py runserver 127.0.0.1:8001
 ```
-
----
 
 ### 🌐 Frontend -- macOS / Windows
 
