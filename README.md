@@ -74,43 +74,34 @@ GESTRI-Gestionale-Rifiuti-Industriali/
 
 ### 🐍 Backend -- macOS / Linux (zsh)
 
+### 🐍 Backend -- Windows (PowerShell)
+
 ```bash
 # Verifica versione di Python
 python3 --version
-# Installa Python 3.13.7.11 se non presente
+```
+```bash
+# Installa Python >= 3.13.7.11 se non presente
 winget install Python.Python.3.14
-
-# Vai sulla cartella in cui desideri salvare il progetto.
-# Tasto destro: 'Apri nel terminale' e incolla
-# Clona il repository
-git clone https://github.com/davideronchini/GESTRI-Gestionale-Rifiuti-Industriali.git
-
-# Aggiorna pip e installa i requirements
-python -m pip install --upgrade pip
-
-cd GESTRI-Gestionale-Rifiuti-Industriali/dev/django-nextjs-backend-api
-
-python -m pip install -r requirements.txt
 ```
 
-### 🐍 Backend -- Windows (PowerShell)
-
-```powershell
-# Verifica versione di Python
-if (Get-Command python -ErrorAction SilentlyContinue) {
-  python3 --version
-} else {
-  # Installa Python 3.13.7 con winget
-  winget install -e --id Python.Python.3.13.7
-}
-
+Vai sulla cartella in cui desideri salvare il progetto.
+Tasto destro: 'Apri nel terminale' e incolla
+```bash
 # Clona il repository
 git clone https://github.com/davideronchini/GESTRI-Gestionale-Rifiuti-Industriali.git
-cd GESTRI-Gestionale-Rifiuti-Industriali\dev\django-nextjs-backend-api\src
-
+```
+```bash
 # Aggiorna pip e installa i requirements
-python3 -m pip install --upgrade pip
-python3 -m pip install -r ../requirements.txt
+python -m pip install --upgrade pip
+```
+```bash
+# Spostati nella cartella django-nextjs-backend-api
+cd GESTRI-Gestionale-Rifiuti-Industriali/dev/django-nextjs-backend-api
+```
+```bash
+# Installa i requisiti del progetto
+python -m pip install -r requirements.txt
 ```
 
 ### 🌐 Frontend -- macOS / Linux (zsh)
