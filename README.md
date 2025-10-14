@@ -52,21 +52,20 @@ Puoi consultarla o scaricarla qui: [Tesina (PDF)](./Tesina%20-%20LaTeX/tesina.pd
 
 ## 📁 Struttura del repository
 
-```
-
 GESTRI-Gestionale-Rifiuti-Industriali/
 ├── dev/
-│   ├── django-nextjs-backend-api/
-│   │   ├── src/
-│   │   └── requirements.txt
-│   └── django-nextjs-frontend/
-│       ├── src/
-│       ├── public/
-│       └── package.json
+│ ├── django-nextjs-backend-api/
+│ │ ├── src/
+│ │ └── requirements.txt
+│ └── django-nextjs-frontend/
+│ ├── src/
+│ ├── public/
+│ └── package.json
 ├── Tesina - LaTeX/
 └── README.md
 
-```
+yaml
+Copia codice
 
 ---
 
@@ -74,27 +73,54 @@ GESTRI-Gestionale-Rifiuti-Industriali/
 
 ### 🐍 Backend -- macOS / Linux (zsh)
 
-### 🐍 Backend -- Windows (PowerShell)
-
 ```bash
 # Verifica versione di Python
 python3 --version
 ```
+
 ```bash
-# Installa Python >= 3.13.7.11 <= 3.14 (non ancora compatibile) se non presente
-winget install Python.Python.3.13
+# Installa Python >= 3.13.7 <= 3.14 (non ancora compatibile) se non presente
+sudo apt install python3 (Linux)
+brew install python@3.13 (macOS)
 ```
 
-Vai sulla cartella in cui desideri salvare il progetto.
-Tasto destro: 'Apri nel terminale' e incolla
 ```bash
 # Clona il repository
 git clone https://github.com/davideronchini/GESTRI-Gestionale-Rifiuti-Industriali.git
 ```
+
+```bash
+# Aggiorna pip e installa i requirements
+python3 -m pip install --upgrade pip
+```
+
+```bash
+# Spostati nella cartella django-nextjs-backend-api
+cd GESTRI-Gestionale-Rifiuti-Industriali/dev/django-nextjs-backend-api
+```
+
+### 🐍 Backend -- Windows (PowerShell)
+
+```bash
+# Verifica versione di Python
+python --version
+```
+
+```bash
+# Installa Python >= 3.13.7 <= 3.14 (non ancora compatibile) se non presente
+winget install Python.Python.3.13
+```
+
+```bash
+# Clona il repository
+git clone https://github.com/davideronchini/GESTRI-Gestionale-Rifiuti-Industriali.git
+```
+
 ```bash
 # Aggiorna pip e installa i requirements
 python -m pip install --upgrade pip
 ```
+
 ```bash
 # Spostati nella cartella django-nextjs-backend-api
 cd GESTRI-Gestionale-Rifiuti-Industriali/dev/django-nextjs-backend-api
@@ -107,17 +133,24 @@ cd GESTRI-Gestionale-Rifiuti-Industriali/dev/django-nextjs-backend-api
 node --version
 npm --version
 ```
+
 ```bash
-# Installa Node.js LTS
-brew install node (macOS)
+# Installa Node.js LTS (per macOS)
+brew install node
 ```
+
 ```bash
+# Installa Node.js LTS (per Linux)
 curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
 sudo apt-get install -y nodejs
 ```
+
 ```bash
 # Vai nella cartella frontend e installa le dipendenze
 cd GESTRI-Gestionale-Rifiuti-Industriali/dev/django-nextjs-frontend
+```
+
+```bash
 npm install
 ```
 
@@ -128,94 +161,109 @@ npm install
 node --version
 npm --version
 ```
+
 ```powershell
 # Installa Node.js LTS con winget
 winget install OpenJS.NodeJS.LTS
 ```
+
 ```powershell
 # Vai nella cartella frontend e installa le dipendenze
 cd GESTRI-Gestionale-Rifiuti-Industriali\dev\django-nextjs-frontend
+```
+
+```powershell
 npm install
 ```
+
 ---
 
 ## 🚀 Esecuzione
 
 ### 🐍 Backend -- Windows (PowerShell, Cmd) / macOS / Linux (zsh)
+Apri un terminale nella cartella del progetto e digita:
 
-Vai nella cartella in cui hai clonato il progetto. Clicca il tasto desto e selzione 'Apri nel terminale'.
 ```bash
 # Attiva l’ambiente virtuale e avvia il server
 cd GESTRI-Gestionale-Rifiuti-Industriali/dev/django-nextjs-backend-api
 ```
+
 ```bash
-# Se non esiste il file e on funziona il comando successivo
+# Se non esiste il file e non funziona il comando successivo
 python -m venv venv
 ```
-```bash
+
+```powershell
 # Per Windows (PowerShell)
 venv\Scripts\Activate.ps1
 ```
-```bash
+
+```powershell
 # Per Windows (Cmd)
 venv\Scripts\activate.bat
 ```
+
 ```bash
 # Per macOS / Linux (zsh)
-source .venv/bin/activate
+source venv/bin/activate
 ```
+
 ```bash
 # Installa i requisiti necessari a Django
 python -m pip install -r requirements.txt
 ```
+
 ```bash
 # Avvio con rav (se configurato)
 rav run server
 ```
+
 ```bash
 # Oppure avvio manuale (porta 8001)
 cd src
 python manage.py runserver 127.0.0.1:8001
 ```
 
-### 🌐 Frontend -- macOS / Windows
+### 🌐 Frontend -- macOS / Windows / Linux
 
 ```bash
 # Avvia l’applicazione Next.js in modalità sviluppo
 cd GESTRI-Gestionale-Rifiuti-Industriali/dev/django-nextjs-frontend
+```
+
+```bash
 npm run dev
 ```
 
 Apri il browser su:
-👉 [http://localhost:3000](http://localhost:3000)
+👉 http://localhost:3000
 
 ---
 
 ## 🧪 Test
-
 ### 🐍 Backend
+Apri un terminale nella directory del backend:
 
-Vai nella cartella in cui hai clonato la repository. Tasto desto: 'Apri nel terminale'.
 ```bash
 cd GESTRI-Gestionale-Rifiuti-Industriali/dev/django-nextjs-backend-api
-source .venv/bin/activate
-rav run test || cd src python3 manage.py test
 ```
 
----
+```bash
+source venv/bin/activate
+```
+
+```bash
+rav run test || cd src && python3 manage.py test
+```
 
 ## 🔗 Collegamenti utili (sviluppo)
-
-- **Backend (base URL):** [http://127.0.0.1:8001](http://127.0.0.1:8001)
-- **Pannello Admin:** [http://127.0.0.1:8000/admin](http://127.0.0.1:8000/admin)
-- **API Routes:** [http://127.0.0.1:8000/api](http://127.0.0.1:8000/api)
-- **Frontend:** [http://localhost:3000](http://localhost:3000)
-
----
+- Backend (base URL): http://127.0.0.1:8001
+- Pannello Admin: http://127.0.0.1:8000/admin
+- API Routes: http://127.0.0.1:8000/api
+- Frontend: http://localhost:3000
 
 ## 📎 Note finali
-
-- Assicurati che **Python 3.11+** e **Node.js LTS** siano installati e accessibili dal terminale.
-- Installa sempre i **requirements Python** prima di eseguire i comandi del backend.
-- `rav` è opzionale: puoi sempre avviare Django con `python manage.py runserver`.
-- In produzione, si consiglia di sostituire **SQLite** con **PostgreSQL** o **MySQL**.
+- Assicurati che Python 3.11+ e Node.js LTS siano installati e accessibili dal terminale.
+- Installa sempre i requirements Python prima di eseguire i comandi del backend.
+- rav è opzionale: puoi sempre avviare Django con python manage.py runserver.
+- In produzione, si consiglia di sostituire SQLite con PostgreSQL o MySQL.
