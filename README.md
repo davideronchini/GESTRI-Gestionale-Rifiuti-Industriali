@@ -76,25 +76,21 @@ GESTRI-Gestionale-Rifiuti-Industriali/
 
 ```bash
 # Verifica versione di Python
-if command -v python3 >/dev/null 2>&1; then
-  python3 --version
-else
-  # Installa Python 3.13.7.11 se non presente
-  if command -v brew >/dev/null 2>&1; then
-    brew install python@3.13.7
-  else
-    sudo apt update
-    sudo apt install -y python3.13.7 python3.13.7-venv python3-pip
-  fi
-fi
+python3 --version
+# Installa Python 3.13.7.11 se non presente
+winget install Python.Python.3.14
 
+# Vai sulla cartella in cui desideri salvare il progetto.
+# Tasto destro: 'Apri nel terminale' e incolla
 # Clona il repository
 git clone https://github.com/davideronchini/GESTRI-Gestionale-Rifiuti-Industriali.git
-cd GESTRI-Gestionale-Rifiuti-Industriali/dev/django-nextjs-backend-api/src
 
 # Aggiorna pip e installa i requirements
-python3 -m pip install --upgrade pip
-python3 -m pip install -r ../requirements.txt
+python -m pip install --upgrade pip
+
+cd GESTRI-Gestionale-Rifiuti-Industriali/dev/django-nextjs-backend-api
+
+python -m pip install -r requirements.txt
 ```
 
 ### 🐍 Backend -- Windows (PowerShell)
