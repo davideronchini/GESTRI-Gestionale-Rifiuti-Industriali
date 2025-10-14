@@ -196,10 +196,10 @@ Apri il browser su:
 
 ### 🐍 Backend
 
+Vai nella cartella in cui hai clonato la repository. Tasto desto: 'Apri nel terminale'.
 ```bash
-cd /path/to/GESTRI-Gestionale-Rifiuti-Industriali/dev/django-nextjs-backend-api
+cd GESTRI-Gestionale-Rifiuti-Industriali/dev/django-nextjs-backend-api
 source .venv/bin/activate
-cd src
 rav run test || python3 manage.py test
 ```
 
