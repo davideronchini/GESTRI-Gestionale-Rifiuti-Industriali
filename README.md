@@ -273,7 +273,8 @@ rav run test || cd src && python manage.py test
 - Frontend: http://localhost:3000
 
 ## 📎 Note finali
-- Assicurati che Python 3.11+ e Node.js LTS siano installati e accessibili dal terminale.
-- Installa sempre i requirements Python prima di eseguire i comandi del backend.
-- rav è opzionale: puoi sempre avviare Django con python manage.py runserver.
+- Assicurati che le versioni di Python e Node.js LTS siano installati e accessibili dal terminale.
+- Nel caso non funzionino i comandi in cui si usa `python` prova con `python3`.
+- Assicurati di aver installato i requirements (necessari a Django) nell'ambiente `venv` prima di eseguire i comandi del backend.
+- rav è opzionale: puoi sempre avviare Django con `python manage.py runserver`.
 - In produzione, si consiglia di sostituire SQLite con PostgreSQL o MySQL.
