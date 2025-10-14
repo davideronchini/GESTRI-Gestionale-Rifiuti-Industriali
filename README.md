@@ -33,7 +33,7 @@ Puoi consultarla o scaricarla qui: [Tesina (PDF)](./Tesina%20-%20LaTeX/tesina.pd
 
 - **Backend**
 
-  - Python >= 3.13.7
+  - Python >= 3.13.7 <= 3.14 (non ancora compatibile)
   - Django >= 5.2.6
   - SQLite
   - Dipendenze: `dev/django-nextjs-backend-api/requirements.txt`
@@ -81,8 +81,8 @@ GESTRI-Gestionale-Rifiuti-Industriali/
 python3 --version
 ```
 ```bash
-# Installa Python >= 3.13.7.11 se non presente
-winget install Python.Python.3.14
+# Installa Python >= 3.13.7.11 <= 3.14 (non ancora compatibile) se non presente
+winget install Python.Python.3.13
 ```
 
 Vai sulla cartella in cui desideri salvare il progetto.
@@ -99,30 +99,25 @@ python -m pip install --upgrade pip
 # Spostati nella cartella django-nextjs-backend-api
 cd GESTRI-Gestionale-Rifiuti-Industriali/dev/django-nextjs-backend-api
 ```
-```bash
-# Installa i requisiti del progetto
-python -m pip install -r requirements.txt
-```
 
 ### 🌐 Frontend -- macOS / Linux (zsh)
 
 ```bash
 # Verifica versione di Node.js
-if command -v node >/dev/null 2>&1; then
-  node --version
-  npm --version
-else
-  # Installa Node.js LTS
-  if command -v brew >/dev/null 2>&1; then
-    brew install node
-  else
-    curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
-    sudo apt-get install -y nodejs
-  fi
-fi
-
+node --version
+npm --version
+```
+```bash
+# Installa Node.js LTS
+brew install node (macOS)
+```
+```bash
+curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+sudo apt-get install -y nodejs
+```
+```bash
 # Vai nella cartella frontend e installa le dipendenze
-cd /path/to/GESTRI-Gestionale-Rifiuti-Industriali/dev/django-nextjs-frontend
+cd GESTRI-Gestionale-Rifiuti-Industriali/dev/django-nextjs-frontend
 npm install
 ```
 
@@ -130,19 +125,18 @@ npm install
 
 ```powershell
 # Verifica versione di Node.js
-if (Get-Command node -ErrorAction SilentlyContinue) {
-  node --version
-  npm --version
-} else {
-  # Installa Node.js LTS con winget
-  winget install OpenJS.NodeJS.LTS
-}
-
+node --version
+npm --version
+```
+```powershell
+# Installa Node.js LTS con winget
+winget install OpenJS.NodeJS.LTS
+```
+```powershell
 # Vai nella cartella frontend e installa le dipendenze
-cd C:\path\to\GESTRI-Gestionale-Rifiuti-Industriali\dev\django-nextjs-frontend
+cd GESTRI-Gestionale-Rifiuti-Industriali\dev\django-nextjs-frontend
 npm install
 ```
-
 ---
 
 ## 🚀 Esecuzione
@@ -177,14 +171,14 @@ rav run server
 ```bash
 # Oppure avvio manuale (porta 8001)
 cd src
-python3 manage.py runserver 127.0.0.1:8001
+python manage.py runserver 127.0.0.1:8001
 ```
 
 ### 🌐 Frontend -- macOS / Windows
 
 ```bash
 # Avvia l’applicazione Next.js in modalità sviluppo
-cd /path/to/GESTRI-Gestionale-Rifiuti-Industriali/dev/django-nextjs-frontend
+cd GESTRI-Gestionale-Rifiuti-Industriali/dev/django-nextjs-frontend
 npm run dev
 ```
 
@@ -201,14 +195,7 @@ Vai nella cartella in cui hai clonato la repository. Tasto desto: 'Apri nel term
 ```bash
 cd GESTRI-Gestionale-Rifiuti-Industriali/dev/django-nextjs-backend-api
 source .venv/bin/activate
-rav run test || python3 manage.py test
-```
-
-### 🌐 Frontend
-
-```bash
-cd /path/to/GESTRI-Gestionale-Rifiuti-Industriali/dev/django-nextjs-frontend
-npm test
+rav run test || cd src python3 manage.py test
 ```
 
 ---
