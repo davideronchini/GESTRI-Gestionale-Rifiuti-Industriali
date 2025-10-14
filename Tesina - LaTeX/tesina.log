@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.9.26)  14 OCT 2025 16:26
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.9.26)  14 OCT 2025 23:39
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"/Users/tareknaja/Desktop/Uni/Ingegneria del Software/GESTRI-Gestionale-Rifiuti-Industriali/Tesina - LaTeX/tesina.tex"
-(/Users/tareknaja/Desktop/Uni/Ingegneria del Software/GESTRI-Gestionale-Rifiuti-Industriali/Tesina - LaTeX/tesina.tex
+**"/Users/sara/Downloads/GESTRI-Gestionale-Rifiuti-Industriali/Tesina - LaTeX/tesina.tex"
+(/Users/sara/Downloads/GESTRI-Gestionale-Rifiuti-Industriali/Tesina - LaTeX/tesina.tex
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
 (/usr/local/texlive/2025/texmf-dist/tex/latex/base/report.cls
@@ -3642,23 +3642,23 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 <./img/MockupLogin.png, id=1059, 1284.8pt x 835.12pt>
 File: ./img/MockupLogin.png Graphic file (type png)
 <use ./img/MockupLogin.png>
-Package pdftex.def Info: ./img/MockupLogin.png  used on input line 2031.
+Package pdftex.def Info: ./img/MockupLogin.png  used on input line 2032.
 (pdftex.def)             Requested size: 452.9679pt x 294.42444pt.
 <./img/MockupHome.png, id=1060, 1284.8pt x 835.12pt>
 File: ./img/MockupHome.png Graphic file (type png)
 <use ./img/MockupHome.png>
-Package pdftex.def Info: ./img/MockupHome.png  used on input line 2036.
+Package pdftex.def Info: ./img/MockupHome.png  used on input line 2037.
 (pdftex.def)             Requested size: 452.9679pt x 294.42444pt.
 <./img/MockupProfilo.png, id=1061, 1284.8pt x 835.12pt>
 File: ./img/MockupProfilo.png Graphic file (type png)
 <use ./img/MockupProfilo.png>
-Package pdftex.def Info: ./img/MockupProfilo.png  used on input line 2041.
-(pdftex.def)             Requested size: 385.02547pt x 250.25758pt.
+Package pdftex.def Info: ./img/MockupProfilo.png  used on input line 2042.
+(pdftex.def)             Requested size: 452.9679pt x 294.42444pt.
 <./img/MockupAttività.png, id=1062, 1284.8pt x 835.12pt>
 File: ./img/MockupAttività.png Graphic file (type png)
 <use ./img/MockupAttività.png>
-Package pdftex.def Info: ./img/MockupAttività.png  used on input line 2046.
-(pdftex.def)             Requested size: 385.02547pt x 250.25758pt.
+Package pdftex.def Info: ./img/MockupAttività.png  used on input line 2047.
+(pdftex.def)             Requested size: 452.9679pt x 294.42444pt.
 
 
 
@@ -3705,7 +3705,16 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
  [][]|
  []
 
-[84 <./img/MockupProfilo.png> <./img/MockupAttività.png>]
+[84 <./img/MockupProfilo.png> <./img/MockupAttività.png>] (/usr/local/texlive/2025/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2024/09/23 1.10c listings language file
+)
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 2060.
+
+
+LaTeX Font Warning: Font shape `T1/cmtt/bx/n' in size <9> not available
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 2061.
+
+
 
 
 Overfull \hbox (34.71422pt too wide) has occurred while \output is active
@@ -3751,7 +3760,95 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
  [][]|
  []
 
-[86
+[86]
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[][]|  
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+[87]
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[][]|  
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+[88]
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[][]|  
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+[89]
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[][]|  
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+[]
+ []
+
+
+Overfull \hbox (34.71422pt too wide) has occurred while \output is active
+ [][]|
+ []
+
+[90
 
 ] (./tesina.aux)
  ***********
@@ -3765,18 +3862,18 @@ LaTeX Font Warning: Size substitutions with differences
 
  ) 
 Here is how much of TeX's memory you used:
- 70946 strings out of 473190
- 1765543 string characters out of 5715800
- 2490999 words of memory out of 5000000
- 92674 multiletter control sequences out of 15000+600000
- 578416 words of font info for 80 fonts, out of 8000000 for 9000
+ 71736 strings out of 473190
+ 1775336 string characters out of 5715800
+ 2967020 words of memory out of 5000000
+ 93203 multiletter control sequences out of 15000+600000
+ 581341 words of font info for 85 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 89i,12n,120p,875b,1202s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfcc1000.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on tesina.pdf (89 pages, 6953792 bytes).
+ 89i,13n,120p,844b,2930s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfcc1000.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm0500.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt0900.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
+Output written on tesina.pdf (93 pages, 7047819 bytes).
 PDF statistics:
- 1411 PDF objects out of 1440 (max. 8388607)
- 1200 compressed objects within 12 object streams
- 621 named destinations out of 1000 (max. 500000)
+ 1742 PDF objects out of 2073 (max. 8388607)
+ 1519 compressed objects within 16 object streams
+ 874 named destinations out of 1000 (max. 500000)
  798 words of extra memory for PDF output out of 10000 (max. 10000000)
 

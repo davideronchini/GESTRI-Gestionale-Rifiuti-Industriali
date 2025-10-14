@@ -50,7 +50,7 @@
 \contentsline {subsection}{Altre tecnologie utilizzate}{81}{section*.180}%
 \contentsline {section}{Mockup}{82}{section*.182}%
 \contentsline {section}{Verifica e Validazione del Software: Unit Tests}{85}{section*.187}%
-\contentsline {subsection}{Unit Test}{85}{section*.188}%
-\contentsline {subsection}{Test Manuali}{85}{section*.189}%
-\contentsline {section}{Istruzioni per l'Esecuzione in Locale}{86}{section*.190}%
+\contentsline {subsection}{Test Manuali}{85}{section*.188}%
+\contentsline {subsection}{Unit Test}{85}{section*.189}%
+\contentsline {section}{Istruzioni per l'Esecuzione in Locale}{90}{section*.190}%
 \contentsfinish 
