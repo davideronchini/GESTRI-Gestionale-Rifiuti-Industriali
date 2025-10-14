@@ -221,7 +221,7 @@ rav run server
 ```bash
 # Oppure avvio manuale (porta 8001)
 cd src
-python manage.py runserver 127.0.0.1:8001
+python manage.py runserver 127.0.0.1:8001 || python3 manage.py runserver 127.0.0.1:8001
 ```
 
 ### 🌐 Frontend -- macOS / Windows / Linux
@@ -248,12 +248,23 @@ Apri un terminale nella directory del backend:
 cd GESTRI-Gestionale-Rifiuti-Industriali/dev/django-nextjs-backend-api
 ```
 
+```powershell
+# Per Windows (PowerShell)
+venv\Scripts\Activate.ps1
+```
+
+```powershell
+# Per Windows (Cmd)
+venv\Scripts\activate.bat
+```
+
 ```bash
+# Per macOS / Linux (zsh)
 source venv/bin/activate
 ```
 
 ```bash
-rav run test || cd src && python3 manage.py test
+rav run test || cd src && python manage.py test
 ```
 
 ## 🔗 Collegamenti utili (sviluppo)
