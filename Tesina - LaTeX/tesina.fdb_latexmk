@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1760431730.25229 "/Users/tareknaja/Desktop/Uni/Ingegneria del Software/GESTRI-Gestionale-Rifiuti-Industriali/Tesina - LaTeX/tesina.tex" "tesina.pdf" "tesina" 1760431733.06236 0
-  "/Users/tareknaja/Desktop/Uni/Ingegneria del Software/GESTRI-Gestionale-Rifiuti-Industriali/Tesina - LaTeX/tesina.tex" 1760431730.14532 110823 3d8923f619bb8613d1dbe6b5b9f99da3 ""
+["pdflatex"] 1760452013.63669 "/Users/tareknaja/Desktop/Uni/Ingegneria del Software/GESTRI-Gestionale-Rifiuti-Industriali/Tesina - LaTeX/tesina.tex" "tesina.pdf" "tesina" 1760452021.72584 0
+  "/Users/tareknaja/Desktop/Uni/Ingegneria del Software/GESTRI-Gestionale-Rifiuti-Industriali/Tesina - LaTeX/tesina.tex" 1760452013.43398 111264 eda891b4a99bd6fa603191ee73090594 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -368,12 +368,16 @@
   "img/GestioneMezzo.png" 1759484870.78984 52223 ac6c10352f8c5859c9b42bc490018a75 ""
   "img/GestioneUtente.png" 1757177322.15553 69186 eb832c99136dc8f53497f47fedb638bb ""
   "img/MatriceMapping.png" 1759484870.79007 37213 bba6acb80148b635985ba24f6cecff79 ""
+  "img/MockupAttività.png" 1760435066.95219 308143 890423294d976d51dee616f77d2e47bc ""
+  "img/MockupHome.png" 1760435066.95443 659171 046c97237cae7510e1f7f2567c79a5ac ""
+  "img/MockupLogin.png" 1760435066.963 2801959 1c6024dc1c983a7777407b3a30f61f4f ""
+  "img/MockupProfilo.png" 1760435066.96579 973131 c4c59fb5c104b911b15947b643eb173e ""
   "img/RequisitiFunzionali.png" 1759484870.79047 23814 539267b6345754803c8e57c36df8b379 ""
   "img/RequisitiNonFunzionali.png" 1759484870.79094 15313 156405093746ac9aee199b1ec56669e8 ""
   "img/univpm_logo.png" 1755853539.98071 572038 2c65ef26c2d0ad88311d8e9b99461627 ""
-  "tesina.aux" 1760431732.92363 23583 22fe5ff8a08220e6d626f9909937b30b "pdflatex"
-  "tesina.tex" 1760431730.14532 110823 3d8923f619bb8613d1dbe6b5b9f99da3 ""
-  "tesina.toc" 1760431732.92803 3731 36252ab2da0ce2e48033b4746819be26 "pdflatex"
+  "tesina.aux" 1760452021.57743 23583 8aabd3cd70d5b95d4ba2c1b748e7543b "pdflatex"
+  "tesina.tex" 1760452013.43398 111264 eda891b4a99bd6fa603191ee73090594 ""
+  "tesina.toc" 1760452021.58197 3731 4058538dfbf1ea1f9df4f7266dfc20a3 "pdflatex"
   (generated)
   "tesina.aux"
   "tesina.log"
