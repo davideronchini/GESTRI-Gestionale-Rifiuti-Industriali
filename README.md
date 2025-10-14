@@ -165,6 +165,10 @@ venv\Scripts\activate.bat
 source .venv/bin/activate
 ```
 ```bash
+# Installa i requisiti necessari a Django
+python -m pip install -r requirements.txt
+```
+```bash
 # Avvio con rav (se configurato)
 rav run server
 ```
