@@ -147,27 +147,13 @@ npm install
 
 ## 🚀 Esecuzione
 
-### 🐍 Backend -- macOS / Linux (zsh)
+### 🐍 Backend -- Windows (PowerShell) / macOS / Linux (zsh)
 
+Vai nella cartella in cui hai clonato il progetto. Clicca il tasto desto e selzione 'Apri nel terminale'.
 ```bash
 # Attiva l’ambiente virtuale e avvia il server
-cd /path/to/GESTRI-Gestionale-Rifiuti-Industriali/dev/django-nextjs-backend-api
+cd GESTRI-Gestionale-Rifiuti-Industriali/dev/django-nextjs-backend-api
 source .venv/bin/activate
-
-# Avvio con rav (se configurato)
-rav run server
-
-# Oppure avvio manuale (porta 8001)
-cd src
-python3 manage.py runserver 127.0.0.1:8001
-```
-
-### 🐍 Backend -- Windows (PowerShell)
-
-```powershell
-# Attiva l’ambiente virtuale e avvia il server
-cd C:\path\to\GESTRI-Gestionale-Rifiuti-Industriali\dev\django-nextjs-backend-api
-.\.venv\Scripts\Activate.ps1
 
 # Avvio con rav (se configurato)
 rav run server
@@ -227,7 +213,3 @@ npm test
 - Installa sempre i **requirements Python** prima di eseguire i comandi del backend.
 - `rav` è opzionale: puoi sempre avviare Django con `python manage.py runserver`.
 - In produzione, si consiglia di sostituire **SQLite** con **PostgreSQL** o **MySQL**.
-
-```
-
-```
