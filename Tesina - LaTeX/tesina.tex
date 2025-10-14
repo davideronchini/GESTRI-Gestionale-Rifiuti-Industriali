@@ -1245,20 +1245,25 @@ Racchiude la possibilità di creazione, modifica ed eliminazione delle attività
 \hline
 \multicolumn{2}{|c|}{\textbf{Caso d’uso: VisualizzaAttivita}} \\ \hline
 	\textbf{ID} & 23 \\ \hline
-	\textbf{Breve descrizione} & Il Cliente o lo Staff visualizza l’attività selezionata \\ \hline
-	\textbf{Attori primari} & Cliente, Staff \\ \hline
+	\textbf{Breve descrizione} & L'Utente visualizza l’attività selezionata \\ \hline
+	\textbf{Attori primari} & Utente \\ \hline
 	\textbf{Attori secondari} & Nessuno \\ \hline
 	\textbf{Precondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item Il Cliente o lo Staff è autenticato
+    \item L'Utente è autenticato
 \end{enumerate} \\ \hline
 	\textbf{Sequenza degli eventi principale} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item Il caso d’uso inizia quando il Cliente o lo Staff seleziona l’opzione di visualizzazione  dell'attività
+    \item Il caso d’uso inizia quando lo Staff seleziona l’opzione di visualizzazione  dell'attività
     \item \texttt{Extend} \textit{TrovaAttivita}
     \item Lo Staff seleziona un’attività da visualizzare
     \item Il sistema mostra le informazioni sull’attività selezionata
 \end{enumerate} \\ \hline
 	\textbf{Postcondizioni} & Nessuna \\ \hline
-	\textbf{Sequenza degli eventi alternativa} & Nessuna \\ \hline
+\textbf{Sequenza degli eventi alternativa} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item \texttt{If} Il Cliente o l'Operatore, possono selezionare solo le attività a loro associate, o da loro create 
+    \item \texttt{Extend} \textit{TrovaAttivita}
+    \item Lo Staff seleziona un’attività da visualizzare
+    \item Il sistema mostra le informazioni sull’attività selezionata
+\end{enumerate} \\ \hline
 \end{tabular}
 \end{table}
 
@@ -1270,14 +1275,14 @@ Racchiude la possibilità di creazione, modifica ed eliminazione delle attività
 \hline
 \multicolumn{2}{|c|}{\textbf{Caso d’uso: TrovaAttivita}} \\ \hline
 	\textbf{ID} & 24 \\ \hline
-	\textbf{Breve descrizione} & Il Cliente o lo Staff cerca un’attività \\ \hline
-	\textbf{Attori primari} & Cliente, Staff \\ \hline
+	\textbf{Breve descrizione} & L'Utente cerca un’attività \\ \hline
+	\textbf{Attori primari} & Utente \\ \hline
 	\textbf{Attori secondari} & Nessuno \\ \hline
 	\textbf{Precondizioni} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item Il Cliente o lo Staff è autenticato
+    \item L'Utente è autenticato
 \end{enumerate} \\ \hline
 	\textbf{Sequenza degli eventi principale} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-    \item Il caso d’uso inizia quando il Cliente o lo Staff inserisce il singolo critero di ricerca nella barra dedicata 
+    \item Il caso d’uso inizia quando lo Staff inserisce il singolo critero di ricerca nella barra dedicata 
     \item Il sistema esegue la ricerca
     \item \texttt{If} l’attività esiste
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
@@ -1292,9 +1297,26 @@ Racchiude la possibilità di creazione, modifica ed eliminazione delle attività
     \end{enumerate}
 \end{enumerate} \\ \hline
 	\textbf{Postcondizioni} & Nessuna \\ \hline
-	\textbf{Sequenza degli eventi alternativa} & Nessuna \\ \hline
+	\textbf{Sequenza degli eventi alternativa} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+    \item \texttt{If} Il Cliente o l'Operatore inseriscono i criteri di ricerca nella barra dedicata
+    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+       \item \texttt{If} l’attività esiste
+    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+        \item \texttt{For Each} attività trovata
+        \begin{enumerate}[label=\arabic{enumi}.\arabic{enumii}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+            \item Il sistema mostra i risultati dell'attività da lui creata, o a lui associata
+        \end{enumerate}
+    \end{enumerate}
+    \item \texttt{Else}
+    \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
+        \item Il sistema mostra “Nessuna attività trovata”
+    \end{enumerate}
+    \end{enumerate}
+\end{enumerate} \\ \hline
+
 \end{tabular}
 \end{table}
+
 
 \clearpage
 \begin{table}[H]
