@@ -50,22 +50,20 @@ Puoi consultarla o scaricarla qui: [Tesina (PDF)](./Tesina%20-%20LaTeX/tesina.pd
 
 ---
 
+```
 ## 📁 Struttura del repository
-
 GESTRI-Gestionale-Rifiuti-Industriali/
 ├── dev/
-│ ├── django-nextjs-backend-api/
-│ │ ├── src/
-│ │ └── requirements.txt
-│ └── django-nextjs-frontend/
-│ ├── src/
-│ ├── public/
-│ └── package.json
+│   ├── django-nextjs-backend-api/
+│   │   ├── src/
+│   │   └── requirements.txt
+│   └── django-nextjs-frontend/
+│       ├── src/
+│       ├── public/
+│       └── package.json
 ├── Tesina - LaTeX/
 └── README.md
-
-yaml
-Copia codice
+```
 
 ---
 
