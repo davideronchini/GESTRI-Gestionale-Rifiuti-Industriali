@@ -50,7 +50,7 @@ Puoi consultarla o scaricarla qui: [Tesina (PDF)](./Tesina%20-%20LaTeX/tesina.pd
 
 ---
 
-## 📁 Struttura del repository
+## 🗂️ Struttura del repository
 
 ```
 GESTRI-Gestionale-Rifiuti-Industriali/
@@ -66,9 +66,27 @@ GESTRI-Gestionale-Rifiuti-Industriali/
 └── README.md
 ```
 
+### 📂 Percorsi file e come aprire il terminale in una cartella
+
+Una breve nota su come muoversi tra le cartelle e aprire un terminale già posizionato nella directory desiderata:
+
+- Puoi cercare la cartella nel Finder (macOS) o nell'Explorer (Windows). Con il tasto destro sulla cartella seleziona "Apri nel Terminale" / "Apri PowerShell qui" quando disponibile.
+- In macOS puoi trascinare la cartella direttamente nella finestra del terminale: questo inserirà il percorso completo; poi premi Invio per posizionarti lì (usa il comando `cd` se necessario).
+- In alternativa usa il comando cd nel terminale. Esempio: `cd /percorso/alla/cartella`.
+
+Ci sono diverse sezioni nel README dove è importante trovarsi nel percorso corretto prima di eseguire i comandi: presta attenzione al prompt del terminale e alla cartella corrente (puoi usare `pwd` su macOS/Linux o `cd` senza argomenti su Windows per verificarla).
+
 ---
 
 ## ⚙️ Installazione e Setup
+
+Prima di eseguire i comandi qui sotto apri due finestre (o tab) del terminale e posizionati nella cartella in cui vuoi installare l'applicazione. In una finestra eseguirai i comandi per il frontend (installazione e avvio), nell'altra quelli per il backend (installazione e avvio). Assicurati che il prompt di ciascun terminale indichi la cartella corretta prima di lanciare i comandi — questo evita errori legati al percorso.
+
+Di seguito è riportato uno screenshot (macOS) che mostra due terminali affiancati con i comandi di avvio per l'esecuzione locale dell'applicazione.
+
+![Terminali affiancati per frontend e backend](screenshot-terminali.png)
+
+Figura: esempio di due terminali aperti — uno per il frontend e uno per il backend.
 
 ### 🐍 Backend -- macOS / Linux (zsh)
 
@@ -77,11 +95,33 @@ GESTRI-Gestionale-Rifiuti-Industriali/
 python3 --version
 ```
 
+Installa Python >= 3.13.7 <= 3.14 (non ancora compatibile) se non presente nel sistema operativo:
+
+macOS:
+
 ```bash
-# Installa Python >= 3.13.7 <= 3.14 (non ancora compatibile) se non presente
-sudo apt install python3 (Linux)
-brew install python@3.13 (macOS)
+brew install python@3.13
 ```
+
+Linux (Debian/Ubuntu):
+
+```bash
+sudo apt install python3
+```
+
+Assicurati di avere git installato prima di clonare la repository. Verifica con:
+
+```bash
+git --version
+```
+
+Se non è installato, installalo su macOS con Homebrew:
+
+```bash
+brew install git
+```
+
+Oppure segui le istruzioni su https://git-scm.com/downloads.
 
 ```bash
 # Clona il repository
@@ -100,27 +140,42 @@ cd GESTRI-Gestionale-Rifiuti-Industriali/dev/django-nextjs-backend-api
 
 ### 🐍 Backend -- Windows (PowerShell)
 
-```bash
+```powershell
 # Verifica versione di Python
 python --version
 ```
 
-```bash
-# Installa Python >= 3.13.7 <= 3.14 (non ancora compatibile) se non presente
+Installa Python >= 3.13.7 <= 3.14 (non ancora compatibile) se non presente nel sistema operativo:
+
+```powershell
 winget install Python.Python.3.13
 ```
 
-```bash
+Assicurati di avere git installato prima di clonare la repository. Verifica con:
+
+```powershell
+git --version
+```
+
+Se non è installato, installalo su Windows con winget:
+
+```powershell
+winget install --id Git.Git
+```
+
+Oppure segui le istruzioni su https://git-scm.com/downloads.
+
+```powershell
 # Clona il repository
 git clone https://github.com/davideronchini/GESTRI-Gestionale-Rifiuti-Industriali.git
 ```
 
-```bash
+```powershell
 # Aggiorna pip e installa i requirements
 python -m pip install --upgrade pip
 ```
 
-```bash
+```powershell
 # Spostati nella cartella django-nextjs-backend-api
 cd GESTRI-Gestionale-Rifiuti-Industriali/dev/django-nextjs-backend-api
 ```
@@ -180,6 +235,7 @@ npm install
 ## 🚀 Esecuzione
 
 ### 🐍 Backend -- Windows (PowerShell, Cmd) / macOS / Linux (zsh)
+
 Apri un terminale nella cartella del progetto e digita:
 
 ```bash
@@ -187,9 +243,16 @@ Apri un terminale nella cartella del progetto e digita:
 cd GESTRI-Gestionale-Rifiuti-Industriali/dev/django-nextjs-backend-api
 ```
 
-```bash
-# Se non esiste il file e non funziona il comando successivo
+Se il `virtualenv (venv)` non esiste ancora, crealo prima di procedere. Se il comando sotto non funziona assicurati di avere i permessi necessari.
+
+```powershell
+# Windows (PowerShell / CMD)
 python -m venv venv
+```
+
+```bash
+# macOS / Linux (zsh)
+python3 -m venv venv
 ```
 
 ```powershell
@@ -207,20 +270,36 @@ venv\Scripts\activate.bat
 source venv/bin/activate
 ```
 
-```bash
-# Installa i requisiti necessari a Django
+Installa i requisiti necessari a Django (basta farlo una volta, al primo avvio dopo l'installazione - non è necessario dalla seconda esecuzione in avanti)
+
+```powershell
+# Windows (PowerShell / CMD)
 python -m pip install -r requirements.txt
 ```
 
 ```bash
-# Avvio con rav (se configurato)
+# macOS / Linux (zsh)
+python3 -m pip install -r requirements.txt
+```
+
+Se utilizzi lo script `rav` (opzionale), avvia il server con il comando seguente:
+
+```bash
 rav run server
 ```
 
-```bash
-# Oppure avvio manuale (porta 8001)
+Se il comando precedente non funziona (assicurati prima di aver attivato l'ambiente virtuale `venv`), puoi eseguire lo script senza attivare l'ambiente spostandoti nella cartella `src` ed eseguendo i comandi indicati qui sotto. Verifica di trovarti nella cartella corretta con `pwd` (macOS/Linux) o `cd` senza argomenti (Windows).
+
+```powershell
+# Avvio manuale (porta 8001) - Windows (PowerShell / CMD)
 cd src
-python manage.py runserver 127.0.0.1:8001 || python3 manage.py runserver 127.0.0.1:8001
+python manage.py runserver 127.0.0.1:8001
+```
+
+```bash
+# Avvio manuale (porta 8001) - macOS / Linux (zsh)
+cd src
+python3 manage.py runserver 127.0.0.1:8001
 ```
 
 ### 🌐 Frontend -- macOS / Windows / Linux
@@ -240,7 +319,9 @@ Apri il browser su:
 ---
 
 ## 🧪 Test
+
 ### 🐍 Backend
+
 Apri un terminale nella directory del backend:
 
 ```bash
@@ -263,18 +344,47 @@ source venv/bin/activate
 ```
 
 ```bash
-rav run test || cd src && python manage.py test
+rav run test
+```
+
+Se il comando precedente non funziona (assicurati prima di aver attivato l'ambiente virtuale `venv`), puoi eseguire lo script senza attivare l'ambiente spostandoti nella cartella `src` ed eseguendo i comandi indicati qui sotto. Verifica di trovarti nella cartella corretta con `pwd` (macOS/Linux) o `cd` senza argomenti (Windows).
+
+```powershell
+# Per Windows (PowerShell/Cmd)
+cd src && python manage.py test
+```
+
+```bash
+# Per macOS / Linux (zsh)
+cd src && python3 manage.py test
 ```
 
 ## 🔗 Collegamenti utili (sviluppo)
+
 - Backend (base URL): http://127.0.0.1:8001
 - Pannello Admin: http://127.0.0.1:8000/admin
 - API Routes: http://127.0.0.1:8000/api
 - Frontend: http://localhost:3000
 
 ## 📎 Note finali
+
 - Assicurati che le versioni di Python e Node.js LTS siano installati e accessibili dal terminale.
-- Nel caso non funzionino i comandi in cui si usa `python` prova con `python3`.
-- Assicurati di aver installato i requirements (necessari a Django) nell'ambiente `venv` prima di eseguire i comandi del backend.
+- Nel caso non funzionino i comandi in cui si usa `python` prova con `python3` e viceversa.
+- Assicurati di aver installato le dipendenze elencate in `requirements.txt` nel virtual environment `venv` la prima volta che prepari il backend. Esempi:
+
+Windows (PowerShell / CMD):
+
+```powershell
+venv\Scripts\Activate.ps1  # oppure activate.bat su CMD
+python -m pip install -r requirements.txt
+```
+
+macOS / Linux (zsh):
+
+```bash
+source venv/bin/activate
+python3 -m pip install -r requirements.txt
+```
+
 - rav è opzionale: puoi sempre avviare Django con `python manage.py runserver`.
 - In produzione, si consiglia di sostituire SQLite con PostgreSQL o MySQL.
