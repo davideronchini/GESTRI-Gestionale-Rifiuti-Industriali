@@ -321,11 +321,40 @@ export default function Home() {
         minute: '2-digit' 
       });
 
-      // Calcola la durata o usa un valore di default se null
-      const durata = attivita.durata ? `${attivita.durata} min.` : '--';
+      // Calcola la durata: se i minuti superano 30, mostra la rappresentazione in ore (con una cifra decimale quando necessario)
+      let durata;
+      if (attivita.durata == null) {
+        durata = '--';
+      } else {
+        const minutes = Number(attivita.durata) || 0;
+        // Se abbiamo almeno un'ora, mostriamo il formato "Xh e Ymin." (es. 1h e 30min.)
+        if (minutes >= 60) {
+          const hours = Math.floor(minutes / 60);
+          const rem = minutes % 60;
+          if (rem > 0) {
+            durata = `${hours}h e ${rem}min.`;
+          } else {
+            durata = `${hours}h`;
+          }
+        } else {
+          // Meno di un'ora: mostra i minuti
+          durata = `${minutes} min.`;
+        }
+      }
 
-      // Per ora usiamo operatori di placeholder fino a quando non avremo i dati degli operatori
-      const operatori = 'Operatori da assegnare';
+      // Prefer backend-provided `operatori` string (already formatted).
+      // If not present, map `operatori_assegnati` to a comma-separated list of only the `nome` field.
+      let operatori;
+      if (attivita.operatori && typeof attivita.operatori === 'string' && attivita.operatori.trim() !== '') {
+        operatori = attivita.operatori;
+      } else if (attivita.operatori_assegnati && Array.isArray(attivita.operatori_assegnati) && attivita.operatori_assegnati.length > 0) {
+        operatori = attivita.operatori_assegnati.map(o => {
+          const nome = (o.nome || '').trim();
+          return nome || o.email || `#${o.id}`;
+        }).join(', ');
+      } else {
+        operatori = 'Operatori da assegnare';
+      }
 
       return {
         id: attivita.id,
@@ -344,8 +373,42 @@ export default function Home() {
     return transformed;
   };
 
-  // Trasforma i dati delle attività
-  const transformedAttivita = transformAttivitaData(attivitaData);
+  // Trasforma i dati delle attività e mantieni il risultato in uno stato in modo da poter
+  // aggiornare i nomi degli operatori in background (l'endpoint by-date non ritorna
+  // sempre la lista degli operatori assegnati; per i dettagli bisogna chiamare
+  // /api/attivita/{id}).
+  const [transformedAttivita, setTransformedAttivita] = useState([]);
+
+  useEffect(() => {
+    const base = transformAttivitaData(attivitaData);
+    setTransformedAttivita(base);
+
+    // Se le attività non includono operatori, fetcha i dettagli per popolare i nomi
+    // Questo è fatto in background e aggiorna lo stato senza bloccare la UI.
+    (async () => {
+      if (!base || base.length === 0) return;
+
+      for (const item of base) {
+        // Se abbiamo già operatori validi (non placeholder), salta
+        if (item.operatori && item.operatori !== 'Operatori da assegnare') continue;
+
+        try {
+          const res = await fetch(`/api/attivita/${item.id}`, { credentials: 'include' });
+          if (!res.ok) continue;
+          const detail = await res.json();
+          const ops = detail?.operatori_assegnati || [];
+          const operatoriStr = (Array.isArray(ops) && ops.length > 0)
+            ? ops.map(o => { const nome = (o.nome || '').trim(); return nome || o.email || `#${o.id}`; }).join(', ')
+            : 'Operatori da assegnare';
+
+          // Aggiorna lo stato in modo immutabile
+          setTransformedAttivita(prev => prev.map(p => p.id === item.id ? { ...p, operatori: operatoriStr } : p));
+        } catch (e) {
+          console.error('Errore fetching attivita detail for operators', e);
+        }
+      }
+    })();
+  }, [attivitaData]);
   
   // Debug: log per verificare quante attività vengono ricevute dal backend
   useEffect(() => {

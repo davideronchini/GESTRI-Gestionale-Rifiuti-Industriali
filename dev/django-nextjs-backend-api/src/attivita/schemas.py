@@ -60,6 +60,8 @@ class AttivitaSchema(Schema):
     luogo: Optional[str] = None
     codiceCer: Optional[str] = None
     durata: Optional[int] = None
+    # Comma-separated list of assigned operators (Nome Cognome). Added for by-date responses.
+    operatori: Optional[str] = None
     utente_creatore_id: int
     mezzo_rimorchio_id: Optional[int] = None
     data_creazione: datetime

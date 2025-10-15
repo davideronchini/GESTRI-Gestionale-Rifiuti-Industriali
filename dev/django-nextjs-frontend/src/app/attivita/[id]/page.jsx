@@ -245,8 +245,8 @@ export default function Page({ params }) {
   // Funzione per gestire il click sul campo documento
   const handleDocumentoClick = () => {
     if (!isEditing && documentoInfo?.id) {
-      // Modalità visualizzazione: vai alla pagina del documento
-      window.open(`/documento/${documentoInfo.id}`, '_blank');
+      // Modalità visualizzazione: naviga alla pagina del documento nella stessa scheda
+      router.push(`/documenti/${documentoInfo.id}`);
     } else if (isEditing) {
       // Modalità modifica: apri file picker
       const fileInput = document.createElement('input');

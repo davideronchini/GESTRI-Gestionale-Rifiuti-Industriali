@@ -379,10 +379,52 @@ class AttivitaController:
             role_qs = AttivitaController.list_attivita(user_role=user_role, user_id=user_id)
             # Now filter that role-scoped queryset by the requested date
             qs = role_qs.filter(data__date=data).order_by('-data')
-            return qs
+
+            # Build a list of dicts shaped for AttivitaSchema and include `operatori`
+            result = []
+            for a in qs:
+                try:
+                    operatori_qs = getattr(a, 'utente_attivita', None)
+                    operatori_names = []
+                    if operatori_qs is not None:
+                        iterator = operatori_qs.all() if hasattr(operatori_qs, 'all') else operatori_qs
+                        for ua in iterator:
+                            ut = getattr(ua, 'utente', None)
+                            if ut:
+                                nome = getattr(ut, 'nome', None) or ''
+                                # Only include the 'nome' (no cognome) per request
+                                if nome:
+                                    operatori_names.append(nome)
+                                else:
+                                    # fall back to email or id if nome missing
+                                    operatori_names.append(getattr(ut, 'email', str(getattr(ut, 'id', ''))))
+
+                    operatori_str = ', '.join(operatori_names) if operatori_names else None
+
+                    att_dict = {
+                        'id': a.id,
+                        'titolo': a.titolo,
+                        'descrizione': a.descrizione,
+                        'statoAttivita': a.statoAttivita,
+                        'data': a.data,
+                        'luogo': a.luogo,
+                        'codiceCer': a.codiceCer,
+                        'durata': a.durata,
+                        'operatori': operatori_str,
+                        'utente_creatore_id': a.utente_creatore_id,
+                        'mezzo_rimorchio_id': getattr(a, 'mezzo_rimorchio_id', None),
+                        'data_creazione': a.data_creazione,
+                        'data_modifica': a.data_modifica,
+                    }
+                    result.append(att_dict)
+                except Exception:
+                    # On error with a single item, append a minimal representation
+                    result.append({'id': getattr(a, 'id', None), 'titolo': getattr(a, 'titolo', None)})
+
+            return result
         except Exception as e:
             print(f"Errore in list_attivita_by_date: {str(e)}")
-            return Attivita.objects.none()
+            return []
         
     @staticmethod
     def get_documento_by_attivita(attivita_id, user_role, user_id):
