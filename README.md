@@ -86,8 +86,6 @@ Di seguito è riportato uno screenshot (macOS) che mostra due terminali affianca
 
 ![Terminali affiancati per frontend e backend](screenshot-terminali.png)
 
-Figura: esempio di due terminali aperti — uno per il frontend e uno per il backend.
-
 ### 🐍 Backend -- macOS / Linux (zsh)
 
 ```bash
