@@ -367,7 +367,7 @@
 	\phantomsection
 	% Place chapter header flush-left with the text block
 	\fancyhead[L]{\makebox[\textwidth][l]{#1}}%
-	\chapter*{#1}
+	\chapter*{\textcolor{myColor}{#1}}
 	\addcontentsline{toc}{chapter}{#1}%
 	\thispagestyle{fancy}
 }
@@ -388,7 +388,7 @@
 
 \newcommand{\newsection}[1]{%
 	\phantomsection
-	\section*{#1}%
+	\section*{\textcolor{myColor}{#1}}%
 	% Place section header flush-right with the text block
 	% \fancyhead[R]{\makebox[\textwidth][r]{#1}}% <- originale commentato: non vogliamo più mostrare il titolo della sezione qui
 	\addcontentsline{toc}{section}{#1}%
@@ -397,34 +397,34 @@
 
 \newcommand{\newsubsection}[1]{%
 	\phantomsection
-	\subsection*{#1}%
+	\subsection*{\textcolor{myColor}{#1}}%
 	\addcontentsline{toc}{subsection}{#1}%
 	\thispagestyle{fancy}
 }
 
 \newcommand{\newsubsubsection}[1]{%
 	\phantomsection
-	\subsubsection*{#1}%
+	\subsubsection*{\textcolor{myColor}{#1}}%
 	\addcontentsline{toc}{subsubsection}{#1}%
 	\thispagestyle{fancy}
 }
 
 \WithSuffix\newcommand\newsection*[1]{%
 	\phantomsection
-	\section*{#1}%
+	\section*{\textcolor{myColor}{#1}}%
 	% Place section header flush-right with the text block
 	% \fancyhead[R]{\makebox[\textwidth][r]{#1}}% <- originale commentato
 	\thispagestyle{fancy}
 }
 \WithSuffix\newcommand\newsubsection*[1]{%
 	\phantomsection
-	\subsection*{#1}%
+	\subsection*{\textcolor{myColor}{#1}}%
 	\thispagestyle{fancy}
 }
 
 \WithSuffix\newcommand\newsubsubsection*[1]{%
 	\phantomsection
-	\subsubsection*{#1}%
+	\subsubsection*{\textcolor{myColor}{#1}}%
 	\thispagestyle{fancy}
 }
 
@@ -444,7 +444,7 @@
 
 \definecolor{my_box_clr}{HTML}{24598e}
 
-\definecolor{myGreen}{HTML}{195905}
+\definecolor{myColor}{HTML}{242627}
 
 
 
