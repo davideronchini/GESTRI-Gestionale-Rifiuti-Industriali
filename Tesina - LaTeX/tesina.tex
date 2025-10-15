@@ -2025,26 +2025,40 @@ Enterprise Architect è uno strumento di modellazione e progettazione visiva bas
 \newsection{Mockup}
 Il mockup dell’applicativo GESTRi è stato realizzato con Figma, uno strumento per la progettazione e la prototipazione di interfacce utente. Ogni mockup rappresenta la versione progettuale dell’interfaccia, definendo struttura, elementi grafici e funzionalità prima della fase di sviluppo.
 Nelle pagine successive, per ogni schermata mockup, è mostrata la versione implementata dell’interfaccia. Questo confronto consente di evidenziare come il design ideato sia stato tradotto nell’applicativo finale, garantendo coerenza tra progetto e implementazione.
-\clearpage
 
-
+\vspace{1cm}
 \begin{figure*}[ht!]
     \includegraphics[width=1\textwidth]{MockupLogin.png}
+    \caption{Mockup login}
+
 \end{figure*}
 
 \begin{figure*}[ht!]
     \vspace*{0cm}
     \includegraphics[width=1\textwidth]{MockupHome.png}
+    \caption{Mockup Home}
+    \label{fig:mockup_Home}
 \end{figure*}
 
 \begin{figure*}[ht]
     \centering
     \includegraphics[width=1\textwidth]{MockupProfilo.png}
+    \caption{Mockup profilo}
+    \label{fig:mockup_Profilo}
 \end{figure*}
 
 \begin{figure*}[ht]
     \centering
     \includegraphics[width=1\textwidth]{MockupAttività.png}
+    \caption{Mockup Attivita}
+    \label{fig:Attività}
+\end{figure*}
+
+\begin{figure*}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{MockupMezzo.png}
+    \caption{Mockup Mezzo}
+    \label{fig:mockup_Mezzo}
 \end{figure*}
 
 \clearpage
@@ -2055,9 +2069,10 @@ I seguenti test rappresentano l’insieme delle attività di verifica implementa
 Per verificare le API è stata utilizzata l’applicazione Postman, uno strumento che consente di inviare richieste HTTP e analizzare le risposte. Questi test non rientrano nel diagramma degli Unit Test, ma rappresentano un'importante componente di validazione dell’integrazione e del comportamento delle API lato client-server.
 
 \newsubsection{Unit Test} 
+La sezione presenta i test unitari eseguiti sul modulo Attività di GESTRi, con l’obiettivo di verificarne la correttezza funzionale e assicurare l’affidabilità del relativo codice.
 \begin{scriptsize}
 \estiloPython
-\begin{lstlisting}[caption={Código fonte em Java}, label=lst:javacode]
+\begin{lstlisting}[caption={Attivita}, label=lst:javacode]
 class AttivitaIntegrationTests(TestCase):
    def setUp(self):
        self.client = Client()
@@ -2308,9 +2323,42 @@ class AttivitaIntegrationTests(TestCase):
 }
 \end{lstlisting}
 \end{scriptsize}
-
-
 \clearpage
-\newsection{Istruzioni per l'Esecuzione in Locale}
+\noindent
+La sezione presenta i test unitari eseguiti sul modulo Utente di GESTRi, con l’obiettivo di verificarne la correttezza funzionale e assicurare l’affidabilità del relativo codice.
+
+\begin{scriptsize}
+\estiloPython
+\begin{lstlisting}[caption={Utente}, label=lst:javacode]
+
+
+class UtenteIntegrationTests(TestCase):
+ def setUp(self):
+   self.client = Client()
+
+
+ def test_register_and_login(self):
+   # Register a new client user
+   payload = json.dumps({
+     "email": "newclient@example.com",
+     "password": "pass",
+     "nome": "New",
+     "cognome": "Client",
+     "ruolo": "CLIENTE"
+   })
+   resp = self.client.post('/api/utenti/register', data=payload, content_type='application/json')
+   # registration may return 200 or 201 or 400 depending on implementation
+   self.assertIn(resp.status_code, (200, 201, 400))
+
+
+   # Try login (if registration succeeded)
+   login_payload = json.dumps({"email": "newclient@example.com", "password": "pass"})
+   resp2 = self.client.post('/api/utenti/login', data=login_payload, content_type='application/json')
+   # login will return 200 on success or 400 if registration didn't create
+   self.assertIn(resp2.status_code, (200, 400))
+
+}
+\end{lstlisting}
+\end{scriptsize}
 
 \end{document}
