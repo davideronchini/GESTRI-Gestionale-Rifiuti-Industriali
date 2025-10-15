@@ -205,8 +205,8 @@ export default function CreaAttivitaPage() {
         color: 'green',
       });
 
-      // Reindirizza alla pagina della nuova attività
-      router.push(`/attivita/${nuovaAttivita.id}`);
+  // Reindirizza alla lista attività
+  router.push('/attivita');
       
     } catch (error) {
       console.error('Errore durante la creazione:', error);
@@ -255,7 +255,7 @@ export default function CreaAttivitaPage() {
     setSearchQuery('');
     
     try {
-      const res = await fetch('/api/mezzo-rimorchio/', {
+      const res = await fetch('/api/mezzi-rimorchi/', {
         method: 'GET',
         credentials: 'include',
         headers: {
@@ -311,7 +311,7 @@ export default function CreaAttivitaPage() {
     setOperatoreSearchQuery('');
     
     try {
-      const res = await fetch('/api/utente/', {
+      const res = await fetch('/api/utenti/', {
         method: 'GET',
         credentials: 'include',
         headers: {
@@ -432,16 +432,68 @@ export default function CreaAttivitaPage() {
         />
         <ScrollArea style={{ height: 400 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-            {getMezziFiltrati().length > 0 ? (
+              {getMezziFiltrati().length > 0 ? (
               getMezziFiltrati().map((item) => (
-                <MezzoCard 
+                <div
                   key={item.id}
-                  id={item.id}
-                  targa={item.mezzo?.targa || 'N/A'}
-                  tipo={item.rimorchio?.tipoRimorchio || 'N/A'}
-                  onClick={() => handleAssociaMezzo(item)}
-                  style={{ cursor: 'pointer' }}
-                />
+                  data-mezzo-id={item.id}
+                  style={{
+                    padding: '16px',
+                    border: `1px solid ${colorScheme === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'}`,
+                    borderRadius: '8px',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s ease',
+                    backgroundColor: colorScheme === 'dark' ? 'rgba(255, 255, 255, 0.02)' : 'rgba(0, 0, 0, 0.02)'
+                  }}
+                  onClick={(e) => {
+                    // keep original logic: pass the full object to handler
+                    handleAssociaMezzo(item);
+                  }}
+                  onMouseEnter={(e) => {
+                    const target = e.currentTarget;
+                    target.style.backgroundColor = colorScheme === 'dark' ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)';
+                    target.style.borderColor = colorScheme === 'dark' ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.2)';
+                  }}
+                  onMouseLeave={(e) => {
+                    const target = e.currentTarget;
+                    target.style.backgroundColor = colorScheme === 'dark' ? 'rgba(255, 255, 255, 0.02)' : 'rgba(0, 0, 0, 0.02)';
+                    target.style.borderColor = colorScheme === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
+                  }}
+                >
+                  <Group justify="space-between" align="center">
+                    <div>
+                      <div style={{ 
+                        fontWeight: '600', 
+                        marginBottom: '4px',
+                        color: colorScheme === 'dark' ? '#ffffff' : '#000000'
+                      }}>
+                        Targa: {item.mezzo?.targa || 'N/A'}
+                      </div>
+                      <div style={{ 
+                        fontSize: '14px',
+                        color: colorScheme === 'dark' ? 'rgba(255, 255, 255, 0.7)' : 'rgba(0, 0, 0, 0.7)'
+                      }}>
+                        Rimorchio: {item.rimorchio?.nome || 'N/A'} ({item.rimorchio?.tipoRimorchio || 'N/A'})
+                      </div>
+                      <div style={{ 
+                        fontSize: '14px',
+                        color: colorScheme === 'dark' ? 'rgba(255, 255, 255, 0.7)' : 'rgba(0, 0, 0, 0.7)'
+                      }}>
+                        Stato: {item.mezzo?.statoMezzo || 'N/A'}
+                      </div>
+                    </div>
+                    <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+                      <IconPlus 
+                        size={20}
+                        style={{
+                          color: colorScheme === 'dark' 
+                            ? (theme.other?.components?.appIcon?.dark?.color || '#ffffff')
+                            : (theme.other?.components?.appIcon?.light?.color || 'rgba(44, 44, 44, 1)')
+                        }}
+                      />
+                    </div>
+                  </Group>
+                </div>
               ))
             ) : (
               <div style={{ textAlign: 'center', padding: '20px', color: theme.colors.gray[6] }}>
@@ -468,19 +520,63 @@ export default function CreaAttivitaPage() {
         />
         <ScrollArea style={{ height: 400 }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-            {getOperatoriFiltrati().length > 0 ? (
-              getOperatoriFiltrati().map((operatore) => (
-                <UtenteCard
-                  key={operatore.id}
-                  id={operatore.id}
-                  nome={operatore.nome}
-                  cognome={operatore.cognome}
-                  email={operatore.email}
-                  ruolo={operatore.ruolo}
-                  onClick={() => handleAssociaOperatore(operatore)}
-                  style={{ cursor: 'pointer' }}
-                />
-              ))
+              {getOperatoriFiltrati().length > 0 ? (
+                getOperatoriFiltrati().map((operatore) => (
+                  <div
+                    key={operatore.id}
+                    style={{
+                      padding: '16px',
+                      border: `1px solid ${colorScheme === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'}`,
+                      borderRadius: '8px',
+                      cursor: 'pointer',
+                      transition: 'all 0.2s ease',
+                      backgroundColor: colorScheme === 'dark' ? 'rgba(255, 255, 255, 0.02)' : 'rgba(0, 0, 0, 0.02)'
+                    }}
+                    onClick={() => handleAssociaOperatore(operatore)}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.backgroundColor = colorScheme === 'dark' ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)';
+                      e.currentTarget.style.borderColor = colorScheme === 'dark' ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.2)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.backgroundColor = colorScheme === 'dark' ? 'rgba(255, 255, 255, 0.02)' : 'rgba(0, 0, 0, 0.02)';
+                      e.currentTarget.style.borderColor = colorScheme === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
+                    }}
+                  >
+                    <Group justify="space-between" align="center">
+                      <div>
+                        <div style={{ 
+                          fontWeight: '600', 
+                          marginBottom: '4px',
+                          color: colorScheme === 'dark' ? '#ffffff' : '#000000'
+                        }}>
+                          {`${operatore.nome || ''} ${operatore.cognome || ''}`.trim() || operatore.email}
+                        </div>
+                        <div style={{ 
+                          fontSize: '14px',
+                          color: colorScheme === 'dark' ? 'rgba(255, 255, 255, 0.7)' : 'rgba(0, 0, 0, 0.7)'
+                        }}>
+                          Email: {operatore.email || 'N/A'}
+                        </div>
+                        <div style={{ 
+                          fontSize: '14px',
+                          color: colorScheme === 'dark' ? 'rgba(255, 255, 255, 0.7)' : 'rgba(0, 0, 0, 0.7)'
+                        }}>
+                          Ruolo: {operatore.ruolo || 'N/A'}
+                        </div>
+                      </div>
+                      <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+                        <IconPlus 
+                          size={20}
+                          style={{
+                            color: colorScheme === 'dark' 
+                              ? (theme.other?.components?.appIcon?.dark?.color || '#ffffff')
+                              : (theme.other?.components?.appIcon?.light?.color || 'rgba(44, 44, 44, 1)')
+                          }}
+                        />
+                      </div>
+                    </Group>
+                  </div>
+                ))
             ) : (
               <div style={{ textAlign: 'center', padding: '20px', color: theme.colors.gray[6] }}>
                 Nessun operatore disponibile
@@ -703,13 +799,11 @@ export default function CreaAttivitaPage() {
             }}>
               <Group justify="space-between" align="center" style={{ marginBottom: '12px' }}>
                 <AppLargeText style={{ fontSize: '18px', fontWeight: '600' }}>Mezzo associato</AppLargeText>
-                <IconPlus 
+                <IconPlus
                   style={{ 
-                    width: '20px', 
-                    height: '20px', 
-                    color: colorScheme === 'dark' 
-                      ? (theme.other?.components?.appIcon?.dark?.color || '#ffffff')
-                      : (theme.other?.components?.appIcon?.light?.color || 'rgba(44, 44, 44, 1)'), 
+                    width: '22px', 
+                    height: '22px',
+                    color: '#17BC6A',
                     strokeWidth: '1.7',
                     cursor: 'pointer'
                   }}
@@ -719,10 +813,15 @@ export default function CreaAttivitaPage() {
               <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', maxHeight: '60vh', overflow: 'auto' }}>
                 {mezzoAssociato ? (
                   <MezzoCard 
+                    /* Use the association id for navigation/identity like the edit page */
                     id={mezzoAssociato.id}
-                    targa={mezzoAssociato.mezzo?.targa || 'N/A'}
-                    tipo={mezzoAssociato.rimorchio?.tipoRimorchio || 'N/A'}
-                    onRemove={handleRimuoviMezzo}
+                    previewSrc={mezzoAssociato.mezzo?.immagine || "/images/login-bg.png"}
+                    stato={mezzoAssociato.mezzo?.statoMezzo}
+                    targa={mezzoAssociato.mezzo?.targa}
+                    rimorchio={`${mezzoAssociato.rimorchio?.nome || ''} (${mezzoAssociato.rimorchio?.tipoRimorchio || ''})`}
+                    onView={() => router.push(`/mezzi/${mezzoAssociato.id}`)}
+                    isEditable={true}
+                    onDelete={handleRimuoviMezzo}
                   />
                 ) : (
                   <div style={{ 
@@ -759,11 +858,9 @@ export default function CreaAttivitaPage() {
                 <AppLargeText style={{ fontSize: '18px', fontWeight: '600' }}>Operatori assegnati</AppLargeText>
                 <IconPlus 
                   style={{ 
-                    width: '20px', 
-                    height: '20px', 
-                    color: colorScheme === 'dark' 
-                      ? (theme.other?.components?.appIcon?.dark?.color || '#ffffff')
-                      : (theme.other?.components?.appIcon?.light?.color || 'rgba(44, 44, 44, 1)'), 
+                    width: '22px', 
+                    height: '22px',
+                    color: '#17BC6A',
                     strokeWidth: '1.7',
                     cursor: 'pointer'
                   }}
@@ -776,11 +873,11 @@ export default function CreaAttivitaPage() {
                     <UtenteCard
                       key={operatore.id}
                       id={operatore.id}
-                      nome={operatore.nome}
-                      cognome={operatore.cognome}
+                      nome={`${operatore.nome || ''} ${operatore.cognome || ''}`.trim() || operatore.email}
                       email={operatore.email}
-                      ruolo={operatore.ruolo}
-                      onRemove={() => handleRimuoviOperatore(operatore.id)}
+                      onView={() => router.push(`/utenti/${operatore.id}`)}
+                      isEditable={true}
+                      onDelete={async () => handleRimuoviOperatore(operatore.id)}
                     />
                   ))
                 ) : (

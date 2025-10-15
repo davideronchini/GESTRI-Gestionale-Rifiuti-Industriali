@@ -29,6 +29,7 @@ export default function CreaMezzoRimorchioPage() {
   const mezzoImageInputRef = useRef(null);
 
   // Rimorchio
+  const [rimorchioId, setRimorchioId] = useState("");
   const [rimorchioNome, setRimorchioNome] = useState("");
   const [rimorchioCapacita, setRimorchioCapacita] = useState("");
   const [rimorchioTipo, setRimorchioTipo] = useState("ALTRO");
@@ -53,13 +54,7 @@ export default function CreaMezzoRimorchioPage() {
   ];
 
   const authGuard = useAuthGuard();
-
-  useEffect(() => {
-    if (authGuard.isLoading) return;
-    if (!authGuard.isAuthenticated && !authGuard.redirectInProgress) {
-      authGuard.triggerRedirect('session lost - redirect from mezzo crea page');
-    }
-  }, [authGuard.isLoading, authGuard.isAuthenticated, authGuard.redirectInProgress]);
+  // Rely on useAuthGuard internal redirect handling and use the early-return below
 
   const handleProfile = () => router.push('/profile');
   const handleSettings = () => router.push('/settings');
@@ -92,31 +87,80 @@ export default function CreaMezzoRimorchioPage() {
 
   const handleCreate = async () => {
     try {
-      if (!targa.trim()) {
-        showNotification({ title: 'Errore', message: 'La targa del mezzo è obbligatoria', color: 'red' });
-        return;
-      }
-      if (!rimorchioNome.trim()) {
-        showNotification({ title: 'Errore', message: 'Il nome del rimorchio è obbligatorio', color: 'red' });
+      // Determine what the user actually filled in
+      const mezzoFieldsFilled = (
+        targa.trim() !== '' ||
+        chilometraggio.trim() !== '' ||
+        consumoCarburante.trim() !== '' ||
+        scadenzaRevisione.trim() !== '' ||
+        scadenzaAssicurazione.trim() !== '' ||
+        mezzoImageFile !== null
+      );
+
+      const rimorchioFieldsFilled = (
+        rimorchioId.toString().trim() !== '' ||
+        rimorchioNome.trim() !== '' ||
+        rimorchioCapacita.trim() !== '' ||
+        rimorchioImageFile !== null
+      );
+
+      if (!mezzoFieldsFilled && !rimorchioFieldsFilled) {
+        showNotification({ title: 'Errore', message: 'Devi inserire almeno un mezzo o un rimorchio', color: 'red' });
         return;
       }
 
-      // Use unified API to create mezzo + rimorchio + associazione in a single call
-      const payload = {
-        mezzo: {
+      // If the user provided any mezzo information (other than targa), require targa
+      const mezzoHasOnlyTarga = (targa.trim() !== '' && !(
+        chilometraggio.trim() !== '' || consumoCarburante.trim() !== '' || scadenzaRevisione.trim() !== '' || scadenzaAssicurazione.trim() !== ''
+      ));
+
+      const requiresTarga = (
+        mezzoHasOnlyTarga ? false : (
+          (chilometraggio.trim() !== '' || consumoCarburante.trim() !== '' || scadenzaRevisione.trim() !== '' || scadenzaAssicurazione.trim() !== '')
+        )
+      );
+
+      if (requiresTarga && !targa.trim()) {
+        showNotification({ title: 'Errore', message: "La targa del mezzo è obbligatoria se inserisci informazioni del mezzo", color: 'red' });
+        return;
+      }
+
+      // If the user provided rimorchio info but did NOT provide an existing rimorchioId, require rimorchio nome
+      const rimIdTrim = rimorchioId.toString().trim();
+      if (rimorchioFieldsFilled && !rimIdTrim && !rimorchioNome.trim()) {
+        showNotification({ title: 'Errore', message: 'Il nome del rimorchio è obbligatorio se inserisci informazioni del rimorchio (a meno che non specifichi un ID rimorchio esistente)', color: 'red' });
+        return;
+      }
+
+      // Build payload including only the entities the user provided
+      const payload = {};
+      if (mezzoFieldsFilled) {
+        payload.mezzo = {
           targa: targa.trim().toUpperCase(),
           chilometraggio: chilometraggio ? parseInt(chilometraggio, 10) : 0,
           consumoCarburante: consumoCarburante ? parseFloat(consumoCarburante) : 0.0,
           scadenzaRevisione: formatDateToISO(scadenzaRevisione),
           scadenzaAssicurazione: formatDateToISO(scadenzaAssicurazione),
           statoMezzo: (statoMezzo || 'DISPONIBILE').toUpperCase(),
-        },
-        rimorchio: {
-          nome: rimorchioNome.trim(),
-          capacitaDiCarico: rimorchioCapacita ? parseFloat(rimorchioCapacita) : 0.0,
-          tipoRimorchio: (rimorchioTipo || 'ALTRO').toUpperCase(),
+        };
+      }
+
+      if (rimorchioFieldsFilled) {
+        const rimIdVal = rimorchioId.toString().trim();
+        if (rimIdVal) {
+          // If user provided an existing rimorchio id, pass it so the proxy can reuse it
+          payload.rimorchio = { id: Number(rimIdVal) };
+        } else {
+          payload.rimorchio = {
+            nome: rimorchioNome.trim(),
+            capacitaDiCarico: rimorchioCapacita ? parseFloat(rimorchioCapacita) : 0.0,
+            tipoRimorchio: (rimorchioTipo || 'ALTRO').toUpperCase(),
+          };
         }
-      };
+      }
+
+      // Debug: log payload being sent
+      console.debug('[CreaMezzo] payload', payload);
 
       const res = await fetch('/api/mezzo/crea', {
         method: 'POST',
@@ -125,12 +169,15 @@ export default function CreaMezzoRimorchioPage() {
         body: JSON.stringify(payload)
       });
 
-      if (!res.ok) {
-        const err = await res.json().catch(() => ({}));
-        throw new Error(err?.error || err?.message || `Errore creazione mezzo-rimorchio (${res.status})`);
-      }
+      const text = await res.text();
+      let result = {};
+      try { result = text && text.length > 0 ? JSON.parse(text) : {}; } catch(e) { result = { detail: text }; }
 
-      const result = await res.json();
+      console.debug('[CreaMezzo] response status', res.status, 'body', result);
+
+      if (!res.ok) {
+        throw new Error(result?.error || result?.message || result?.detail || `Errore creazione mezzo-rimorchio (${res.status})`);
+      }
 
       // 4) Upload immagini (opzionali) using returned IDs
       const createdMezzoId = result?.mezzo?.id;
@@ -144,8 +191,9 @@ export default function CreaMezzoRimorchioPage() {
         await uploadImage(rimorchioImageFile, 'rimorchi', createdRimorchioId);
       }
 
+      // Success -> always redirect back to mezzi list/table
       showNotification({ title: 'Successo', message: 'Mezzo-Rimorchio creato', color: 'green' });
-      router.push(`/mezzi/${createdAssociazioneId || ''}`);
+      router.push('/mezzi');
     } catch (error) {
       showNotification({ title: 'Errore', message: error?.message || 'Creazione fallita', color: 'red' });
     }
@@ -254,15 +302,62 @@ export default function CreaMezzoRimorchioPage() {
         <AppLargeText style={{marginTop: '60px', fontSize: '18px', fontWeight: '600',}}>Rimorchio</AppLargeText>
         <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: '20px', width: '100%', marginTop: '10px', alignItems: 'flex-start' }}>
           <div style={{ flex: isMobile ? 'none' : '0 0 45%', width: isMobile ? '100%' : '45%', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-            <AppInputField id="rimorchio-nome" label="Nome" placeholder="--" value={rimorchioNome} editable onChange={(e) => setRimorchioNome(e.target.value)} />
-            <AppInputField id="rimorchio-capacita" label="Capacità" placeholder="0.00" value={rimorchioCapacita} editable onChange={(e) => setRimorchioCapacita(e.target.value)} />
+            <AppInputField
+              id="rimorchio-id"
+              label="ID Rimorchio (opzionale)"
+              placeholder="--"
+              value={rimorchioId}
+              editable={!rimorchioNome && !rimorchioCapacita}
+              onChange={(e) => {
+                const v = e.target.value;
+                setRimorchioId(v);
+                if (v && v.toString().trim() !== '') {
+                  // if id provided, clear other rimorchio fields
+                  setRimorchioNome('');
+                  setRimorchioCapacita('');
+                  setRimorchioTipo('ALTRO');
+                }
+              }}
+            />
+            <AppInputField
+              id="rimorchio-nome"
+              label="Nome"
+              placeholder="--"
+              value={rimorchioNome}
+              editable={!rimorchioId}
+              onChange={(e) => {
+                const v = e.target.value;
+                setRimorchioNome(v);
+                if (v && v.toString().trim() !== '') {
+                  // if some rimorchio field filled, clear id
+                  setRimorchioId('');
+                }
+              }}
+            />
+            <AppInputField
+              id="rimorchio-capacita"
+              label="Capacità"
+              placeholder="0.00"
+              value={rimorchioCapacita}
+              editable={!rimorchioId}
+              onChange={(e) => {
+                const v = e.target.value;
+                setRimorchioCapacita(v);
+                if (v && v.toString().trim() !== '') {
+                  setRimorchioId('');
+                }
+              }}
+            />
             <AppInputField
               id="rimorchio-tipo"
               label="Tipo"
               placeholder="ALTRO"
               value={rimorchioTipo}
-              editable
-              onChange={(e) => setRimorchioTipo(e.target.value)}
+              editable={!rimorchioId}
+              onChange={(e) => {
+                setRimorchioTipo(e.target.value);
+                if (e.target.value && e.target.value.toString().trim() !== '') setRimorchioId('');
+              }}
               onClick={() => showNotification({ title: 'Valori tipo rimorchio', message: 'Valori ammessi: RIBALTABILE, COMPATTANTE, CISTERNA, PIANALE, CASSONE, SCARRABILE, ALTRO', color: 'blue' })}
             />
           </div>

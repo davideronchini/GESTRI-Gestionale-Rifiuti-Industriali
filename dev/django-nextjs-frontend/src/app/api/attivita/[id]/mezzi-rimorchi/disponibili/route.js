@@ -15,11 +15,15 @@ export async function GET(request, { params }) {
     const { id } = params;
     
     // Chiamata all'API Django per ottenere i mezzi-rimorchio disponibili
-    const {data, status} = await ApiProxy.get(`${DJANGO_API_ENDPOINT}/mezzi-rimorchi/disponibili`, true);
+    // Nota: aggiungiamo il trailing slash e passiamo l'id dell'attività come query param
+    // perché alcune configurazioni Django possono aspettarsi lo slash e/o filtri.
+    const djangoUrl = `${DJANGO_API_ENDPOINT}/mezzi-rimorchi/disponibili/?attivita_id=${encodeURIComponent(id)}`;
+    const {data, status} = await ApiProxy.get(djangoUrl, true);
     
     if (status >= 400) {
-      console.error('Mezzi disponibili GET error response:', {status, data});
-      return NextResponse.json(data || {error: 'Server error'}, {status: status})
+      console.error('Mezzi disponibili GET error response:', {status, data, djangoUrl});
+      // restituiamo il payload così com'è per facilitare il debug client-side
+      return NextResponse.json(data || {error: 'Server error', djangoUrl}, {status: status})
     }
 
     return NextResponse.json({data}, {status: status});

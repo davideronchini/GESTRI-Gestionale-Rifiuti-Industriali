@@ -60,13 +60,7 @@ export default function CreaUtentePage() {
   const [attestatiSelezionati] = useState([]);
 
   const authGuard = useAuthGuard();
-
-  useEffect(() => {
-    if (authGuard.isLoading) return;
-    if (!authGuard.isAuthenticated && !authGuard.redirectInProgress) {
-      authGuard.triggerRedirect('session lost - redirect from utenti crea page');
-    }
-  }, [authGuard.isLoading, authGuard.isAuthenticated, authGuard.redirectInProgress]);
+  // Rely on useAuthGuard internal redirect handling and use the early-return below
 
   const handleProfile = () => router.push("/profile");
   const handleSettings = () => router.push("/settings");
@@ -125,8 +119,8 @@ export default function CreaUtentePage() {
       // Upload immagine profilo non supportato
 
       showNotification({ title: "Successo", message: "Utente creato", color: "green" });
-      if (newId) router.push(`/utenti/${newId}`);
-      else router.push("/utenti");
+  // Always redirect to the users list after creation
+  router.push('/utenti');
     } catch (error) {
       showNotification({ title: "Errore", message: error?.message || "Creazione fallita", color: "red" });
     }

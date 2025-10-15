@@ -8,7 +8,8 @@ class RimorchioAdmin(admin.ModelAdmin):
     """
     Admin interface configuration for the Rimorchio model
     """
-    list_display = ('nome', 'tipoRimorchio', 'capacitaDiCarico')
+    # Show the model ID in the admin list for easy reference
+    list_display = ('id', 'nome', 'tipoRimorchio', 'capacitaDiCarico')
     list_filter = ('tipoRimorchio',)
     search_fields = ('nome',)
     

@@ -64,8 +64,8 @@ export default function Page() {
       if (response.ok) {
         // show a small feedback using Mantine notifications
         showNotification({ title: 'Eliminazione', message: 'Attività eliminata con successo', color: 'green' });
-        // invalidate SWR cache for attivita list
-        try { mutate(ATTIVITA_API_URL); } catch (e) { /* ignore */ }
+        // invalidate SWR cache for attivita list (use the same key used by useSWR)
+        try { mutate(ATTIVITA_BASE); } catch (e) { /* ignore */ }
       } else {
         let errMsg = 'Errore durante l\'eliminazione dell\'attività';
         try {

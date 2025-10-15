@@ -76,17 +76,8 @@ export default function ProfilePage() {
   );
 
   const authGuard = useAuthGuard({ errors: [error] });
-
-  // If the auth provider says the user is not authenticated but auth guard
-  // hasn't redirected yet (session lost while on page), trigger redirect.
-  // This mirrors the pattern used in other "crea" pages.
-  useEffect(() => {
-    if (authGuard.isLoading) return;
-
-    if (!authGuard.isAuthenticated && !authGuard.redirectInProgress) {
-      authGuard.triggerRedirect('session lost - redirect from profile page');
-    }
-  }, [authGuard.isLoading, authGuard.isAuthenticated, authGuard.redirectInProgress]);
+  // Rely on useAuthGuard internal redirect handling; the component uses the
+  // standard early-return further down (loading / unauthenticated checks).
 
   // editable fields
   const [editedNome, setEditedNome] = useState('');

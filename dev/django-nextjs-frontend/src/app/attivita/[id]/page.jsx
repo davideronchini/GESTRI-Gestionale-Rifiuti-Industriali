@@ -991,11 +991,9 @@ export default function Page({ params }) {
                         {isEditing && (
                           <IconPlus 
                             style={{ 
-                              width: '20px', 
-                              height: '20px', 
-                              color: colorScheme === 'dark' 
-                                ? (theme.other?.components?.appIcon?.dark?.color || '#ffffff')
-                                : (theme.other?.components?.appIcon?.light?.color || 'rgba(44, 44, 44, 1)'), 
+                              width: '22px', 
+                              height: '22px',
+                              color: '#17BC6A',
                               strokeWidth: '1.7',
                               cursor: 'pointer'
                             }}
@@ -1073,11 +1071,9 @@ export default function Page({ params }) {
                         {isEditing && (
                           <IconPlus 
                             style={{ 
-                              width: '20px', 
-                              height: '20px', 
-                              color: colorScheme === 'dark' 
-                                ? (theme.other?.components?.appIcon?.dark?.color || '#ffffff')
-                                : (theme.other?.components?.appIcon?.light?.color || 'rgba(44, 44, 44, 1)'), 
+                              width: '22px', 
+                              height: '22px',
+                              color: '#17BC6A',
                               strokeWidth: '1.7',
                               cursor: 'pointer'
                             }}

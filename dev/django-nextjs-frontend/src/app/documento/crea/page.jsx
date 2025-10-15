@@ -36,17 +36,7 @@ export default function CreaDocumentoPage() {
   const [objectUrl, setObjectUrl] = useState(null);
 
   const authGuard = useAuthGuard();
-  // Se la sessione viene persa durante la permanenza sulla pagina,
-  // chiediamo al guard di eseguire il redirect. Non eseguiamo
-  // fallback manuali (router.replace) per evitare redirect doppi.
-  useEffect(() => {
-    if (authGuard.isLoading) return;
-
-    if (!authGuard.isAuthenticated && !authGuard.redirectInProgress) {
-      // triggerRedirect usa i controlli interni per debouncing/skip
-      authGuard.triggerRedirect('session lost - redirect from crea page');
-    }
-  }, [authGuard.isLoading, authGuard.isAuthenticated, authGuard.redirectInProgress]);
+  // Rely on useAuthGuard internal redirect handling and use the early-return below
   // Operatore selection state (per la creazione)
   const [isOperatoreModalOpen, setIsOperatoreModalOpen] = useState(false);
   const [operatoriOptions, setOperatoriOptions] = useState([]);

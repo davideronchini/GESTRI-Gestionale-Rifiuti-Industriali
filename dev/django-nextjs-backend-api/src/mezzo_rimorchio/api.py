@@ -116,25 +116,6 @@ def filter_mezzo_rimorchi(request: HttpRequest, value: str, filter_data: FilterR
         return []
 
 
-@router.get("/disponibili/", response=List[MezzoRimorchioSchema], auth=helpers.api_auth_staff_or_operatore)
-def list_disponibili_mezzo_rimorchi(request: HttpRequest):
-    """
-    Get a list of mezzo-rimorchio associations where the vehicle status is DISPONIBILE
-    """
-    try:
-        # Debug log per verificare quale path arriva effettivamente
-        try:
-            path_info = getattr(request, 'path', None) or getattr(request, 'get_full_path', lambda: None)()
-        except Exception:
-            path_info = None
-        print(f"[mezzo_rimorchio.disponibili] invoked; request.path={path_info}")
-
-        # Usa il controller per ottenere le associazioni mezzo-rimorchio con mezzi disponibili
-        return MezzoController.list_mezzo_rimorchio_disponibili()
-    except Exception as e:
-        print(f"Errore in list_disponibili_mezzo_rimorchi: {str(e)}")
-        return []
-
 
 @router.get("/by-stato/{stato}", response=List[MezzoRimorchioSchema], auth=helpers.api_auth_staff_or_operatore)
 def list_mezzo_rimorchio_by_stato(request: HttpRequest, stato: str):
