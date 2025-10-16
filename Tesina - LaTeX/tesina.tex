@@ -514,7 +514,7 @@ Sono previsti, inoltre, casi d'uso per la modifica del ruolo e per la consultazi
 \textbf{Sequenza degli eventi alternativa} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt] 
     \item \texttt{If} Lo Staff richiede la visualizzazione
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-        \item \texttt{Extend} \textit{TrovaUtente} 
+        \item[] \texttt{Extend} \textit{TrovaUtente} 
         \item Il sistema mostra l’elenco degli Operatori registrati
         \item Lo Staff seleziona un Operatore dall’elenco
         \item Il sistema mostra i dati anagrafici completi e le informazioni aggiuntive 
@@ -921,7 +921,7 @@ Racchiude la possibilità di creazione, modifica ed eliminazione dei mezzi. Sono
     	\textbf{Sequenza degli eventi alternativa} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
         \item \texttt{If} Lo Staff richiede la visualizzazione
         \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
-            \item \texttt{Extend} \textit{TrovaMezzo}
+            \item[] \texttt{Extend} \textit{TrovaMezzo}
             \item Lo Staff seleziona il mezzo da visualizzare
             \item Il sistema mostra i dati del mezzo 
         \end{enumerate}
@@ -946,7 +946,7 @@ Racchiude la possibilità di creazione, modifica ed eliminazione dei mezzi. Sono
 	\textbf{Sequenza degli eventi principale} & 
 \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
     \item Il caso d’uso inizia quando lo Staff inserisce il singolo criterio di ricerca nella barra dedicata 
-    \item \texttt{Extend} \textit{FiltraMezzo}
+    \newline \texttt{Extend} \textit{FiltraMezzo}
     \item \texttt{While} il criterio di ricerca non è vuoto
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
         \item Il sistema trova i mezzi corrispondenti
@@ -1106,9 +1106,9 @@ Racchiude la possibilità di creazione, modifica ed eliminazione delle attività
     \item Il caso d’uso inizia quando il Cliente o lo Staff seleziona l'opzione di creazione di una nuova attività
     \item Il sistema richiede i dati dell’attività
     \item Il Cliente o lo Staff inserisce i dati
-    \item \texttt{Extend} \textit{AssegnaOperatore}
-    \item \texttt{Extend} \textit{AssegnaMezzo}
-    \item \texttt{Extend} \textit{AssegnaDocumento}
+    \newline \texttt{Extend} \textit{AssegnaOperatore}
+    \newline \texttt{Extend} \textit{AssegnaMezzo}
+    \newline \texttt{Extend} \textit{AssegnaDocumento}
     \item \texttt{If} i dati sono validi
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
         \item Il sistema registra la nuova attività
@@ -1148,7 +1148,7 @@ Racchiude la possibilità di creazione, modifica ed eliminazione delle attività
 \end{enumerate} \\ \hline
 	\textbf{Sequenza degli eventi principale} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
     \item Il caso d'uso inizia quando lo Staff seleziona l'opzione di assegnazione di un Operatore all'attività
-    \item \texttt{Extend} \textit{TrovaUtente}
+    \newline \texttt{Extend} \textit{TrovaUtente}
     \item Lo Staff seleziona un Operatore da assegnare all'attività
     \item Il sistema registra l’assegnazione
 \end{enumerate} \\ \hline
@@ -1181,7 +1181,7 @@ Racchiude la possibilità di creazione, modifica ed eliminazione delle attività
 \end{enumerate} \\ \hline
 	\textbf{Sequenza degli eventi principale} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
     \item Il caso d'uso inizia quando lo Staff seleziona l'opzione di assegnazione di un mezzo all'attività
-    \item \texttt{Extend} \textit{TrovaMezzo}
+    \newline \texttt{Extend} \textit{TrovaMezzo}
     \item Lo Staff seleziona un mezzo da assegnare all’attività
     \item \texttt{If} Il mezzo è disponibile
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
@@ -1221,7 +1221,7 @@ Racchiude la possibilità di creazione, modifica ed eliminazione delle attività
 \end{enumerate} \\ \hline
 	\textbf{Sequenza degli eventi principale} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
     \item Il caso d'uso inizia quando lo Staff seleziona l'opzione di assegnazione di un documento all'attività
-    \item \texttt{Extend} \textit{TrovaDocumento}
+    \newline \texttt{Extend} \textit{TrovaDocumento}
     \item Lo Staff seleziona un documento di tipo FIR da assegnare all'attività
     \item Il sistema registra l’assegnazione
 \end{enumerate} \\ \hline
@@ -1253,14 +1253,14 @@ Racchiude la possibilità di creazione, modifica ed eliminazione delle attività
 \end{enumerate} \\ \hline
 	\textbf{Sequenza degli eventi principale} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
     \item Il caso d’uso inizia quando lo Staff seleziona l’opzione di visualizzazione  dell'attività
-    \item \texttt{Extend} \textit{TrovaAttivita}
+    \newline \texttt{Extend} \textit{TrovaAttivita}
     \item Lo Staff seleziona un’attività da visualizzare
     \item Il sistema mostra le informazioni sull’attività selezionata
 \end{enumerate} \\ \hline
 	\textbf{Postcondizioni} & Nessuna \\ \hline
 \textbf{Sequenza degli eventi alternativa} & \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
     \item \texttt{If} Il Cliente o l'Operatore, possono selezionare solo le attività a loro associate, o da loro create 
-    \item \texttt{Extend} \textit{TrovaAttivita}
+    \newline \texttt{Extend} \textit{TrovaAttivita}
     \item Lo Staff seleziona un’attività da visualizzare
     \item Il sistema mostra le informazioni sull’attività selezionata
 \end{enumerate} \\ \hline
@@ -1421,7 +1421,7 @@ Racchiude la possibilità di creazione, modifica ed eliminazione dei documenti. 
     \item Il caso d’uso inizia quando lo Staff seleziona l'opzione di creazione del documento
     \item Il sistema richiede i dati del documento
     \item Lo Staff inserisce i dati
-    \item \texttt{Extend} \textit{AssociaOperatore}
+    \newline \texttt{Extend} \textit{AssociaOperatore}
     \item \texttt{If} i dati sono validi e non duplicati
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
         \item Il sistema registra il documento
@@ -1463,7 +1463,7 @@ Racchiude la possibilità di creazione, modifica ed eliminazione dei documenti. 
 	\textbf{Sequenza degli eventi principale} &
 \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
     \item Il caso d’uso inizia quando lo Staff seleziona l'opzione di asegnazione di un documento di tipo non FIR ad Operatore
-    \item \texttt{Extend} \textit{TrovaUtente}
+    \newline \texttt{Extend} \textit{TrovaUtente}
     \item Lo Staff seleziona un Operatore da associare al documento di tipo non FIR
     \item Il sistea registra l'assegnazione
 \end{enumerate}\\ \hline
@@ -1492,7 +1492,7 @@ Racchiude la possibilità di creazione, modifica ed eliminazione dei documenti. 
 	\textbf{Sequenza degli eventi principale} &
     \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
         \item Il caso d’uso inizia quando l’Operatore seleziona l'opzione di visualizzazione del documento
-        \item \texttt{Extend} \textit{TrovaDocumento}
+        \newline \texttt{Extend} \textit{TrovaDocumento}
         \item L'Operatore seleziona un documento
         \item Il sistema mostra i dati del documento selezionato
     \end{enumerate} \\ \hline
@@ -1518,7 +1518,7 @@ Racchiude la possibilità di creazione, modifica ed eliminazione dei documenti. 
 	\textbf{Sequenza degli eventi principale} & 
 \begin{enumerate}[leftmargin=14pt,label=\arabic*.,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
     \item Il caso d’uso inizia quando l’Operatore inserisce il singolo criterio di ricerca nella barra dedicata 
-    \item \texttt{Extend} \textit{FiltraDocumento}
+    \newline \texttt{Extend} \textit{FiltraDocumento}
     \item \texttt{If} il documento esiste
     \begin{enumerate}[label=\arabic{enumi}.\arabic*.,leftmargin=22pt,labelsep=0.5em,topsep=0pt,partopsep=0pt,parsep=0pt,itemsep=0pt]
         \item \texttt{For Each} documento trovato
