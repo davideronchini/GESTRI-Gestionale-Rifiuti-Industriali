@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1760645907.81187 "/Users/sara/Downloads/GESTRI-Gestionale-Rifiuti-Industriali/Tesina - LaTeX/tesina.tex" "tesina.pdf" "tesina" 1760645918.0884 0
-  "/Users/sara/Downloads/GESTRI-Gestionale-Rifiuti-Industriali/Tesina - LaTeX/tesina.tex" 1760645907.22428 123348 b183ec6616360490421d12368558ebd7 ""
+["pdflatex"] 1760646797.77084 "/Users/sara/Downloads/GESTRI-Gestionale-Rifiuti-Industriali/Tesina - LaTeX/tesina.tex" "tesina.pdf" "tesina" 1760646807.93539 0
+  "/Users/sara/Downloads/GESTRI-Gestionale-Rifiuti-Industriali/Tesina - LaTeX/tesina.tex" 1760646443.96889 123348 b183ec6616360490421d12368558ebd7 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -341,7 +341,7 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1758895633 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1758895561 3345727 62ad7bef73e4a1f06ac200a91eb2361d ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "config.tex" 1760527192.46607 15228 829e56705d9580b92e1402726581eed0 ""
+  "config.tex" 1760646796.61657 15185 71f6988e142b797cb039adb9ded78f46 ""
   "img/Attori.png" 1755853629.60399 6838 62ae3eddd416bbc33e20a32989952ff8 ""
   "img/CodiceCER.jpg" 1759240474.01496 66800 f00ff484f47f171b01360c1ef9c1e7a8 ""
   "img/DiagrammaAttivitaCRUDAttivita.png" 1759226092.41072 84027 744ef3eec4bece6b5335f461fdc9bd8d ""
@@ -384,9 +384,9 @@
   "img/RequisitiFunzionali.png" 1759133769.56849 23814 539267b6345754803c8e57c36df8b379 ""
   "img/RequisitiNonFunzionali.png" 1759224647.63734 15313 156405093746ac9aee199b1ec56669e8 ""
   "img/univpm_logo.png" 1755853629.60692 572038 2c65ef26c2d0ad88311d8e9b99461627 ""
-  "tesina.aux" 1760645917.90031 24329 c202ea821bcb9f8ae7fbbe46a92eeca9 "pdflatex"
-  "tesina.tex" 1760645907.22428 123348 b183ec6616360490421d12368558ebd7 ""
-  "tesina.toc" 1760645917.90549 3649 c8789b0087f596e609851dde9d77bda5 "pdflatex"
+  "tesina.aux" 1760646807.74548 24329 c202ea821bcb9f8ae7fbbe46a92eeca9 "pdflatex"
+  "tesina.tex" 1760646443.96889 123348 b183ec6616360490421d12368558ebd7 ""
+  "tesina.toc" 1760646807.75077 3649 c8789b0087f596e609851dde9d77bda5 "pdflatex"
   (generated)
   "tesina.aux"
   "tesina.log"
