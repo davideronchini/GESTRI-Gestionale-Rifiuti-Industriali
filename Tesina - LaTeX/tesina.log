@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.9.26)  16 OCT 2025 22:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.9.26)  20 OCT 2025 11:01
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -3533,11 +3533,11 @@ Overfull \hbox (34.71422pt too wide) has occurred while \output is active
 [78
 
  <./img/DiagrammaEntitaRelazioni.png (PNG copy)>]
-<./img/DiagrammaDeployment.png, id=1010, 428.10321pt x 383.96886pt>
+<./img/DiagrammaDeployment.png, id=1010, 444.6536pt x 473.34091pt>
 File: ./img/DiagrammaDeployment.png Graphic file (type png)
 <use ./img/DiagrammaDeployment.png>
 Package pdftex.def Info: ./img/DiagrammaDeployment.png  used on input line 1976.
-(pdftex.def)             Requested size: 452.9679pt x 406.27267pt.
+(pdftex.def)             Requested size: 452.9679pt x 482.21631pt.
 
 
 
@@ -3874,13 +3874,13 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  71768 strings out of 473190
  1776105 string characters out of 5715800
- 2972721 words of memory out of 5000000
+ 2972720 words of memory out of 5000000
  93221 multiletter control sequences out of 15000+600000
  581341 words of font info for 85 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  89i,13n,120p,844b,2928s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfcc1000.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm0500.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt0900.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on tesina.pdf (93 pages, 6296720 bytes).
+Output written on tesina.pdf (93 pages, 6301126 bytes).
 PDF statistics:
  1755 PDF objects out of 2073 (max. 8388607)
  1531 compressed objects within 16 object streams

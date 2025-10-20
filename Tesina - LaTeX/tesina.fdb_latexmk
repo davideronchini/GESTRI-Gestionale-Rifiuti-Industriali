@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1760646797.77084 "/Users/sara/Downloads/GESTRI-Gestionale-Rifiuti-Industriali/Tesina - LaTeX/tesina.tex" "tesina.pdf" "tesina" 1760646807.93539 0
+["pdflatex"] 1760950911.23492 "/Users/sara/Downloads/GESTRI-Gestionale-Rifiuti-Industriali/Tesina - LaTeX/tesina.tex" "tesina.pdf" "tesina" 1760950921.59446 0
   "/Users/sara/Downloads/GESTRI-Gestionale-Rifiuti-Industriali/Tesina - LaTeX/tesina.tex" 1760646443.96889 123348 b183ec6616360490421d12368558ebd7 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
@@ -359,7 +359,7 @@
   "img/DiagrammaClassiUtenteAnalisi.png" 1759135814.28983 42042 8d923f78d86eb813fcc5cbd131562e63 ""
   "img/DiagrammaClassiUtenteProgettazione.png" 1759136275.72163 53523 fb097919271cb897c31d4db54078bb4a ""
   "img/DiagrammaComponenti.png" 1759226393.51767 175510 d1a420d33332be20a64f4ba1a5197a5c ""
-  "img/DiagrammaDeployment.png" 1759136785.88436 20678 6a3d45d1a277952c2c44dca2408eb530 ""
+  "img/DiagrammaDeployment.png" 1760950910.59829 25090 39e36063280e1f2797afd9260d4d566d ""
   "img/DiagrammaEntitaRelazioni.png" 1759136561.05953 238995 369c8ee7bcfb569259b0d7a372a907dc ""
   "img/DiagrammaMacchineStatiAttivita.png" 1758098932.11226 27606 120195eb678f119fdd56788dbd08fafd ""
   "img/DiagrammaMacchineStatiMezzo.png" 1760090569.38628 41454 93b27cabb14275c401a29b5ca5271a96 ""
@@ -384,9 +384,9 @@
   "img/RequisitiFunzionali.png" 1759133769.56849 23814 539267b6345754803c8e57c36df8b379 ""
   "img/RequisitiNonFunzionali.png" 1759224647.63734 15313 156405093746ac9aee199b1ec56669e8 ""
   "img/univpm_logo.png" 1755853629.60692 572038 2c65ef26c2d0ad88311d8e9b99461627 ""
-  "tesina.aux" 1760646807.74548 24329 c202ea821bcb9f8ae7fbbe46a92eeca9 "pdflatex"
+  "tesina.aux" 1760950921.40533 24329 c202ea821bcb9f8ae7fbbe46a92eeca9 "pdflatex"
   "tesina.tex" 1760646443.96889 123348 b183ec6616360490421d12368558ebd7 ""
-  "tesina.toc" 1760646807.75077 3649 c8789b0087f596e609851dde9d77bda5 "pdflatex"
+  "tesina.toc" 1760950921.41101 3649 c8789b0087f596e609851dde9d77bda5 "pdflatex"
   (generated)
   "tesina.aux"
   "tesina.log"
